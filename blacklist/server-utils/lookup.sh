@@ -1,0 +1,1 @@
+dig @8.8.8.8 $1 +time=1 +tries=1 | grep ^$1. | grep -o -P "\d+\.\d+\.\d+\.\d+"
