@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>程序的机器级表示 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" title="程序的机器级表示">编辑本页</a> |
+<a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" title="程序的机器级表示">较早版本</a><p class='subtitle'><a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">程序的机器级表示</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#.E4.B8.BB.E8.A6.81.E7.9F.A5.E8.AF.86.E7.82.B9"><span class="tocnumber">1</span> <span class="toctext">主要知识点</span></a></li>
+<li class='toclevel-1'><a href="#.E4.B9.A0.E9.A2.98"><span class="tocnumber">2</span> <span class="toctext">习题</span></a></li>
+<li class='toclevel-1'><a href="#.E7.96.91.E9.9A.BE.E8.A7.A3.E7.AD.94"><span class="tocnumber">3</span> <span class="toctext">疑难解答</span></a></li>
+<li class='toclevel-1'><a href="#.E6.89.A9.E5.B1.95.E5.86.85.E5.AE.B9"><span class="tocnumber">4</span> <span class="toctext">扩展内容</span></a></li>
+<li class='toclevel-1'><a href="#.E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE"><span class="tocnumber">5</span> <span class="toctext">参考文献</span></a></li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" title="程序的机器级表示">编辑</a>]</div><a name=".E4.B8.BB.E8.A6.81.E7.9F.A5.E8.AF.86.E7.82.B9"></a><h1>主要知识点</h1>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" title="程序的机器级表示">编辑</a>]</div><a name=".E4.B9.A0.E9.A2.98"></a><h1>习题</h1>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" title="程序的机器级表示">编辑</a>]</div><a name=".E7.96.91.E9.9A.BE.E8.A7.A3.E7.AD.94"></a><h1>疑难解答</h1>
+<ul><li>关于3.38问题的讨论
+<ol><li><a href="http://www.nikemode.com/blog/article.asp?id=285" class='external text' title="http://www.nikemode.com/blog/article.asp?id=285" rel="nofollow">缓冲区溢出攻击试验</a>
+</li><li><a href="http://blog.csdn.net/lonehawk/archive/2004/12/21/224728.aspx" class='external text' title="http://blog.csdn.net/lonehawk/archive/2004/12/21/224728.aspx" rel="nofollow">stack frame与缓冲区溢出</a>
+</li><li><a href="http://blog.csdn.net/wangwang1103/archive/2007/03/04/1520227.aspx" class='external text' title="http://blog.csdn.net/wangwang1103/archive/2007/03/04/1520227.aspx" rel="nofollow">关于缓冲区溢出的尝试</a>
+</li><li><a href="http://bbs.chinaunix.net/archiver/?tid-528263.html" class='external text' title="http://bbs.chinaunix.net/archiver/?tid-528263.html" rel="nofollow">CU上的讨论</a>
+</li><li><a href="http://bbs.chinaunix.net/viewthread.php?tid=525050" class='external text' title="http://bbs.chinaunix.net/viewthread.php?tid=525050" rel="nofollow">CU上的另一个讨论</a>
+</li></ol>
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" title="程序的机器级表示">编辑</a>]</div><a name=".E6.89.A9.E5.B1.95.E5.86.85.E5.AE.B9"></a><h1>扩展内容</h1>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" title="程序的机器级表示">编辑</a>]</div><a name=".E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE"></a><h1>参考文献</h1>
+<ol><li> <a href="http://hi.baidu.com/jmlover/blog/item/3ef09d82dbd8d6bf6c8119ca.html" class='external text' title="http://hi.baidu.com/jmlover/blog/item/3ef09d82dbd8d6bf6c8119ca.html" rel="nofollow">AT&amp;T汇编语言简介</a> 
+</li><li> <a href="http://hi.baidu.com/elseif/blog/item/3e467bf325719656342acc27.html" class='external text' title="http://hi.baidu.com/elseif/blog/item/3e467bf325719656342acc27.html" rel="nofollow">At&amp;T 汇编指令说明</a>
+</li><li> <a href="http://en.wikipedia.org/wiki/Stack_(data_structure)" class='external text' title="http://en.wikipedia.org/wiki/Stack (data structure)" rel="nofollow">Stack@Wikipedia</a>
+</li><li> <a href="http://blog.csdn.net/suiyunonghen/archive/2008/06/02/2501737.aspx" class='external text' title="http://blog.csdn.net/suiyunonghen/archive/2008/06/02/2501737.aspx" rel="nofollow">汇编与高级语言</a>
+</li><li> <a href="http://blog.csdn.net/benny5609/archive/2008/06/01/2368087.aspx" class='external text' title="http://blog.csdn.net/benny5609/archive/2008/06/01/2368087.aspx" rel="nofollow">浓缩汇编基础</a>
+</li><li> <a href="http://www.difranco.net/cop2220/op-prec.htm" class='external text' title="http://www.difranco.net/cop2220/op-prec.htm" rel="nofollow">C Operator Precedence and Associativity</a>
+</li></ol>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html">http://dns.cs.hit.edu.cn../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html</a>"</p>
+
+<p>本页面已经被浏览114次。 This page was last modified 14:03 2008年9月17日 by <a href="../../../c/u/i/User%7ECuiyuchun.html" class="new" title="User:Cuiyuchun">崔玉春</a>. Based on work by <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a>. </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" title="程序的机器级表示">编辑本页</a></strong> |
+<a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/Talk%7E%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" class="new" title="Talk:程序的机器级表示">讨论本页</a> |
+<a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" title="程序的机器级表示">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览114次。 This page was last modified 14:03 2008年9月17日 by <a href="../../../c/u/i/User%7ECuiyuchun.html" class="new" title="User:Cuiyuchun">崔玉春</a>. Based on work by <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a>. </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" title="程序的机器级表示">编辑本页</a></strong>
+<br /><a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/Talk%7E%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" class="new" title="Talk:程序的机器级表示">讨论本页</a>
+<br /><a href="../../../%E7%A8%8B/%E5%BA%8F/%E7%9A%84/%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" title="程序的机器级表示">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393267.04 secs. -->
+</body></html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Eclipse 启动参数 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../e/c/l/Eclipse_%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0.html" title="Eclipse 启动参数">编辑本页</a> |
+<a href="../../../e/c/l/Eclipse_%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0.html" title="Eclipse 启动参数">较早版本</a><p class='subtitle'><a href="../../../e/c/l/Eclipse_%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Eclipse 启动参数</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>包括英文版本和中文版本两种的说明, 特别需要值得一提的是那个 -nl 参数, 可以指定程序启动时所使用的语言. 例如:
+eclipse -nl en_US
+将启动英文语言, 这个特性在安装了国际化语言包以后特别有用, 可以方便的切换各个语言的版本. 注意 IBM WSAD v5.1 也支持这个功能.
+运行 Eclipse
+</p><p>将 Eclipse 驱动程序安装（解压缩）到某个目录（例如，c:\eclipse）中之后，通过运行顶级安装目录中的 Eclipse 可执行文件来启动"工作台"。在 Windows 系统上，该可执行文件称为 eclipse.exe，而在 Linux 系统上称为 eclipse。注意：下列讨论描述 Windows 系统上的设置。Linux 上的设置是相似的。
+</p><p>如果您没有另行指定，则平台将缺省工作区目录创建为可执行文件的兄弟目录（例如 c:\eclipse\workspace）。此工作区目录用作项目的缺省内容区，还用于保存任何必需的元数据。要进行共享安装或多工作区安装，应明确指出工作区的位置而不是使用缺省值。有两种控制工作区位置的方法：使用当前工作目录或使用 -data 命令行自变量。
+将工作区位置设置为在当前工作目录内
+</p><p>在此方案中，工作区位置将是当前工作目录中称为 workspace 的目录。
+</p><p>实现此目的最容易的方法可能是使用下列步骤来创建快捷方式：
+</p>
+<pre>  1. 导航到 Windows 资源管理器中的 eclipse.exe 并使用右键拖动来创建 eclipse.exe 的快捷方式。
+  2. 编辑快捷方式的属性，以使启动位置：字段标识工作区位置的父目录（例如，c:\users\robert）。
+  3. 关闭属性对话框并双击快捷方式（如果提供的目录为 c:\users\robert，则工作区位置将为 c:\users\robert\workspace）。
+</pre>
+<p>当然，您也可以使用命令提示符（通过将目录切换为工作区父目录然后运行 eclipse.exe）来获得同样的效果。
+使用 -data 设置工作区的特定位置
+</p><p>要使用 -data 命令行自变量，只要将 -data your_workspace_location（例如，-data c:\users\robert\myworkspace）添加至快捷方式属性中的目标字段或显式地将它包括在命令行上。
+使用 -vm 设置 java VM
+</p><p>建议显式指定在运行 Eclipse 时要使用哪个 Java VM。使用 -vm 命令行自变量（例如，-vm c:\jre\bin\javaw.exe）可以实现此目的。如果不使用 -vm，则 Eclipse 将使用在 O/S 路径上找到的一个 Java VM。当安装其它产品时，它们可更改您的路径，导致在下一次启动 Eclipse 时使用另一 Java VM。
+运行 Eclipse 中的高级主题
+</p><p>Eclipse 可执行文件及平台本身提供了人们感兴趣的开发或调试 Eclipse 各部件的许多执行选项。运行 Eclipse 可执行文件的一般格式是：
+</p><p>eclipse [platform options] [-vmargs [Java VM arguments]]
+</p><p>&lt;&gt;Eclipse 启动参数 &lt;&gt;命令 描述
+原因
+</p><p>-arch architecture
+</p><p>	定义 Eclipse 平台在其上运行的处理器体系结构。Eclipse 平台通常使用 Java os.arch 属性的常用值来计算最佳设置。如果在此处指定该项，则这是 Eclipse 平台使用的值。此处指定的值可作为 BootLoader.getOSArch() 用于插件。示例值有："x86"、"sparc"、"PA-RISC"和"ppc"。 	2.0
+</p><p>-application applicationId
+</p><p>	要运行的应用程序。应用程序由向 org.eclipse.core.runtime.applications 扩展点提供扩展的插件来声明。通常不需要此自变量。如果指定了此项，则该值会覆盖配置提供的值。如果不指定此项，则会运行"Eclipse 工作台"。 	1.0
+</p><p>-boot bootJarURL
+</p><p>	（建议不使用；用 -configuration 代替；支持 1.0 兼容）。Eclipse 平台的引导插件代码（boot.jar）的位置，表示为 URL。如果指定此项，则会用它来为装入 Eclipse 平台引导程序类装入器的类装入器设置类路径。仅当更改 startup.jar 和 boot.jar 的相对位置时才需要它。注意，不允许使用相对 URL。 	*1.0
+</p><p>-classloaderproperties [file]
+</p><p>	如果指定的话，则使用给定位置处的类装入器属性文件来激活平台类类装入器增强。文件自变量可以是文件路径或 URL。注意，不允许使用相对 URL。单击此处以获得更多详细信息。 	2.0.2
+</p><p>-configuration configurationFileURL
+</p><p>	Eclipse 平台配置文件的位置，表示为 URL。配置文件确定 Eclipse 平台、可用插件集和主要功能部件的位置。注意，不允许使用相对 URL。当安装或更新 Eclipse 平台时配置文件被写至此位置。 	2.0
+</p><p>-consolelog
+</p><p>	将 Eclipse 平台的错误日志镜像到用来运行 Eclipse 的控制台。与 -debug 组合时很方便使用。 	1.0
+</p><p>-data workspacePath
+</p><p>	要运行 Eclipse 平台的工作区的路径。工作区位置也是项目的缺省位置。相对于从中启动 eclipse 的目录来解释相对路径。 	1.0
+</p><p>-debug [optionsFile]
+</p><p>	将平台置于调试方式，并从给定位置处的文件装入调试选项（如果指定的话）。此文件指示哪些调试点可用于插件以及是否已启用它们。如果未给出文件位置，则平台在启动 eclipse 的目录中查找称为".options"的文件。URL 和文件系统路径都可作为文件位置。 	1.0
+</p><p>-dev [classpathEntries]
+</p><p>	将平台置于开发方式。将可选类路径条目（用逗号分隔的列表）添加至每个插件的运行时类路径。例如，当工作区包含要开发的插件时，指定 -dev bin 会为每个插件项目的名为 bin 的目录添加类路径条目，允许在其中存储最新生成的类文件。除去了冗余或不存在的类路径条目。 	1.0
+</p><p>-endsplash params
+</p><p>	用于在 Eclipse 平台启动并运行时关闭闪屏的内部选项。此选项在闪屏处理链中不同的位置有不同的语法和语义。 	2.0
+</p><p>-feature featureId
+</p><p>	主要功能部件的标识。主要功能部件为 Eclipse 的已启动实例提供了产品个性，并确定使用的产品定制信息。 	2.0
+</p><p>-keyring keyringFilePath
+</p><p>	磁盘上授权数据库（或"密钥环"文件）的位置。此自变量必须与 -password 选项配合使用。相对于从中启动 eclipse 的目录来解释相对路径。 	1.0
+</p><p>-nl locale
+</p><p>	定义 Eclipse 平台在其上运行的语言环境的名称。Eclipse 平台通常自动计算最佳设置。如果在此处指定该项，则这是 Eclipse 平台使用的值。此处指定的值可作为 BootLoader.getNL() 用于插件。示例值有："en_US"和"fr_FR_EURO"。 	2.0
+</p><p>-nolazyregistrycacheloading
+</p><p>	取消激活装入优化的平台插件注册表高速缓存。缺省情况下，仅当需要时才从注册表高速缓存（可用时）中装入扩展的配置元素，以减少内存占用。此选项将在启动时强制完全装入注册表高速缓存。 	2.1
+</p><p>-noregistrycache
+</p><p>	绕过读写内部插件注册表高速缓存文件。 	2.0
+</p><p>-nosplash
+</p><p>	运行平台而不显示闪屏。 	1.0
+</p><p>-os operatingSystem
+</p><p>	定义 Eclipse 平台在其上运行的操作系统。Eclipse 平台通常使用 Java os.name 属性的常用值来计算最佳设置。如果在此处指定该项，则这是 Eclipse 平台使用的值。此处指定的值可作为 BootLoader.getOS() 用于插件，并用于解析插件清单文件中提及的路径中 $os$ 变量的出现。示例值有："win32"、"linux"、"hpux"、"solaris"和"aix"。 	1.0
+</p><p>-password password
+</p><p>	授权数据库的密码。与 -keyring 选项配合使用。 	1.0
+</p><p>-perspective perspectiveId
+</p><p>	启动时要在活动工作台窗口中打开的透视图。如果没有指定该参数，则将打开关闭时活动的透视图。 	1.0
+</p><p>-plugincustomization
+	  propertiesFile
+</p><p>	包含插件首选项缺省设置的属性文件的位置。这些缺省设置覆盖在主要功能部件中指定的缺省设置。相对于从中启动 eclipse 的目录来解释相对路径。 	2.0
+</p><p>-plugins pluginsFileURL
+</p><p>	（建议不使用；用 -configuration 代替；支持 1.0 兼容）。 指定 Eclipse 平台查找插件的文件的位置，表示为 URL。该文件为属性文件格式，其中键是任意用户定义名称，值是指向 plugin.xml 文件的显式路径或指向包含插件的目录的路径的用逗号分隔的列表。注意，不允许使用相对 URL。如果指定此项，则此选项会导致创建适当的临时配置。 	*1.0
+</p><p>-refresh 
+</p><p>	启动时执行工作区的全局刷新的选项。这将使从上次平台运行以来在文件系统中所做的任何更改一致。 	1.0
+</p><p>-showlocation 
+</p><p>	用于在窗口标题栏中显示工作区的位置的选项。在发行版 2.0 中，此选项仅与 -data 命令行自变量一起使用。 	2.0
+</p><p>-showsplash params
+</p><p>	用于显示闪屏（由可执行的 Eclipse 平台启动器执行）的内部选项。此选项在闪屏处理链中不同的位置有不同的语法和语义。 	2.0
+</p><p>-vm vmPath
+</p><p>	要用来运行 Eclipse 平台的"Java 运行时环境"（JRE）的位置。如果不指定此项，则 JRE 位于 jre（它是 Eclipse 可执行文件的兄弟目录）。相对于从中启动 eclipse 的目录来解释相对路径。 	1.0
+</p><p>-ws windowSystem
+</p><p>	定义 Eclipse 平台在其上运行的 Windows 系统。Eclipse 平台通常使用 Java os.name 属性的常用值来计算最佳设置。如果在此处指定该项，则这是 Eclipse 平台使用的值。此处指定的值可作为 BootLoader.getWS() 用于插件、用于配置 SWT 以及用于解析插件清单文件中提及的路径中 $ws$ 变量的出现。示例值有："win32"、"motif"和"gtk"。 	1.0
+</p><p>将 -vmargs 条目后面的所有自变量（但不包括 -vmargs）作为虚拟机自变量（即，在要运行的类的前面）直接传递到所指示的 Java VM。注意：如果 Eclipse 启动在 Java vm 自变量（-vmargs）之后提供的自变量（例如，-data），则 Eclipse 将不会启动并且您将接收到"JVM 已终止。出口代码为 1"的错误。
+在不同的 VM 上运行 
+在 J9 上运行 Eclipse
+</p><p>当在 J9 版本 1.5 上运行 Eclipse 时，建议使用以下 VM 选项：
+</p><p>eclipse.exe [eclipse arguments] -vm path_to_j9w.exe 
+</p>
+<pre>           -vmargs -ms:32 -mm:2048 -mo:32768 -moi:32768 -mca:32 -mco:128 -mx:2000000
+</pre>
+<p>当在 J9 版本 2.0 上运行 Eclipse 时，J9W 选择的缺省自变量应为合适的选项。但是，要覆盖 Eclipse 可执行文件以内部方式自动设置的参数，必须指定 -vmargs 不带任何参数，如下所示：
+</p><p>eclipse.exe [eclipse arguments] -vm path_to_j9w.exe -vmargs
+</p><p>有关进一步信息，参考 J9 VM 文档和帮助。
+在 IBM Developer Kit, Java(TM) Technology Edition VM 上运行 Eclipse
+</p><p>IBM Developer Kit, Java(TM) Technology Edition 1.3 Linux 的缺省 VM 设置适合进行初期研究工作，但在进行大型开发时是不够的。对于大型开发，应修改 VM 自变量以使有更多的堆可用。例如，下列设置将允许 Java 堆增大为 256MB：
+</p><p>-vmargs -Xmx256M 
+</p><p><br /> 
+Copyright IBM Corporation and others 2000, 2003
+Running Eclipse
+</p><p>After you install (unzip) the Eclipse driver in a directory (such as c:\eclipse), start the Workbench by running the Eclipse executable file found in the top level install directory. The executable file is called eclipse.exe on Windows systems and eclipse on Linux systems. Note: the following discussion describes setting up on Windows systems. Setup on Linux is analogous.
+</p><p>If you do not specify otherwise, the platform creates a default workspace directory as a sibling of the executable (for example, c:\eclipse\workspace). This workspace directory is used as the default content area for your projects as well as for holding any required metadata. For shared or multi-workspace installs you should explicitly state the location of your workspace rather than using the default. There are two ways to control the location of your workspace: using the current working directory or using the -data command line argument.
+Setting the workspace location to be inside the current working directory
+</p><p>In this scenario, the workspace location will be a directory called workspace inside the current working directory.
+</p><p>Perhaps the easiest way of doing this is to create a shortcut using the following steps:
+</p>
+<pre>  1. Navigate to eclipse.exe in the Windows Explorer and using a right button drag, create a shortcut to eclipse.exe.
+  2. Edit the properties of the shortcut such that the Start in: field identifies the parent directory of your workspace location (for example, c:\users\robert).
+  3. Close the properties dialog and double-click on the shortcut (if the provided directory was c:\users\robert, the workspace location would be c:\users\robert\workspace).
+</pre>
+<p>Of course you can get the same effect using a command prompt by changing directory to your workspace parent's directory and then running eclipse.exe.
+Setting a specific location for the workspace with -data
+</p><p>To use the -data command line argument, simply add -data your_workspace_location (for example, -data c:\users\robert\myworkspace) to the Target field in the shortcut properties, or include it explicitly on your command line.
+Setting the java VM using -vm
+</p><p>It is recommended that you explicitly specify which Java VM to use when running Eclipse. This is achieved with the -vm command line argument (for example, -vm c:\jre\bin\javaw.exe). If you don't use -vm, Eclipse will use the first Java VM found on the O/S path. When you install other products, they may change your path, resulting in a different Java VM being used when you next launch Eclipse.
+Advanced Topics in Running Eclipse
+</p><p>The Eclipse executable and the platform itself offer a number of execution options of interest to people developing or debugging parts of Eclipse. The general form of running the Eclipse executable is:
+</p><p>eclipse [platform options] [-vmargs [Java VM arguments]]
+</p><p>&lt;&gt;Eclipse Startup Parameters &lt;&gt;Command Description
+Since
+</p><p>-arch architecture
+</p><p>	Defines the processor architecture on which the Eclipse platform is running. The Eclipse platform ordinarily computes the optimal setting using the prevailing value of Java os.arch property. If specified here, this is the value that the Eclipse platform uses. The value specified here is available to plug-ins as BootLoader.getOSArch(). Example values: "x86", "sparc", "PA-RISC", "ppc". 	2.0
+</p><p>-application applicationId
+</p><p>	The application to run. Applications are declared by plug-ins supplying extensions to the org.eclipse.core.runtime.applications extension point. This argument is typically not needed. If specified, the value overrides the value supplied by the configuration. If not specified, the Eclipse Workbench is run. 	1.0
+</p><p>-boot bootJarURL
+</p><p>	(Deprecated; replaced by -configuration; supported for 1.0 compatibility). The location of the Eclipse platform's boot plug-in code (boot.jar), expressed as a URL. If specified, it is used to set the classpath for the class loader that loads the Eclipse platform bootstrap class loader. Only required when changing the relative location of startup.jar and boot.jar. Note that relative URLs are not allowed. 	*1.0
+</p><p>-classloaderproperties [file]
+</p><p>	Activates platform class loader enhancements using the class loader properties file at the given location, if specified. The file argument can be either a file path or a URL. Note that relative URLs are not allowed. Click here for more details. 	2.0.2
+</p><p>-configuration configurationFileURL
+</p><p>	The location for the Eclipse Platform configuration file, expressed as a URL. The configuration file determines the location of the Eclipse platform, the set of available plug-ins, and the primary feature. Note that relative URLs are not allowed. The configuration file is written to this location when the Eclipse platform is installed or updated. 	2.0
+</p><p>-consolelog
+</p><p>	Mirrors the Eclipse platform's error log to the console used to run Eclipse. Handy when combined with -debug. 	1.0
+</p><p>-data workspacePath
+</p><p>	The path of the workspace on which to run the Eclipse platform. The workspace location is also the default location for projects. Relative paths are interpreted relative to the directory that Eclipse was started from. 	1.0
+</p><p>-debug [optionsFile]
+</p><p>	Puts the platform in debug mode and loads the debug options from the file at the given location, if specified. This file indicates which debug points are available for a plug-in and whether or not they are enabled. If a file location is not given, the platform looks in the directory that eclipse was started from for a file called ".options". Both URLs and file system paths are allowed as file locations. 	1.0
+</p><p>-dev [classpathEntries]
+</p><p>	Puts the platform in development mode. The optional classpath entries (a comma separated list) are added to the runtime classpath of each plug-in. For example, when the workspace contains plug-ins being developed, specifying -dev bin adds a classpath entry for each plug-in project's directory named bin, allowing freshly generated class files to be found there. Redundant or non-existent classpath entries are eliminated. 	1.0
+</p><p>-endsplash params
+</p><p>	Internal option for taking down the splash screen when the Eclipse platform is up and running. This option has different syntax and semantics at various points along the splash screen processing chain. 	2.0
+</p><p>-feature featureId
+</p><p>	The ID of the primary feature. The primary feature gives the launched instance of Eclipse its product personality, and determines the product customization information used. 	2.0
+</p><p>-keyring keyringFilePath
+</p><p>	The location of the authorization database (or "key ring" file) on disk. This argument must be used in conjunction with the -password option. Relative paths are interpreted relative to the directory that Eclipse was started from. 	1.0
+</p><p>-nl locale
+</p><p>	Defines the name of the locale on which the Eclipse platform is running. The Eclipse platform ordinarily computes the optimal setting automatically. If specified here, this is the value that the Eclipse platform uses. The value specified here is available to plug-ins as BootLoader.getNL(). Example values: "en_US" and "fr_FR_EURO". 	2.0
+</p><p>-nolazyregistrycacheloading
+</p><p>	Deactivates platform plug-in registry cache loading optimization. By default, extensions' configuration elements will be loaded from the registry cache (when available) only on demand, reducing memory footprint. This option will force the registry cache to be fully loaded at startup. 	2.1
+</p><p>-noregistrycache
+</p><p>	Bypasses the reading and writing of an internal plug-in registry cache file. 	2.0
+</p><p>-nosplash
+</p><p>	Runs the platform without putting up the splash screen. 	1.0
+</p><p>-os operatingSystem
+</p><p>	Defines the operating system on which the Eclipse platform is running. The Eclipse platform ordinarily computes the optimal setting using the prevailing value of Java os.name property. If specified here, this is the value that the Eclipse platform uses. The value specified here is available to plug-ins as BootLoader.getOS(), and used to resolve occurrences of the $os$ variable in paths mentioned in the plug-in manifest file. Example values: "win32", "linux", "hpux", "solaris", "aix". 	1.0
+</p><p>-password password
+</p><p>	The password for the authorization database. Used in conjunction with the -keyring option. 	1.0
+</p><p>-perspective perspectiveId
+</p><p>	The perspective to open in the active workbench window on startup. If this parameter is not specified, the perspective that was active on shutdown will be opened. 	1.0
+</p><p>-plugincustomization
+	  propertiesFile
+</p><p>	The location of a properties file containing default settings for plug-in preferences. These default settings override default settings specified in the primary feature. Relative paths are interpreted relative to the directory that eclipse was started from. 	2.0
+</p><p>-plugins pluginsFileURL
+</p><p>	(Deprecated; replaced by -configuration; supported for 1.0 compatibility). The location of the file that specifies where the Eclipse platform finds plug-ins, expressed as a URL. The file is in property file format where the keys are arbitrary user defined names and the values are comma separated lists of either explicit paths to plugin.xml files, or paths to directories containing plug-ins. Note that relative URLs are not allowed. If specified, this option causes the creation of a suitable temporary configuration. 	*1.0
+</p><p>-refresh 
+</p><p>	Option for performing a global refresh of the workspace on startup. This will reconcile any changes that were made in the file system since the platform was last run. 	1.0
+</p><p>-showlocation 
+</p><p>	Option for displaying the location of the workspace in the window title bar. In release 2.0 this option only worked in conjunction with the -data command line argument. 	2.0
+</p><p>-showsplash params
+</p><p>	Internal option for showing the splash screen (done by the executable Eclipse platform launcher). This option has different syntax and semantics at various points along the splash screen processing chain. 	2.0
+</p><p>-vm vmPath
+</p><p>	The location of Java Runtime Environment (JRE) to use to run the Eclipse platform. If not specified, the JRE is at jre, sibling of the Eclipse executable. Relative paths are interpreted relative to the directory that eclipse was started from. 	1.0
+</p><p>-ws windowSystem
+</p><p>	Defines the window system on which the Eclipse platform is running. The Eclipse platform ordinarily computes the optimal setting using the prevailing value of Java os.name property. If specified here, this is the value that the Eclipse platform uses. The value specified here is available to plug-ins as BootLoader.getWS(), used to configure SWT, and used to resolve occurrences of the $ws$ variable in paths mentioned in the plug-in manifest file. Example values: "win32", "motif", "gtk". 	1.0
+</p><p>All arguments following (but not including) the -vmargs entry are passed directly through to the indicated Java VM as virtual machine arguments (that is, before the class to run). Note: If an Eclipse startup argument, such as -data, is provided after the Java vm arguments (-vmargs), Eclipse will not start and you will receive a "JVM terminated. Exit code=1" error.
+Running on Different VMs 
+Running Eclipse on J9
+</p><p>When running Eclipse on J9 version 1.5, it is recommended that you use the following VM options:
+</p><p>eclipse.exe [eclipse arguments] -vm path_to_j9w.exe 
+</p>
+<pre>           -vmargs -ms:32 -mm:2048 -mo:32768 -moi:32768 -mca:32 -mco:128 -mx:2000000
+</pre>
+<p>When running Eclipse on J9 version 2.0, the default arguments chosen by J9W should be suitable. However, to override the parameters which are automatically set internally by the Eclipse executable, you must specify -vmargs with no following arguments as follows:
+</p><p>eclipse.exe [eclipse arguments] -vm path_to_j9w.exe -vmargs
+</p><p>Please refer to the J9 VM documentation and help for further information.
+Running Eclipse on the IBM Developer Kit, Java(TM) Technology Edition VM
+</p><p>The default VM settings for IBM Developer Kit, Java(TM) Technology Edition 1.3 Linux work well for initial exploration, but are not sufficient for large scale development. For large scale development you should modify your VM arguments to make more heap available. For example, the following setting will allow the Java heap to grow to 256MB: 
+</p><p>-vmargs -Xmx256M
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../e/c/l/Eclipse_%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0.html">http://dns.cs.hit.edu.cn../../../e/c/l/Eclipse_%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0.html</a>"</p>
+
+<p>本页面已经被浏览12次。 This page was last modified 13:46 2006年5月10日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../e/c/l/Eclipse_%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0.html" title="Eclipse 启动参数">编辑本页</a></strong> |
+<a href="../../../e/c/l/Talk%7EEclipse_%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0.html" class="new" title="Talk:Eclipse 启动参数">讨论本页</a> |
+<a href="../../../e/c/l/Eclipse_%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0.html" title="Eclipse 启动参数">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览12次。 This page was last modified 13:46 2006年5月10日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../e/c/l/Eclipse_%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0.html" title="Eclipse 启动参数">编辑本页</a></strong>
+<br /><a href="../../../e/c/l/Talk%7EEclipse_%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0.html" class="new" title="Talk:Eclipse 启动参数">讨论本页</a>
+<br /><a href="../../../e/c/l/Eclipse_%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0.html" title="Eclipse 启动参数">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392692.67 secs. -->
+</body></html>

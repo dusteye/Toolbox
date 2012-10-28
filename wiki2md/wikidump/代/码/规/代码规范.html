@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>代码规范 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑本页</a> |
+<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">较早版本</a><p class='subtitle'><a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">代码规范</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#HTML.E8.A7.84.E8.8C.83"><span class="tocnumber">1</span> <span class="toctext">HTML规范</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E6.89.80.E6.9C.89.E7.9A.84.E6.A0.87.E7.AD.BE.E9.83.BD.E6.98.AF.E5.A4.A7.E5.86.99"><span class="tocnumber">1.1</span> <span class="toctext">所有的标签都是大写</span></a></li>
+<li class='toclevel-2'><a href="#URL.E6.9C.80.E5.90.8E.E4.B8.80.E5.AE.9A.E8.A6.81.E6.9C.89.E2.80.9C.2F.E2.80.9D"><span class="tocnumber">1.2</span> <span class="toctext">URL最后一定要有“/”</span></a></li>
+<li class='toclevel-2'><a href="#.E6.A0.87.E7.AD.BE.E6.88.90.E5.AF.B9.E5.87.BA.E7.8E.B0"><span class="tocnumber">1.3</span> <span class="toctext">标签成对出现</span></a></li>
+<li class='toclevel-2'><a href="#.E5.9C.A8head.E5.8C.BA.E5.BF.85.E9.A1.BB.E8.AF.B4.E6.98.8E.E5.AD.97.E7.AC.A6.E9.9B.86.EF.BC.8C.E6.88.91.E4.BB.AC.E7.BB.9F.E4.B8.80.E4.BD.BF.E7.94.A8utf-8"><span class="tocnumber">1.4</span> <span class="toctext">在head区必须说明字符集，我们统一使用utf-8</span></a></li>
+<li class='toclevel-2'><a href="#.E5.9C.A8head.E5.8C.BA.E8.AF.B4.E6.98.8Ecss.E8.AE.BE.E5.AE.9A"><span class="tocnumber">1.5</span> <span class="toctext">在head区说明css设定</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#php.E4.BB.A3.E7.A0.81.E8.A7.84.E8.8C.83"><span class="tocnumber">2</span> <span class="toctext">php代码规范</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E5.91.BD.E5.90.8D.E8.A7.84.E5.88.99"><span class="tocnumber">2.1</span> <span class="toctext">命名规则</span></a>
+<ul>
+<li class='toclevel-3'><a href="#.E5.87.BD.E6.95.B0.E5.90.8D.E5.AD.97.E9.87.87.E7.94.A8C_GNU.E7.9A.84.E6.83.AF.E4.BE.8B.EF.BC.8C.E6.89.80.E6.9C.89.E5.AD.97.E6.AF.8D.E5.9D.87.E4.B8.BA.E5.B0.8F.E5.86.99.E5.AD.97.E6.AF.8D.EF.BC.8C.E4.BD.BF.E7.94.A8.27_.27.E5.88.86.E5.89.B2.E5.8D.95.E8.AF.8D"><span class="tocnumber">2.1.1</span> <span class="toctext">函数名字采用C GNU的惯例，所有字母均为小写字母，使用'_'分割单词</span></a></li>
+<li class='toclevel-3'><a href="#.E5.8F.98.E9.87.8F.E5.91.BD.E5.90.8D.EF.BC.9A.E6.89.80.E6.9C.89.E5.AD.97.E6.AF.8D.E5.B0.8F.E5.86.99.EF.BC.8C.E9.87.87.E7.94.A8.27_.27.E5.88.86.E5.89.B2.E5.8D.95.E8.AF.8D"><span class="tocnumber">2.1.2</span> <span class="toctext">变量命名：所有字母小写，采用'_'分割单词</span></a></li>
+<li class='toclevel-3'><a href="#.E7.BC.A9.E5.86.99.E8.AF.8D.E4.B8.8D.E8.A6.81.E5.85.A8.E9.83.A8.E4.BD.BF.E7.94.A8.E5.A4.A7.E5.86.99.E5.AD.97.E6.AF.8D"><span class="tocnumber">2.1.3</span> <span class="toctext">缩写词不要全部使用大写字母</span></a></li>
+<li class='toclevel-3'><a href="#.E5.87.BD.E6.95.B0.E5.91.BD.E5.90.8D.E7.9A.84.E5.8E.9F.E5.88.99.E6.98.AF.E8.AF.B4.E6.98.8E.E5.87.BD.E6.95.B0.E7.9A.84.E4.BD.9C.E7.94.A8.2C.E4.B8.8B.E9.9D.A2.E6.98.AF.E9.87.87.E7.94.A8.E7.9A.84.E5.89.8D.E5.90.8E.E7.BC.80"><span class="tocnumber">2.1.4</span> <span class="toctext">函数命名的原则是说明函数的作用,下面是采用的前后缀</span></a></li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#.E4.B9.A6.E5.86.99.E8.A7.84.E5.88.99"><span class="tocnumber">2.2</span> <span class="toctext">书写规则</span></a>
+<ul>
+<li class='toclevel-3'><a href="#.E5.A4.A7.E6.8B.AC.E5.8F.B7.E6.94.BE.E5.9C.A8.E5.85.B3.E9.94.AE.E8.AF.8D.E4.B8.8B.E6.96.B9.E5.90.8C.E5.88.97.E5.A4.84"><span class="tocnumber">2.2.1</span> <span class="toctext">大括号放在关键词下方同列处</span></a></li>
+<li class='toclevel-3'><a href="#.E7.BC.A9.E8.BF.9B.E4.BD.BF.E7.94.A8.E9.BB.98.E8.AE.A4tab.E9.95.BF.E5.BA.A6.EF.BC.8C.E5.8D.B34.E4.B8.AA.E7.A9.BA.E6.A0.BC.E9.95.BF.E5.BA.A6"><span class="tocnumber">2.2.2</span> <span class="toctext">缩进使用默认tab长度，即4个空格长度</span></a></li>
+<li class='toclevel-3'><a href="#.E5.B0.8F.E6.8B.AC.E5.8F.B7.E4.B8.8D.E8.A6.81.E5.92.8C.E5.85.B3.E9.94.AE.E8.AF.8D.E3.80.81.E5.87.BD.E6.95.B0.E7.B4.A7.E8.B4.B4.E5.9C.A8.E4.B8.80.E8.B5.B7.EF.BC.8C.E4.BD.BF.E7.94.A8.E7.A9.BA.E6.A0.BC.E5.88.86.E5.BC.80"><span class="tocnumber">2.2.3</span> <span class="toctext">小括号不要和关键词、函数紧贴在一起，使用空格分开</span></a></li>
+<li class='toclevel-3'><a href="#.E5.B0.BD.E9.87.8F.E5.87.8F.E5.B0.91continue.E3.80.81break.E7.9A.84.E4.BD.BF.E7.94.A8"><span class="tocnumber">2.2.4</span> <span class="toctext">尽量减少continue、break的使用</span></a></li>
+<li class='toclevel-3'><a href="#.E6.9D.A1.E4.BB.B6.E6.B5.8B.E8.AF.95.E4.B8.8D.E8.A6.81.E9.87.87.E7.94.A8.E7.BC.BA.E7.9C.81.E5.80.BC"><span class="tocnumber">2.2.5</span> <span class="toctext">条件测试不要采用缺省值</span></a></li>
+<li class='toclevel-3'><a href="#.E8.AE.B0.E5.BD.95.E6.89.80.E7.94.A8.E7.9A.84.E7.A9.BA.E8.AF.AD.E5.8F.A5.EF.BC.8C.E6.98.8E.E7.A1.AE.E4.B8.BA.E4.BB.80.E4.B9.88.E8.BF.99.E6.A0.B7.E4.B9.A6.E5.86.99"><span class="tocnumber">2.2.6</span> <span class="toctext">记录所用的空语句，明确为什么这样书写</span></a></li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#.E6.B3.A8.E9.87.8A.E8.A7.84.E5.88.99"><span class="tocnumber">2.3</span> <span class="toctext">注释规则</span></a>
+<ul>
+<li class='toclevel-3'><a href="#.E5.9C.A8.E5.A4.A7.E5.9D.97.E4.BB.A3.E7.A0.81.E5.89.8D.E5.86.99.E4.B8.8A.E4.BB.A3.E7.A0.81.E7.9A.84.E5.8A.9F.E8.83.BD.E8.AF.B4.E6.98.8E.E3.80.81.E6.8E.A5.E5.8F.A3.E7.AD.89.E4.BF.A1.E6.81.AF"><span class="tocnumber">2.3.1</span> <span class="toctext">在大块代码前写上代码的功能说明、接口等信息</span></a></li>
+<li class='toclevel-3'><a href="#.E5.9C.A8.E5.A4.A7.E5.9D.97.E4.BB.A3.E7.A0.81.E5.90.8E.E8.A1.A8.E6.98.8E.E4.BB.A3.E7.A0.81.E6.98.AF.E5.90.A6.E7.BB.93.E6.9D.9F"><span class="tocnumber">2.3.2</span> <span class="toctext">在大块代码后表明代码是否结束</span></a></li>
+<li class='toclevel-3'><a href="#.E5.8F.AF.E4.BB.A5.E9.87.87.E7.94.A8if.280.29.EF.BD.9B.EF.BD.9D.E6.B3.A8.E9.87.8A.E5.A4.A7.E6.AE.B5.E4.BB.A3.E7.A0.81"><span class="tocnumber">2.3.3</span> <span class="toctext">可以采用if(0)｛｝注释大段代码</span></a></li>
+<li class='toclevel-3'><a href="#.E5.AF.B9.E4.BA.8E.E4.BB.A3.E7.A0.81.E4.B8.8D.E5.90.8C.E4.B8.80.E8.88.AC.E7.9A.84.E5.9C.B0.E6.96.B9.E7.BB.99.E4.BA.88.E6.B3.A8.E9.87.8A"><span class="tocnumber">2.3.4</span> <span class="toctext">对于代码不同一般的地方给予注释</span></a></li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#.E5.85.B6.E4.BB.96"><span class="tocnumber">2.4</span> <span class="toctext">其他</span></a>
+<ul>
+<li class='toclevel-3'><a href="#.E4.B8.8D.E8.A6.81.E4.BD.BF.E7.94.A8.E6.B2.A1.E6.9C.89.E5.90.AB.E4.B9.89.E7.9A.84.E6.95.B0.E5.AD.97"><span class="tocnumber">2.4.1</span> <span class="toctext">不要使用没有含义的数字</span></a></li>
+<li class='toclevel-3'><a href="#html.E5.92.8Cphp.E5.B0.BD.E9.87.8F.E4.B8.8D.E8.A6.81.E4.BA.A4.E5.8F.89"><span class="tocnumber">2.4.2</span> <span class="toctext">html和php尽量不要交叉</span></a></li>
+<li class='toclevel-3'><a href="#xajax.E6.9C.89.E4.B8.AA.E7.89.B9.E6.AE.8A.E9.9C.80.E8.A6.81.EF.BC.8Cphp.E4.BB.A3.E7.A0.81.E4.B8.AD.E4.BB.BB.E4.BD.95.3F.3E.E5.90.8E.E9.9D.A2.E4.B8.8D.E8.83.BD.E6.9C.89.E7.A9.BA.E8.A1.8C"><span class="tocnumber">2.4.3</span> <span class="toctext">xajax有个特殊需要，php代码中任何?&gt;后面不能有空行</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name="HTML.E8.A7.84.E8.8C.83"></a><h2>HTML规范</h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E6.89.80.E6.9C.89.E7.9A.84.E6.A0.87.E7.AD.BE.E9.83.BD.E6.98.AF.E5.A4.A7.E5.86.99"></a><h4>所有的标签都是大写</h4>
+<p>ex: &lt;HEAD&gt; not:&lt;head&gt;\&lt;Head&gt;
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name="URL.E6.9C.80.E5.90.8E.E4.B8.80.E5.AE.9A.E8.A6.81.E6.9C.89.E2.80.9C.2F.E2.80.9D"></a><h4>URL最后一定要有“/”</h4>
+<p>ex: "hippo/include/" not:"hippo/include"
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E6.A0.87.E7.AD.BE.E6.88.90.E5.AF.B9.E5.87.BA.E7.8E.B0"></a><h4>标签成对出现</h4>
+<p>ex: &lt;HTML&gt;/&lt;/HTML&gt; 
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.9C.A8head.E5.8C.BA.E5.BF.85.E9.A1.BB.E8.AF.B4.E6.98.8E.E5.AD.97.E7.AC.A6.E9.9B.86.EF.BC.8C.E6.88.91.E4.BB.AC.E7.BB.9F.E4.B8.80.E4.BD.BF.E7.94.A8utf-8"></a><h4>在head区必须说明字符集，我们统一使用utf-8</h4>
+<p>ex： &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.9C.A8head.E5.8C.BA.E8.AF.B4.E6.98.8Ecss.E8.AE.BE.E5.AE.9A"></a><h4>在head区说明css设定</h4>
+<p>ex： &lt;link href="include/style.css" type="text/css" rel="stylesheet"&gt;
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name="php.E4.BB.A3.E7.A0.81.E8.A7.84.E8.8C.83"></a><h2>php代码规范</h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.91.BD.E5.90.8D.E8.A7.84.E5.88.99"></a><h3>命名规则</h3>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.87.BD.E6.95.B0.E5.90.8D.E5.AD.97.E9.87.87.E7.94.A8C_GNU.E7.9A.84.E6.83.AF.E4.BE.8B.EF.BC.8C.E6.89.80.E6.9C.89.E5.AD.97.E6.AF.8D.E5.9D.87.E4.B8.BA.E5.B0.8F.E5.86.99.E5.AD.97.E6.AF.8D.EF.BC.8C.E4.BD.BF.E7.94.A8.27_.27.E5.88.86.E5.89.B2.E5.8D.95.E8.AF.8D"></a><h4>函数名字采用C GNU的惯例，所有字母均为小写字母，使用'_'分割单词</h4>
+<p>ex：function some_bloody_function() 
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.8F.98.E9.87.8F.E5.91.BD.E5.90.8D.EF.BC.9A.E6.89.80.E6.9C.89.E5.AD.97.E6.AF.8D.E5.B0.8F.E5.86.99.EF.BC.8C.E9.87.87.E7.94.A8.27_.27.E5.88.86.E5.89.B2.E5.8D.95.E8.AF.8D"></a><h4>变量命名：所有字母小写，采用'_'分割单词</h4>
+<p>ex: $error $time_of_error $error_processor
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E7.BC.A9.E5.86.99.E8.AF.8D.E4.B8.8D.E8.A6.81.E5.85.A8.E9.83.A8.E4.BD.BF.E7.94.A8.E5.A4.A7.E5.86.99.E5.AD.97.E6.AF.8D"></a><h4>缩写词不要全部使用大写字母</h4>
+<p>ex：GetHtmlStatistic  not: GetHTMLStatistic
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.87.BD.E6.95.B0.E5.91.BD.E5.90.8D.E7.9A.84.E5.8E.9F.E5.88.99.E6.98.AF.E8.AF.B4.E6.98.8E.E5.87.BD.E6.95.B0.E7.9A.84.E4.BD.9C.E7.94.A8.2C.E4.B8.8B.E9.9D.A2.E6.98.AF.E9.87.87.E7.94.A8.E7.9A.84.E5.89.8D.E5.90.8E.E7.BC.80"></a><h4>函数命名的原则是说明函数的作用,下面是采用的前后缀</h4>
+<p>Is - 含义为问一个关于某样事物的问题。无论何时，当人们看到Is就会知道这是一个问题。
+Get - 含义为取得一个数值。<br />
+Set - 含义为设定一个数值  <br />
+Max - 含义为某实体所能赋予的最大值。<br />
+Cnt - 一个运行中的计数变量的当前值。<br />
+Key - 键值。<br />
+ex:IsHitRetryLimit RetryMax 表示最多重试次数，RetryCnt 表示当前重试次数
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E4.B9.A6.E5.86.99.E8.A7.84.E5.88.99"></a><h3>书写规则</h3>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.A4.A7.E6.8B.AC.E5.8F.B7.E6.94.BE.E5.9C.A8.E5.85.B3.E9.94.AE.E8.AF.8D.E4.B8.8B.E6.96.B9.E5.90.8C.E5.88.97.E5.A4.84"></a><h4>大括号放在关键词下方同列处</h4>
+<p>ex：if ($condition)
+</p>
+<pre>   ｛
+        。。。。。。
+    ｝
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E7.BC.A9.E8.BF.9B.E4.BD.BF.E7.94.A8.E9.BB.98.E8.AE.A4tab.E9.95.BF.E5.BA.A6.EF.BC.8C.E5.8D.B34.E4.B8.AA.E7.A9.BA.E6.A0.BC.E9.95.BF.E5.BA.A6"></a><h4>缩进使用默认tab长度，即4个空格长度 </h4>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.B0.8F.E6.8B.AC.E5.8F.B7.E4.B8.8D.E8.A6.81.E5.92.8C.E5.85.B3.E9.94.AE.E8.AF.8D.E3.80.81.E5.87.BD.E6.95.B0.E7.B4.A7.E8.B4.B4.E5.9C.A8.E4.B8.80.E8.B5.B7.EF.BC.8C.E4.BD.BF.E7.94.A8.E7.A9.BA.E6.A0.BC.E5.88.86.E5.BC.80"></a><h4>小括号不要和关键词、函数紧贴在一起，使用空格分开</h4>
+<p>ex：if (condition)     strcmp ($s, $s1)
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.B0.BD.E9.87.8F.E5.87.8F.E5.B0.91continue.E3.80.81break.E7.9A.84.E4.BD.BF.E7.94.A8"></a><h4>尽量减少continue、break的使用</h4>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E6.9D.A1.E4.BB.B6.E6.B5.8B.E8.AF.95.E4.B8.8D.E8.A6.81.E9.87.87.E7.94.A8.E7.BC.BA.E7.9C.81.E5.80.BC"></a><h4>条件测试不要采用缺省值</h4>
+<p>ex：if ($num&nbsp;!= 0)  not: if ($num)
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E8.AE.B0.E5.BD.95.E6.89.80.E7.94.A8.E7.9A.84.E7.A9.BA.E8.AF.AD.E5.8F.A5.EF.BC.8C.E6.98.8E.E7.A1.AE.E4.B8.BA.E4.BB.80.E4.B9.88.E8.BF.99.E6.A0.B7.E4.B9.A6.E5.86.99"></a><h4>记录所用的空语句，明确为什么这样书写</h4>
+<p>ex：while(0)
+</p>
+<pre>   {
+    }//void;
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E6.B3.A8.E9.87.8A.E8.A7.84.E5.88.99"></a><h3>注释规则</h3>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.9C.A8.E5.A4.A7.E5.9D.97.E4.BB.A3.E7.A0.81.E5.89.8D.E5.86.99.E4.B8.8A.E4.BB.A3.E7.A0.81.E7.9A.84.E5.8A.9F.E8.83.BD.E8.AF.B4.E6.98.8E.E3.80.81.E6.8E.A5.E5.8F.A3.E7.AD.89.E4.BF.A1.E6.81.AF"></a><h4>在大块代码前写上代码的功能说明、接口等信息</h4>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.9C.A8.E5.A4.A7.E5.9D.97.E4.BB.A3.E7.A0.81.E5.90.8E.E8.A1.A8.E6.98.8E.E4.BB.A3.E7.A0.81.E6.98.AF.E5.90.A6.E7.BB.93.E6.9D.9F"></a><h4>在大块代码后表明代码是否结束</h4>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.8F.AF.E4.BB.A5.E9.87.87.E7.94.A8if.280.29.EF.BD.9B.EF.BD.9D.E6.B3.A8.E9.87.8A.E5.A4.A7.E6.AE.B5.E4.BB.A3.E7.A0.81"></a><h4>可以采用if(0)｛｝注释大段代码</h4>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.AF.B9.E4.BA.8E.E4.BB.A3.E7.A0.81.E4.B8.8D.E5.90.8C.E4.B8.80.E8.88.AC.E7.9A.84.E5.9C.B0.E6.96.B9.E7.BB.99.E4.BA.88.E6.B3.A8.E9.87.8A"></a><h4>对于代码不同一般的地方给予注释</h4>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E5.85.B6.E4.BB.96"></a><h3>其他</h3>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name=".E4.B8.8D.E8.A6.81.E4.BD.BF.E7.94.A8.E6.B2.A1.E6.9C.89.E5.90.AB.E4.B9.89.E7.9A.84.E6.95.B0.E5.AD.97"></a><h4>不要使用没有含义的数字</h4>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name="html.E5.92.8Cphp.E5.B0.BD.E9.87.8F.E4.B8.8D.E8.A6.81.E4.BA.A4.E5.8F.89"></a><h4>html和php尽量不要交叉 </h4>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑</a>]</div><a name="xajax.E6.9C.89.E4.B8.AA.E7.89.B9.E6.AE.8A.E9.9C.80.E8.A6.81.EF.BC.8Cphp.E4.BB.A3.E7.A0.81.E4.B8.AD.E4.BB.BB.E4.BD.95.3F.3E.E5.90.8E.E9.9D.A2.E4.B8.8D.E8.83.BD.E6.9C.89.E7.A9.BA.E8.A1.8C"></a><h4>xajax有个特殊需要，php代码中任何?&gt;后面不能有空行</h4>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html">http://dns.cs.hit.edu.cn../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html</a>"</p>
+
+<p>本页面已经被浏览44次。 This page was last modified 02:29 2006年7月14日 by <a href="../../../%E6%9D%8E/%E5%BF%97/_/User%7E%E6%9D%8E%E5%BF%97.html" class="new" title="User:李志">李志</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑本页</a></strong> |
+<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/Talk%7E%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" class="new" title="Talk:代码规范">讨论本页</a> |
+<a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览44次。 This page was last modified 02:29 2006年7月14日 by <a href="../../../%E6%9D%8E/%E5%BF%97/_/User%7E%E6%9D%8E%E5%BF%97.html" class="new" title="User:李志">李志</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">编辑本页</a></strong>
+<br /><a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/Talk%7E%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" class="new" title="Talk:代码规范">讨论本页</a>
+<br /><a href="../../../%E4%BB%A3/%E7%A0%81/%E8%A7%84/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83.html" title="代码规范">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392834.90 secs. -->
+</body></html>

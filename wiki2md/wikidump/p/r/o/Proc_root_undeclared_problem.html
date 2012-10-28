@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Proc root undeclared problem - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../p/r/o/Proc_root_undeclared_problem.html" title="Proc root undeclared problem">编辑本页</a> |
+<a href="../../../p/r/o/Proc_root_undeclared_problem.html" title="Proc root undeclared problem">较早版本</a><p class='subtitle'><a href="../../../p/r/o/Proc_root_undeclared_problem.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Proc root undeclared problem</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>在<a href="http://www.pdf-search-engine.com/The%20Linux%20Kernel%20Module%20Programming%20Guide-html-tldp.org/LDP/lkmpg/2.6/lkmpg.html一文中介绍了Linux模块开发的过程。其中有一部分是关于Linux下如何写模块挂载/proc目录下面。" class='external free' title="http://www.pdf-search-engine.com/The Linux Kernel Module Programming Guide-html-tldp.org/LDP/lkmpg/2.6/lkmpg.html一文中介绍了Linux模块开发的过程。其中有一部分是关于Linux下如何写模块挂载/proc目录下面。" rel="nofollow">http://www.pdf-search-engine.com/The%20Linux%20Kernel%20Module%20Programming%20Guide-html-tldp.org/LDP/lkmpg/2.6/lkmpg.html一文中介绍了Linux模块开发的过程。其中有一部分是关于Linux下如何写模块挂载/proc目录下面。</a>
+</p><p>在该文章的例子中，<a href="http://www.pdf-search-engine.com/The%20Linux%20Kernel%20Module%20Programming%20Guide-html-tldp.org/LDP/lkmpg/2.6/lkmpg.html#31" class='external free' title="http://www.pdf-search-engine.com/The Linux Kernel Module Programming Guide-html-tldp.org/LDP/lkmpg/2.6/lkmpg.html#31" rel="nofollow">http://www.pdf-search-engine.com/The%20Linux%20Kernel%20Module%20Programming%20Guide-html-tldp.org/LDP/lkmpg/2.6/lkmpg.html#31</a> 该页的例子里面，如果直接进行编译，会出现如下问题：
+</p>
+<pre>...hello.c:45: error: ‘proc_root’ undeclared (first use in this function)
+...hello.c:45: error: (Each undeclared identifier is reported only once
+...hello.c:45: error: for each function it appears in.)
+</pre>
+<p>而google到的解决方案如下为
+</p>
+<pre> <a href="http://www.digitalruin.net/node/43" class='external free' title="http://www.digitalruin.net/node/43" rel="nofollow">http://www.digitalruin.net/node/43</a>
+</pre>
+<p>实际上就是将proc_root的位置替换为NULL
+</p><p>而替换后为什么没有问题：
+</p><p>跟踪以下函数即可得到答案：
+<a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=495335" class='external free' title="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=495335" rel="nofollow">http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=495335</a>
+这里会有简单的介绍。
+</p><p>而实际上是
+</p>
+<pre>  create_proc_entry-> __create_
+  remove_proc_entry(file: fs/proc/generic.c)->xlate_proc_name
+  该函数会判断挂载的父母录是否为空，如果为空，则使用默认的/proc。
+</pre>
+<p>因此，直接将原来的 proc_root 修改为 NULL 是没有问题的。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../p/r/o/Proc_root_undeclared_problem.html">http://dns.cs.hit.edu.cn../../../p/r/o/Proc_root_undeclared_problem.html</a>"</p>
+
+<p>本页面已经被浏览4次。 This page was last modified 10:29 2009年7月15日 by <a href="../../../l/o/o/User%7ELookou.html" title="User:Lookou">林晓鑫</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../p/r/o/Proc_root_undeclared_problem.html" title="Proc root undeclared problem">编辑本页</a></strong> |
+<a href="../../../p/r/o/Talk%7EProc_root_undeclared_problem.html" class="new" title="Talk:Proc root undeclared problem">讨论本页</a> |
+<a href="../../../p/r/o/Proc_root_undeclared_problem.html" title="Proc root undeclared problem">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览4次。 This page was last modified 10:29 2009年7月15日 by <a href="../../../l/o/o/User%7ELookou.html" title="User:Lookou">林晓鑫</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../p/r/o/Proc_root_undeclared_problem.html" title="Proc root undeclared problem">编辑本页</a></strong>
+<br /><a href="../../../p/r/o/Talk%7EProc_root_undeclared_problem.html" class="new" title="Talk:Proc root undeclared problem">讨论本页</a>
+<br /><a href="../../../p/r/o/Proc_root_undeclared_problem.html" title="Proc root undeclared problem">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393361.38 secs. -->
+</body></html>

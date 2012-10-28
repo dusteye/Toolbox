@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Lightning/progress - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../l/i/g/Lightning_progress_4f71.html" title="Lightning/progress">编辑本页</a> |
+<a href="../../../l/i/g/Lightning_progress_4f71.html" title="Lightning/progress">较早版本</a><p class='subtitle'><a href="../../../l/i/g/Lightning_progress_4f71.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Lightning/progress</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<table cellpadding="0" cellspacing="1" bgcolor="#000000">
+  <tr bgcolor="#FFFFFF">
+    <td width="151" valign="top"><p>文档完成或修改人 </p></td>
+    <td width="96" valign="top"><p>修改时间 </p></td>
+    <td width="212" valign="top"><p>修改内容 </p></td>
+    <td width="100" valign="top"><p>版本号 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="151" valign="top"><p>黄巍 </p></td>
+    <td width="96" valign="top"><p>2005-8-25 </p></td>
+    <td width="212" valign="top"><p>完成详细设计的初步描述 </p></td>
+    <td width="100" valign="top"><p>0.1.0 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="151" valign="top"><p>陈伟 </p></td>
+    <td width="96" valign="top"><p>2005-8-26 </p></td>
+    <td width="212" valign="top"><p>修改详细设计，规范描述格式 </p></td>
+    <td width="100" valign="top"><p>0.2.0 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="151" valign="top"><p>黄巍 </p></td>
+    <td width="96" valign="top"><p>2005-8-28 </p></td>
+    <td width="212" valign="top"><p>增加时间轴的详细描述 </p></td>
+    <td width="100" valign="top"><p>0.2.1 </p></td>
+  </tr>
+</table>
+<p><br />
+</p>
+此文档用以定义Lightning(Flash plugin for eclipse)的详细功能，用以作开发时的参照。	<li>粗体部分是未加入稳定版本的功能。</li>
+<p>1.	项目目标定义
+本插件的目的是要建立一个开源的flash动画编辑软件，能够在Eclipse中自由的创建动画（小型片断），然后导出成为swf文件。同时，整合目前flash开源社区中所使用的一些开源工具，比如mtasc、swfmill、asdt等工具，打造一个开源的、Linux平台下可使用的Flash创作工具。
+</p><p>整个面板是一个视图（perspective），分为四个部分，都暂以视图（view）的方式实现。其中workarea和workarea1应以编辑器（editor）的方式在后期实现。
+</p><p>2.	详细功能定义
+</p><p>2.1.	Tool 
+</p>
+<table cellpadding="0" cellspacing="1" bgcolor="#000000">
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p>功能名称 </p></td>
+    <td width="276" valign="top"><p>功能详细描述 </p></td>
+    <td width="189" valign="top"><p>相关操作描述 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p>画矩形 </p></td>
+    <td width="276" valign="top"><p>使用绘图工具在画布上绘制矩形，可以随意确定矩形的长、宽，并可以确定矩形的边框粗细、边框和填充的颜色 </p></td>
+    <td width="189" valign="top"><p>Rectangle 按钮，按下该按钮后即可进行矩形的绘制 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p>画椭圆 </p></td>
+    <td width="276" valign="top"><p>使用绘图工具在画布上绘制矩形，以鼠标按下点作为圆外切矩形的左上角点，并可以确定矩形的边框粗细、边框和填充的颜色 </p></td>
+    <td width="189" valign="top"><p>Ellipse 按钮，按下该按钮后即可进行椭圆的绘制。 <strong>如果绘制过程中按下 shift 键，则可绘制圆型 </strong></p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p>画直线 </p></td>
+    <td width="276" valign="top"><p>使用鼠标在画布上绘制直线，以鼠标的落下点和第二个落下点作为直线的起始点和终结点 </p></td>
+    <td width="189" valign="top"><p>Line 按钮，按下该按钮后即可进行直线的绘制。 </p>
+        <p><strong>尽量和 Macromedia flash 中的直线行为一致 </strong></p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p>使用铅笔工具画线 </p></td>
+    <td width="276" valign="top"><p>使用鼠标在画布上绘制笔迹，如果鼠标按下，则在相应的地方出现墨迹，否则不出现。 </p>
+        <p><strong>绘制完成之后，自动对所绘轨迹进行变化，可以有向直线、曲线和不变等各种变化方式 </strong></p></td>
+    <td width="189" valign="top"><p>Pencil 按钮，按下该按钮后，若按下鼠标左键则可进行绘制。 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p>钢笔工具 </p></td>
+    <td width="276" valign="top"><p>使用拖拽方式绘制曲线，使用曲线的控制点来控制曲线的弯曲程度 </p></td>
+    <td width="189" valign="top"><p>Pen 按钮，按下该按钮后，鼠标在舞台上点下的第一个点是笔迹的起始点，接下来的一个点是第二点，按住第二点不松，拖拽得到控制点的位置，也以此确定曲线的弯曲方向和程度 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p>选择工具 </p></td>
+    <td width="276" valign="top"><p>选择舞台上的各种图形，并可对图形的位置进行拖拽和摆放。 <strong>选中某个图形后，会标识该图形为选中状态，可以对该图形在属性面板中设置其属性。 </strong></p></td>
+    <td width="189" valign="top"><p>Drag 按钮，选中该工具之后可以对舞台上的图形进行选择， <strong>并进行相应的拖拽和设置工作。 </strong></p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p><strong>变形工具 </strong></p></td>
+    <td width="276" valign="top"><p><strong>对舞台上的图形进行形状的变换，选中图形后，出现该图形的控制点。可以控制该图形的形状变化，包括挤压、拉伸、扭曲和旋转等 </strong></p></td>
+    <td width="189" valign="top"><p><strong>Transform 按钮，选中该工具后可以对舞台上的图形进行变换 </strong></p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p><strong>文本工具 </strong></p></td>
+    <td width="276" valign="top"><p><strong>在舞台上写入文字，可以设置文字的字体、大小等 </strong></p></td>
+    <td width="189" valign="top"><p><strong>Text 按钮，选中该工具后可以在舞台上加入文字 </strong></p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p><strong>填充工具 </strong></p></td>
+    <td width="276" valign="top"><p><strong>对舞台上未填充的图形按照选择的样式进行填充，对于已填充的图形，则重新填充 </strong></p></td>
+    <td width="189" valign="top"><p><strong>Fill 按钮，选中该工具后可以对舞台上的图形进行填充 </strong></p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p><strong>刷子工具 </strong></p></td>
+    <td width="276" valign="top"><p><strong>绘制有轻有重的笔迹，就像用刷子绘制的一样 </strong></p></td>
+    <td width="189" valign="top"><p><strong>Brush 按钮 </strong></p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p>动画工具 </p></td>
+    <td width="276" valign="top"><p>生成舞台上多个层上的关键帧之间的过渡帧，即生成动画 </p></td>
+    <td width="189" valign="top"><p>Animation 按钮，现在是通过该按钮生成动画，但是应该在不久的将来使用快捷键或其他的方法来生成 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="103" valign="top"><p>导出工具 </p></td>
+    <td width="276" valign="top"><p><strong>根据舞台上的动画导出 swf 文件，力求做到和 Eclipse 中生成的动画行为一致 </strong></p></td>
+    <td width="189" valign="top"><p>Export 按钮，不久以后应该整合到菜单中去。 </p></td>
+  </tr>
+</table>
+<p>2.2.	workarea
+绘画的舞台，可以用时间轴控制其层和帧相关的操作。<strong>每一帧的各个层能够在舞台上同时编辑，也可以通过属性面板控制舞台的大小。</strong>
+</p><p>2.3.	workarea1
+当点Animation按钮时，在workarea1中显示出动画效果，此时点Export按钮可以导出swf文件。（<strong>目前在windows下编译存在问题</strong>）考虑是否完全仿照macromedia flash的做法，即预览时就是生成swf文件，而在workarea1中显示的动画只是按下Enter键之后在workarea中显示。
+</p><p>2.4.	TimeLine(TimeAxis)
+</p>
+<table cellpadding="0" cellspacing="1" bgcolor="#000000">
+  <tr bgcolor="#FFFFFF">
+    <td width="127" valign="top"><p>功能名称 </p></td>
+    <td width="252" valign="top"><p>功能详细描述 </p></td>
+    <td width="192" valign="top"><p>相关操作描述 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="127" valign="top"><p>增加图层 </p></td>
+    <td width="252" valign="top"><p>增加一个图层（生成图层的 index 为已存在的图层个数减一，而显示出来的效果是 LayerX ，其中 X 是比当前最大的 Layer 数大一，这与 Flash 中是一致的） </p></td>
+    <td width="192" valign="top"><p>点击 insert 按钮增加一个图层 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="127" valign="top"><p>删除图层 </p></td>
+    <td width="252" valign="top"><p>删除一个图层（当前仅有一个图层时将不可删除） </p></td>
+    <td width="192" valign="top"><p>点击 delete 按钮删除选定的图层 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="127" valign="top"><p>列表框 </p></td>
+    <td width="252" valign="top"><p>显示已存在的各个图层 </p></td>
+    <td width="192" valign="top"><p>点击某个图层使这个图层处于选中状态，继而对这个图层进行相应操作 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="127" valign="top"><p>时间轴刻度尺 </p></td>
+    <td width="252" valign="top"><p><strong>未显示刻度数</strong>， 目前以 toolTipText 实现显示选中的刻度数，并实现插入关键帧操作 </p></td>
+    <td width="192" valign="top"><p>拖拽刻度尺至某个时刻，单击右键选择 insert a keyframe 以增加一个关键帧，然后在 workarea 面板里绘制这个新增的关键帧 </p></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="127" valign="top"><p>时间轴表格 </p></td>
+    <td width="252" valign="top"><p>目前未实现功能，<strong> 预期实现每个表格都能单击以弹出菜单选择增加关键帧，增加帧等操作，单击任意一个表格使这个层处于激活状态 </strong></p></td>
+    <td width="192" valign="top"><p><strong>在某个表格单击右键，选择相应操作 </strong></p></td>
+  </tr>
+</table>
+<p>时间轴。
+可以增加和删除图层，选中某一层后可以插入关键帧（<strong>未实现插入帧与选中某一层的一个小格激活状态</strong>）
+</p><p>2.5.	Property
+属性栏。
+暂分为两个group，上面的group主要起显示作用，当选中Rectangle按钮时，setText(“rectangle”)，并在下面显示一个矩形图片。
+下面的group有种状态
+1．当点Rectangle或其他按钮准备画图时，显示两个可供选择颜色的按钮，第一个为笔轴选择，第二个为填充选择。
+2．当图形画完后，点drag（<strong>或在以后新增一个选中按钮</strong>）按钮时显示其长，宽，笔轴颜色及粗细，填充颜色等可供修改。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../l/i/g/Lightning_progress_4f71.html">http://dns.cs.hit.edu.cn../../../l/i/g/Lightning_progress_4f71.html</a>"</p>
+
+<p>本页面已经被浏览108次。 This page was last modified 03:16 2005年9月27日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../l/i/g/Lightning_progress_4f71.html" title="Lightning/progress">编辑本页</a></strong> |
+<a href="../../../l/i/g/Talk%7ELightning_progress_0fc0.html" class="new" title="Talk:Lightning/progress">讨论本页</a> |
+<a href="../../../l/i/g/Lightning_progress_4f71.html" title="Lightning/progress">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览108次。 This page was last modified 03:16 2005年9月27日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../l/i/g/Lightning_progress_4f71.html" title="Lightning/progress">编辑本页</a></strong>
+<br /><a href="../../../l/i/g/Talk%7ELightning_progress_0fc0.html" class="new" title="Talk:Lightning/progress">讨论本页</a>
+<br /><a href="../../../l/i/g/Lightning_progress_4f71.html" title="Lightning/progress">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392617.74 secs. -->
+</body></html>

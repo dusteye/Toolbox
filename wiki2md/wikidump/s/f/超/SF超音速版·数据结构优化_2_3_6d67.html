@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>SF超音速版·数据结构优化 2/3 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_2_3_6d67.html" title="SF超音速版·数据结构优化 2/3">编辑本页</a> |
+<a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_2_3_6d67.html" title="SF超音速版·数据结构优化 2/3">较早版本</a><p class='subtitle'><a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_2_3_6d67.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">SF超音速版·数据结构优化 2/3</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>继续我们的文档吧，不过在看这篇文档之前，建议大家先看看上一篇：《SF超音速版的数据结构 (１)》，因为这篇里很多做法的思想或原理都是上一篇中所介绍的各种原理的反映。
+　　
+</p><p>在这篇里，将采取一种由简到繁，逐步求精的方式来介绍“SF超音速版”所用的数据结构的优化原则，这与SF当时的开发情景是一致的，大家如何跟踪一下SF的SVN，就能看出这种变化。
+</p><p><br />
+二、文件信息数据结构的优化原则
+</p><p>2.1 所需要保存的基本信息
+　　
+</p><p>我们先来看看从FTP服务器上我们到底能得到些什么信息，请看下面一个FTP服务器所返回的文件列表：
+</p>
+<pre>drwxr-xr-x   7 ftp      ftp           208 Feb 11 13:17 incoming
+drwxrwxr-x  14 ftp      ftp           408 Jun  5  2005 software
+drwxrwxr-x  12 ftp      ftp           352 Aug 27  2005 study
+</pre>
+<p>　　
+上面就是一个实际的FTP服务器所返回的文件列表（注意，这是一个Unix/Linux风格的文件列表，还有一种是DOS风格的文件列表，常被Windows自带的FTP服务器使用，格式上有些不一致，但所提供的信息是一样的，这里就不对其进行分析了，大家有兴趣的可以自己看看），可见，上面这个列表总共包含九个数据节：
+</p>
+<pre>权限信息　　含有多少个文件　　用户名　　用户组　　大小　　月　　日　　年/时间　　文件名
+</pre>
+<p>　　
+这里第二节“含有多少个文件”的意思时：如果这是一个目录，那么此值表示此目录下有多少个文件及子目录；如果这是一个文件，这个值为1（这一点，感谢cliff@hitbbs指教）。
+　　
+总结一下，从上面的FTP所返回的文件列表中，我们可以获得如下的一些有用信息：文件大小、文件名、文件时间。OK，这些信息都是我们需要保存的信息，我们用如下一个struct来保存它：
+</p>
+<pre>struct struct_file_info
+{
+   char name[MAX];
+   int size;
+   int year;
+   int month;
+   int day;
+};
+</pre>
+<p>　　
+但是，我们还必须知道这个文件在哪个目录下，因为我们在返回此文件做为检索结果的时候，我们必须告诉用户此文件在哪个目录下可以找到，因此，我们还必须为其添加上所在的路径：
+</p>
+<pre>struct struct_file_info
+{
+   char name[MAX];
+   int size;
+   int year;
+   int month;
+   int day;
+</pre>
+<pre>   char path[MAX];
+};
+</pre>
+<p>　　
+这样够了吗？还是不够。想想，如果用户查到了这个文件，那么我们应当在哪个服务器去找呢？这个服务器的用户名及密码是什么呢？端口号是什么呢？域名是什么呢？因此，我们还必须为这个文件加上所在的服务器信息：
+</p>
+<pre>struct struct_file_info
+{
+   char name[MAX];
+   int size;
+   int year;
+   int month;
+   int day;
+</pre>
+<pre>   char path[MAX];
+</pre>
+<pre>   struct
+   {
+       char ip[MAX];
+       char dns[MAX];
+       char user[MAX];
+       char passwd[MAX];
+       int port;
+    };
+};
+</pre>
+<p>　　
+好了，现在我们所需要的信息已经完全保存下来了，但是上面这个结构太大了，我们需要对其进行优化。
+</p><p><br />
+2.2 第一次优化
+　　
+</p><p>现在我们来想一想，一个站点可能有上万个文件，也就是说这上万个文件的服务器信息都是完全一样的，因此，我们并不需要把服务器的信息在每个文件中都存一份，我们可以把这个公用的服务器信息提取出来，然后在每个文件里保存一个指针指向这个文件所在的服务器的信息就可以了，于是上面的结构可以写成这样：
+</p>
+<pre>struct struct_site_info
+{
+   char ip[MAX];
+   char dns[MAX];
+   char user[MAX];
+   char passwd[MAX];
+   int port;
+};
+</pre>
+<pre>struct struct_file_info
+{
+   char name[MAX];
+   int size;
+   int year;
+   int month;
+   int day;
+</pre>
+<pre>   char path[MAX];
+
+   struct_site_info* site_info;
+};
+</pre>
+<p>　　
+想想，如果有一万个文件，那么我们就少存了9999个服务器信息，数据量大大减小，还记得上篇我们所描述的原理吗？我们必须尽力减了在磁盘上所存放的数据量，因为在磁盘上存放的数据量越小，从磁盘读到内存的数据量也就越小，速度也就越快。
+</p><p>2.3 第二次优化
+　　
+</p><p>我们再来想想，一个服务器下可能有很多文件，同样，一个路径下也可能有很多文件啊，所以，我们也可以把路径，单独取出来存放在一个地方，然后用一个指针指向这个路径，这样又可以省下了不少存储空间不是吗？于是，上面的文件信息结构可以被改成这样：
+</p>
+<pre>struct struct_file_info
+{
+   char name[MAX];
+   int size;
+   int year;
+   int month;
+   int day;
+</pre>
+<pre>   char* path;
+
+   struct_site_info* site_info;
+};
+</pre>
+<p><br />
+2.4 第三次优化
+　　
+在上面的结构中，year、month、day总共占了12个字节，96位，其中day就占了4个字节，32位，其实一个月的天数的范围不过是1~31，而5位二进值位可以表示的范围为0~31，完全可以表示天数了，因此，天数可以用5位二进制位来表示。再看月份，月份的范围不过是1~12，而4位二进制位可以表示的范围可以是0~15，用来表示月份多多有余，因此，月份可以用4位二进制位来表示。再看看年，从有计算机到有现在，再考虑以后几十年，那么，从1970~2097这个范围是足够用了，这个范围共用128个年头，而7位二进制位就可以表示128个数了，因此，年份完全可以用7位二进制表示，这样一来，年月日其实只需：5 + 4 + 7 = 16位，2个字节，就足够表示了，可以算算，比先前的12个字节足足少了10个字节。假设我们用两千万文件，那么这里就能省出两亿字节，两亿字节是200M，非常可观的一个数字！
+　　
+</p><p>下面就是优化后的结构：
+</p>
+<pre>struct struct_file_info
+{
+   char name[MAX];
+   int size;
+   short date;
+</pre>
+<pre>   char* path;
+
+   struct_site_info* site_info;
+};
+</pre>
+<p><br />
+2.5 第四次优化
+　　
+</p><p>让我们来考虑下用户正常的查询需求，当返回一个文件的文件大小时，1.0K与1.9K对用户的差别大吗？如果你认为这点差别对用户来说不大，也即，1.0K及1.9K对用户来说都显示为1K就可以了，那么我们就能再对size进行一下压缩。
+　　
+</p><p>我们来测算一下，首先，我们定4个量级：B，K，M，G。如果没到1024B，就属于B级；如果超过了1024B=1K，但没到1024K，就属于K级，如果超过了1024K=1M，但没到1024M=1G，就属于M级；如果超过了1024M=1G，那么就属于G级。因此，我们需要保存一个文件所属的级别，总共4级，也就是说我们需要2位二进制位，而每个级别内，只有1024个有差别的数，故而只需10位二进制位就可以表示这些数了，总的来说，我们只需：2 + 10 = 12位就可以了，一个2B的数据就有16位，完全可以表示被我们处理过的文件大小数据，而且还多了4位出来，我们还可以用其中的一些位来表示一些其它信息，为以后的扩展留下了余地，整个结构现在变成了：
+</p>
+<pre>struct struct_file_info
+{
+   char name[MAX];
+   short size;
+   short date;
+</pre>
+<pre>   char* path;
+
+   struct_site_info* site_info;
+};
+</pre>
+<p>　　
+注意，如果我们把每次优化都以数所压缩的观点来看，那么前三次优化都是一种无损的数据压缩，而第四次优化却是一种有损数据压缩，因为文件的大小被我们归整了，我们已经不可能再精确的得到优化前的文件大小数据了。这其实是一种权衡，采用这种压缩后，我们每个文件的数据量缩小了2B，如果两千万文件，那么就减少了40MB的数据量，而我们损失的精确的大小对于用户的体验来说却几乎没有什么影响，因此，做这样的优化，显然利大于弊，是值得的。
+</p><p><br />
+2.6 第五次优化：
+　　
+</p><p>从上一篇的原理知道，要想快，我们必须尽一切可能减小磁盘数据量，因此，我们还需要再来审视一下上面的结构是否还能优化。让我们考虑一下，我们总共能有多少个站点？现在SF官方索引的站点总数未超过2万，我们再多留些余地，把这个数扩大3位，总共6万个站点，这总当够了吧？而16位二进制数，可以表示6万5千多个站点（精确值是65536），因此，我们可以做这样一个映射，把每个站点指针，放到一个数组里，而在每个文件信息里我们只需保持这个数组的下标，使我们可以索引到这个数组中所存放的站点指针就可以了，因为这个数组的元素肯定不可能超过65536，因此，我们只需要用2个字节，16位的空间来存放下标就可以了，而无需存放指针，一个指针需要4个字节，32位的空间呢，故而，结构可以最后优化成：
+</p>
+<pre>struct struct_file_info
+{
+   char name[MAX];
+   short size;
+   short date;
+</pre>
+<pre>   char* path;
+
+   short site_info_index;
+};
+</pre>
+<p><br />
+2.7 总结
+　　
+</p><p>现在大家再回过头去看看前面最初的那个结构，比较一下我们总共减少了多少数据量。其实对于struct_site_info中的数据，我们同样可以用上述一些技巧进行优化，比如说把char ip[MAX]，转换成一个unsigned int的数来存，这又会省下不少字节。这些原则都是一致的，这里就不多描述了，详细的情形，大家可以看看SF的源代码。
+　　
+</p><p>上述的数据结构优化原则，在SF整个源代码中随处可见，贯穿始终，并最后形成了一个SF专用的平面数据库来进行统一管理，这在下面描述SF数据结构具体实现中会详细介绍。
+</p><p><br />
+上述的所有数据都应当做无符号数据，即int，short等都应为unsigned int，unsigned short，由于有无符号不影响数据所占的内存这间大小，因此为了书写简单，都去掉了unsigned，但大家应当清楚都应做为无符号数据对待。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_2_3_6d67.html">http://dns.cs.hit.edu.cn../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_2_3_6d67.html</a>"</p>
+
+<p>本页面已经被浏览4次。 This page was last modified 07:16 2006年5月9日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_2_3_6d67.html" title="SF超音速版·数据结构优化 2/3">编辑本页</a></strong> |
+<a href="../../../s/f/%E8%B6%85/Talk%7ESF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_2_3_ba57.html" class="new" title="Talk:SF超音速版·数据结构优化 2/3">讨论本页</a> |
+<a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_2_3_6d67.html" title="SF超音速版·数据结构优化 2/3">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览4次。 This page was last modified 07:16 2006年5月9日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_2_3_6d67.html" title="SF超音速版·数据结构优化 2/3">编辑本页</a></strong>
+<br /><a href="../../../s/f/%E8%B6%85/Talk%7ESF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_2_3_ba57.html" class="new" title="Talk:SF超音速版·数据结构优化 2/3">讨论本页</a>
+<br /><a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_2_3_6d67.html" title="SF超音速版·数据结构优化 2/3">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392686.78 secs. -->
+</body></html>

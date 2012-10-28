@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>UTF-8乱码问题 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../u/t/f/UTF-8%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98_f91c.html" title="UTF-8乱码问题">编辑本页</a> |
+<a href="../../../u/t/f/UTF-8%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98_f91c.html" title="UTF-8乱码问题">较早版本</a><p class='subtitle'><a href="../../../u/t/f/UTF-8%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98_f91c.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">UTF-8乱码问题</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>utf-8乱码解决方案- -
+百度到两篇文章，已经比较清楚的澄清了字符编码的问题（文章一讲清楚了原理，文章二讲了Spring中的配置方式）。简单的说，就是JSP页面、Web容器、连接MySql的语句以及Mysql本身的代码（4部分），都应该设置成想要的编码类型。
+</p><p>JSP页面：
+</p><p>在JSP页面中，需要指定字符编码：
+</p>
+<pre>&lt;%@ page pageEncoding="utf-8"%&gt;
+</pre>
+<p><br />
+Web容器：
+</p><p>为servlet的doGet或者doPost方法加入对字符编码的处理，比如：
+</p>
+<pre>        request.setCharacterEncoding("utf-8");
+	response.setCharacterEncoding("utf-8");
+</pre>
+<p><br />
+当然，也可以设置一个类进行字符编码的处理：
+</p><p><br />
+</p>
+<pre> public class EncodeFilter implements Filter {
+       protected FilterConfig filterConfig = null;
+       protected String defaultencoding = null;
+</pre>
+<pre>       public void init(FilterConfig filterConfig) throws ServletException {
+           this.filterConfig = filterConfig; 
+           this.defaultencoding = filterConfig.getInitParameter("defaultencoding");
+       }
+</pre>
+<pre>       public void doFilter( ServletRequest request , ServletResponse response , FilterChain chain)  throws IOException, ServletException {
+           request.setCharacterEncoding(selectEncoding(request));
+           chain.doFilter(request, response);
+       }
+</pre>
+<pre>       public void destroy() {
+           this.defaultencoding = null;
+           this.filterConfig = null;
+       }
+</pre>
+<pre>       protected String selectEncoding(ServletRequest request) { 
+               return (this.defaultencoding);
+       }
+  }
+</pre>
+<p><br />
+然后在Web.xml中指定所有的访问都需要通过这个Filter
+</p><p><br />
+</p>
+<pre>&lt;filter&gt;
+   &lt;filter-name&gt;Set Web Application Character Encoding&lt;/filter-name&gt;
+   &lt;filter-class&gt;edu.hit.imis.filter.EncodeFilter&lt;/filter-class&gt;
+   &lt;init-param&gt;
+     &lt;param-name&gt;defaultencoding&lt;/param-name&gt;
+     &lt;param-value&gt;gb2312&lt;/param-value&gt;
+   &lt;/init-param&gt;
+ &lt;/filter&gt;
+ &lt;filter-mapping&gt;
+   &lt;filter-name&gt;Set Web Application Character Encoding&lt;/filter-name&gt;
+   &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+ &lt;/filter-mapping&gt;
+</pre>
+<p>如果你使用的是Spring的话，可以像下面这样设置：
+web.xml中加入： 
+</p><p><br />
+</p>
+<pre>&lt;filter&gt; 
+ &lt;filter-name&gt;SetCharacterEncoding&lt;/filter-name&gt; 
+ &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt; 
+ &lt;init-param&gt; 
+   &lt;param-name&gt;encoding&lt;/param-name&gt; 
+   &lt;param-value&gt;big5&lt;/param-value&gt; 
+ &lt;/init-param&gt; 
+&lt;/filter&gt; 
+</pre>
+<pre>&lt;filter-mapping&gt; 
+  &lt;filter-name&gt;SetCharacterEncoding&lt;/filter-name&gt; 
+  &lt;url-pattern&gt;*.jsp&lt;/url-pattern&gt; 
+&lt;/filter-mapping&gt; 
+</pre>
+<p>如果你还有其他后缀的程序，可以多加一个filter-mapping的节点。比如说我的程序中，还有.htm的文件，我就多加了一个。也可以用/*
+</p><p>*-servlet.xml中加入： 
+</p>
+<pre>&lt;bean id="viewResolver" 
+class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt; 
+&lt;property name="viewClass"&gt; 
+ &lt;value&gt;org.springframework.web.servlet.view.JstlView&lt;/value&gt; 
+&lt;/property&gt; 
+&lt;property name="prefix"&gt; 
+ &lt;value&gt;/WEB-INF/JSP/&lt;/value&gt; 
+&lt;/property&gt; 
+&lt;property name="suffix"&gt; 
+ &lt;value&gt;.jsp&lt;/value&gt; 
+&lt;/property&gt; 
+&lt;property name="contentType"&gt; 
+ &lt;value&gt;text/html;charset=big5&lt;/value&gt; 
+&lt;/property&gt; 
+&lt;/bean&gt; 
+</pre>
+<p><br />
+连接数据库：
+</p><p>在连接数据库用的URL后加入：useUnicode=true;characterEncoding=utf-8　如：
+　　url="jdbc:mysql:///db1?useUnicode=true;characterEncoding=utf-8"
+</p><p><br />
+MySql数据库：
+</p><p>为指定数据库默认编码格式。在C:\WINDOWS目录下找到my.ini文件，并在[mysqld]中加入default-character-set=gbk，重新启动mysql服务。
+</p><p>这里要注意一点，mysql4.0.10以前的版本是不支持unicode的字符编码的（也许这么说不太确切），也就是说上面的default-character-set只能用gbk或者gb2312，如果用utf8的话，mysql就启动不了了。而在以后的版本中应该是好使的，我只测试过mysql5.0
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../u/t/f/UTF-8%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98_f91c.html">http://dns.cs.hit.edu.cn../../../u/t/f/UTF-8%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98_f91c.html</a>"</p>
+
+<p>本页面已经被浏览71次。 This page was last modified 12:15 2006年5月25日 by <a href="../../../d/y/i/User%7EDyingcow.html" title="User:Dyingcow">刘奭</a>. Based on work by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>. </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../u/t/f/UTF-8%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98_f91c.html" title="UTF-8乱码问题">编辑本页</a></strong> |
+<a href="../../../u/t/f/Talk%7EUTF-8%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98_5b66.html" class="new" title="Talk:UTF-8乱码问题">讨论本页</a> |
+<a href="../../../u/t/f/UTF-8%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98_f91c.html" title="UTF-8乱码问题">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览71次。 This page was last modified 12:15 2006年5月25日 by <a href="../../../d/y/i/User%7EDyingcow.html" title="User:Dyingcow">刘奭</a>. Based on work by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>. </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../u/t/f/UTF-8%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98_f91c.html" title="UTF-8乱码问题">编辑本页</a></strong>
+<br /><a href="../../../u/t/f/Talk%7EUTF-8%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98_5b66.html" class="new" title="Talk:UTF-8乱码问题">讨论本页</a>
+<br /><a href="../../../u/t/f/UTF-8%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98_f91c.html" title="UTF-8乱码问题">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392694.61 secs. -->
+</body></html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Net/netfilter/xt hashlimit.c - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../n/e/t/Net_netfilter_xt_hashlimit.c_1abc.html" title="Net/netfilter/xt hashlimit.c">编辑本页</a> |
+<a href="../../../n/e/t/Net_netfilter_xt_hashlimit.c_1abc.html" title="Net/netfilter/xt hashlimit.c">较早版本</a><p class='subtitle'><a href="../../../n/e/t/Net_netfilter_xt_hashlimit.c_1abc.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Net/netfilter/xt hashlimit.c</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>函数关系
+</p>
+<pre> static struct xt_match xt_hashlimit[] __read_mostly = {
+    {
+        .name       = "hashlimit",
+        .family     = AF_INET,
+        .match      = hashlimit_match,
+        .matchsize  = sizeof(struct xt_hashlimit_info),
+#ifdef CONFIG_COMPAT
+        .compatsize = sizeof(struct compat_xt_hashlimit_info),
+        .compat_from_user = compat_from_user,
+        .compat_to_user = compat_to_user,
+#endif
+        .checkentry = hashlimit_checkentry,
+        .destroy    = hashlimit_destroy,
+        .me     = THIS_MODULE
+    },
+    {
+        .name       = "hashlimit",
+        .family     = AF_INET6,
+        .match      = hashlimit_match,
+        .matchsize  = sizeof(struct xt_hashlimit_info),
+#ifdef CONFIG_COMPAT
+        .compatsize = sizeof(struct compat_xt_hashlimit_info),
+        .compat_from_user = compat_from_user,
+        .compat_to_user = compat_to_user,
+#endif
+        .checkentry = hashlimit_checkentry,
+        .destroy    = hashlimit_destroy,
+        .me     = THIS_MODULE
+    },
+};
+</pre>
+<p><br />
+</p>
+<pre>xt_hashlimit_init
+|
+|--> xt_register_matches(xt_hashlimit)
+                             |
+                             |--------->hashlimit_match
+                             |                   |
+                             |                   |-------------->hashlimit_init_dst
+                             |                   |-------------->hashlimit_find
+                             |                   |                     |---------->hash_dst
+                             |                   |                                     |-------->jhash
+                             |               update expire time
+                             |
+                             |--------->hashlimit_checkentry 这个是来检测输入的合法性？
+                             |
+                             |--------->hashlimit_destroy
+                             |                  |
+                             |                  |------------>htable_put
+                             |                                      |
+                             |                                      |---->hlist_del
+</pre>
+<ol><li>hashlimit_match
+<ul><li>思路：从sk_buff结构的skb中获取IP和端口信息，存放到struct dsthash_dst中，然后在结构为struct xt_hashlimit_htable的hinfo中调用dsthash_find函数。将skb中获得的最新的IP进行hash，然后找hinfo中对应的struct dsthash_dst 整个结构进行cmp，相同则找到，不同则没有找到。
+</li></ul>
+</li><li>hashlimit_checkentry
+</li><li>hashlimit_destry
+<ul><li>思路：删除一个xt_hashlimit_info节点。
+</li></ul>
+</li></ol>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../n/e/t/Net_netfilter_xt_hashlimit.c_1abc.html">http://dns.cs.hit.edu.cn../../../n/e/t/Net_netfilter_xt_hashlimit.c_1abc.html</a>"</p>
+
+<p>本页面已经被浏览7次。 This page was last modified 11:09 2009年7月23日 by <a href="../../../l/o/o/User%7ELookou.html" title="User:Lookou">林晓鑫</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../n/e/t/Net_netfilter_xt_hashlimit.c_1abc.html" title="Net/netfilter/xt hashlimit.c">编辑本页</a></strong> |
+<a href="../../../n/e/t/Talk%7ENet_netfilter_xt_hashlimit.c_bc1a.html" class="new" title="Talk:Net/netfilter/xt hashlimit.c">讨论本页</a> |
+<a href="../../../n/e/t/Net_netfilter_xt_hashlimit.c_1abc.html" title="Net/netfilter/xt hashlimit.c">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览7次。 This page was last modified 11:09 2009年7月23日 by <a href="../../../l/o/o/User%7ELookou.html" title="User:Lookou">林晓鑫</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../n/e/t/Net_netfilter_xt_hashlimit.c_1abc.html" title="Net/netfilter/xt hashlimit.c">编辑本页</a></strong>
+<br /><a href="../../../n/e/t/Talk%7ENet_netfilter_xt_hashlimit.c_bc1a.html" class="new" title="Talk:Net/netfilter/xt hashlimit.c">讨论本页</a>
+<br /><a href="../../../n/e/t/Net_netfilter_xt_hashlimit.c_1abc.html" title="Net/netfilter/xt hashlimit.c">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393369.77 secs. -->
+</body></html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Google查询请求参数 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../g/o/o/Google%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0.html" title="Google查询请求参数">编辑本页</a> |
+<a href="../../../g/o/o/Google%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0.html" title="Google查询请求参数">较早版本</a><p class='subtitle'><a href="../../../g/o/o/Google%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Google查询请求参数</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<table>
+<tr bgcolor="#c6e7c6">
+<td>
+<div class="center">变量</div></td>
+<td>
+<div class="center">值</div></td>
+<td>
+<div class="center">描述</div></td></tr>
+<tr>
+<td>q</td>
+<td>$query (您的请求)</td>
+<td>用于搜索的字符串</td></tr>
+<tr>
+<td>Start</td>
+<td>从0 到结果总数</td>
+<td>指定搜索的结果显示开始于某一个点。实际上这个就是google用来分页的参数了。google没有page这个参数 </td></tr>
+<tr>
+<td>num/maxResults</td>
+<td>1 -- 100</td>
+<td>每页显示的结果数</td></tr>
+<tr>
+
+<td>filter</td>
+<td><font color="blue">O</font> or <font color="blue">1</font></td>
+<td>是否显示过滤相似结果，1为是，0为否。如果为1，google将会让你在搜索结果的最下面选择<b>将省略的结果纳入搜索范围后再重新搜索</b></td></tr>
+<tr>
+<td>restrict</td>
+<td>"限制代码".例子:<br /><font color="blue">countryAF</font> (阿富汗) <font color="blue">countryAR</font> (阿根廷) <font color="blue">countryAU</font> (澳大利亚) <font color="blue">countryBE</font> (比利时) <font color="blue">countryBM</font> (百慕大群岛)...</td>
+<td>限制为某个特定的国家 (使用IP来鉴定... 由于IP的特殊性，google可能会进行错误的判断). Google还有这4个特殊的主题限制: 美国政府 <font color="blue">unclesam</font>; GNU-Linux <font color="blue">linux</font>; Macintosh <font color="blue">mac</font>; FreeBSD <font color="blue">bsd</font></td></tr>
+<tr>
+<td>hl</td>
+<td>"国家界面代码"</td>
+<td>目前国家代码主要有: af, sq, am, ar, az, eu, be, bn, bh, xx-bork, bs, br, bg, ca, zh-CN, zh-TW, hr, cs, da, nl, xx-elmer, en, eo, et, fo, tl, fi, fr, fy, gl, ka, de, el, gn, gu, xx-hacker, iw, hi, hu, is, id, ia, ga, it, ja, jw, kn, xx-klingon, ko, ky, la, lv, lt, mk, ms, ml, mt, mr, ne, no, nn, oc, or, fa, xx-piglatin, pl, pt-BR, pt-PT, pa, ro, ru, gd, sr, sh, st, si, sk, sl, es, su, sw, sv, ta, te, th, ti, tr, tk, tw, uk, ur, uz, vi, cy, xh, yi, zu.</td></tr>
+<tr>
+
+<td>lr</td>
+<td>语言限制代码</td>
+<td>语言限制. 只显示使用所指定语言的结果. 代码: 阿拉伯语 lang_ar; 中国大陆(简体) lang_zh-CN; 中国台湾(繁体) lang_zh-TW; 捷克语 lang_cs; 丹麦语 lang_da; 荷兰语 lang_nl; 英语 lang_en; 爱沙尼亚语 lang_et; 芬兰语 lang_fi; 法语 lang_fr; 德语 lang_de; 希腊语 lang_el; 希伯来语 lang_iw; 匈牙利语 lang_hu; 冰岛语 lang_is; 意大利语 lang_it; 日语 lang_ja; 朝鲜语 lang_ko; 拉托维亚语 lang_lv; 立陶宛语 lang_lt; 挪威语 lang_no; 葡萄牙语 lang_pt; 波兰语 lang_pl; 罗马尼亚语 lang_ro; 俄语 lang_ru; 西班牙语 lang_es; 瑞典语 lang_sv; 土耳其语 lang_tr</td></tr>
+<tr>
+<td>ie</td>
+<td>UTF-8</td>
+<td>The input encoding of Web searches. Google suggests UTF-8</td></tr>
+<tr>
+<td>oe</td>
+<td>UTF-8</td>
+<td>The output encoding of Web searches. Google suggests UTF-8</td></tr>
+<tr>
+<td>as_epq</td>
+<td>Exact phrase</td>
+<td>Advanced search: "<font color="blue">with the exact phrase</font>". The value is submitted as an exact phrase. It's no more necessary to surround the phrase with quotes.</td></tr>
+<tr>
+<td>as_ft</td>
+<td><font color="blue">i</font> = include file type;<br /><font color="blue">e</font> = exclude file type a file extension</td>
+<td>Advanced search: File format: <font color="blue">Only</font> | <font color="blue">Don't...</font>. Include or exclude the file type indicated by <font color="blue">as_filetype</font> (see below)</td>
+<td rowspan="2" bgcolor="#c6e7c6">&nbsp;</td></tr>
+<tr>
+<td>as_filetipe</td>
+<td>file extension</td>
+<td>Advanced search: File Format: <font color="blue">....return results of the file format</font>. Include or exclude this file type as indicated by the value of <font color="blue">as_ft</font> (see above)</td></tr>
+<tr>
+<td>as_qdr</td>
+<td><font color="blue">m3</font> = past 3 months; <font color="blue">m6</font> = past 6 months; <font color="blue">y</font> = past year</td>
+<td>Advanced search: <font color="blue">Date Return web pages updated in the...</font>. Locate pages updated within the specified timeframe</td></tr>
+<tr>
+<td>as_nlo</td>
+<td>low number</td>
+<td>Find numbers between <font color="blue">as_nlo</font> and <font color="blue">as_nhi</font></td>
+<td rowspan="2" bgcolor="#c6e7c6">&nbsp;</td></tr>
+<tr>
+<td>as_nhi</td>
+<td>high number</td>
+<td>Find numbers between <font color="blue">as_nlo</font> and <font color="blue">as_nhi</font></td></tr>
+<tr>
+<td>as_oq</td>
+<td>a list of words</td>
+<td>Find at least one among the words of the list</td></tr>
+<tr>
+<td>as_occt</td>
+<td><font color="blue">any</font> = anywhere; <font color="blue">title</font> = title of page; <font color="blue">body</font> = text of page; <font color="blue">url</font> = in the page URL; <font color="blue">links</font> = in links to the page</td>
+<td>Advanced search: <font color="blue">Occurrences Return results where my terms occur...</font>. Find search term in a specific page location</td></tr>
+<tr>
+<td>as_dt</td>
+<td><font color="blue">i</font> = only include site or domain;<br /><font color="blue">e</font> = exclude site or domain</td>
+<td>Advanced search: Domain: <font color="blue">Only</font> | <font color="blue">Don't...</font>. Include or exclude searches from the domain specified by <font color="blue">as_sitesearch</font> (see below)</td>
+<td rowspan="2" bgcolor="#c6e7c6">&nbsp;</td></tr>
+<tr>
+<td>as_sitesearch</td>
+<td>domain or site</td>
+<td>Advanced search: Domain: <font color="blue">...return results from the site or domain</font>. Include or exclude this domain or site as specified by <font color="blue">as_dt</font> (see above)</td></tr>
+<tr>
+<td>safe</td>
+<td><font color="blue">active</font> = 使用安全搜索 <font color="blue">off</font> = 禁用安全搜索</td>
+<td>是否使用"safe search" (自动审查)</td></tr>
+<tr>
+<td>as_rq</td>
+<td>URL</td>
+<td>Locate pages similar to this URL</td></tr>
+<tr>
+<td>as_lq</td>
+<td>URL</td>
+<td>Locate pages that link to this URL.</td></tr>
+<tr>
+
+<td>newwindow</td>
+<td>0或1</td>
+<td>点击结果是否在新窗口打开.1为是，2为否</td></tr>
+<tr>
+<td>c2coff</td>
+<td>数字</td>
+<td>暂时不知道意思.</td></tr>
+<tr>
+<td>sa</td>
+<td>/(N|.*)/</td>
+<td>暂时不知道意思.</td></tr>
+<tr>
+<td>btnG</td>
+<td>“搜索”</td>
+<td>暂时不知道意思.遇到的唯一的值是“搜索”这两个字符</td></tr>
+<tr>
+<td>pwst</td>
+<td>1</td>
+<td>暂时不知道意思.</td></tr>
+<tr>
+
+<td>oi</td>
+<td>lrtip8</td>
+<td>暂时不知道意思.</td></tr>
+<tr>
+<td>sitesearch</td>
+<td>站点搜索</td>
+<td>在sitesearch指定的域名范围内搜索</td></tr>
+</table>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../g/o/o/Google%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0.html">http://dns.cs.hit.edu.cn../../../g/o/o/Google%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0.html</a>"</p>
+
+<p>本页面已经被浏览7次。 This page was last modified 04:23 2007年1月7日 by <a href="../../../d/y/i/User%7EDyingcow.html" title="User:Dyingcow">刘奭</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../g/o/o/Google%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0.html" title="Google查询请求参数">编辑本页</a></strong> |
+<a href="../../../g/o/o/Talk%7EGoogle%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0.html" class="new" title="Talk:Google查询请求参数">讨论本页</a> |
+<a href="../../../g/o/o/Google%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0.html" title="Google查询请求参数">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览7次。 This page was last modified 04:23 2007年1月7日 by <a href="../../../d/y/i/User%7EDyingcow.html" title="User:Dyingcow">刘奭</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../g/o/o/Google%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0.html" title="Google查询请求参数">编辑本页</a></strong>
+<br /><a href="../../../g/o/o/Talk%7EGoogle%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0.html" class="new" title="Talk:Google查询请求参数">讨论本页</a>
+<br /><a href="../../../g/o/o/Google%E6%9F%A5%E8%AF%A2%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0.html" title="Google查询请求参数">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393021.80 secs. -->
+</body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Embedded2006tech/usb - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../e/m/b/Embedded2006tech_usb_8ed0.html" title="Embedded2006tech/usb">编辑本页</a> |
+<a href="../../../e/m/b/Embedded2006tech_usb_8ed0.html" title="Embedded2006tech/usb">较早版本</a><p class='subtitle'><a href="../../../e/m/b/Embedded2006tech_usb_8ed0.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Embedded2006tech/usb</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../e/m/b/Embedded2006tech_usb_8ed0.html" title="Embedded2006tech/usb">编辑</a>]</div><a name=".E5.9C.A8Linux.E4.B8.8B.E9.A9.B1.E5.8A.A8USB.E6.8E.A5.E5.8F.A3PS.E5.9E.8B.E6.89.8B.E6.9F.84"></a><h2>在Linux下驱动USB接口PS型手柄</h2>
+<p>近日看见朋友买了一个USB接口的PS型手柄，就是市面上常见的十多元一个的那种，手感还不错，朋友买的这个牌子为WELCOM，个人推荐买北通(betop)的。我的北通手柄用了几年了，其中摔过很多次，外壳还安然无恙。
+相信有不少朋友都使用这种手柄，一来价格便宜，二来手感好，三来按钮多，四来在WIN下安装非常方便，即插即用(就算是98也自带了驱动)，不像并口型需要安装驱动那么麻烦
+一直想在linux下面测试一下是否能够驱动这种手柄，于是向朋友借来测试一番，结论是:在linux下使用完全没问题
+下面说说驱动这种手柄的方法:
+系统:主板I815，MAGIC LINUX 1.1，内核是自行编译的2.6.2(没打任何补丁)
+（内核不一定要2.6.2的，自己先按照下面的方法驱动一下手柄看看）
+</p><p>(如果你使用的是发行版自带的内核，那么以下的内核配置步骤可以忽略，因为发行版自带的内核往往已经将相关的功能编译成模块，你只需输入后面的模块加载命令即可)
+在linux下驱动USB手柄，需要内核配置下面几项:
+首先当然是手柄的支持
+device drivers－input device support－joystick interface，选M或Y(本人选M)，如果选M，则生成的模块名字为joydev
+你可以从此项的说明里知道，此项能使/dev/input/jsX文件生效，从而允许应用程序通过/dev/input/jsX这个设备文件来使用你的手柄
+device drivers－input device support－joysticks，选Y，此项是所有类型手柄的驱动，必须选中此项来支持你的各种手柄，包括串口型，并口型或USB口型
+既然是USB手柄，当然需要启用USB端口和相关支持
+device drivers－usb support－support for usb，选M或Y(本人选M)，如果选M，则编译后生成模块usbcore，此项是usb设备的支持，不选它则无法驱动usb设备
+device drivers－usb support－support for usb－uhci hcd(most intel and via)support，选M或Y(本人选M)，编译后生成模块uhci-hcd，此项是绝大多数intel或via芯片组主板上usb接口的驱动，相当于主板usb口驱动，如果不选中，也无法驱动usb设备(如果你的主板芯片组不是intel或via的，譬如是sis的，则可能需要device drivers－usb support－support for usb－ohci hcd support这项的支持，生成模块的名字是ohci-hcd；如果你的usb接口是2.0型的，可能还需要device drivers－usb support－support for usb－ehci hcd(usb 2.0)support的支持，生成的模块名字是ehci-hcd)
+device drivers－usb support－usb human interface device(full hid)support选M或Y(本人选M)，生成的模块名字为hid
+device drivers－usb support－hid input layer support，选Y
+此两项是usb手柄，usb键盘，usb鼠标的支持，不选中这两项，则无法驱动usb型手柄
+</p><p>设置好上述内核配置后，重新编译安装内核或(和)模块(过程略，详细步骤详见"内核安装及升级"板块)，启用新内核(或模块)后，打开一个终端，依次输入下面的命令:
+modprobe joydev #加载joydev模块，如果device drivers－input device support－joystick interface选M的话
+modprobe usbcore #加载usbcore模块，如果device drivers－usb support－support for usb选M的话
+modprobe uhci-hcd #加载uhci－hcd模块，如果device drivers－usb support－support for usb－uhci hcd(most intel and via)support选M的话
+modprobe hid #加载hid模块，如果device drivers－usb support－usb human interface device(full hid)support选M的话
+</p><p>(当然，如果前面的几项支持功能你全部选Y，则这些模块功能都已经编译进内核里，启动内核时就已经生效，上面的几个命令也就不用输入了)
+</p><p>再输入dmesg命令，你应该可以在最后几行看到类似如下的输出信息:
+drivers/usb/core/usb.c: registered new driver usbfs
+drivers/usb/core/usb.c: registered new driver hub
+drivers/usb/core/usb.c: registered new driver hid
+drivers/usb/input/hid-core.c: v2.0:USB HID core driver
+drivers/usb/host/uhci-hcd.c: USB Universal Host Controller Interface driver v2.1
+uhci_hcd 0000:00:1f.2: UHCI Host Controller
+PCI: Setting latency timer of device 0000:00:1f.2 to 64
+uhci_hcd 0000:00:1f.2: irq 5, io base 0000d000
+uhci_hcd 0000:00:1f.2: new USB bus registered, assigned bus number 1
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 2 ports detected
+uhci_hcd 0000:00:1f.4: UHCI Host Controller
+PCI: Setting latency timer of device 0000:00:1f.4 to 64
+uhci_hcd 0000:00:1f.4: irq 3, io base 0000d400
+uhci_hcd 0000:00:1f.4: new USB bus registered, assigned bus number 2
+hub 2-0:1.0: USB hub found
+hub 2-0:1.0: 2 ports detected
+hub 1-0:1.0: new USB device on port 2, assigned address 2
+input: USB HID v1.10 Joystick [GreenAsia Inc. USB Joystick ] on usb-0000:00:1f.2-2
+</p><p>最后一行信息表示USB手柄已经被正确识别出来并驱动成功，厂家牌子为GreenAsia Inc(??)
+驱动后的手柄设备文件为/dev/input/jsX，如果你没有驱动其他手柄，那么就是/dev/input/js0，如果你驱动了其他手柄，占用了 /dev/input/js0，那它就是/dev/input/js1(譬如我并口上也接有手柄，并且先驱动并口上的手柄，已经占用了 /dev/input/js0，这个usb手柄驱动后占用的设备文件是/dev/input/js1)，依次类推
+</p><p>如果你安装了joytest，那么可以通过joytest /dev/input/jsX这个命令来测试手柄，如果你没装joytest，也可以通过cat /dev/input/jsX来测试，输入命令后随便按几个按钮，应该可以看到屏幕输出一堆乱七八糟的信息
+</p><p>驱动成功后，你就可以在各种游戏里设置好此手柄的相应的设备文件来使用这个手柄了，譬如，我这里驱动后是/dev/input/js1，运行epsxe后，选菜单"config－ext game pad"，选用ammoQ's padJoy Joy Device Driver这个手柄插件，点击"configure"按钮，在"device file"里填入/dev/input/js1，点"ok"后重新点击"configure"按钮，就可以设置手柄上的相应按钮功能了。
+在2.4.x系列内核下驱动此类手柄的过程差不多，需要注意的是usb相关模块的名字和2.6.x不一致，留意一下内核配置里各项的帮助说明就行，这里就不多说了。
+祝大家使用愉快!
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../e/m/b/Embedded2006tech_usb_8ed0.html">http://dns.cs.hit.edu.cn../../../e/m/b/Embedded2006tech_usb_8ed0.html</a>"</p>
+
+<p>本页面已经被浏览11次。 This page was last modified 12:51 2006年3月8日 by 匿名用户.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../e/m/b/Embedded2006tech_usb_8ed0.html" title="Embedded2006tech/usb">编辑本页</a></strong> |
+<a href="../../../e/m/b/Talk%7EEmbedded2006tech_usb_b1d6.html" class="new" title="Talk:Embedded2006tech/usb">讨论本页</a> |
+<a href="../../../e/m/b/Embedded2006tech_usb_8ed0.html" title="Embedded2006tech/usb">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览11次。 This page was last modified 12:51 2006年3月8日 by 匿名用户.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../e/m/b/Embedded2006tech_usb_8ed0.html" title="Embedded2006tech/usb">编辑本页</a></strong>
+<br /><a href="../../../e/m/b/Talk%7EEmbedded2006tech_usb_b1d6.html" class="new" title="Talk:Embedded2006tech/usb">讨论本页</a>
+<br /><a href="../../../e/m/b/Embedded2006tech_usb_8ed0.html" title="Embedded2006tech/usb">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392657.04 secs. -->
+</body></html>

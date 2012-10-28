@@ -1,0 +1,841 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>WAV - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑本页</a> |
+<a href="../../../w/a/v/WAV_76ba.html" title="WAV">较早版本</a><p class='subtitle'><a href="../../../w/a/v/WAV_76ba.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">WAV</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>来源页面：<a href="http://www.tactilemedia.com/info/MCI_Control_Info.html" class='external text' title="http://www.tactilemedia.com/info/MCI Control Info.html" rel="nofollow">Multimedia_Programming_Interface_and_Data_Specifications_1.0</a>
+</p>
+<hr />
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#Waveform_Audio_File_Format_.28WAVE.29"><span class="tocnumber">1</span> <span class="toctext">Waveform Audio File Format (WAVE)</span></a>
+<ul>
+<li class='toclevel-2'><a href="#WAVE_Format_Chunk"><span class="tocnumber">1.1</span> <span class="toctext">WAVE Format Chunk</span></a></li>
+<li class='toclevel-2'><a href="#WAVE_Format_Categories"><span class="tocnumber">1.2</span> <span class="toctext">WAVE Format Categories</span></a>
+<ul>
+<li class='toclevel-3'><a href="#Pulse_Code_Modulation_.28PCM.29_Format"><span class="tocnumber">1.2.1</span> <span class="toctext">Pulse Code Modulation (PCM) Format</span></a>
+<ul>
+<li class='toclevel-4'><a href="#Data_Packing_for_PCM_WAVE_Files"><span class="tocnumber">1.2.1.1</span> <span class="toctext">Data Packing for PCM WAVE Files</span></a></li>
+<li class='toclevel-4'><a href="#Data_Format_of_the_Samples"><span class="tocnumber">1.2.1.2</span> <span class="toctext">Data Format of the Samples</span></a></li>
+<li class='toclevel-4'><a href="#Examples_of_PCM_WAVE_Files"><span class="tocnumber">1.2.1.3</span> <span class="toctext">Examples of PCM WAVE Files</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#Storage_of_WAVE_Data"><span class="tocnumber">1.3</span> <span class="toctext">Storage of WAVE Data</span></a></li>
+<li class='toclevel-2'><a href="#FACT_Chunk"><span class="tocnumber">1.4</span> <span class="toctext">FACT Chunk</span></a></li>
+<li class='toclevel-2'><a href="#Cue-Points_Chunk"><span class="tocnumber">1.5</span> <span class="toctext">Cue-Points Chunk</span></a>
+<ul>
+<li class='toclevel-3'><a href="#Examples_of_File_Position_Values"><span class="tocnumber">1.5.1</span> <span class="toctext">Examples of File Position Values</span></a></li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#Playlist_Chunk"><span class="tocnumber">1.6</span> <span class="toctext">Playlist Chunk</span></a></li>
+<li class='toclevel-2'><a href="#Associated_Data_Chunk"><span class="tocnumber">1.7</span> <span class="toctext">Associated Data Chunk</span></a>
+<ul>
+<li class='toclevel-3'><a href="#Label_and_Note_Information"><span class="tocnumber">1.7.1</span> <span class="toctext">Label and Note Information</span></a></li>
+<li class='toclevel-3'><a href="#Text_with_Data_Length_Information"><span class="tocnumber">1.7.2</span> <span class="toctext">Text with Data Length Information</span></a></li>
+<li class='toclevel-3'><a href="#Embedded_File_Information"><span class="tocnumber">1.7.3</span> <span class="toctext">Embedded File Information</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Waveform_Audio_File_Format_.28WAVE.29"></a><h2>Waveform Audio File Format (WAVE)</h2><p>
+<p>This section describes the Waveform format, which is used to represent digitized sound.
+</p>
+RIFF forms;WAVEWaveform files;WAVE formatFile formats;Waveform Audio (WAVE)</p><p>
+The WAVE form is defined as follows. Programs must expect (and ignore) any unknown chunks encountered, as with all RIFF forms. However, <b>&lt;fmtck&gt;</b> must always occur before <b>&lt;wavedata&gt;</b>, and both of these chunks are mandatory in a WAVE file.</p><p>
+<p>&lt;WAVE-form&gt; Ý <br />
+</p>
+<pre> RIFF( 'WAVE' <br />
+   &lt;fmt-ck&gt;     // Format<br />
+   [&lt;fact-ck&gt;]     // Fact chunk<br />
+</pre>
+<pre>   [&lt;cue-ck&gt;]     // Cue points<br />
+   [&lt;playlist-ck&gt;]    // Playlist<br />
+   [&lt;assoc-data-list&gt;]   // Associated data list<br />
+</pre>
+    &lt;wave-data&gt;  )     // Wave data</p><p>
+The WAVE chunks are described in the following sections.</p><p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="WAVE_Format_Chunk"></a><h3>WAVE Format Chunk</h3><p>
+The WAVE format chunk <b>&lt;fmt-ck&gt;</b> specifies the format of the <b>&lt;wave-data&gt;</b>. The <b>&lt;fmt-ck&gt;</b> is defined as follows:</p><p>
+<p>&lt;fmt-ck&gt; Ý  fmt( &lt;common-fields&gt; <br />
+</p>
+<pre>     &lt;format-specific-fields&gt; )<br />
+</pre>
+<p><br />
+&lt;common-fields&gt; Ý<br />
+</p>
+<pre> struct<br />
+  { <br />
+  WORD wFormatTag;    // Format category<br />
+</pre>
+<pre>   WORD wChannels;    // Number of channels<br />
+   DWORD dwSamplesPerSec;   // Sampling rate<br />
+   DWORD dwAvgBytesPerSec;  // For buffer estimation<br />
+   WORD wBlockAlign;   // Data block size<br />
+</pre>
+   }</p><p>
+<p>The fields in the <b>&lt;common-fields&gt;</b> chunk are as follows:
+</p>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Field</b></font></td>
+<td><font face="Arial" size="2"><b>Description</b></font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>wFormatTag</b></font></td>
+<td><font face="Arial" size="2">A number indicating the WAVE format category of the file. The content of the <b>&lt;format-specific-fields&gt;</b> portion of the 'fmt' chunk, and the interpretation of the waveform data, depend on this value. <br />
+<p>You must register any new WAVE format categories. See "Registering Multimedia Formats" in Chapter 1, "Overview of Multimedia Specifications," for information on registering WAVE format categories.<br />
+"Wave Format Categories," following this section, lists the currently defined WAVE format categories.<br />
+</p>
+</font><p>
+</p></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>wChannels</b></font></td>
+<td><font face="Arial" size="2">The number of channels represented in the waveform data, such as 1 for mono or 2 for stereo.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwSamplesPerSec</b></font></td>
+<td><font face="Arial" size="2">The sampling rate (in samples per second) at which each channel should be played.</font></td>
+</tr><tr valign="top">
+
+<td><font face="Arial" size="2"><b>dwAvgBytesPerSec</b></font></td>
+<td><font face="Arial" size="2">The average number of bytes per second at which the waveform data should be transferred. Playback software can estimate the buffer size using this value.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>wBlockAlign</b></font></td>
+<td><font face="Arial" size="2">The block alignment (in bytes) of the waveform data. Playback software needs to process a multiple of <b>wBlockAlign</b> bytes of data at a time, so the value of <b>wBlockAlign</b> can be used for buffer alignment.<br />
+<p><br />
+</p>
+</font><p>
+
+</p></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+The <b>&lt;format-specific-fields&gt;</b> consists of zero or more bytes of parameters. Which parameters occur depends on the WAVE format category-see the following section for details. Playback software should be written to allow for (and ignore) any unknown <b>&lt;format-specific-fields&gt;</b> parameters that occur at the end of this field.
+Samples, setting bits per sample</p><p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="WAVE_Format_Categories"></a><h3>WAVE Format Categories</h3><p>
+<p>The format category of a WAVE file is specified by the value of the <b>wFormatTag</b> field of the 'fmt' chunk. The representation of data in <b>&lt;wave-data&gt;</b>, and the content of the <b>&lt;formatspecificfields&gt;</b> of the 'fmt' chunk, depend on the format category.
+</p>
+Waveform files;format categories </p><p>
+<p>The currently defined open non-proprietary WAVE format categories are as follows:
+<br />
+</p>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>wFormatTag Value</b></font></td>
+<td><font face="Arial" size="2"><b>Format Category</b></font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">WAVE_FORMAT_PCM (0x0001)</font></td>
+<td><font face="Arial" size="2">Microsoft Pulse Code Modulation (PCM) format<br />
+<p><br />
+</p>
+</font><p>
+
+</p></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+The following are the registered proprietary WAVE format categories:
+<br />
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><p>
+</p><p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>wFormatTag Value</b></font></td>
+<td><font face="Arial" size="2"><b>Format Category</b></font></td>
+</tr><tr valign="top">
+
+<td><font face="Arial" size="2">IBM_FORMAT_MULAW (0x0101)</font></td>
+<td><font face="Arial" size="2">IBM mu-law format</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">IBM_FORMAT_ALAW (0x0102)</font></td>
+<td><font face="Arial" size="2">IBM a-law format</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">IBM_FORMAT_ADPCM (0x0103)</font></td>
+<td><font face="Arial" size="2">IBM AVC Adaptive Differential Pulse Code Modulation format<br />
+<p><br />
+</p>
+</font><p>
+</p></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+The following sections describe the Microsoft WAVE_FORMAT_PCM format.</p><p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Pulse_Code_Modulation_.28PCM.29_Format"></a><h4>Pulse Code Modulation (PCM) Format</h4><p>
+If the <b>wFormatTag</b> field of the <b>&lt;fmt-ck&gt;</b> is set to WAVE_FORMAT_PCM, then the waveform data consists of samples represented in pulse code modulation (PCM) format. For PCM waveform data, the <b>&lt;format-specific-fields&gt;</b> is defined as follows:</p><p>
+<p>&lt;PCM-format-specific&gt; Ý <br />
+</p>
+<pre> struct<br />
+  {<br />
+  WORD wBitsPerSample;   // Sample size<br />
+</pre>
+   }</p><p>
+The <b>wBitsPerSample</b> field specifies the number of bits of data used to represent each sample of each channel. If there are multiple channels, the sample size is the same for each channel.</p><p>
+For PCM data, the <b>wAvgBytesPerSec</b> field of the 'fmt' chunk should be equal to the following formula rounded up to the next whole number:</p><p>
+ </p><p>
+The <b>wBlockAlign</b> field should be equal to the following formula, rounded to the next whole number:Data blocks;aligning waveform</p><p>
+ </p><p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Data_Packing_for_PCM_WAVE_Files"></a><h5><b>Data Packing for PCM WAVE Files</b></h5><p>
+In a single-channel WAVE file, samples are stored consecutively. For stereo WAVE files, channel 0 represents the left channel, and channel 1 represents the right channel. The speaker position mapping for more than two channels is currently undefined. In multiple-channel WAVE files, samples are interleaved.</p><p>
+<p>The following diagrams show the data packing for a 8-bit mono and stereo WAVE files:
+</p>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Sample 1</b></font></td>
+<td><font face="Arial" size="2"><b>Sample 2</b></font></td>
+<td><font face="Arial" size="2"><b>Sample 3</b></font></td>
+<td><font face="Arial" size="2"><b>Sample 4</b></font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">Channel 0</font></td>
+<td><font face="Arial" size="2">Channel 0</font></td>
+<td><font face="Arial" size="2">Channel 0</font></td>
+<td><font face="Arial" size="2">Channel 0</font></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+<b>Data Packing for 8-Bit Mono PCM</b>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Sample 1</b></font></td>
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>Sample 2</b></font></td>
+<td><font face="Arial" size="2">&nbsp;</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">Channel 0<br />
+(left)</font></td>
+<td><font face="Arial" size="2">Channel 1<br />
+(right)</font></td>
+<td><font face="Arial" size="2">Channel 0<br />
+(left)</font></td>
+<td><font face="Arial" size="2">Channel 0<br />
+<p>(right)<br />
+</p>
+</font><p>
+</p></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+<b>Data Packing for 8-Bit Stereo PCM</b></p><p>
+<p>The following diagrams show the data packing for 16-bit mono and stereo WAVE files:
+</p>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Sample 1</b></font></td>
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>Sample 2</b></font></td>
+<td><font face="Arial" size="2">&nbsp;</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">Channel 0<br />
+<p><br />
+</p>
+low-order byte</font></td>
+<td><font face="Arial" size="2">Channel 0<br />
+<p><br />
+</p>
+high-order byte</font></td>
+<td><font face="Arial" size="2">Channel 0<br />
+<p><br />
+</p>
+low-order byte</font></td>
+
+<td><font face="Arial" size="2">Channel 0<br />
+<p><br />
+high-order byte<br />
+</p>
+</font><p>
+</p></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+<b>Data Packing for 16-Bit Mono PCM</b>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Sample 1</b></font></td>
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2">&nbsp;</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">Channel 0<br />
+<p>(left)<br />
+</p>
+low-order byte</font></td>
+<td><font face="Arial" size="2">Channel 0<br />
+<p>(left)<br />
+</p>
+high-order byte</font></td>
+<td><font face="Arial" size="2">Channel 1<br />
+<p>(right)<br />
+</p>
+low-order byte</font></td>
+<td><font face="Arial" size="2">Channel 1<br />
+<p>(right)<br />
+high-order byte<br />
+</p>
+</font><p>
+</p></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+<b>Data Packing for 16-Bit Stereo PCM</b></p><p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Data_Format_of_the_Samples"></a><h5><b>Data Format of the Samples</b></h5><p>
+Each sample is contained in an integer <i>i</i>. The size of <i>i</i> is the smallest number of bytes required to contain the specified sample size. The least significant byte is stored first. The bits that represent the sample amplitude are stored in the most significant bits of <i>i</i>, and the remaining bits are set to zero.</p><p>
+<p>For example, if the sample size (recorded in <b>nBitsPerSample</b>) is 12 bits, then each sample is stored in a two-byte integer. The least significant four bits of the first (least significant) byte is set to zero.
+</p>
+Amplitude, setting waveform</p><p>
+<p>The data format and maximum and minimums values for PCM waveform samples of various sizes are as follows:
+</p>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Sample Size</b></font></td>
+<td><font face="Arial" size="2"><b>Data Format</b></font></td>
+<td><font face="Arial" size="2"><b>Maximum Value</b></font></td>
+<td><font face="Arial" size="2"><b>Minimum Value</b></font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">One to eight bits</font></td>
+<td><font face="Arial" size="2">Unsigned integer</font></td>
+<td><font face="Arial" size="2">255 (0xFF)</font></td>
+<td><font face="Arial" size="2">0</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">Nine or more bits</font></td>
+<td><font face="Arial" size="2">Signed integer <i>i</i></font></td>
+<td><font face="Arial" size="2">Largest positive value of <i>i</i></font></td>
+<td><font face="Arial" size="2">Most negative value of <i>i<br />
+<p></i><br />
+</p>
+</font><p>
+</p></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+For example, the maximum, minimum, and midpoint values for 8-bit and 16-bit PCM waveform data are as follows:
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Format</b></font></td>
+<td><font face="Arial" size="2"><b>Maximum Value</b></font></td>
+<td><font face="Arial" size="2"><b>Minimum Value</b></font></td>
+<td><font face="Arial" size="2"><b>Midpoint Value</b></font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">8-bit PCM</font></td>
+<td><font face="Arial" size="2">255 (0xFF)</font></td>
+<td><font face="Arial" size="2">0</font></td>
+<td><font face="Arial" size="2">128 (0x80)</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">16-bit PCM</font></td>
+<td><font face="Arial" size="2">32767 (0x7FFF)</font></td>
+<td><font face="Arial" size="2">-32768 (-0x8000)</font></td>
+<td><font face="Arial" size="2">0<br />
+<p><br />
+</p>
+</font><p>
+</p></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Examples_of_PCM_WAVE_Files"></a><h5><b>Examples of PCM WAVE Files</b></h5><p>
+Example of a PCM WAVE file with 11.025 kHz sampling rate, mono, 8 bits per sample:</p><p>
+<p>RIFF( 'WAVE'  fmt(1, 1, 11025, 11025, 1, 8)<br />
+</p>
+      data( &lt;wave-data&gt; ) )</p><p>
+Example of a PCM WAVE file with 22.05 kHz sampling rate, stereo, 8 bits per sample:</p><p>
+<p>RIFF( 'WAVE'  fmt(1, 2, 22050, 44100, 2, 8)<br />
+</p>
+      data( &lt;wave-data&gt; ) )</p><p>
+Example of a PCM WAVE file with 44.1 kHz sampling rate, mono, 20 bits per sample:</p><p>
+<p>RIFF( 'WAVE'   INFO(INAM("O Canada"Z))<br />
+</p>
+<pre>     fmt(1, 1, 44100, 132300, 3, 20)<br />
+</pre>
+      data( &lt;wave-data&gt; ) )</p><p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Storage_of_WAVE_Data"></a><h3>Storage of WAVE Data</h3><p>
+The <b>&lt;wave-data&gt;</b> contains the waveform data. It is defined as follows:</p><p>
+<p>&lt;wave-data&gt; Ý  { &lt;data-ck&gt; | &lt;data-list&gt; }<br />
+</p><p><br />
+&lt;data-ck&gt;  Ý  data( &lt;wave-data&gt; )<br />
+<br />
+&lt;wave-list&gt; Ý  LIST( 'wavl' {   &lt;data-ck&gt; |   // Wave samples<br />
+</p>
+<pre>         &lt;silence-ck&gt; }... ) // Silence<br />
+</pre>
+<p><br />
+&lt;silence-ck&gt; Ý  slnt( &lt;dwSamples:DWORD&gt; )  // Count of<br />
+</p>
+             // silent samples</p><p>
+<i><b>Note:  </b></i>The 'slnt' chunk represents silence, not necessarily a repeated zero volume or baseline sample. In 16-bit PCM data, if the last sample value played before the silence section is a 10000, then if data is still output to the D to A converter, it must maintain the 10000 value. If a zero value is used, a click may be heard at the start and end of the silence section. If play begins at a silence section, then a zero value might be used since no other information is available. A click might be created if the data following the silent section starts with a nonzero value.</p><p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="FACT_Chunk"></a><h3>FACT Chunk</h3><p>
+The <b>&lt;fact-ck&gt;</b> fact chunk stores important information about the contents of the WAVE file. This chunk is defined as follows:</p><p>
+&lt;fact-ck&gt; Ý fact( &lt;dwFileSize:DWORD&gt; )   // Number of samples</p><p>
+The "fact" chunk is required if the waveform data is contained in a "wavl" LIST chunk and for all compressed audio formats. The chunk is not required for PCM files using the "data" chunk format.</p><p>
+The "fact" chunk will be expanded to include any other information required by future WAVE formats. Added fields will appear following the <b>&lt;dwFileSize&gt;</b> field. Applications can use the chunk size field to determine which fields are present.</p><p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Cue-Points_Chunk"></a><h3>Cue-Points Chunk</h3><p>
+The <b>&lt;cue-ck&gt;</b> cue-points chunk identifies a series of positions in the waveform data stream. The <b>&lt;cue-ck&gt;</b> is defined as follows:</p><p>
+<p>&lt;cue-ck&gt; Ý   cue(  &lt;dwCuePoints:DWORD&gt;  // Count of cue points<br />
+</p>
+<pre>      &lt;cue-point&gt;... )  // Cue-point table<br />
+</pre>
+<p><br />
+&lt;cue-point&gt; Ý  struct {<br />
+</p>
+<pre>     DWORD  dwName; <br />
+</pre>
+<pre>     DWORD  dwPosition;<br />
+     FOURCC fccChunk;<br />
+     DWORD  dwChunkStart;<br />
+     DWORD  dwBlockStart; <br />
+     DWORD  dwSampleOffset;<br />
+</pre>
+     }</p><p>
+<p>The <b>&lt;cue-point&gt;</b> fields are as follows:
+</p>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Field</b></font></td>
+<td><font face="Arial" size="2"><b>Description</b></font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwName</b></font></td>
+<td><font face="Arial" size="2">Specifies the cue point name. Each <b>&lt;cue-point&gt;</b> record must have a unique <b>dwName</b> field.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwPosition</b></font></td>
+<td><font face="Arial" size="2">Specifies the sample position of the cue point. This is the sequential sample number within the play order. See "Playlist Chunk," later in this document, for a discussion of the play order.</font></td>
+</tr><tr valign="top">
+
+<td><font face="Arial" size="2"><b>fccChunk</b></font></td>
+<td><font face="Arial" size="2">Specifies the name or chunk ID of the chunk containing the cue point.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwChunkStart</b></font></td>
+<td><font face="Arial" size="2">Specifies the file position of the start of the chunk containing the cue point. This is a byte offset relative to the start of the data section of the 'wavl' LIST chunk.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwBlockStart</b></font></td>
+<td><font face="Arial" size="2">Specifies the file position of the start of the block containing the position. This is a byte offset relative to the start of the data section of the 'wavl' LIST chunk.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwSampleOffset</b></font></td>
+<td><font face="Arial" size="2">Specifies the sample offset of the cue point relative to the start of the block. <br />
+<p><br />
+</p>
+</font><p>
+</p></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Examples_of_File_Position_Values"></a><h4>Examples of File Position Values</h4><p>
+<p>The following table describes the <b>&lt;cue-point&gt;</b> field values for a WAVE file containing multiple 'data' and 'slnt' chunks enclosed in a 'wavl' LIST chunk:
+<br />
+</p>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Cue Point Location</b></font></td>
+<td><font face="Arial" size="2"><b>Field</b></font></td>
+<td><font face="Arial" size="2"><b>Value</b></font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">In a 'slnt' chunk</font></td>
+<td><font face="Arial" size="2"><b>fccChunk</b></font></td>
+<td><font face="Arial" size="2">FOURCC value 'slnt'.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwChunkStart</b></font></td>
+<td><font face="Arial" size="2">File position of the 'slnt' chunk relative to the start of the data section in the 'wavl' LIST chunk.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwBlockStart</b></font></td>
+<td><font face="Arial" size="2">File position of the data section of the 'slnt' chunk relative to the start of the data section of the 'wavl' LIST chunk.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwSampleOffset</b></font></td>
+<td><font face="Arial" size="2">Sample position of the cue point relative to the start of the 'slnt' chunk.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">In a PCM 'data' chunk</font></td>
+<td><font face="Arial" size="2"><b>fccChunk</b></font></td>
+<td><font face="Arial" size="2">FOURCC value 'data'.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwChunkStart</b></font></td>
+<td><font face="Arial" size="2">File position of the 'data' chunk relative to the start of the data section in the 'wavl' LIST chunk.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwBlockStart</b></font></td>
+<td><font face="Arial" size="2">File position of the cue point relative to the start of the data section of the 'wavl' LIST chunk. </font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwSampleOffset</b></font></td>
+<td><font face="Arial" size="2">Zero value.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">In a compressed 'data' chunk</font></td>
+<td><font face="Arial" size="2"><b>fccChunk</b></font></td>
+<td><font face="Arial" size="2">FOURCC value 'data'.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwChunkStart</b></font></td>
+<td><font face="Arial" size="2">File position of the start of the 'data' chunk relative to the start of the data section of the 'wavl' LIST chunk.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwBlockStart</b></font></td>
+<td><font face="Arial" size="2">File position of the enclosing block relative to the start of the data section of the 'wavl' LIST chunk. The software can begin the decompression at this point.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwSampleOffset</b></font></td>
+<td><font face="Arial" size="2">Sample position of the cue point relative to the start of the block.<br />
+<p><br />
+</p>
+</font><p>
+</p></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+The following table describes the <b>&lt;cue-point&gt;</b> field values for a WAVE file containing a single 'data' chunk:
+
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Cue Point Location</b></font></td>
+<td><font face="Arial" size="2"><b>Field</b></font></td>
+<td><font face="Arial" size="2"><b>Value</b></font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">Within PCM data</font></td>
+<td><font face="Arial" size="2"><b>fccChunk</b></font></td>
+<td><font face="Arial" size="2">FOURCC value 'data'.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwChunkStart</b></font></td>
+<td><font face="Arial" size="2">Zero value.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwBlockStart</b></font></td>
+<td><font face="Arial" size="2">Zero value.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwSampleOffset</b></font></td>
+<td><font face="Arial" size="2">Sample position of the cue point relative to the start of the 'data' chunk.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">In a compressed 'data' chunk</font></td>
+<td><font face="Arial" size="2"><b>fccChunk</b></font></td>
+<td><font face="Arial" size="2">FOURCC value 'data'.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwChunkStart</b></font></td>
+<td><font face="Arial" size="2">Zero value.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwBlockStart</b></font></td>
+<td><font face="Arial" size="2">File position of the enclosing block relative to the start of the 'data' chunk. The software can begin the decompression at this point.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2">&nbsp;</font></td>
+<td><font face="Arial" size="2"><b>dwSampleOffset</b></font></td>
+<td><font face="Arial" size="2">Sample position of the cue point relative to the start of the block.</font></td>
+</tr>
+
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Playlist_Chunk"></a><h3>Playlist Chunk</h3><p>
+The <b>&lt;playlist-ck&gt;</b> playlist chunk specifies a play order for a series of cue points. The <b>&lt;playlist-ck&gt;</b> is defined as follows:</p><p>
+<p>&lt;playlist-ck&gt; Ý  plst(<br />
+</p>
+<pre>     &lt;dwSegments:DWORD&gt; // Count of play segments<br />
+</pre>
+<pre>     &lt;play-segment&gt;... ) // Play-segment table<br />
+</pre>
+<p><br />
+&lt;play-segment&gt; Ý  struct {<br />
+</p>
+<pre>      DWORD dwName;<br />
+      DWORD dwLength;<br />
+      DWORD dwLoops;<br />
+</pre>
+      }</p><p>
+<p>The <b>&lt;play-segment&gt;</b> fields are as follows:
+</p>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><p>
+</p><p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Field</b></font></td>
+<td><font face="Arial" size="2"><b>Description</b></font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwName</b></font></td>
+<td><font face="Arial" size="2">Specifies the cue point name. This value must match one of the names listed in the <b>&lt;cue-ck&gt;</b> cue-point table.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwLength</b></font></td>
+<td><font face="Arial" size="2">Specifies the length of the section in samples.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwLoops</b></font></td>
+<td><font face="Arial" size="2">Specifies the number of times to play the section.<br />
+<p><br />
+</p>
+</font><p>
+</p></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Associated_Data_Chunk"></a><h3>Associated Data Chunk</h3><p>
+The <b>&lt;assoc-data-list&gt;</b> associated data list provides the ability to attach information like labels to sections of the waveform data stream. The <b>&lt;assoc-data-list&gt;</b> is defined as follows:</p><p>
+&lt;assoc-data-list&gt; Ý  LIST( 'adtl'</p><p>
+          &lt;labl-ck&gt;   // Label</p><p>
+         &lt;note-ck&gt;   // Note</p><p>
+         &lt;ltxt-ck&gt;   // Text with data length</p><p>
+         &lt;file-ck&gt; )   // Media file</p><p>
+&lt;labl-ck&gt; Ý    labl( &lt;dwName:DWORD&gt;</p><p>
+         &lt;data:ZSTR&gt; )</p><p>
+&lt;note-ck&gt; Ý    note( &lt;dwName:DWORD&gt;</p><p>
+         &lt;data:ZSTR&gt; ) </p><p>
+&lt;ltxt-ck&gt; Ý    ltxt( &lt;dwName:DWORD&gt; </p><p>
+         &lt;dwSampleLength:DWORD&gt; </p><p>
+         &lt;dwPurpose:DWORD&gt;</p><p>
+         &lt;wCountry:WORD&gt;</p><p>
+         &lt;wLanguage:WORD&gt;</p><p>
+         &lt;wDialect:WORD&gt;</p><p>
+         &lt;wCodePage:WORD&gt;</p><p>
+         &lt;data:BYTE&gt;... )</p><p>
+&lt;file-ck&gt; Ý    file( &lt;dwName:DWORD&gt;</p><p>
+         &lt;dwMedType:DWORD&gt;</p><p>
+         &lt;fileData:BYTE&gt;...)</p><p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Label_and_Note_Information"></a><h4>Label and Note Information</h4><p>
+<p>The 'labl' and 'note' chunks have similar fields. The 'labl' chunk contains a label, or title, to associate with a cue point. The 'note' chunk contains comment text for a cue point. The fields are as follows:
+<br />
+</p>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Field</b></font></td>
+<td><font face="Arial" size="2"><b>Description</b></font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwName</b></font></td>
+<td><font face="Arial" size="2">Specifies the cue point name.  This value must match one of the names listed in the &lt;cue-ck&gt; cue-point table.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>data</b></font></td>
+<td><font face="Arial" size="2">Specifies a NULL-terminated string containing a text label (for the 'labl' chunk) or comment text (for the 'note' chunk).<br />
+<p><br />
+</p>
+</font><p>
+</p></td>
+</tr>
+
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Text_with_Data_Length_Information"></a><h4>Text with Data Length Information</h4><p>
+<p>The "ltxt" chunk contains text that is associated with a data segment of specific length. The chunk fields are as follows:
+<br />
+</p>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Field</b></font></td>
+<td><font face="Arial" size="2"><b>Description</b></font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwName</b></font></td>
+<td><font face="Arial" size="2">Specifies the cue point name.  This value must match one of the names listed in the &lt;cue-ck&gt; cue-point table.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwSampleLength</b></font></td>
+<td><font face="Arial" size="2">Specifies the number of samples in the segment of waveform data.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwPurpose</b></font></td>
+<td><font face="Arial" size="2">Specifies the type or purpose of the text. For example, <b>dwPurpose</b> can specify a FOURCC code like 'scrp' for script text or 'capt' for close-caption text.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>wCountry</b></font></td>
+<td><font face="Arial" size="2">Specifies the country code for the text. See "Country Codes" in Chapter 2, "Resource Interchange File Format," for a current list of country codes.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>wLanguage</b>,<br />
+<b>wDialect</b></font></td>
+<td><font face="Arial" size="2">Specify the language and dialect codes for the text. See "Language and Dialect Codes" in Chapter 2, "Resource Interchange File Format," for a current list of language and dialect codes.<br />
+</font><p>
+</p></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>wCodePage</b></font></td>
+<td><font face="Arial" size="2">Specifies the code page for the text. <br />
+<p><br />
+</p>
+</font><p>
+</p></td>
+</tr>
+&lt;/tbody&gt;</table>
+&lt;/p&gt;<p>
+</p><div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑</a>]</div><a name="Embedded_File_Information"></a><h4>Embedded File Information</h4><p>
+<p>The 'file' chunk contains information described in other file formats (for example, an 'RDIB' file or an ASCII text file). The chunk fields are as follows:
+<br />
+</p>
+</p><p>
+<p>&lt;p&gt;
+</p>
+</p><p>
+</p><p>
+</p><table border="1" cellpadding="5" cellspacing="0" width="87%">
+&lt;tbody&gt;<tr bgcolor="#dddddd" valign="top">
+<td><font face="Arial" size="2"><b>Field</b></font></td>
+<td><font face="Arial" size="2"><b>Description</b></font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwName</b></font></td>
+<td><font face="Arial" size="2">Specifies the cue point name.  This value must match one of the names listed in the &lt;cue-ck&gt; cue-point table.</font></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>dwMedType</b></font></td>
+<td><font face="Arial" size="2">Specifies the file type contained in the <b>fileData</b> field. If the <b>fileData</b> section contains a RIFF form, the <b>dwMedType</b> field is the same as the RIFF form type for the file. <br />
+<p>This field can contain a zero value.<br />
+</p>
+</font><p>
+
+</p></td>
+</tr><tr valign="top">
+<td><font face="Arial" size="2"><b>fileData</b></font></td>
+<td><font face="Arial" size="2">Contains the media file.<br /></font>
+</table>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../w/a/v/WAV_76ba.html">http://dns.cs.hit.edu.cn../../../w/a/v/WAV_76ba.html</a>"</p>
+
+<p>本页面已经被浏览8次。 This page was last modified 08:19 2007年12月19日 by <a href="../../../d/y/i/User%7EDyingcow.html" title="User:Dyingcow">刘奭</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑本页</a></strong> |
+<a href="../../../w/a/v/Talk%7EWAV_0197.html" class="new" title="Talk:WAV">讨论本页</a> |
+<a href="../../../w/a/v/WAV_76ba.html" title="WAV">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览8次。 This page was last modified 08:19 2007年12月19日 by <a href="../../../d/y/i/User%7EDyingcow.html" title="User:Dyingcow">刘奭</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../w/a/v/WAV_76ba.html" title="WAV">编辑本页</a></strong>
+<br /><a href="../../../w/a/v/Talk%7EWAV_0197.html" class="new" title="Talk:WAV">讨论本页</a>
+<br /><a href="../../../w/a/v/WAV_76ba.html" title="WAV">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393234.08 secs. -->
+</body></html>

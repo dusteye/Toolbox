@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>主旋律提取 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑本页</a> |
+<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">较早版本</a><p class='subtitle'><a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">主旋律提取</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>疑问：
+</p>
+<ol><li>各种音乐文件格式资料
+</li><li>语料格式是否为wav？能否是mp3？难度如何？     wav
+</li><li>傅立叶变换究竟得到什么？（数据结构层表述）   12位系数
+</li><li>去噪音这一步骤怎样实现？     高频率波
+</li></ol>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#.E6.A6.82.E8.BF.B0"><span class="tocnumber">1</span> <span class="toctext">概述</span></a></li>
+<li class='toclevel-1'><a href="#.E7.AE.97.E6.B3.95.E6.B5.81.E7.A8.8B"><span class="tocnumber">2</span> <span class="toctext">算法流程</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E5.8E.BB.E5.99.AA.E9.9F.B3"><span class="tocnumber">2.1</span> <span class="toctext">去噪音</span></a></li>
+<li class='toclevel-2'><a href="#.E6.8F.90.E5.8F.96.E4.B8.BB.E6.97.8B.E5.BE.8B"><span class="tocnumber">2.2</span> <span class="toctext">提取主旋律</span></a></li>
+<li class='toclevel-2'><a href="#.E5.B9.B3.E6.BB.91.E4.B8.BB.E6.97.8B.E5.BE.8B"><span class="tocnumber">2.3</span> <span class="toctext">平滑主旋律</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#.E5.BC.80.E5.8F.91.E5.B7.A5.E5.85.B7.EF.BC.88C.2B.2B.EF.BC.89"><span class="tocnumber">3</span> <span class="toctext">开发工具（C++）</span></a>
+<ul>
+<li class='toclevel-2'><a href="#MFC"><span class="tocnumber">3.1</span> <span class="toctext">MFC</span></a>
+<ul>
+<li class='toclevel-3'><a href="#.E6.8E.A7.E4.BB.B6.26.26ActiveX"><span class="tocnumber">3.1.1</span> <span class="toctext">控件&amp;&amp;ActiveX</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#.E9.9F.B3.E4.B9.90.E7.90.86.E8.AE.BA"><span class="tocnumber">4</span> <span class="toctext">音乐理论</span></a></li>
+<li class='toclevel-1'><a href="#.E5.8F.82.E8.80.83.E8.B5.84.E6.96.99"><span class="tocnumber">5</span> <span class="toctext">参考资料</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E7.AE.97.E6.B3.95"><span class="tocnumber">5.1</span> <span class="toctext">算法</span></a></li>
+<li class='toclevel-2'><a href="#.E4.B9.90.E7.90.86"><span class="tocnumber">5.2</span> <span class="toctext">乐理</span></a></li>
+<li class='toclevel-2'><a href="#.E5.B8.B8.E8.A7.81.E9.9F.B3.E4.B9.90.E6.96.87.E4.BB.B6.E6.A0.BC.E5.BC.8F"><span class="tocnumber">5.3</span> <span class="toctext">常见音乐文件格式</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#.E5.8F.82.E8.80.83.E8.AE.BA.E6.96.87"><span class="tocnumber">6</span> <span class="toctext">参考论文</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E6.A0.B8.E5.BF.83.E8.AE.BA.E6.96.87"><span class="tocnumber">6.1</span> <span class="toctext">核心论文</span></a></li>
+<li class='toclevel-2'><a href="#12.10"><span class="tocnumber">6.2</span> <span class="toctext">12.10</span></a></li>
+<li class='toclevel-2'><a href="#12.14"><span class="tocnumber">6.3</span> <span class="toctext">12.14</span></a></li>
+<li class='toclevel-2'><a href="#12.19"><span class="tocnumber">6.4</span> <span class="toctext">12.19</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E6.A6.82.E8.BF.B0"></a><h2>概述</h2>
+<p>毕业设计内容：
+</p>
+<ul><li>音乐中的去噪音问题。这里的噪音主要指伴奏乐形式的噪音。
+</li><li>主旋律提取。
+</li><li>主旋律流程化。
+</li></ul>
+<p>音频文件格式：
+</p>
+<ul><li>文件格式：wav
+</li><li>频率：44.1kHz
+</li><li>位数：16bit
+</li><li>声道：mono 单声道
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E7.AE.97.E6.B3.95.E6.B5.81.E7.A8.8B"></a><h2>算法流程</h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E5.8E.BB.E5.99.AA.E9.9F.B3"></a><h3>去噪音</h3>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E6.8F.90.E5.8F.96.E4.B8.BB.E6.97.8B.E5.BE.8B"></a><h3>提取主旋律</h3>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E5.B9.B3.E6.BB.91.E4.B8.BB.E6.97.8B.E5.BE.8B"></a><h3>平滑主旋律</h3>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E5.BC.80.E5.8F.91.E5.B7.A5.E5.85.B7.EF.BC.88C.2B.2B.EF.BC.89"></a><h2>开发工具（C++）</h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name="MFC"></a><h3>MFC</h3>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E6.8E.A7.E4.BB.B6.26.26ActiveX"></a><h4>控件&amp;&amp;ActiveX</h4>
+<p><b><a href="http://www.activex.com.cn/media_activex/nctaudiostudio.htm" class='external text' title="http://www.activex.com.cn/media activex/nctaudiostudio.htm" rel="nofollow">NCTAudioStudio_ActiveX_DLL_V_2.4</a></b>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E9.9F.B3.E4.B9.90.E7.90.86.E8.AE.BA"></a><h2>音乐理论</h2>
+<ul><li>音的属性：频率 音长 振幅 振动成分（谐振）－－音高 音时值 音强 音色
+</li><li>音乐频率范围：16～4000Hz
+<ul><li>人声和最富表现力的音域在60-1000Hz
+</li><li>人对1000~4000Hz的声音最敏感，特别是3000Hz左右的声音
+</li><li>Fletcher-Munson图
+</li></ul>
+</li></ul>
+<pre>    <a href="../../../i/m/a/Image%7EImage.gif.html" class="image" title="Image:Image.gif"><img src="../../../../upload/1/12/Image.gif" alt="Image:Image.gif" width="487" height="370" longdesc="../../../i/m/a/Image%7EImage.gif.html" /></a>
+</pre>
+<ul><li>音色的不同在于泛音，即成整数倍的振动频率迭加。
+<ol><li>每个音可能有哪些泛音 
+</li><li>哪些泛音较其他响
+</li><li>出现次序
+</li></ol>
+</li><li>音高和音长主要决定了旋律！
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E5.8F.82.E8.80.83.E8.B5.84.E6.96.99"></a><h2>参考资料</h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E7.AE.97.E6.B3.95"></a><h3>算法</h3>
+<ul><li><a href="http://www.music-ir.org/mirex/2005/index.php/Audio_Melody_Extraction" class='external text' title="http://www.music-ir.org/mirex/2005/index.php/Audio Melody Extraction" rel="nofollow">MIREX2005_Melody_Extraction</a>
+</li><li><a href="http://www.music-ir.org/mirex/2006/index.php/Audio_Music_Similarity_and_Retrieval" class='external text' title="http://www.music-ir.org/mirex/2006/index.php/Audio Music Similarity and Retrieval" rel="nofollow">MIREX2006_Music_Similarity_and_Retrieval</a>
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E4.B9.90.E7.90.86"></a><h3>乐理</h3>
+<ul><li><a href="http://www.jjtm.net/blog/user1/54/archives/2007/626.html" class='external text' title="http://www.jjtm.net/blog/user1/54/archives/2007/626.html" rel="nofollow">噪声与振动</a>
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E5.B8.B8.E8.A7.81.E9.9F.B3.E4.B9.90.E6.96.87.E4.BB.B6.E6.A0.BC.E5.BC.8F"></a><h3>常见音乐文件格式</h3>
+<ol><li><a href="../../../w/a/v/WAV_76ba.html" title="WAV">WAV</a>
+</li></ol>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E5.8F.82.E8.80.83.E8.AE.BA.E6.96.87"></a><h2>参考论文</h2>
+<pre>注:“【阅】”表示看后有所收获的论文。
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name=".E6.A0.B8.E5.BF.83.E8.AE.BA.E6.96.87"></a><h3>核心论文</h3>
+<ol><li>【阅】<a href="http://ieeexplore.ieee.org/iel5/10376/4156181/04156215.pdf?tp=&amp;isnumber=4156181&amp;arnumber=4156215" class='external text' title="http://ieeexplore.ieee.org/iel5/10376/4156181/04156215.pdf?tp=&amp;isnumber=4156181&amp;arnumber=4156215" rel="nofollow">Melody Transcription From Music Audio Approaches and Evaluation</a>
+</li></ol>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name="12.10"></a><h3>12.10</h3>
+<ol><li>【阅】基于内容的音频与音乐分析综述
+</li><li>【阅】音频信息检索技术的发展及应用
+</li><li>基于语音识别的发音学习技术
+</li><li>基于内容的音频音乐自动分析和检索技术研究
+</li><li>一种新型的音乐信息检索索引方法及其应用
+</li><li>音乐检索中哼唱找歌的新方法
+</li><li>基于动态分割和加权综合匹配的音乐检索算法
+</li><li>基于语音MFCC特征的改进算法
+</li></ol>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name="12.14"></a><h3>12.14</h3>
+<ol><li>几种音乐识别算法比较
+</li><li>乐曲节拍的实时自动识别研究与系统开发
+</li></ol>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑</a>]</div><a name="12.19"></a><h3>12.19</h3>
+<ol><li>Evolutionary Composition of Music with Learned Melody Evaluation
+</li><li>【阅】一种新的音乐旋律提取方法及其应用
+</li></ol>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html">http://dns.cs.hit.edu.cn../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html</a>"</p>
+
+<p>本页面已经被浏览61次。 This page was last modified 08:33 2008年2月29日 by <a href="../../../d/y/i/User%7EDyingcow.html" title="User:Dyingcow">刘奭</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑本页</a></strong> |
+<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/Talk%7E%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" class="new" title="Talk:主旋律提取">讨论本页</a> |
+<a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览61次。 This page was last modified 08:33 2008年2月29日 by <a href="../../../d/y/i/User%7EDyingcow.html" title="User:Dyingcow">刘奭</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">编辑本页</a></strong>
+<br /><a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/Talk%7E%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" class="new" title="Talk:主旋律提取">讨论本页</a>
+<br /><a href="../../../%E4%B8%BB/%E6%97%8B/%E5%BE%8B/%E4%B8%BB%E6%97%8B%E5%BE%8B%E6%8F%90%E5%8F%96.html" title="主旋律提取">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393228.48 secs. -->
+</body></html>

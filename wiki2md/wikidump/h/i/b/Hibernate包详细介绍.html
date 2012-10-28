@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Hibernate包详细介绍 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../h/i/b/Hibernate%E5%8C%85%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D.html" title="Hibernate包详细介绍">编辑本页</a> |
+<a href="../../../h/i/b/Hibernate%E5%8C%85%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D.html" title="Hibernate包详细介绍">较早版本</a><p class='subtitle'><a href="../../../h/i/b/Hibernate%E5%8C%85%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Hibernate包详细介绍</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>Hibernate一共包括了23个jar包　　
+</p>
+<ul><li>hibernate2.jar:
+</li></ul>
+<p>　　Hibernate的库，没有什么可说的，必须使用的jar包
+</p>
+<ul><li>cglib-asm.jar:
+</li></ul>
+<p>　　CGLIB库，Hibernate用它来实现PO字节码的动态生成，非常核心的库，必须使用的jar包
+</p>
+<ul><li>dom4j.jar:
+</li></ul>
+<p>　　dom4j是一个Java的XML API，类似于jdom，用来读写XML文件的。dom4j是一个非常非常优秀的Java XML API，具有性能优异、功能强大和极端易用使用的特点，同时它也是一个开放源代码的软件，可以在SourceForge上找到它。在IBM developerWorks上面可以找到一篇文章，对主流的Java XML API进行的性能、功能和易用性的评测，dom4j 无论在那个方面都是非常出色的。我早在将近两年之前就开始使用dom4j，直到现在。如今你可以看到越来越多的Java软件都在使用dom4j来读写 XML，特别值得一提的是连Sun的JAXM也在用dom4j。这是必须使用的jar包，Hibernate用它来读写配置文件。
+</p>
+<ul><li>odmg.jar:
+</li></ul>
+<p>　　ODMG是一个ORM的规范，Hibernate实现了ODMG规范，这是一个核心的库，必须使用的jar包。
+</p>
+<ul><li>commons-collections.jar：
+</li></ul>
+<p>　　Apache Commons包中的一个，包含了一些Apache开发的集合类，功能比java.util.*强大。必须使用的jar包。
+</p>
+<ul><li>commons-beanutils.jar：
+</li></ul>
+<p>　　Apache Commons包中的一个，包含了一些Bean工具类类。必须使用的jar包。
+</p>
+<ul><li>commons-lang.jar:
+</li></ul>
+<p>　　Apache Commons包中的一个，包含了一些数据类型工具类，是java.lang.*的扩展。必须使用的jar包。
+</p>
+<ul><li>commons-logging.jar:
+</li></ul>
+<p>　　Apache Commons包中的一个，包含了日志功能，必须使用的jar包。这个包本身包含了一个Simple Logger，但是功能很弱。在运行的时候它会先在CLASSPATH找log4j，如果有，就使用log4j，如果没有，就找JDK1.4带的 java.util.logging，如果也找不到就用Simple Logger。commons-logging.jar的出现是一个历史的的遗留的遗憾，当初Apache极力游说Sun把log4j加入JDK1.4，然而JDK1.4项目小组已经接近发布JDK1.4产品的时间了，因此拒绝了Apache的要求，使用自己的java.util.logging，这个包的功能比log4j差的很远，性能也一般。
+</p><p>　　后来Apache就开发出来了commons-logging.jar用来兼容两个 logger。因此用commons-logging.jar写的log程序，底层的Logger是可以切换的，你可以选择log4j， java.util.logging或者它自带的Simple Logger。不过我仍然强烈建议使用log4j，因为log4j性能很高，log输出信息时间几乎等于System.out，而处理一条log平均只需要5us。你可以在Hibernate的src目录下找到Hibernate已经为你准备好了的log4j的配置文件，你只需要到Apache 网站去下载log4j就可以了。commons-logging.jar也是必须的jar包。 (本人看了一下Hibernate的源代码，Hibernate底层是使用 common-logging的，并没有使用Log4J,很多Hibernate  Sample中提供的log4j.properties文件其实Hibernate 本身是不用的。)
+</p><p>　　使用Hibernate必须的jar包就是以上的这几个，剩下的都是可选的。
+</p>
+<ul><li>ant.jar:
+</li></ul>
+<p>　　Ant编译工具的jar包，用来编译Hibernate源代码的。如果你不准备修改和编译Hibernate源代码，那么就没有什么用，可选的jar包
+</p>
+<ul><li>optional.jar：
+</li></ul>
+<p>　　Ant的一个辅助包。
+</p>
+<ul><li>c3p0.jar：
+</li></ul>
+<p>　　C3PO是一个数据库连接池，Hibernate可以配置为使用C3PO连接池。如果你准备用这个连接池，就需要这个jar包。
+</p>
+<ul><li>proxool.jar：
+</li></ul>
+<p>　　也是一个连接池，同上。
+</p>
+<ul><li>commons-pool.jar, commons-dbcp.jar:
+</li></ul>
+<p>　　DBCP数据库连接池，Apache的Jakarta组织开发的，Tomcat4的连接池也是DBCP。
+</p><p>　　实际上Hibernate自己也实现了一个非常非常简单的数据库连接池，加上上面3个，你实际上可以在Hibernate上选择4种不同的数据库连接池，选择哪一个看个人的偏好，不过DBCP可能更通用一些。另外强调一点，如果在EJB中使用Hibernate，一定要用App Server的连接池，不要用以上4种连接池，否则容器管理事务不起作用。
+</p>
+<ul><li>connector.jar:
+</li></ul>
+<p>　　JCA 规范，如果你在App Server上把Hibernate配置为Connector的话，就需要这个jar。不过实际上一般App Server肯定会带上这个包，所以实际上是多余的包。
+</p>
+<ul><li>jaas.jar:
+</li></ul>
+<p>　　JAAS是用来进行权限验证的，已经包含在JDK1.4里面了。所以实际上是多余的包。
+</p>
+<ul><li>jcs.jar：
+</li></ul>
+<p>　　如果你准备在Hibernate中使用JCS的话，那么必须包括它，否则就不用。
+</p>
+<ul><li>jdbc2_0-stdext.jar:
+</li></ul>
+<p>　　JDBC2.0的扩展包，一般来说数据库连接池会用上它。不过App Server都会带上，所以也是多余的。
+</p>
+<ul><li>jta.jar：
+</li></ul>
+<p>　　JTA规范，当Hibernate使用JTA的时候需要，不过App Server都会带上，所以也是多余的。
+</p>
+<ul><li>junit.jar:
+</li></ul>
+<p>　　Junit包，当你运行Hibernate自带的测试代码的时候需要，否则就不用。
+</p>
+<ul><li>xalan.jar, xerces.jar, xml-apis.jar:
+</li></ul>
+<p>　　Xerces是XML解析器，Xalan是格式化器，xml-apis实际上是JAXP。一般App Server都会带上，JDK1.4也包含了解析器，不过不是Xerces，是Crimson，效率比较差，不过Hibernate用XML只不过是读取配置文件，性能没什么紧要的，所以也是多余的。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../h/i/b/Hibernate%E5%8C%85%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D.html">http://dns.cs.hit.edu.cn../../../h/i/b/Hibernate%E5%8C%85%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D.html</a>"</p>
+
+<p>本页面已经被浏览5次。 This page was last modified 09:55 2006年11月16日 by <a href="../../../c/a/o/User%7ECaoliang.html" title="User:Caoliang">曹亮</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../h/i/b/Hibernate%E5%8C%85%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D.html" title="Hibernate包详细介绍">编辑本页</a></strong> |
+<a href="../../../h/i/b/Talk%7EHibernate%E5%8C%85%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D.html" class="new" title="Talk:Hibernate包详细介绍">讨论本页</a> |
+<a href="../../../h/i/b/Hibernate%E5%8C%85%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D.html" title="Hibernate包详细介绍">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览5次。 This page was last modified 09:55 2006年11月16日 by <a href="../../../c/a/o/User%7ECaoliang.html" title="User:Caoliang">曹亮</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../h/i/b/Hibernate%E5%8C%85%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D.html" title="Hibernate包详细介绍">编辑本页</a></strong>
+<br /><a href="../../../h/i/b/Talk%7EHibernate%E5%8C%85%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D.html" class="new" title="Talk:Hibernate包详细介绍">讨论本页</a>
+<br /><a href="../../../h/i/b/Hibernate%E5%8C%85%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D.html" title="Hibernate包详细介绍">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392939.51 secs. -->
+</body></html>

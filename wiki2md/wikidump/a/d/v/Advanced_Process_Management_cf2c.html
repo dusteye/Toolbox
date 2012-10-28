@@ -1,0 +1,690 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Advanced Process Management - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑本页</a> |
+<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">较早版本</a><p class='subtitle'><a href="../../../a/d/v/Advanced_Process_Management_cf2c.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Advanced Process Management</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#.E9.AB.98.E7.BA.A7.E8.BF.9B.E7.A8.8B.E7.AE.A1.E7.90.86"><span class="tocnumber">1</span> <span class="toctext">高级进程管理</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E8.BF.9B.E7.A8.8B.E8.B0.83.E5.BA.A6"><span class="tocnumber">1.1</span> <span class="toctext">进程调度</span></a>
+<ul>
+<li class='toclevel-3'><a href="#.E5.A4.A7O.E8.AE.B0.E6.B3.95"><span class="tocnumber">1.1.1</span> <span class="toctext">大O记法</span></a></li>
+<li class='toclevel-3'><a href="#.E6.97.B6.E9.97.B4.E7.89.87"><span class="tocnumber">1.1.2</span> <span class="toctext">时间片</span></a></li>
+<li class='toclevel-3'><a href="#I.2FO_.E7.BA.A6.E6.9D.9F.E8.BF.9B.E7.A8.8B_Vs.__.E5.A4.84.E7.90.86.E5.99.A8.E7.BA.A6.E6.9D.9F.E8.BF.9B.E7.A8.8B"><span class="tocnumber">1.1.3</span> <span class="toctext">I/O 约束进程 Vs.  处理器约束进程</span></a></li>
+<li class='toclevel-3'><a href="#.E6.8A.A2.E5.8D.A0.E8.B0.83.E5.BA.A6"><span class="tocnumber">1.1.4</span> <span class="toctext">抢占调度</span></a></li>
+<li class='toclevel-3'><a href="#.E7.BA.BF.E7.A8.8B"><span class="tocnumber">1.1.5</span> <span class="toctext">线程</span></a></li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#.E8.AE.A9.E5.87.BA.E5.A4.84.E7.90.86.E5.99.A8"><span class="tocnumber">1.2</span> <span class="toctext">让出处理器</span></a>
+<ul>
+<li class='toclevel-3'><a href="#.E5.90.88.E7.90.86.E4.BD.BF.E7.94.A8"><span class="tocnumber">1.2.1</span> <span class="toctext">合理使用</span></a></li>
+<li class='toclevel-3'><a href="#.E8.AE.A9.E5.87.BA.E5.A4.84.E7.90.86.E5.99.A8.E6.96.B9.E6.B3.95.E7.9A.84.E8.BF.87.E5.8E.BB.E5.92.8C.E7.8E.B0.E7.8A.B6"><span class="tocnumber">1.2.2</span> <span class="toctext">让出处理器方法的过去和现状</span></a></li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#.E8.BF.9B.E7.A8.8B.E4.BC.98.E5.85.88.E7.BA.A7"><span class="tocnumber">1.3</span> <span class="toctext">进程优先级</span></a>
+<ul>
+<li class='toclevel-3'><a href="#nice.28.29"><span class="tocnumber">1.3.1</span> <span class="toctext">nice()</span></a></li>
+<li class='toclevel-3'><a href="#getpriority.28.29.E5.92.8Csetpriority.28.29"><span class="tocnumber">1.3.2</span> <span class="toctext">getpriority()和setpriority()</span></a></li>
+<li class='toclevel-3'><a href="#I.2FO.E4.BC.98.E5.85.88.E7.BA.A7"><span class="tocnumber">1.3.3</span> <span class="toctext">I/O优先级</span></a></li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#.E5.A4.84.E7.90.86.E5.99.A8.E4.BA.B2.E5.92.8C.E5.BA.A6"><span class="tocnumber">1.4</span> <span class="toctext">处理器亲和度</span></a>
+<ul>
+<li class='toclevel-3'><a href="#sched_getaffinity.28.29_.E5.92.8Csched_setaffinity.28.29"><span class="tocnumber">1.4.1</span> <span class="toctext">sched getaffinity() 和sched setaffinity()</span></a></li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#.E5.AE.9E.E6.97.B6.E7.B3.BB.E7.BB.9F"><span class="tocnumber">1.5</span> <span class="toctext">实时系统</span></a>
+<ul>
+<li class='toclevel-3'><a href="#.E8.BD.AF.E7.A1.AC.E5.AE.9E.E6.97.B6.E7.B3.BB.E7.BB.9F"><span class="tocnumber">1.5.1</span> <span class="toctext">软硬实时系统</span></a></li>
+<li class='toclevel-3'><a href="#.E5.BB.B6.E6.97.B6.EF.BC.8C.E6.8A.96.E5.8A.A8.E5.92.8C.E6.88.AA.E6.AD.A2.E6.9C.9F.E9.99.90"><span class="tocnumber">1.5.2</span> <span class="toctext">延时，抖动和截止期限</span></a></li>
+<li class='toclevel-3'><a href="#Linux.E7.9A.84.E5.AE.9E.E6.97.B6.E6.94.AF.E6.8C.81"><span class="tocnumber">1.5.3</span> <span class="toctext">Linux的实时支持</span></a></li>
+<li class='toclevel-3'><a href="#Linux_.E8.B0.83.E5.BA.A6.E7.AD.96.E7.95.A5.E5.92.8C.E4.BC.98.E5.85.88.E7.BA.A7"><span class="tocnumber">1.5.4</span> <span class="toctext">Linux 调度策略和优先级</span></a>
+<ul>
+<li class='toclevel-4'><a href="#.E2.80.9D.E5.85.88.E8.BF.9B.E5.85.88.E5.87.BA.E2.80.9D_.E7.AD.96.E7.95.A5"><span class="tocnumber">1.5.4.1</span> <span class="toctext">”先进先出” 策略</span></a></li>
+<li class='toclevel-4'><a href="#.E5.BE.AA.E7.8E.AF.E7.AD.96.E7.95.A5"><span class="tocnumber">1.5.4.2</span> <span class="toctext">循环策略</span></a></li>
+<li class='toclevel-4'><a href="#.E6.99.AE.E9.80.9A.E8.B0.83.E5.BA.A6.E7.AD.96.E7.95.A5"><span class="tocnumber">1.5.4.3</span> <span class="toctext">普通调度策略</span></a></li>
+<li class='toclevel-4'><a href="#.E6.89.B9.E8.B0.83.E5.BA.A6.E7.AD.96.E7.95.A5"><span class="tocnumber">1.5.4.4</span> <span class="toctext">批调度策略</span></a></li>
+<li class='toclevel-4'><a href="#.E8.AE.BE.E7.BD.AELinux.E8.B0.83.E5.BA.A6.E7.AD.96.E7.95.A5"><span class="tocnumber">1.5.4.5</span> <span class="toctext">设置Linux调度策略</span></a></li>
+</ul>
+</li>
+<li class='toclevel-3'><a href="#.E8.AE.BE.E7.BD.AE.E8.B0.83.E5.BA.A6.E5.8F.82.E6.95.B0"><span class="tocnumber">1.5.5</span> <span class="toctext">设置调度参数</span></a>
+<ul>
+<li class='toclevel-4'><a href="#.E9.94.99.E8.AF.AF.E7.A0.81"><span class="tocnumber">1.5.5.1</span> <span class="toctext">错误码</span></a></li>
+<li class='toclevel-4'><a href="#.E7.A1.AE.E5.AE.9A.E6.9C.89.E6.95.88.E4.BC.98.E5.85.88.E7.BA.A7.E7.9A.84.E8.8C.83.E5.9B.B4"><span class="tocnumber">1.5.5.2</span> <span class="toctext">确定有效优先级的范围</span></a></li>
+</ul>
+</li>
+<li class='toclevel-3'><a href="#sched_rr_get_interval.28.29"><span class="tocnumber">1.5.6</span> <span class="toctext">sched_rr_get_interval()</span></a>
+<ul>
+<li class='toclevel-4'><a href="#.E9.94.99.E8.AF.AF.E7.A0.81_2"><span class="tocnumber">1.5.6.1</span> <span class="toctext">错误码</span></a></li>
+</ul>
+</li>
+<li class='toclevel-3'><a href="#.E5.85.B3.E4.BA.8E.E5.AE.9E.E6.97.B6.E8.BF.9B.E7.A8.8B.E7.9A.84.E4.B8.80.E4.BA.9B.E6.8F.90.E9.86.92"><span class="tocnumber">1.5.7</span> <span class="toctext">关于实时进程的一些提醒</span></a></li>
+<li class='toclevel-3'><a href="#.E7.A1.AE.E5.AE.9A.E6.80.A7"><span class="tocnumber">1.5.8</span> <span class="toctext">确定性</span></a>
+<ul>
+<li class='toclevel-4'><a href="#.E6.95.B0.E6.8D.AE.E6.95.85.E9.9A.9C.E9.A2.84.E6.B5.8B.E5.92.8C.E5.86.85.E5.AD.98.E9.94.81.E5.AE.9A"><span class="tocnumber">1.5.8.1</span> <span class="toctext">数据故障预测和内存锁定</span></a></li>
+<li class='toclevel-4'><a href="#CPU_.E4.BA.B2.E5.92.8C.E5.BA.A6.E5.92.8C.E5.AE.9E.E6.97.B6.E8.BF.9B.E7.A8.8B"><span class="tocnumber">1.5.8.2</span> <span class="toctext">CPU 亲和度和实时进程</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#.E8.B5.84.E6.BA.90.E9.99.90.E5.88.B6"><span class="tocnumber">1.6</span> <span class="toctext">资源限制</span></a>
+<ul>
+<li class='toclevel-3'><a href="#.E9.99.90.E5.88.B6.E5.88.97.E8.A1.A8"><span class="tocnumber">1.6.1</span> <span class="toctext">限制列表</span></a>
+<ul>
+<li class='toclevel-4'><a href="#.E9.BB.98.E8.AE.A4.E9.99.90.E5.88.B6"><span class="tocnumber">1.6.1.1</span> <span class="toctext">默认限制</span></a></li>
+</ul>
+</li>
+<li class='toclevel-3'><a href="#.E8.8E.B7.E5.8F.96.E5.92.8C.E8.AE.BE.E7.BD.AE.E8.B5.84.E6.BA.90.E9.99.90.E5.88.B6"><span class="tocnumber">1.6.2</span> <span class="toctext">获取和设置资源限制</span></a>
+<ul>
+<li class='toclevel-4'><a href="#.E9.94.99.E8.AF.AF.E7.A0.81_3"><span class="tocnumber">1.6.2.1</span> <span class="toctext">错误码</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E9.AB.98.E7.BA.A7.E8.BF.9B.E7.A8.8B.E7.AE.A1.E7.90.86"></a><h1>高级进程管理</h1>
+<p>在第五章，我们介绍了进程的基本概念，讨论了创建、控制和销毁进程的内核接口。基于这些知识，本章将首先讨论Linux 进程调度器及其调度算法，然后描述高级进程管理接口。这些系统调用控制进程的调度语义和行为，从而影响调度器为实现应用或者用户特定需求所作出的决策。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E8.BF.9B.E7.A8.8B.E8.B0.83.E5.BA.A6"></a><h2>进程调度</h2>
+<p>进程调度器是内核中决定哪个进程可以运行的组件，换句话说，进程调度器简称—— 调度器—— 是把有限的处理器资源分配给进程的内核子系统。在作出决策的过程中，调度器既要最大化处理器效率，又要让多个进程同时运行、互不影响。
+</p><p>本章，我们会着重讨论“就绪进程”*。它最重要的特征是该进程是非阻塞的。进行用户交互、大量读写文件、响应I/O 和网络事件的进程会花费大量时间来等待资源可用，因此在相当长的时间内无法转为就绪状态(长是相对于指令运行时间而言)，因此就绪进程首先应该是非阻塞的。一个就绪进程还必须至少有部分“时间片” (调度器分配给进程的运行时间)。内核用一个就绪队列维护所有的就绪进程，一旦某进程耗光它的时间片，内核就将其移出队列，直到所有就绪进程都耗光时间片才考虑将其放回队列。
+</p><p>如果只有一个就绪进程(甚至一个也没有)，调度器就没有什么意义。只有在进程数多于处理器时候，调度器才能体现其价值。在这种情况下，当某些进程运行时显然其他进程会处于等待状态；决定哪个进程运行，何时运行，运行多长时间也就成了调度器的基本责任。
+</p><p>一个操作系统能在单处理机上交错地运行多个进程，让人感到似乎同时运行多个进程，就称该操作系统是“多任务”的。在多处理机上，多任务操作系统允许进程在不同处理器上并行执行。非多任务操作系统，比如DOS，一次只能运行一个任务。
+</p><p>多任务操作系统分为两大类：协同式和抢占式。Linux 实现了后一种形式的多任务，调度器可以要求一个进程停止运行，处理器转而运行另一个进程。这种中止正在运行的进程的行为称做抢占，类似的，进程在被抢占前所运行的时间称之为进程时间片(得名于调度器分配给每个就绪进程的一小片时间)。
+</p><p>在协同多任务系统中，一个进程持续运行直到它自发停止。我们称进程自发停止的行为为让出。理想情况下，会经常发生进程让出，但操作系统绝不可强制要求其让出。因此，一个拙劣的或损坏的程序可能运行很长时间，甚至导致整个系统死掉。由于该方法的缺陷，现代操作系统几乎都采用抢占多任务机制，Linux 也不例外。
+</p><p>2.5 内核引入的O(1) 进程调度器，是Linux 调度*的核心。Linux 调度算法采用抢占多任务机制，支持多处理器，处理器亲和度，非一致内存访问(NUMA)，多线程，实时进程和用户自定义优先级等特性。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E5.A4.A7O.E8.AE.B0.E6.B3.95"></a><h3>大O记法</h3>
+<p>O(1) 是大 O 记法的一个例子，常用来表示算法的复杂性和可扩展性。形
+式地定义：
+略图
+也就是说，一些算法的代价，以 f 表示，只要 x 大于某个初始值 x1， f就一定小于等于 g 乘上一个常数，即 g 大于等于 f， g 是 f 的上界。O(1) 也就表明解决问题的代价小于常数 c，这就带来极好的保证：无论系统中有多少进程， Linux 进程调度器表现如一。对于调度器来说，选择一个新进程来运行至少需要迭代一次进程队列，因而 O(1) 算法对性能非常重要。在稍简单些的调度器中 (包括以前版本的 Linux 调度器)，随着进程数量
+的增长，进程队列的迭代会成为潜在的瓶颈。即便在最好情况下，也会给进程调度带来不确定性。
+</p><p>Linux 调度器，在常数时间内运行，不会受到其他因素影响，就没有这样的瓶颈。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E6.97.B6.E9.97.B4.E7.89.87"></a><h3>时间片</h3>
+<p>Linux 分配给进程的时间片长短对于系统行为和性能非常重要。如果时间片太长，进程会等待很长时间才能运行，减小了运行的并行性，用户会察觉到明显的延迟；相反的，时间片太短，大量时间会花费在进程调度上，程序的时间局部性等也不能得到保证。
+</p><p>因而，确定合适的时间片绝非易事。一些系统给予进程长时间片，希望最大化系统吞吐率和整体表现。另一些系统给予较短的时间片，希望获得优秀的交互性能。我们将看到， Linux 通过动态分配进程时间片，期望在两方面都做到最好。
+</p><p>注意: 进程不一定要在一次运行中耗光所有时间片。一个被分配 100ms时间片的进程，可能运行 20ms 就因为等待键盘输入等资源而阻塞。此时，调度器就会临时地把该进程移出就绪队列；当资源可用后，比如键盘缓冲区不为空，调度器会激活进程。进程会继续运行，耗光剩下的 80ms 或者又一次阻塞。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name="I.2FO_.E7.BA.A6.E6.9D.9F.E8.BF.9B.E7.A8.8B_Vs.__.E5.A4.84.E7.90.86.E5.99.A8.E7.BA.A6.E6.9D.9F.E8.BF.9B.E7.A8.8B"></a><h3>I/O 约束进程 Vs.  处理器约束进程</h3>
+<p>持续地消耗所有可用时间片的进程称为“处理器约束进程”。这类进程渴望 CPU 时间，消耗掉调度器分配的全部时间。最简单的例子就是无限循环，其他的例子包括科学计算，数学演算和图像处理。
+</p><p>另一方面，多数时间处于等待资源的阻塞状态的进程称为“I/O 约束进程”。 I/O 约束进程经常发起和等待文件 I/O，阻塞在键盘输入，或者用户移动鼠标。 I/O 阻塞程序的例子包括文件实用程序，比如 cp 或者 mv，它们除了请求内核执行 I/O 操作外，几乎什么也不做；还包括 GUI 应用程序，大多数时候都在等待用户输入。
+</p><p>处理器约束程序和I/O 约束程序得益于调度器对于不同程序类型所采用的不同行为。处理器约束程序得到尽可能长的时间片，从而最大化缓存命中率(时间局部性所致)，尽快完成任务。相反地， I/O 约束程序不需要长时间片，因为它们一般在发出I/O 请求和阻塞在内核资源前只会运行很短的一段时间。然而，I/O 约束程序也能从调度器的持久关注中获益。被唤醒地越快，可调度的I/O 请求越多，程序越能够充分地利用系统硬件。更进一步，如果一个在等待用户输入的程序被调度的速度越快，给用户无缝运行的感觉越明显。
+</p><p>平衡处理器约束程序和I/O 约束程序的不同需要绝非易事。Linux 调度器试图识别和优先对待I/O 约束程序：给频繁I/O 程序增加优先级，处理器约束程序减少优先级。
+</p><p>实际上，很多应用程序是处理器约束和I/O 约束的混合体。音频视频解码编码就是一个好例子，许多游戏也是如此。因此对于一个给定程序，不总是能够判定它的倾向，在任意时间，进程都可能有不同表现。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E6.8A.A2.E5.8D.A0.E8.B0.83.E5.BA.A6"></a><h3>抢占调度</h3>
+<p>当一个进程耗光时间片的时候，调度器会中止其运行，开始运行一个新的进程。如果没有其他的就绪进程，内核会给予所有耗光时间片的进程新的时间片，继续运行。这样，即使系统中有高优先级进程 --- 低优先级进程必须等待高优先级进程耗光时间片或者阻塞，所有的进程最终都会运行。这就明确描述了 Unix 调度中一条不起眼但是非常重要的原则: 所有的进程都必须运行。
+</p><p>如果没有就绪进程，内核会“运行”空闲进程 (idle process)。实际上，空闲进程既不是一个进程，也不能实际运行 (减少电池消耗)。空闲进程是为了简化调度算法和统计方便的特殊例程。空闲时间简化为运行空闲进程的时间。
+</p><p>在进程运行时，如果另一个高优先级进程就绪(也许先前此进程阻塞在键盘输入，用户正好敲入一个单词)，当前运行进程被直接中止，切换到高优先级进程。因此，不会有就绪却没有运行的较高优先级进程，系统中的运行进程一定
+是最高优先级的可运行进程。-
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E7.BA.BF.E7.A8.8B"></a><h3>线程</h3>
+<p>线程是进程中的运行单元，所有的进程都至少有一个线程。每一个线程都独自占有一个虚拟处理器：独自的寄存器组，指令计数器和处理器状态。虽然多数进程都只有一个线程，但是进程实际可以拥有很多线程，每个
+线程完成不同的任务，但是共享同一地址空间 (也就是同样的动态内存，映射文件，目标代码等等)，打开的文件队列和其他内核资源。
+</p><p>Linux 内核对于线程的观点独特而有趣。本质上，内核没有线程概念，对于 Linux 内核来说，所有的线程都是独立的进程。广义上说，两个无关进程和一个进程内的两个线程没有区别。内核把线程简化为共享资源的进程，也就是说，内核把一个进程的两个线程，简化为共享一系列内核资源 (地址空间，打开的文件列表等) 的两个不同进程。
+</p><p>多线程编程是基于线程模型的编程技术。Linux平台上 线程编程的最常用的是由 IEEE Std 1003.1c-1995(POSIX 1995 or POSIX.1c) 所标准化的API。开发者们称实现此 API 的库为pthreads”. 线程编程是一个复杂的课题，相关 API 也很艰深复杂。因而， pthreads 不在本书的讨论范围内，相反，本书把注意力放在建构 pthreads 库的那些接口上。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E8.AE.A9.E5.87.BA.E5.A4.84.E7.90.86.E5.99.A8"></a><h2>让出处理器</h2>
+<p>虽然 Linux 是一个抢占多任务操作系统，但是它也提供了一个系统调用来允许进程主动让出处理器，并通知调度器选择另一个进程来运行。
+</p>
+<pre># i n c l u d e  &lt;sched . h&gt;
+i n t   s c h e d  y i e l d   ( void )&nbsp;;
+</pre>
+<p>调用 sched yield() 函数将中断当前进程，运行一个新进程，就和内核主动抢占当前进程一样。注意，在多数情况下，系统中没有其他就绪进程，让出的进程会直接恢复运行。由于这种不确定性，以及人们会认为可以做更好的选择，所以这一系统调用并不经常使用。
+</p><p>调用成功返回 0，失败返回 -1，并设置“errno”。包括 Linux 在内的多数 Unix 系统上， sched yield() 不可能失败，因此总是返回 0。然而，一个
+严谨的程序员还是会检查返回值:
+</p>
+<pre>if ( s c h e d  y i e l d   ( ) )
+perror   ( s c h e d  y i e l d " )&nbsp;;
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E5.90.88.E7.90.86.E4.BD.BF.E7.94.A8"></a><h3>合理使用</h3>
+<p>在Linux 系统这样的抢占多任务系统中，很少有合理使用sched yield() 的机会。内核完全有能力作出最优化和最有效率的调度决策，这是因为，内核显然比一个独立的应用程序更有资格决定在何时抢占哪个进程，协同多任务和抢占多任务两种不同机制证实源于对此的不同理解。
+</p><p>那么为什么会有一个可以让进程要求对自身重新调度的系统调用呢？这取决于应用程序是否必须等待用户，硬件或者其他进程所触发的外部事件。比如说，如果一个进程必须等待另一个进程，那么“让出处理器，直到另一个进程完成”是非常直接想法。以一个消费者/ 生产者模型中简单的消费者实现为例，大概是这样:
+</p><p>幸运的是， Unix 程序员一般不需要这样编写代码。Unix 程序通常是事件驱动的，倾向于在消费者/生产者问题中使用阻塞机制(比如管道) 来代替sched yield()。这种情况下，消费者从管道读取数据，在必要的时候阻塞，直到数据可用。生产者接下来向管道写入新的可用数据。这就使用户空间进程摆脱了进程协同的责任，交给了内核；而对于内核来说，又可以用进程睡眠的方式来优化管理，并在需要的时候激活。一般来说， Unix 程序倾向于使用建立在可阻塞文件描述符基础上的事件驱动机制。
+</p><p>直到最近，我们的解决方案都需要恼人的sched yield(): 用户空间线程锁。当一个线程试图请求另一个线程已经拥有的锁的时候，该线程会让出处理器直到锁可用。在内核不支持用户空间锁的时候，这种方法最简单高效。然而，现代Linux 线程实现(新的POSIX线程库或NPTL) 引入了一个基于快速用户互斥锁的优化方案，即在内核中提供用户空间锁的支持。
+</p><p>sched yield() 的另一个应用是"变得更友好”(playing nicely): 一个处理器密集的程序可以不时调用sched yield() 来减少对系统的影响。尽管出发点不错，但是也有两个缺点。第一，内核能比一个独立进程作出更好的全局调度决策，因此，平滑系统操作的责任应该由调度器承担，而不是用户进程。对此，调度器也恰好有奖励I/O 密集程序，惩罚处理器密集程序的策略。第二，减轻处理器密集程序带来的负担，从而保证其他程序的运行，这是用户的责任，而不是应用程序。用户可以通过后面将讨论的”nice” 命令来对应用程序性能进行设置。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E8.AE.A9.E5.87.BA.E5.A4.84.E7.90.86.E5.99.A8.E6.96.B9.E6.B3.95.E7.9A.84.E8.BF.87.E5.8E.BB.E5.92.8C.E7.8E.B0.E7.8A.B6"></a><h3>让出处理器方法的过去和现状</h3>
+<p>在2.6 内核以前，调用sched yield() 效果不是很明显。如果有其他就绪进程，内核会运行该进程，并把当前进程放到就绪队列的末尾，短期内就会再次调度到此进程。当然也很有可能没有其他进程，那么当前进程继续运行。
+</p><p>2.6 内核做了调整，算法如下:
+</p><p>1. 进程是实时进程吗？如果是，将其放到就绪队列的末尾，返回(和以前一样)。如果不是，到下一步。(想了解实时进程，请阅读本章“实时系统”一节。)
+</p><p>2. 把该进程从就绪队列移出，放到到期进程队列中。也就是说，只有当所有就绪进程运行，耗光时间片后，该进程才能和所有的到期进程一道重新进入就绪队列。
+</p><p>3. 调度下一个就绪进程运行。
+因此，调用sched yield() 的实际效果就和进程耗光时间片一样，这不同于早期内核的处理，那时sched yield() 的效果很轻微(等同于“如果有一个进程就绪等
+待，运行它，然后回到我”)。
+</p><p>改变的原因之一是为了预防称之为“乒乓”的不合理情况发生。想象两个进程A和B ，都调用了sched yield()。假设他们俩是仅有的两个就绪进程(也可以有其他进程，但这些进程没有时间片)。如果是以前的sched yield()，内核都会轮流调度两个进程，每个进程都请求执行其他进程，直到两个进程的时间片都用光。我们可以花一个图表来描述内核的调度选择，大概是”A, B, A, B, A, B” 等等，因此得名“乒乓”。
+</p><p>2.6 内核就不会发生这种情况。当A 请求让出处理器的时候，调度器就会将它移出就绪队列。类似地， B 也会被移出。当没有就绪进程的时候，调度器当然不会考虑运行A 还是B, 也就防止了乒乓效应，允许其他进程获得处理器时间。
+</p><p>因此，当进程请求让出处理器的时候，它就应该是真的要让出处理器!
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E8.BF.9B.E7.A8.8B.E4.BC.98.E5.85.88.E7.BA.A7"></a><h2>进程优先级</h2>
+<p>本节讨论常用的非实时进程，实时进程需要不同的调度标准和独立的优先级系统，留到以后讨论。
+</p><p>Linux 不是随意地进行进程调度。进程都有一个影响他们何时运行，运行多久的优先级。在历史上， Unix把这个优先级称为nice value*，因为低优先级的进程往往允许其他进程分享更多的处理器时间，也就意味着该进程对系统的其他进程更加友好。
+</p><p>nice value是在进程运行的时候指定的， Linux 调度器基于这样的原则进行调度：高优先级的程序总是在低优先级的程序前运行。同时，优先级也指明了进程的时间片长度。
+</p><p>合法的优先级在-20 到19 之间，默认为0。有些让人疑惑的是，nice value 越低，优先级越高，时间片越长；相反，nice value 越高，优先级越低，时间片越短，增加一个进程的nice value意味着该进程对系统更友好。数字令人容易混淆。当我们说一个进程有高优先级的时候，我们认为该进程应该更快地开始运行，运行更长的时间，显然对系统的友好度更低。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name="nice.28.29"></a><h3>nice()</h3>
+<p>Linux 提供了获取和设置进程友好度的系统调用，最简单的就是nice():
+</p>
+<pre>#include &lt;unistd.h&gt;
+int nice (int inc);
+</pre>
+<p>成功调用nice() 将在现有优先级上增加inc，并返回新值。只有拥有CAP SYS NICE 能力(实际上，就是root 所有的进程) 才能够使用负值inc，减少nice value，增加优先级。因此，非root 进程只能降低优先级(增加nice value)。
+</p><p>出错时， nice() 返回-1, 但是-1 也可能是成功时的返回值，因此为了区别成功与否，在调用前应该对errno 置0，调用后检查。举例来说:
+</p>
+<pre>int ret;
+errno = 0;
+ret = nice (10); /* increase our nice by 10 */
+if (ret == -1 &amp;&amp; errno&nbsp;!=0)
+perror (”nice”);
+else
+printf (”nice value is now %d\n”, ret);
+</pre>
+<p>对于nice()， Linux 只会返回一种错误号: EPERM，表明进程试图提高优先级而又没有CAP_SYS_ NICE 能力。其他的系统还会在nice value超出范围的时候返回EINVAL，而Linux 会把非法的值放到对应的边界上。
+</p><p>传递参数0 给nice() 是获得当前优先级的简单方法:
+</p>
+<pre>printf(”nice value is currently %d\n”, nice (0));
+</pre>
+<p>通常，进程需要设定绝对的优先级而不是相对增量的时候，可以用下边的代码:
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name="getpriority.28.29.E5.92.8Csetpriority.28.29"></a><h3>getpriority()和setpriority()</h3>
+<p>更好的解决方案是用getpriority() 和setpriority() 系统调用，可以带来更多的控制能力，当然使用起来也更复杂：
+</p><p>两个函数作用于”which” 和”who” 指定的进程、进程组或者用户。其中“which“的取值为PRIO_PROCESS、PRIO_PGRP 或者PRIO_USER，对应
+地，“who”就说明了进程ID，进程组ID 或者用户ID。当“who”是0 的时候，分别是当前进程，当前进程组或者当前用户。
+</p><p>getpriority() 返回指定进程中的最高优先级(nice value最小)， setpriority() 则将所有进程的优先级都设为“prio“。同nice() 一样，只有拥有CAP SYS NICE 能力的进程能够提高一个进程的优先级(降低nice value)，更进一步地说，只有这样的进程才能够调整不属于当前用户的进程的优先级。
+</p><p>getpriority() 遇到错误的时候返回-1，当然也可能是成功的返回值，为了处理错误情况，程序员必须在调用前清空errorno 值。setpriority() 则不必如此，它总是成功返回0，错误返回-1。
+</p><p>下面是得到当前进程优先级的例子:
+</p><p>设置当前进程组所有进程优先级为10 的例子:
+</p><p>错误的时候，函数会设置errno 为以下几个值:
+</p><p>EACCESS 进程没有CAP SYS NICE 能力，却企图提高进程优先级。(仅适用于setpriority())
+</p><p>EINVAL ”which” 的值不在PRIO PROCESS, PRIO PGRP 或PRIO USER 之中。
+</p><p>EPERM 指定的进程有效用户ID 和调用进程有效用户ID 不一致，且调用进程没有CAP SYS NICE 能力。(仅适用于setpriority())
+</p><p>ESRCH 不存在符合“which”和“who”的进程。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name="I.2FO.E4.BC.98.E5.85.88.E7.BA.A7"></a><h3>I/O优先级</h3>
+<p>作为调整进程优先级的补充， Linux 还允许进程指定I/O 优先级。该值会影响进程I/O请求的相对优先级。内核I/O 调度器(参考第四章) 总是优先响应来自于高I/O 优先级的请求。
+</p><p>缺省情况下， I/O 调度器用进程优先级来决定I/O 优先级，因此，设置优先级将自动改变I/O 优先级。然而， Linux 内核还有两个系统调用来单独获取和设置I/O优先级:
+</p>
+<pre>int ioprio_get (int which, int who)
+int ioprio_set (int which, int who, int ioprio)
+</pre>
+<p>不幸地是，内核没有导出这两个系统调用， glibc 也没有提供用户空间接口。没有glibc 的支持，函数用起来是相当麻烦的。如果在未来glibc 开始支持的时候，接口有可能和系统调用命名不同。在这之前，有两种可移植的方法来操作进程I/O 优先级: 通过nice value，或者类似于”ionice*” 的程序（这些程序是util-linux软件包的一部分）。
+</p><p>不是所有的I/O 调度器都支持I/O 优先级，特别地， Complete Fair Queuing(CFQ) I/O 调度器支持，其他的标准调度器不支持。如果I/O 调度器不支持I/O
+优先级，相关系统调用被忽略而没有任何提示信息。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E5.A4.84.E7.90.86.E5.99.A8.E4.BA.B2.E5.92.8C.E5.BA.A6"></a><h2>处理器亲和度</h2>
+<p>Linux 可以在一个系统中使用多处理器，除了启动进程，支持多处理器的大多数工作都依赖于进程调度器。在对称多处理机(SMP) 上，进程调度器必须决定每个CPU 上运行哪个进程，因此，必须解决两个问题: 调度器必须充分利用系统的处理器，尽量避免在处理器空闲时，还有进程在等待运行。
+</p><p>然而，如果一个进程曾在某一CPU 上运行，进程调度器还应该尽量把它放在同一CPU 上，因为处理器间的进程迁移会带来性能损失。
+</p><p>最大的性能损失来自于迁移带来的缓存效应†。现代SMP 系统的设计中，每个处理器的缓存是各自独立的，也就是说，处理器并不共享缓存中的数据。因此，当进程迁移到新处理器上后写入新数据到内存时，原有处理器的缓存就过期了，这可能带来冲突。为了避免这种情况，缓存读入新的一块内存数据时标记其他缓存无效。因此，在任意时刻，任意数据仅在一个处理器的缓存中有效(假设该数据被缓存)。当进程迁移的时候，就有两方面的相关损失: 进程不再能访问缓存数据且原有缓存中的数据必须标记为无效。考虑到这些损失，进程调度器应该尽量让进程停留在一个处理器。
+</p><p>实际上，进程调度器的两个目标有潜在的冲突。如果一个处理器比其他处理器有大得多的进程负载— 或者更糟一些，一个处理器繁忙，其他处理器空闲— 重新调度进程到低负载CPU 上就是有意义的。决定何时移动进程来避免不平衡，称为负载均衡，对SMP 机器的性能至关重要。
+</p><p>处理器亲和度表明一个进程停留在同一处理器上的可能性。术语”软亲和度(soft affinity)” 表明调度器持续在同一处理器上调度进程的自然倾向，从上文的讨论可以看到，这是非常有价值的特性。Linux 调度器尽可能地这样做，只有当负载极端不平衡的时候，才考虑迁移进程；从而，最小化迁移的缓存效应，还能保证系统中的处理器负载基本平衡。
+</p><p>然而有些时候，用户或者应用程序需要保证进程和处理器间的绑定，这通常发生在进程非常依赖缓存‡，期望停留在同一处理器的情况下。术语”硬亲和度(hard affinity)” 描述了强制内核保证进程到处理器的绑定。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name="sched_getaffinity.28.29_.E5.92.8Csched_setaffinity.28.29"></a><h3>sched getaffinity() 和sched setaffinity()</h3>
+<p>进程从父进程继承处理器亲和度；在默认情况下，可能运行在任何CPU上。Linux 提供两个系统调用来获取和设定进程的硬亲和度‡:
+</p><p>调用sched getaffinity() 可以获得由”pid” 指定的进程的处理器亲和度，存储在cpu set t 类型中，可以用特殊的宏访问。如果“pid”是0，则得到当前进程的亲和度。“setsize”参数是cpu set t 的大小， glibc 用它来保证将来类型变化时依然具有兼容性。成功的时候，函数返回0；错误返回-1，并设置errno。例子如下:
+</p><p>在调用前，我们用CPU ZERO 将所有的二进制位清零，然后开始从0 到CPU SETSIZE 在set 上的迭代。注意， CPU SETSIZE 并不是set 的大小— 显然不能用它表示setsize— 而是set 可能表示的处理器数量。因为现在的实现用1 个二进制位表示一个处理器，所以CPU SETSIZE 比sizeof(cpu set t) 大得多。我们
+用CPU ISSET 检查系统中的处理器是否被绑定到这个进程， 0 表示否，非0 则已经绑定。
+</p><p>只有实际存在的处理器才能被绑定，因此，在两个处理器的系统上运行上述代码将得到如下结果:
+</p><p>从输出中可以看到，当前的CPU SETSIZE(从0 开始) 是1,024。
+</p><p>我们考虑CPU #0 和#1 这两个仅存的处理器，也许我们期望保证我们的进程仅仅运行在CPU #0 上。代码如下:
+</p><p>我们首先总是用CPU ZERO 清零set，然后用CPU SET 对CPU #0 置1, 用CPU CLR 对CPU #1 置0。已经清零了整个set，所以CPU CLR 清零是多余的，仅仅是出于完整性考虑。
+</p><p>在同样的两处理器系统上运行，得到了稍微不同的输出:
+</p><p>现在CPU #1 被禁止，该进程无论如何总是运行在CPU #0 上。
+</p><p>可能的四种errno如下:
+</p><p>EFAULT 提供的指针在进程的地址空间外或者无效。
+</p><p>EINVAL 系统中没有处理器被允许调度(仅适用于sched setaffinity())，或者setsize小于内核中表示处理器集合的数据结构的大小。
+</p><p>EPERM pid 指定的进程的所有者不是调用进程的有效用户ID，而且该进程没有CAP SYS NICE 能力。
+</p><p>ESRCH pid 指定的进程不存在。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E5.AE.9E.E6.97.B6.E7.B3.BB.E7.BB.9F"></a><h2>实时系统</h2>
+<p>在计算机领域，术语” 实时” 往往是混乱和误解的根源。如果一个系统受到操作期限（请求和响应之间的最小量和命令次数)的支配，就称该系统是“实时”的。几乎在所有汽车上都可以看到的” 防抱死(ABS)“系统就是一个类似的实时系统。在这个系统中，当踩下刹车的时候，计算机通过一秒内多次施加和释放最大刹车压力来调节刹车压力，以防止轮胎“锁死”，保证刹车性能，避免汽车失控。而系统的操作期限就是系统能够多快地响应轮胎“锁死”，能够多快地施加刹车压力。
+</p><p>包括Linux 在内的多数现代操作系统都提供了某种层次上的实时支持。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E8.BD.AF.E7.A1.AC.E5.AE.9E.E6.97.B6.E7.B3.BB.E7.BB.9F"></a><h3>软硬实时系统</h3>
+<p>实时系统分为软、硬实时系统两大类。硬实时系统对于操作时限要求非常严格，超过期限就会产生失败，后果很严重。另一方面，软实时系统却不认为超过期限是一个严重的错误。
+</p><p>硬实时系统很容易分辨: 防抱死系统、军用武器系统、医疗设备、信号处理都是比较典型的例子。软实时系统则不太容易分辨，一个比较明显的例子是视频处理程序: 如果超过了操作时限，用户会注意到一些质量下降，但是少量的丢帧还是可以忍受的。
+</p><p>很多应用都有强制的时间要求，如果不能满足要求就会损害用户体验，多媒体应用，游戏和网络程序都在其中。文字编辑器怎么样呢？如果程序不能很快地响应键盘输入，体验就很差，用户会感到愤怒或者有很深的挫败感。它是软实时应用吗？当然，当开发者写程序的时候，他们意识到必须及时地响应输入。但它构成一个强制的操作期限吗？软实时程序的定义说得很清楚。
+</p><p>和一般看法不同，实时系统并不一定快。实际上，在相同硬件条件下，实时系统更可能慢于非实时系统，原因在于，即使不考虑其他因素，支持实时进程也会增加系统的负担。类似的，软硬实时系统的区分也不等同于操作时限的长短。在检测到过量的中子流出的几秒钟内，如果SCRAM 系统不把控制杆放低一些的话，核反应堆就可能过热。这就是一个有漫长操作期限的硬实时系统。相反地，如果一个视频播放器不能够在100ms 内填充回放缓冲区，就会跳过一些帧或者发出结结巴巴的声音，这是一个对操作期限要求较高的软实时系统。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E5.BB.B6.E6.97.B6.EF.BC.8C.E6.8A.96.E5.8A.A8.E5.92.8C.E6.88.AA.E6.AD.A2.E6.9C.9F.E9.99.90"></a><h3>延时，抖动和截止期限</h3>
+<p>延时指请求发生直到响应运行的时间，如果延时小于等于操作期限，系统运行正常。在很多硬实时系统中，操作期限和延时是等价的，系统以固定的间隔在确定时刻处理请求。在软实时系统中，响应不需要那么精确，延时也会出现一些变化，响应只需要在截止期限内发生即可。
+</p><p>通常很难测量延时，因为测量它必须知道请求发生的时间。然而，给请求打上时间戳，往往影响及时响应的能力。因此，一般的测量延迟的方法都不这么处理；实际上，人们测量两次成功响应间的时间变化。连续事件中间的时间变化称之为抖动，而不是延时。
+</p><p>举例来说，考虑每10ms 一次的请求。为了测量系统性能，我们给响应打上时间戳，确保每10ms 响应一次，几次测量之间的偏差就是抖动。我们所测量的就是连续响应间的变化。不知道请求发生的时间，我们也就不知道请求和响应之间的时间差；即使知道请求每10ms 一次，我们也不知道第一次请求何时开始。或许更令人惊讶的是，很多测量延时的尝试都搞错了，实际得到了抖动而不是延时。可以肯定的是，抖动是一个有用的测量值，如此的测量也是非常有用的。Nevertheless, we must call a duck a duck!
+</p><p>硬实时系统经常出现一些非常小的抖动，因为它们一般在一段时间后(而不是在那段时间内)响应。系统追求零 抖动，从而使延时等于操作间隔。如果延时超过间隔，就会失败。
+</p><p>软实时系统对抖动更宽容。在这些系统中，理想情况下响应时间会在操作间隔内，通常快一些，有时慢一点。因此，抖动就可以完美地替代延时作为性能测量单位了。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name="Linux.E7.9A.84.E5.AE.9E.E6.97.B6.E6.94.AF.E6.8C.81"></a><h3>Linux的实时支持</h3>
+<p>Linux 通过IEEE Std 1003.1b-1993(缩写为POSIX 1993 或POSIX.1b) 定义的一系列系统调用来为应用程序提供软实时支持。
+</p><p>技术上讲， POSIX 标准并没有说明它提供的实时支持是软还是硬。实际上， POSIX 标准仅仅描述了一些基于优先级的调度策略，操作系统服从何种时间约束取决于操作系统设计者。
+</p><p>过去这些年， Linux 内核在不牺牲性能的情况下，取得了越来越好的实时支持，提供越来越小的延时和更加一致的抖动。主要原因在于改进延时能够帮助很多种应用程序，比如桌面应用和I/O 约束进程，而不仅仅是实时应用；改进对于Linux 在嵌入式和实时领域的成功也有很大贡献。
+</p><p>不幸的是，许多嵌入式和实时领域对Linux 内核的修改仅仅存在于定制的Linux 解决方案中，独立于主流的官方内核。其中的一些修改进一步减少延时，甚至达到硬实时系统的标准。下面的几节仅仅讨论官方内核接口和主流内核行为。幸运的是，大多数实时修改都利用POSIX 接口，因此，接下来的讨论也适用于修改版系统。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name="Linux_.E8.B0.83.E5.BA.A6.E7.AD.96.E7.95.A5.E5.92.8C.E4.BC.98.E5.85.88.E7.BA.A7"></a><h3>Linux 调度策略和优先级</h3>
+<p>Linux 对进程的调度行为依赖于进程的调度策略，也称之为调度类别。
+Linux 提供了两类实时调度策略作为对默认策略的补充。头文件&lt;sched.h&gt; 中
+的预定义宏表示各个策略: 分别为SCHED FIFO, SCHED RR 和SCHED OTHER。
+</p><p>每一个进程都有一个与nice value无关的静态优先级，对于普通程序，值为
+0；对于实时程序，它为1 到99。Linux 调度器始终选择最高优先级的进程运行
+(静态优先级数值最大的进程)。如果一个优先级为50 的进程在运行，此时一个
+优先级为51 的进程就绪，调度器会直接抢占当前进程，转而运行新到的高优先
+级进程。相反，如果一个优先级为49 的进程就绪，它会一直等待直到优先级为
+50 的进程阻塞才可运行。因为普通进程优先级为0，所以实时进程总会抢占非
+实时进程开始运行。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E2.80.9D.E5.85.88.E8.BF.9B.E5.85.88.E5.87.BA.E2.80.9D_.E7.AD.96.E7.95.A5"></a><h4>”先进先出” 策略</h4>
+<p>先进先出(FIFO) 策略是没有时间片的非常简单的实时策略。只要没有高优
+先级进程就绪， FIFO 类型进程就会持续运行，用宏SCHED FIFO 表示。
+</p><p>因为缺少时间片，它的操作策略相当简单:
+</p><p>• 一个就绪的FIFO 型进程如果是系统中的最高优先级进程就会一直保持运
+行。特别的，一旦FIFO 类进程就绪，它就会直接抢占普通进程。
+</p><p>• FIFO 型进程持续运行直到阻塞或者调用sched yield()，或者高优先级进
+程就绪。
+</p><p>• 当FIFO 型进程阻塞时，调度器将其移出就绪队列。当它恢复时，被插到
+相同优先级进程队列的末尾。因此，它必须等待高优先级或同等优先级进程停
+止运行。
+</p><p>• 当FIFO 型进程调用sched yield() 时，调度器将其放到同等优先级队列的
+末尾，因此，它必须等待其他同等优先级进程停止运行。如果没有其他同等优
+先级进程， sched yield() 则不起作用。
+</p><p>• 当FIFO 型进程被抢占，它在优先级队列中的位置不变。因此，一旦高优
+先级进程停止运行，被抢占的FIFO 型进程就会继续运行。
+</p><p>• 当一个进程变为FIFO 型或者进程静态优先级改变，它将会被放到相应优
+先级队列的头部。因此，新来的FIFO 型进程能够抢占同等优先级进程。
+</p><p>本质上，我们可以认为FIFO 型进程只要具有最高优先级，就能一直运
+行。比较有趣的部分在于同等优先级的FIFO 进程之间的关系。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E5.BE.AA.E7.8E.AF.E7.AD.96.E7.95.A5"></a><h4>循环策略</h4>
+<p>循环策略类似于FIFO 类型，仅仅引入了处理同等优先级进程的附加规
+则，以SCHED RR 表示。
+</p><p>调度器给每一个RR 型进程分配一个时间片。当RR 型进程耗光时间片
+时，调度器将其放到所在优先级队列的末尾；通过这种方式， RR 型进程间就能
+循环调度。如果只有一个进程在给定优先级上， RR 型就等同于FIFO 型，这种
+情况下，它耗尽时间片，然后直接继续运行。
+</p><p>我们可以认为RR 型进程等同于FIFO 型进程，仅仅是在时间片耗尽的时候
+停止运行，排到同等优先级队列的末尾。
+</p><p>选择SCHED FIFO 或者SCHED RR 仅仅取决于优先级内部的操作， RR 型
+的时间片仅在相同优先级的进程间相关。FIFO 进程会不停运行， RR 型进程会
+在给定优先级进程间调度，但是在高优先级进程运行时，低优先级进程都不会被调度。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E6.99.AE.E9.80.9A.E8.B0.83.E5.BA.A6.E7.AD.96.E7.95.A5"></a><h4>普通调度策略</h4>
+<p>SCHED OTHER 代表标准调度策略，适用于默认的非实时进程。所有这些
+进程的静态优先级都为0，因此，任意就绪FIFO 或RR 形进程都会抢占他们。
+</p><p>调度器利用先前讨论过的nice value来划分普通进程的优先级，静态优先级不
+受nice value的影响，始终为0。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E6.89.B9.E8.B0.83.E5.BA.A6.E7.AD.96.E7.95.A5"></a><h4>批调度策略</h4>
+<p>SCHED BATCH 是批调度或空闲调度的策略，它在某种程度上是实时调度
+的对立面: 这种类型的进程只在系统中没有其他就绪进程时才会运行，即使那些
+进程已经耗光时间片。这不同于低优先级进程，在那种情况下，进程最终会在
+高优先级进程耗光时间片后开始运行。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E8.AE.BE.E7.BD.AELinux.E8.B0.83.E5.BA.A6.E7.AD.96.E7.95.A5"></a><h4>设置Linux调度策略</h4>
+<p>进程可以通过sched getscheduler() 和sched setscheduler() 来操作Linux 调度
+策略:
+</p><p>对sched getscheduler() 的成功调用将返回由pid 指定进程的调度策略，如
+果pid 为0，则返回调用进程的调度策略。&lt;sched.h&gt; 中定义了一个整数表
+示调度策略:SCHED FIFO 表示先进先出策略， SCHED RR 表示循环策略，
+SCHED OTHER 表示普通进程。遇到错误，函数返回-1(-1 不是有效的调度策
+略)，同时适当地设置错误号。
+</p><p>用法很简单:
+</p><p>调用sched setscheduler() 将设置由pid 指定进程的调度策略，与策略有关的
+其他参数则由sp 确定。当pid 是0 时，进程将设置自己的策略和参数。函数成功
+返回0，失败返回-1 并设置错误号。
+</p><p>sched param 结构体中的有效字段依赖于操作系统支持的调度策略。
+SCHED RR 和SCHED FIFO 都至少需要一个字段sched priority 来指明静态优
+先级。SCHED OTHER 不使用任何字段，但未来的调度策略可能会用到。因
+此，可移植和合法的程序不应该对结构的布局作出任何假设。
+</p><p>设置进程调度策略和参数很简单:
+</p><p>代码设置调用进程采用循环调度策略，优先级为1。我们假设1 是有效优先
+级值— 技术上讲，并不必要。我们会在下一节讨论如何得到有效优先级取值范
+围。
+</p><p>设置除SCHED OTHER 外的调度策略都需要CAP SYS NICE 能力，因
+此，通常由root 用户运行实时进程。从2.6.12 内核开始， RLIMIT RTPRIO 资
+源限制允许非root 用户在一定范围内设置实时优先级。
+</p><p>错误码。错误时设置四种错误值:
+</p><p>EFAULT 指针sp 指向的内存区域非法或不可访问。
+</p><p>EINVAL policy 指定的调度策略无效，或者sp 值不适用于给定的策略(仅适用于
+sched setscheduler())。
+</p><p>EPERM 调用进程不具备必要的能力。
+</p><p>ESRCH pid 指定的进程不在运行状态。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E8.AE.BE.E7.BD.AE.E8.B0.83.E5.BA.A6.E5.8F.82.E6.95.B0"></a><h3>设置调度参数</h3>
+<p>POSIX 定义的sched getparam() 和sched setparam() 接口可以获取和设置已有
+调度策略的相关参数:
+</p><p>sched getscheduler() 接口仅仅返回调度策略， sched getparam() 则将pid 进程
+的调度参数存储在sp 中:
+</p><p>pid 为0，返回调用进程的参数。成功返回0，错误返回-1，并相应的设置errno。
+</p><p>因为sched setscheduler() 也能设置所有调度参数，所以sched setparam() 仅仅
+用来稍后修改参数:
+</p><p>函数成功则根据sp 设置pid所指定进程的调度参数，并返回0。失败，返回
+-1，相应地设置errno。
+</p><p>如果我们顺序运行上文两段代码，应该会看到这样的输出:
+</p><p>这个例子再一次假设1 是合法值，此时它确实是，但可移植的程序应该主
+动去确定这一点。稍后我们会看看如何检测有效优先级的范围。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E9.94.99.E8.AF.AF.E7.A0.81"></a><h4>错误码</h4>
+<p>函数可能设置四种错误码:
+</p><p>EFAULT 指针sp 指向的内存区域非法或不可访问。
+</p><p>EINVAL sp 值不适用于给定的策略(仅实用于sched getparam())。
+</p><p>EPERM 调用进程不具备必要的能力。
+</p><p>ESRCH pid 指定的进程不在运行状态。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E7.A1.AE.E5.AE.9A.E6.9C.89.E6.95.88.E4.BC.98.E5.85.88.E7.BA.A7.E7.9A.84.E8.8C.83.E5.9B.B4"></a><h4>确定有效优先级的范围</h4>
+<p>在上边的例子中，我们把优先级数值硬编码到函数调用中。POSIX并不能保证系统上确定的调度优先级可用，仅仅要求至少有32 阶优先级。在“Linux 调度策略和优先级”一节中我们曾提到Linux 为两类实时调度策略提供了1 到99 阶共99 级。一个清晰可移植的程序通常实现自己的优先级范围，然后将其映射到操作系统的范围上。比如，你需要四个不同的实时优先级，你可以动态地确定优先级范围再从中选择四个。
+</p><p>Linux 提供两个系统调用来获得优先级范围，一个返回最小值，另一个返回
+最大值:
+</p><p>成功执行， sched get priority min() 返回最小值，
+sched get priority max() 返回policy所关联策略的最大有效优先级。两个函数调用成功都返回0，调用失败返回-1, 唯一可能的错误是policy 值非法，此时错误号被设置
+为EINVAL。
+</p><p>用法很简单:
+</p><p>在标准Linux 系统上，代码运行得到:
+</p><p>此前讨论过，数值越大就意味着越高的优先级。下边的代码可以设置进程
+的相应策略的最高优先级:
+</p><p>程序一般都是获得系统的最小或最大值，然后按1 递增(比如max-1, max-2
+等等)，分配给指定的进程。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name="sched_rr_get_interval.28.29"></a><h3>sched_rr_get_interval()</h3>
+<p>如前所述， SCHED RR 进程除了拥有时间片外，基本和SCHED FIFO 进程相
+同。当SCHED RR 进程耗光时间片的时候，调度器将其放到同一优先级队列的
+末尾。通过这种方式，所有相同优先级的SCHED RR 进程循环运行。无论运行
+进程是否还有时间片，高优先级进程(包括同等或较高优先级的SCHED FIFO 进
+程) 总是会抢占它。
+</p><p>POSIX 定义了获得进程时间片长度的接口:
+</p><p>sched rr get interval() 这个糟糕命名的函数，对它的成功调用将把pid 指定
+进程的时间片存储在tp 指向的timespec 结构中，然后返回0；失败，函数返回
+-1，设置errno。
+</p><p>POSIX 规定这个函数只能工作于SCHED RR 进程，然而在Linux 上它
+可以获得任意进程的时间片长度。可移植应用必须假定函数仅能工作于循环策
+略，面向Linux 的程序可以作一些必要的拓展。例子如下:
+</p><p>如果进程是FIFO 类型，则tv sec 和tv nsec 都是0，代表无限长的时间
+片。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E9.94.99.E8.AF.AF.E7.A0.81_2"></a><h4>错误码</h4>
+<p>共有四种可能的错误码:
+</p><p>EFAULT 指针tp 指向的内存无效或者不可访问。
+</p><p>EINVAL pid 无效(比如pid 是负值)。
+</p><p>ESRCH pid 有效，但指向一个不存在的进程。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E5.85.B3.E4.BA.8E.E5.AE.9E.E6.97.B6.E8.BF.9B.E7.A8.8B.E7.9A.84.E4.B8.80.E4.BA.9B.E6.8F.90.E9.86.92"></a><h3>关于实时进程的一些提醒</h3>
+<p>因为实时进程的本质，开发者在开发和调试此类程序的时候应该特别慎
+重。如果一个实时程序仓促行事，可能会导致系统失去响应。只要没有高优
+先级程序，实时程序中任何处理器约束的循环(即任何不会阻塞的代码)都会永远地运行下去。
+</p><p>因此，设计实时程序需要小心和注意，这些有很高权限的程序很容易就使
+系统崩溃。下面是一些技巧和提醒:
+</p><p>• 切记任何处理器约束的循环，如果没有中断或者没有高优先级进程来打断它，在完成前都会一直运行。如果是无限循环，系统将失去响应。
+</p><p>• 因为实时进程运行会占有系统的所有资源，所以在设计的时候需要特别
+注意，不要过度损害系统其他部分的处理器时间。
+</p><p>• 小心忙等待。如果一个实时进程忙等待一个较低优先级进程占有的资
+源，该进程会永远处于忙等待状态。
+</p><p>• 当开发实时程序的时候，永远开着一个终端，运行一个更高优先级的进
+程。在紧急情况下，终端会保持响应，允许你杀死失控的进程。(当终端空闲等
+待输入的时候，不会影响其他实时进程。)
+</p><p>• util-linux 工具包中的chrt 实用程序可以使获取和设置实时进程属性更轻
+松。它可以简单地让任意程序运行在实时调度策略下，比如前述的终端，或者
+改变已有应用的实时优先级。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E7.A1.AE.E5.AE.9A.E6.80.A7"></a><h3>确定性</h3>
+<p>实时进程乐于看到确定性。在实时计算中，如果给予相同的输入，一个动
+作总是在相同的时间内产生相同的结果，我们就说这个动作是确定的。现代计
+算机可以说是不确定的集合体: 多级缓存(命中与否不可预测)，多处理器，分
+页，交换，和多任务都使估计一个动作需要多长时间变得不可能。显然我们现
+在每一个动作(相对于硬盘访问) 都是“不可思议的快”，但是同时现代系统也
+使得我们难于精确测量每一个动作的时间。
+</p><p>实时应用一般会尽量限制不可预测性和最坏情况延时。下面的章节将讨论可以达到目标的两种方法。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E6.95.B0.E6.8D.AE.E6.95.85.E9.9A.9C.E9.A2.84.E6.B5.8B.E5.92.8C.E5.86.85.E5.AD.98.E9.94.81.E5.AE.9A"></a><h4>数据故障预测和内存锁定</h4>
+<p>想象一下:ICBM（译者注:洲际导弹系统）监视器接入产生硬件中断，设备驱动迅速地拷贝硬件数
+据到内核。驱动会注意到一个进程因等待数据阻塞在硬件设备上，因此会
+通知内核唤醒进程。内核注意到该进程是实时进程且拥有高优先级，就会直
+接抢占当前运行进程，将注意力转移过来，决定直接调度实时进程。调度器转换到
+运行实时进程，上下文切换到相应的地址空间。进程开始运行，整个过程需要
+0.3ms，在1ms 的容忍限度内。
+</p><p>现在考虑用户空间，实时进程注意到接入的ICBM，开始处理轨道。计算好
+弹道后，实时进程开始配置反导系统。仅仅花掉0.1ms，足够ABM 响应和拯救
+生命。但是— 不—ABM 的代码已经被交换到硬盘上。于是发生页错误，处理
+器切回内核模式，启动硬盘I/O 来获得交换出去的数据。实时进程会一直休眠直
+到处理完页错误，几秒钟过去了，一切都太晚了。
+</p><p>显然，分页和交换给实时进程带来了很多不确定性。为了阻止这种灾
+难，实时应用往往通过“锁定”或者” 硬连接来将地址空间中的页提前放入物理内
+存，阻止其被交换出去。一旦页被锁定，内核就不会将起交换出去，任何访问
+都不会引起页错误，大多数实时应用都将部分或全部页面锁定在物理内存。
+</p><p>Linux 为两种方法都提供了接口。Chapter 4 讨论了故障预测的接口，
+Chapter 8 将讨论锁定内存的接口。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name="CPU_.E4.BA.B2.E5.92.8C.E5.BA.A6.E5.92.8C.E5.AE.9E.E6.97.B6.E8.BF.9B.E7.A8.8B"></a><h4>CPU 亲和度和实时进程</h4>
+<p>实时应用的第二个难点在于多任务。虽然Linux 内核是抢占式的，但是调度
+器并不总能直接调度另一个进程。有时，当前进程运行在内核中的临界区，调
+度器就必须等待它退出临界区，如果此时有一个实时进程要运行，这种延时将不可
+接受，很快就会超出操作期限。
+</p><p>因此，多任务和分页一样也带来了相似的不确定。对于多任务的解决方案
+也一样: 消除它。当然，前提是你不能简单地消灭其他所有进程，如果你可以，你
+就不需要Linux 了— 简单定制的操作系统就能满足要求。如果你的系统中有多
+个处理器，可以指定一个或多个专门用于实时进程。从实际效果上讲，你可以把实时进程和
+多任务分离开。
+</p><p>本章已经讨论过操作进程CPU 亲和度的系统调用。一个潜在的对实时进程
+的优化是为每一个实时进程保留一个处理器，剩下的处理器由其他进程共享。
+</p><p>最简单的方法是修改Linux 的init 程序， SysVinit*, 从而可以在启动前做类
+似下面的动作:
+</p><p>代码首先得到初始的可用处理器集合，我们期望是全体处理器。然后移出
+一个处理器CPU #1，更新可用处理器集合。
+</p><p>因为可用处理器集合在父子进程间继承， init 又是所有进程的祖先，所以
+所有的进程都会根据修改后的处理器集合运行， CPU #1 上将没有任何进程。
+</p><p>接下来，修改实时程序让它仅在CPU #1 上运行:
+</p><p>如此，结果就是实时进程仅运行在CPU #1 上，其他的所有进程分享其他处
+理器。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E8.B5.84.E6.BA.90.E9.99.90.E5.88.B6"></a><h2>资源限制</h2>
+<p>Linux 内核有对进程的资源限制，明确规定了进程可以消耗的内核资源的
+上限，比如打开文件的数目，内存页数，未处理的信号等等。限制是强制性
+的，内核不会允许进程的超过这一硬性限制。比如，如果一个打开文件的操作
+会使得进程拥有的文件超出资源限制， open() 调用会失败†。
+</p><p>Linux 提供了两个操作资源限制的系统调用。两个都是POSIX的标准调用，
+Linux 做了一些补充，分别用getlimit() 和setlimit() 获取和设置限制:
+</p><p>一般用类似RLIMIT CPU 的整数常量表示资源， rlimit 结构表示实际限制。结构定
+义了两个上限: 软限制和硬限制。内核对进程强制施行软限制，但进程自身可以
+修改软限制 ，其值可以是 0 到硬限制之间的任意值。不具备CAP SYS RESOURCE 能力的进
+程(比如，非root 进程)，只能调低硬限制。非特权程序不能提升硬限制，包括恢
+复为之前的较高的值；因此，调低硬限制是不可逆的。特权进程则可以设置硬限制为
+任意合法值。
+</p><p>限制的含义与资源相关。比如资源是RLIMIT FSIZE，就表示一个进程可以
+创建的最大的文件长度，单位是字节。此时如果rlim cur 是1024，则进程不可以创建大
+于1K 的文件，也不能扩展文件至1k 以上。
+</p><p>所有的资源限制都有两个特殊值: 0 和无限。前者表示禁止使用资源，例如
+RLIMIT CORE 是0，则内核不会创建内存转储文件。相反，后者表示不存在对
+资源的限制。内核用特殊值RLIM INFINITY 表示无限，碰巧是-1， (可能和函
+数调用错误返回-1 相混淆)。如果RLIMIT CORE 是无限，则内核可以创建任意
+大小的内存转储文件。
+</p><p>函数getrlimit() 会在指针rlim 指向的结构中放入resource 的软硬限制。成
+功，返回0；错误，返回-1，设置错误号。
+</p><p>相对的，函数setrlimit() 按rlim 指定的值设置resource 的软硬限制。成功，返
+回0，内核更新对应的资源限制；失败，返回-1，设置错误号。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E9.99.90.E5.88.B6.E5.88.97.E8.A1.A8"></a><h3>限制列表</h3>
+<p>目前Linux 提供了15 种资源限制:
+</p><p>• RLIMIT AS
+进程地址空间上限，单位是字节。试图增加地址空间大小超过限制— 比如调用
+mmap() 和brk() 函数— 都会失败，返回ENOMEM。如果进程的栈自动增加，超
+过了限制，内核将给进程SIGSEGV 信号。该限制的值通常为RLIM INFINITY。
+</p><p>• RLIMIT CORE
+内存转储文件大小的最大值，单位是字节。如果非0，超出限制的内存转储文件
+将截短为最大限制大小；如果是0，将不会产生此类文件。
+</p><p>• RLIMIT CPU
+一个进程可以使用的最长CPU 时间，单位是秒。如果进程运行时间超出限
+制，将接受和处理内核发出的SIGXCPU 信号。由于POSIX 没有定义内核的下一步动作,一个可移植程序必须在接受到该
+信号时中断。如果进程继续运行，一些系统会中断它，然
+而Linux 允许进程继续运行，并且每秒发送给该进程一个SIGXCPU 信号。一旦
+进程达到硬限制，将会收到SIGKILL 信号并被中断。
+</p><p>• RLIMIT DATA
+进程数据段和堆的大小，单位是字节。试图通过brk() 来扩大数据段以超出限制
+将失败并返回ENOMEM。
+</p><p>• RLIMIT FSIZE
+文件可以创建的最大文件，单位是字节。如果进程扩展文件超出了限制，内核
+将发送SIGXFSZ 信号。默认情况下，信号将终止进程。但是，进程也可以在系
+统调用失败返回EFBIG 时选择自己捕捉和处理信号。
+</p><p>• RLIMIT LOCKS
+进程可以拥有的文件锁的最大数量(参见第七章关于文件锁的讨论)。一旦达到最大
+值，任何试图获取额外锁的努力都会失败，返回ENOLCK。Linux 2.4.25 内核移
+除了这一功能，在当前内核中，可以设定这一限制，但不会起任何作用。
+</p><p>• RLIMIT MEMLOCK
+不具有CAP SYS IPC 能力的进程(非root 进程) 通过mlock()， mlockall() 或者
+shmctl() 能锁定的最多内存的字节数。当超过限制的时候，调用失败，并返回
+EPERM。实际上，实际限制向下舍入到整数个内存页。拥有CAP SYS IPC 能
+力的进程可以锁定任意数量的内存页，此限制不再有效。在2.6.9 内核前，该限
+制作由于有CAP SYS IPC 能力的进程，非特权进程根本不能锁定内存页。此限
+制不属于POSIX 标准， BSD 首先引入了它。
+</p><p>• RLIMIT MSGQUEUE
+用户可以在POSIX 消息队列中分配的最多字节数。如果新建的消息队列导致超出限制，
+mp open() 函数失败返回ENOMEM。它不属于POSIX 标准，于2.6.8 内核中引入
+并且是Linux 所特有的。
+</p><p>RLIMIT NICE
+进程可以降低nice value(提升优先级) 的最大值。本章前文已说明，普通进程只能
+提高友好度(降低优先级)。这个限制允许管理员规定进程可以合法地提升优先
+级的级数。因为nice value可能是负值，内核用20 􀀀 rlim cur 表示。因此，如果限
+制设置为40，进程友好度最低为-20(最高优先级)。2.6.12 内核引入了这个限
+制。
+</p><p>• RLIMIT NOFILE
+该值比进程可以打开的最多文件数大一。任何超出限制的企图都会失败返回EMFILE。在
+BSD 中此限制名字为RLIMIT OFILE。
+</p><p>• RLIMIT NPROC
+系统任意时刻允许的最多进程数。任何超出限制的企图都会失败， fork() 返回
+EAGAIN。此限制不属于POSIX，由BSD 引入。
+</p><p>• RLIMIT RSS
+进程可以驻留在内存中的最多页数(即驻留集大小RSS)。仅在早期的2.4 内核中强制执行；当前内核允许设置，但不强制执行。此限制不属于POSIX，由BSD引入。
+</p><p>• RLIMIT RTPRIO
+没有CAP SYS NICE 能力的进程可以拥有的最大实时优先级。通常，非特权进
+程不会要求实时调度。此限制不属于POSIX，由2.6.12 内核引入并为Linux 独
+有。
+</p><p>• RLIMIT SIGPENDING
+用户信号队列中的最大信号数。请求更多的信号将失败， sigqueue() 这样的系统调
+用将返回EAGAIN。注意，可以无视这个限制而将一个尚未排入队列的信号实例加入该队列. 因此，总是可以向进程传递SIGKILL 和
+SIGTERM 信号。此限制不属于POSIX，由Linux 独有。
+</p><p>• RLIMIT STACK
+栈的最大字节长度。超出限制将收到SIGSEGV 信号。
+</p><p>内核以用户为存储资源限制的基本单位，也就是说，相同用户的所有进程都会
+有相同的软硬资源限制，但是资源限制本身却描述了对单一进程的限制。比
+如，内核为每个用户都维护一个RLIMIT NOFILE，默认是1024，这个限制规
+定了每个进程能打开的最多文件数，而不是该用户总共能打开的文件数。还
+需要注意的是，这并不意味着限制能针对进程分别设置— 一旦进程修改了
+RLIMIT NOFILE 软限制，此用户的所有进程都会受到这种限制。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E9.BB.98.E8.AE.A4.E9.99.90.E5.88.B6"></a><h4>默认限制</h4>
+<p>默认限制取决于三个变量: 初始软限制，初始硬限制和系统管理员。内核说
+明了初始软限制和初始硬限制，如表。内核在init 进程中设置这些限制，并通过
+父子进程间的继承传递给所有的子孙进程。
+</p><p>两种情况可以改变默认限制:
+</p><p>• 任何进程都可以在0 到硬限制的范围内增加软限制，也可以减少硬限
+制，子进程可以通过fork 来继承这些改变。
+</p><p>• 特权进程可以任意设置硬限制，子进程同样可以通过fork 来继承这些改
+变。
+</p><p>普通进程继承体系中的root 进程不太可能修改任何硬限制，因此，第一点
+更有可能是限制变化的原因。实际上，对于进程的限制往往由用户通过shell
+设定，系统管理员可以进行设置来提供种类繁多的限制。比如在Bourne-again
+shell(bash) 中，管理员可以使用ulimit 命令来设置。注意管理员不仅可以降低限
+制值，还可以提升软限制到硬限制，从而给用户提供更合理的限制。一般会使用RLIMIT STACK（在许多系
+统上该值被设置为RLIM INFINITY)进行处理。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E8.8E.B7.E5.8F.96.E5.92.8C.E8.AE.BE.E7.BD.AE.E8.B5.84.E6.BA.90.E9.99.90.E5.88.B6"></a><h3>获取和设置资源限制</h3>
+<p>解释了种种资源限制，让我们来考察一下获取和设置这些限制。获取限制
+很简单:
+</p><p>编译然后运行代码将得到:
+</p><p>可以看到，软限制为0，硬限制为-1(-1 代表无限)。因此我们可以设置软连
+接为任意值。下面的例子设置内存转储文件最大为32MB:
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑</a>]</div><a name=".E9.94.99.E8.AF.AF.E7.A0.81_3"></a><h4>错误码</h4>
+<p>可能有四种错误代码:
+</p><p>EFAULT rlim 指向的内存非法或不可访问。
+</p><p>EINVAL resource 的值非法，或者rlim.rlim cur 的值大于rlim.rlim max(仅适用于
+setrlimit())。
+</p><p>EPERM 调用者没有CAP SYS RESOURCE 能力却试图提升硬限制。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../a/d/v/Advanced_Process_Management_cf2c.html">http://dns.cs.hit.edu.cn../../../a/d/v/Advanced_Process_Management_cf2c.html</a>"</p>
+
+<p>本页面已经被浏览118次。 This page was last modified 07:16 2009年4月14日 by <a href="../../../%E6%9D%8E/%E5%BF%97/_/User%7E%E6%9D%8E%E5%BF%97.html" class="new" title="User:李志">李志</a>. Based on work by <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a>. </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑本页</a></strong> |
+<a href="../../../a/d/v/Talk%7EAdvanced_Process_Management_891c.html" class="new" title="Talk:Advanced Process Management">讨论本页</a> |
+<a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览118次。 This page was last modified 07:16 2009年4月14日 by <a href="../../../%E6%9D%8E/%E5%BF%97/_/User%7E%E6%9D%8E%E5%BF%97.html" class="new" title="User:李志">李志</a>. Based on work by <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a>. </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">编辑本页</a></strong>
+<br /><a href="../../../a/d/v/Talk%7EAdvanced_Process_Management_891c.html" class="new" title="Talk:Advanced Process Management">讨论本页</a>
+<br /><a href="../../../a/d/v/Advanced_Process_Management_cf2c.html" title="Advanced Process Management">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393315.11 secs. -->
+</body></html>

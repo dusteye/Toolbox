@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Talk:Framebuffer与显卡驱动有什么区别？ - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#ffffec' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../f/r/a/Talk%7EFramebuffer%E4%B8%8E%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.html" title="Talk:Framebuffer与显卡驱动有什么区别？">编辑本页</a> |
+<a href="../../../f/r/a/Talk%7EFramebuffer%E4%B8%8E%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.html" title="Talk:Framebuffer与显卡驱动有什么区别？">较早版本</a><p class='subtitle'><a href="../../../f/r/a/Talk%7EFramebuffer%E4%B8%8E%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Talk:Framebuffer与显卡驱动有什么区别？</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>这是昨天Framebuffer小组在讨论中遇到的一个问题，当时我谈了一下我个人的看 
+法。很高兴，看到大家已经把这个问题更新到wiki上了。
+</p><p>昨天，我对这个问题又进行了一下思考，现在谈一下我粗浅的想法，希望能够大家 
+进一步的讨论。
+</p><p>首先，这个题目本身就存在着一定的概念问题。
+现回顾一下这个问题引出经过。昨天我们在讨论中提及的是framebuffer是对显卡 
+设备的抽象，主要是隐藏物理设备的技术细节。进而引发了大家对framebuffer与 
+显卡设备驱动之间关系的讨论。从framebuffer的定义来看， framebuffer其实是 
+一种设备驱动程序，其用途是来驱动framebuffer设备。而我们所称谓的 
+framebuffer设备则是一种特殊的 mem设备，即显存的映射。
+澄清这几个概念之后，我们可以看出，这个问题从概念上来讲没有问题，但是却背 
+离了我们昨天问题的初衷。所以，希望相关的负责同学对这个加以修改。
+</p><p>其次，回到真正我们昨天讨论到的问题，即“Framebuffer与显卡驱动程序之间的关 
+系与区别”
+看一下framebuffer的定义，同时参考一下LDD中对于驱动程序的定义，我认为 
+framebuffer本质上就是一个驱动程序，其与显卡驱动程序是在同一层次上的，不 
+存在层级高下之分。他们之间的区别在于，framebuffer是利用显卡的公共特性， 
+例如vesa来驱动显卡，这样无法发挥全部的显卡特性。同样由于不同品牌显卡设计 
+上的区别，framebuffer又要针对不同的显卡做一些定制，因此在内核代码中产生 
+了特定显卡的 framebuffer驱动。某种程度上，framebuffer可以是多种不同显卡 
+的通用驱动程序（前提是支持vesa2.0），而显卡驱动程序往往只适用特定厂商特 
+定型号或相近型号的显卡。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../f/r/a/Talk%7EFramebuffer%E4%B8%8E%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.html">http://dns.cs.hit.edu.cn../../../f/r/a/Talk%7EFramebuffer%E4%B8%8E%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.html</a>"</p>
+
+<p>本页面已经被浏览5次。 This page was last modified 01:36 2006年10月11日 by <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../f/r/a/Talk%7EFramebuffer%E4%B8%8E%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.html" title="Talk:Framebuffer与显卡驱动有什么区别？">编辑本页</a></strong> |
+<a href="../../../f/r/a/Framebuffer%E4%B8%8E%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.html" class="new" title="Framebuffer与显卡驱动有什么区别？">查看文章</a> |
+<a href="../../../f/r/a/Talk%7EFramebuffer%E4%B8%8E%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.html" title="Talk:Framebuffer与显卡驱动有什么区别？">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览5次。 This page was last modified 01:36 2006年10月11日 by <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../f/r/a/Talk%7EFramebuffer%E4%B8%8E%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.html" title="Talk:Framebuffer与显卡驱动有什么区别？">编辑本页</a></strong><br /><a href="../../../f/r/a/Talk%7EFramebuffer%E4%B8%8E%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.html" title="Talk:Framebuffer与显卡驱动有什么区别？">发表评论</a>
+<br /><a href="../../../f/r/a/Framebuffer%E4%B8%8E%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.html" class="new" title="Framebuffer与显卡驱动有什么区别？">查看文章</a>
+<br /><a href="../../../f/r/a/Talk%7EFramebuffer%E4%B8%8E%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.html" title="Talk:Framebuffer与显卡驱动有什么区别？">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392922.06 secs. -->
+</body></html>

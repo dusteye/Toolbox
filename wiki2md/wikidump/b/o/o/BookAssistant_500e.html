@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>BookAssistant - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑本页</a> |
+<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">较早版本</a><p class='subtitle'><a href="../../../b/o/o/BookAssistant_500e.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">BookAssistant</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#.E9.A1.B9.E7.9B.AE.E7.AE.80.E4.BB.8B"><span class="tocnumber">1</span> <span class="toctext">项目简介</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E6.A6.82.E8.BF.B0"><span class="tocnumber">1.1</span> <span class="toctext">概述</span></a></li>
+<li class='toclevel-2'><a href="#.E7.89.88.E6.9C.AC.E5.8F.98.E6.9B.B4"><span class="tocnumber">1.2</span> <span class="toctext">版本变更</span></a></li>
+<li class='toclevel-2'><a href="#.E5.9F.BA.E6.9C.AC.E5.8A.9F.E8.83.BD"><span class="tocnumber">1.3</span> <span class="toctext">基本功能</span></a></li>
+<li class='toclevel-2'><a href="#TODO_List"><span class="tocnumber">1.4</span> <span class="toctext">TODO List</span></a></li>
+<li class='toclevel-2'><a href="#Feature_List_:_To_2011.5"><span class="tocnumber">1.5</span> <span class="toctext">Feature List&nbsp;: To 2011.5</span></a></li>
+<li class='toclevel-2'><a href="#5.1.E5.81.87.E6.9C.9F.E5.B7.A5.E4.BD.9C.E6.B1.87.E6.80.BB"><span class="tocnumber">1.6</span> <span class="toctext">5.1假期工作汇总</span></a></li>
+<li class='toclevel-2'><a href="#.E5.86.85.E6.B5.8B.E5.89.8D.E9.9C.80.E8.A6.81.E5.AE.8C.E6.88.90.E7.9A.84.E5.B7.A5.E4.BD.9C"><span class="tocnumber">1.7</span> <span class="toctext">内测前需要完成的工作</span></a></li>
+<li class='toclevel-2'><a href="#.E5.86.85.E6.B5.8B.E7.89.88.E6.94.B9.E8.BF.9B.E8.A6.81.E6.B1.82.E8.AE.B0.E5.BD.95"><span class="tocnumber">1.8</span> <span class="toctext">内测版改进要求记录</span></a></li>
+<li class='toclevel-2'><a href="#.E7.89.B9.E6.80.A7"><span class="tocnumber">1.9</span> <span class="toctext">特性</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#.E9.A1.B9.E7.9B.AE.E5.BC.80.E5.8F.91"><span class="tocnumber">2</span> <span class="toctext">项目开发</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E5.87.86.E5.A4.87.E5.B7.A5.E4.BD.9C"><span class="tocnumber">2.1</span> <span class="toctext">准备工作</span></a></li>
+<li class='toclevel-2'><a href="#.E6.8A.80.E6.9C.AF.E8.A6.81.E7.82.B9"><span class="tocnumber">2.2</span> <span class="toctext">技术要点</span></a></li>
+<li class='toclevel-2'><a href="#.E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE"><span class="tocnumber">2.3</span> <span class="toctext">参考文献</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name=".E9.A1.B9.E7.9B.AE.E7.AE.80.E4.BB.8B"></a><h2>项目简介</h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name=".E6.A6.82.E8.BF.B0"></a><h3> 概述 </h3>
+<p>本应用为用户实现一个选书、购书、读书的一体化管理软件，为用户进行个人书籍信息管理，读书提醒等功能，为用户提供更好的阅读体验。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name=".E7.89.88.E6.9C.AC.E5.8F.98.E6.9B.B4"></a><h3> 版本变更 </h3>
+<ul><li>第一个里程碑版本：Alchemist
+</li><li>第二个里程碑版本：Axe
+</li><li>内部测试版本：Beast Master（预计于5.5日放出）
+</li><li>公测版本：Chaos Knight（内测一周之后放出）
+</li><li>第一个正式发行版：Dragon Knight（公测一至二周后放出）
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name=".E5.9F.BA.E6.9C.AC.E5.8A.9F.E8.83.BD"></a><h3> 基本功能 </h3>
+<ul><li>图书管理
+<ul><li>图书信息输入：首选扫描ISBN，如果无法扫描可以选择输入ISBN编号，得到ISBN之后，利用豆瓣API搜索图书详细信息;如果无法利用ISBN进行搜索，那么只能手动录入图书信息。
+</li><li>图书阅读状态：包括四个状态：想读，正在读，已读以及喜欢（Favorite）
+</li><li>图书流向：用于管理图书，包括：未购入，拥有，外借（同时记录借给谁），丢失
+</li><li>图书分享：在人人上以“分享链接”的形式分享感兴趣的图书;在新浪微博上则以状态的信息发布;
+</li></ul>
+</li></ul>
+<ul><li>书架管理
+<ul><li>书架管理：添加、删除、更改名称等等;删除书架的时候，书架上的书籍信息将对应的被删除;
+</li><li>图书排序：根据书名，作者名，添加时间，阅读状态（想读，正在读，已读，喜欢）分类排序;
+</li></ul>
+</li></ul>
+<ul><li>读书计划
+<ul><li>定制计划：计划按照每天何时提醒进行定制;功能仿照Android原生闹钟应用;
+</li><li>定时提醒：根据设置的时间进行定时提醒;
+</li><li>计划分享：将自己的读书计划通过人人或新浪微博与大家分享;
+</li></ul>
+</li></ul>
+<ul><li>图书搜索
+<ul><li>网络图书搜索：利用关键字进行图书搜索，搜索包括Google图书、豆瓣图书等网站的图书信息;
+</li><li>图书比价功能：根据搜索的图书进行比较;（未完成）
+</li><li>本地图书搜索：搜索系统中记录的图书信息;
+</li></ul>
+</li></ul>
+<ul><li>云端存储（未完成）
+<ul><li>挑选Dropbox等云存储服务商进行数据的云备份以及云同步功能;
+</li></ul>
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name="TODO_List"></a><h3> TODO List </h3>
+<ul><li>系统定位
+<ul><li>对用户的“实体书”进行管理
+</li></ul>
+</li></ul>
+<ul><li>下载图书信息
+<ul><li>用户可以一次性扫描全部图书，扫描的同时在后台下载图书信息内容，增强用户体验。
+</li><li>提供一个正在下载的图书的列表，当图书下载完成之后以Notification的形式呈现。
+</li><li>系统为用户添加一个默认的书架，将书籍都添加到书架里面去，然后具体的书籍再进行单独调整。
+</li></ul>
+</li></ul>
+<ul><li>分享功能
+<ul><li>讲各个功能信息分享给人人网或新浪微博。
+</li><li>分享的功能包括：正在读的书，想读的书，想要赠送的书可以进行分享，其他的分享功能可以在后续进行添加。
+</li></ul>
+</li></ul>
+<ul><li>外借图书，赠送图书统计
+<ul><li>外借、赠送图书通过联系人进行添加，在联系人列表里面选择一个联系人进行图书分享。
+</li><li>统计用户外借出去的图书信息，包括外借图书列表和外借记录。
+</li><li>统计用户赠送图书的信息，包括赠送图书列表和外借记录。
+</li></ul>
+</li></ul>
+<ul><li>获取图书总价
+<ul><li>根据用户扫描的书籍信息，计算图书的总价值，之后可以利用人人或者新浪微博分享出去。
+</li></ul>
+</li></ul>
+<ul><li>图书比“高”
+<ul><li>根据图书的总页数，反应图书的高度。
+</li></ul>
+</li></ul>
+<ul><li>UI调整
+<ul><li>把搜索功能添加到主界面上去。
+</li></ul>
+</li></ul>
+<ul><li>推广网站
+<ul><li>制作一个推广网站，进行系统信息的收集。
+</li></ul>
+</li></ul>
+<ul><li>书签
+<ul><li>参考用户阅读实体书的经验，在阅读的过程中如果需要标注，则使用手机记录（手工输入或者拍照）阅读的位置
+</li></ul>
+</li></ul>
+<p><br />
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name="Feature_List_:_To_2011.5"></a><h3> Feature List&nbsp;: To 2011.5 </h3>
+<p>1.系统功能
+</p><p>1.1添加图书
+有三种添加方式，添加方式之一为扫描ISBN码，第二种方式是输入ISBN码，第三种为手工添加书籍信息
+无论是手动输入还是扫描ISBN编码之后，系统都会利用豆瓣API进行图书信息的获取，每获取一本图书，系统都会以一个Notification的形式进行呈现。用户点击Notification的时候，会显示当前图书的下载列表。
+</p><p>1.2详细图书信息
+在详细图书信息中可以查看图书的基本信息，包括，书名，作者，isbn等等。同时，图书详细信息里面可以进行图书的外借、闲置和捐赠管理
+在菜单中，可以选择编辑图书信息，查看网友对图书的评论，以及将这本正在看的图书分享给朋友们。同时可以进行图书的外借、闲置和捐赠的管理。
+</p><p>1.3图书下载列表
+对于已经下载完成的列表，以图书名称、ISBN呈现，对于正在下载的图书内容，则在界面上以ISBN码呈现。长按每一条信息，会弹出一个Dialog，可以让用户选择删除对应的下载记录信息。轻击某个下载项目，进入图书的详细信息界面，展现图书详细信息。
+在菜单中，可以选择删除已经下载的项目，或者选择删除所有项目。
+</p><p>1.4书架功能
+在书架中，可以看到当前系统中的所有图书信息，可以利用上下滑动的方式进行浏览。每一个图书都有一个封面。封面图片有两种。如果图书在豆瓣上有对应的封面图片，那么就使用豆瓣上的图片作为封面，如果豆瓣上没有封面图片，那么采用默认的封面图片，然后在封面上书写这本书的书名。在某一本图书上长按，将弹出一个对话框，提示删除图书信息。轻击某一本图书的封面，将进入图书的详细信息界面。
+在菜单中提供了三个功能，分别是图书排序，图书比价和图书比高。图书排序可以按照标题，作者，出版日期以及添加日期进行排序。而图书价格统计则统计当前系统中记录的图书的价格总和;图书高度统计则统计当前系统中所有图书的高度之和。选择图书价格统计或者图书高度统计之后，将弹出一个对话框，其中填写图书价格（高度）的信息，可以通过将结果分享到人人，或者新浪微博。
+</p><p>1.5外借图书
+记录外借图书的信息，这里显示所有外借的图书信息。包含几个项目，分别是图书名称，图书ISBN码，以及借书者是谁。如果借书者是一个系统中的联系人，那么将有一个图标提示是联系人。轻击借阅记录将进入到图书的详细信息页面中。长按借书条目内容可以选择更改借书人，标记图书已经归还，或者选择删除借书记录这几项内容。如果借书者是联系人，还将可以选择查看联系人。
+</p><p>1.6读书计划
+在读书计划之中，可以选择添加读书计划。添加读书计划包括以下几种方式，分别是扫描条形码选择实体图书，手工选择实体图书，手工输入读书计划，以及返回添加读书计划几个选项。在选择了某种方式之后，将会让用户选择向另的时间。然后系统将会添加这个读书计划。当时间到了，就会提示用户，到读书的时间了，同时会显示读书计划。长按某一个读书计划可以选择删除读书计划，或者分享读书计划到人人、微博。轻击某一个读书计划的时候，将进入读书计划的详细内容列表，其中包括计划是否已经开启，读书计划的内容，读书计划的时间，更改读书时间等内容。在菜单中会显示禁用计划，以及删除当前读书计划。
+</p><p>1.7闲置图书
+闲置图书的内容与外借图书内容类似，当用户将某一本图书标记为闲置的时候，将在这里看到闲置图书的基本信息。用户可以分享闲置信息，可以选择捐赠图书，或者取消闲置图书。
+当用户选择捐赠图书的时候，系统将要求用户选择受赠者，可以从联系人中挑选，或者手工进行输入。当用户选择将图书捐赠值欧，就会在界面上看到捐赠图书的受赠者，此时再次长按，则只能选择更改受赠人，或者选择删除受赠记录了。
+</p><p>1.8查找图书
+在系统中根据图书名称查找图书信息，当轻击某一个搜索结果条目的时候，将进入到对应图书的详细信息列表。
+</p><p>2.与“实体书管理”这一目标关联不大，或者可以暂时删除的功能：
+</p><p>2.1手工添加书籍信息、修改手工添加的图书信息
+</p>
+<pre>   删除理由：虽然有部分骨灰级图书玩家会有一些古籍，或者自己打印的电子版书籍，无从扫描。但是，使用手工添加的图书信息会导致系统中内容的不一致，不方便管理。所以选择在第一版中暂时删除掉这个功能。如果后期大量用户需要使用这个功能，可以考虑进行添加。
+</pre>
+<p>2.2添加删除书架
+</p>
+<pre>   删除理由：书架在系统中最大的作用就是起到一个图书分类，建立不同的书架，用户可以根据图书的分类，建立计算机类，文学类或者什么类的书架。现在考虑删除主要包括以下几点考虑。首先，用户购买书籍具有一定的局部性。比如计算机专业的人买的书可能绝大部分都是计算机类的图书，这就导致可能使用不上别的书架的功能。而且添加书架功能之后，由于没有很好的管理最后一次书架的位置，使得用户体验略有下降。因此考虑，暂时先全部放到同一个书架上，然后在一个书架上利用比较好的排序功能，提高用户体验。
+</pre>
+<p>2.3书籍的排序功能（调整为系统自动为用户进行图书信息排序，提供默认的排序策略）
+</p>
+<pre>   删除理由：之前使用的是一种用户可以选择的排序方式，比如按作者，按标题，或者按添加时间排序。这种排序方式可能并不十分有效。比如按作者排序，这个基本没有什么必要。因此，考虑参考Apple，为用户做选择。使用一套自己的排序规则，尽可能的为用户提供较好的安排方式。如果用户确实需要自己排序，后期可以进行添加。
+</pre>
+<p><br />
+3.需要进行调整、添加的功能
+</p><p>3.1在UI方面，添加标题栏，Title Bar，左侧显示信息，右侧显示搜索按钮。
+</p><p>3.2书籍排序功能，将正在阅读的图书放到前面显示。
+</p><p>3.3在书架中，将上下滑动修改为左右滑动。
+</p><p>3.4在书架中，长按某一本图书，在ContextMenu中添加更多内容，比如分享，捐赠，外借和闲置。
+</p><p>3.5添加StatusBar功能，用于提示用户图书信息下载状态。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name="5.1.E5.81.87.E6.9C.9F.E5.B7.A5.E4.BD.9C.E6.B1.87.E6.80.BB"></a><h3> 5.1假期工作汇总 </h3>
+<ul><li>调整了书架部分UI
+</li><li>调整了具体图书信息部分的UI（但总体感觉不好，需要进一步商量）
+</li><li>修改了分享、外借、捐赠以及读书计划四个部分的选择方式
+</li><li>修正了部分BUG（详见SVN提交Log）
+</li><li>删掉了部分无用的代码（受《Clean Code》一书影响）
+</li></ul>
+<p><br />
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name=".E5.86.85.E6.B5.8B.E5.89.8D.E9.9C.80.E8.A6.81.E5.AE.8C.E6.88.90.E7.9A.84.E5.B7.A5.E4.BD.9C"></a><h3> 内测前需要完成的工作 </h3>
+<ul><li>UI设计
+<ol><li>分享、外借、闲置、捐赠按钮的修改：目前的按钮看起来不干净。另外需要设计选中、无法选择的图标
+</li><li>扫描ISBN码、输入ISBN码的图标修改
+</li><li>“添加图书”页面的背景
+</li><li>显示下载列表的icon，备份，恢复数据的icon
+</li><li>图书价格、高度统计的图标
+</li><li>分享、外借、闲置以及捐赠图书四个按钮的onpressed图标制作
+</li><li>more按钮的onpressed的制作
+</li><li>图书信息页面MENU中的图标替换：图书评论，闲置图书、外借图书、捐赠图书、删除捐赠记录，查看受赠人，更改受赠人，更改借书人，查看借书人，删除结束记录，图书归还，取消闲置图书这些icon的选择
+</li><li>无封面图书的处理
+</li></ol>
+</li></ul>
+<p><br />
+</p>
+<ul><li>功能
+<ol><li> 添加读书计划的图标，需要制作三种分辨率，以及被按下的效果图
+</li></ol>
+</li><li>发布：
+<ol><li>对代码进行混淆
+</li><li>新浪微博应用认证：否则只能有15个用户
+</li><li>人人网的应用标识：将bookassistant修改为书童，图书高度分享的内容需要修改
+</li></ol>
+</li><li>提示信息调整
+<ol><li>调整提示信息，修改不合理的用词
+</li></ol>
+</li><li>待调整部分
+<ol><li>菜单添加关于选项？
+</li><li>
+</li></ol>
+</li></ul>
+<ul><li>已完成部分
+<ol><li> 读书计划列表，以及下载项目列表，目前我适用RelativeLayout，布局出现覆盖的现象
+</li><li> 读书计划不能正常使用？！
+</li></ol>
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name=".E5.86.85.E6.B5.8B.E7.89.88.E6.94.B9.E8.BF.9B.E8.A6.81.E6.B1.82.E8.AE.B0.E5.BD.95"></a><h3> 内测版改进要求记录 </h3>
+<ul><li>分享图书方式，改为Intent的方式
+</li><li>书架没有图书的时候，设置为默认的书架效果
+</li><li>打电话的时候，下载失败，重新下载，队列变空？怎么回事呢？
+</li><li>新浪微博改用OAuth认证
+</li><li>在我的图书页面中，添加“我要阅读”功能，从而添加对应的阅读计划
+</li><li>添加“预购”列表~
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name=".E7.89.B9.E6.80.A7"></a><h3> 特性 </h3>
+<ul><li>社会化：借助人人、新浪微博等社会化平台，获取图书信息;
+</li><li>读书提醒：利用用户设定的读书设置，进行定时读书提醒;
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name=".E9.A1.B9.E7.9B.AE.E5.BC.80.E5.8F.91"></a><h2> 项目开发 </h2>
+<ul><li>项目主页:
+</li><li>SVN地址:svn://svn.footoo.org/opt/ibmtc/BookAssistant
+</li><li>文件服务器：
+</li><li>参考项目: Museum Guide项目，Barcode Scanner项目
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name=".E5.87.86.E5.A4.87.E5.B7.A5.E4.BD.9C"></a><h3> 准备工作 </h3>
+<ul><li>了解豆瓣、人人、新浪微博、当当以及卓越等网站的API
+</li><li>确认数据集格式
+</li><li>确认传输方式
+</li><li>搭建测试服务器
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name=".E6.8A.80.E6.9C.AF.E8.A6.81.E7.82.B9"></a><h3> 技术要点 </h3>
+<ul><li> QR码扫描:该部分参考了MuseumGuide项目，前期开发中李勇调用外部Intent的方法，调用条形码扫描器;后续开发中，将移植条形码扫描器部分代码，并封装成为jar包，方便之后使用。
+</li><li> 利用外部API同步数据：研究豆瓣、人人以及新浪微博API，研究其调用方式，以及数据返回方式，从而组织数据。
+</li><li> 同步数据的存储:同步SQLite内数据，以XML文件形式保存到SDCard上，也可以同步到服务器上，方便用户数据备份与管理;
+</li><li> 数据搜索：对应用内的数据进行搜索.参考 <a href="http://developer.android.com/resources/articles/qsb.html" class='external free' title="http://developer.android.com/resources/articles/qsb.html" rel="nofollow">http://developer.android.com/resources/articles/qsb.html</a>
+</li><li> Cover Flow：实现Cover Flow效果。
+</li><li> 将数据分享到社交网站 (人人+新浪微博)
+</li><li> 本地化：支持中文，英文;不仅在界面语言上支持，同时在图书资源获取网站上实现本地化。
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑</a>]</div><a name=".E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE"></a><h3> 参考文献 </h3>
+<ol><li><a href="http://www.eoeandroid.com/thread-39709-1-1.html" class='external text' title="http://www.eoeandroid.com/thread-39709-1-1.html" rel="nofollow">Android实现CoverFlow</a>
+</li><li><a href="http://www.ispiders.net/?p=192" class='external text' title="http://www.ispiders.net/?p=192" rel="nofollow">调用条形码</a>
+</li><li><a href="http://www.douban.com/service/apidoc/reference/" class='external text' title="http://www.douban.com/service/apidoc/reference/" rel="nofollow">豆瓣API官方使用说明书</a>
+</li><li><a href="http://marshal.easymorse.com/archives/2745" class='external text' title="http://marshal.easymorse.com/archives/2745" rel="nofollow">ISBN与豆瓣API具体使用的一个例子</a>
+</li><li><a href="http://www.umeng.com/" class='external text' title="http://www.umeng.com/" rel="nofollow">友盟应用使用情况统计</a>
+</li><li><a href="http://zhcn.admob.com/" class='external text' title="http://zhcn.admob.com/" rel="nofollow">AdMob广告支持</a>
+</li></ol>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../b/o/o/BookAssistant_500e.html">http://dns.cs.hit.edu.cn../../../b/o/o/BookAssistant_500e.html</a>"</p>
+
+<p>本页面已经被浏览272次。 This page was last modified 14:47 2011年5月7日 by <a href="../../../%E5%AD%99/%E9%B9%8F/_/User%7E%E5%AD%99%E9%B9%8F.html" class="new" title="User:孙鹏">孙鹏</a>. Based on work by <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a> 和 <a href="../../../%E6%97%B6/%E5%BD%A6/%E8%BE%89/User%7E%E6%97%B6%E5%BD%A6%E8%BE%89.html" class="new" title="User:时彦辉">时彦辉</a>. </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑本页</a></strong> |
+<a href="../../../b/o/o/Talk%7EBookAssistant_faa1.html" class="new" title="Talk:BookAssistant">讨论本页</a> |
+<a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览272次。 This page was last modified 14:47 2011年5月7日 by <a href="../../../%E5%AD%99/%E9%B9%8F/_/User%7E%E5%AD%99%E9%B9%8F.html" class="new" title="User:孙鹏">孙鹏</a>. Based on work by <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a> 和 <a href="../../../%E6%97%B6/%E5%BD%A6/%E8%BE%89/User%7E%E6%97%B6%E5%BD%A6%E8%BE%89.html" class="new" title="User:时彦辉">时彦辉</a>. </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">编辑本页</a></strong>
+<br /><a href="../../../b/o/o/Talk%7EBookAssistant_faa1.html" class="new" title="Talk:BookAssistant">讨论本页</a>
+<br /><a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393441.79 secs. -->
+</body></html>

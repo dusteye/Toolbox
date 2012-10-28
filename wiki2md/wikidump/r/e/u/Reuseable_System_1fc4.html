@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Reuseable System - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../r/e/u/Reuseable_System_1fc4.html" title="Reuseable System">编辑本页</a> |
+<a href="../../../r/e/u/Reuseable_System_1fc4.html" title="Reuseable System">较早版本</a><p class='subtitle'><a href="../../../r/e/u/Reuseable_System_1fc4.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Reuseable System</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<ul><li>linux实时性研究：*
+</li></ul>
+<p>_linux实时性的技术故障：_时钟精度太粗糙、内核不可以抢占，可能造成优先级反转、临界区操作屏蔽中断，抑制对外部的及时响应、 缺乏有效实事的任务调度机制。
+_解决方案：_细化时钟粒度（如果时钟粒度小的话，是否也意味着可处理事件的能力的降低呢？）、在内核中插入抢占点、改善调度策略。
+</p><p>面向对象在星载系统的应用：
+批评：1、更大的内存和执行开销；2、与静态调度分析不兼容
+优点：1、可多条远程控制指令共传 2、软件功能质量有保证 3有利于软件的复用
+在这篇论文中作者为了解决软件框架太大的问题，提倡使用framelet approach.
+</p><p>Real-time Operating Systems:
+实时操作系统特点：可预见性、高效性（时间约束）
+内核必须满足：减少内核开销方面：1、快速的上下文切换 2、尺寸小 3、外部中断快速响应 4、尽量短的中断屏蔽 5、没有虚拟内存 6、提供连续的文件格式 
+时间要求方面：1、支持多任务 2、支持优先级抢占机制 3、提供基本事件执行时间界限 4、提供高分辨率的实时时钟 5、提供特殊的闹钟和超时 6、支持实时队列 7、提供固定时间的挂起和唤醒执行的推迟处理机制
+</p><p>JBEOS:一种构件化的嵌入式操作系统：
+特点：小型化、一体化、灵活
+构件描述语言XCODE：一种基于xml的描述语言
+对于星载软件系统，构件化也是一个可供参考的方向。
+</p><p>嵌入式实时操作系统中系统调用方法的设计与实现:ARINC 653 为保证 IMA 系统中运行的多个航电应用程序执行时不相互影响 ,提出分区的概念 分区是 IMA 系统中
+的概念。分区是IMA系统中一组功能相关的应用软件，这些软件在配置和执行时作为一个单一的软件来对待。相当于通用操作系统中的进程 包
+含自己的存储器，上下文以及配置属性。
+系统调用：内核提供应用的服务需统一编号，使用表方式统一管理。
+系统调用号：核心OS为每个系统调用定义一个唯一的编号，编号的定义方式如下： #define _NR_FOUNCTIONNAME number
+系统调用表：系统调用表用于记录各个系统调用处理函数的入口地址
+系统调用生成：核心OS内的syscall.h文件中定义了所有核心OS提供给上层应用的函数
+</p><p>实时操作系统用于嵌入式应用系统的设计
+（1） 时间紧急任务程序是那些每隔一段固定时间就要发生， 允许带有最小时延的服务程序。
+（ 2） 时间敏感的任务程序是不同于时间紧急任务程序， 因为在被接受中断之前允许大的时延。象
+时间紧急任务程序一样， 它们可能发生在固定时间或可能在任意时间内被初始化， 但是保证一定被执行。
+（3） 闲置任务程序是很重要的背景操作， 当它们频繁地在随机时间间隔内执行任务时， 是很方便的。
+（ 4） 干线任务程序中断用户命令， 执行非实时功能， 并调用时间敏感和闲置任务服务程序。
+</p><p>嵌入式系统中设备抽象层的设计：
+</p>
+<pre>   ① 设备抽象层对于硬件来说， 应提供硬件属性配置通道、 数据通道等接口， 基于该接口对硬件进行测试；
+   ② 设备抽象层具有与硬件的密切相关性， 提供硬件属性配置通道;
+   ③ 设备抽象层与操作系统有比较规范的接口进行衔接， 但要尽可能独立于上层软件， 便于基于该接口的硬件工作流程模拟;
+   ④ 设备抽象层包含系统对硬件资源调度的所有功能;
+   ⑤ 设备抽象层接口应简单明了， 太多的接口函数会增加软件系统的复杂性;
+   ⑥ 具有自封闭、 可测试的接口设计有利于系统的软硬件调试和集成。
+</pre>
+<p>即：可测试、可配置、独立性、全面性、简洁性、自封闭性
+</p><p>下一代实时操作系统：
+趋势：微内核
+新特点：1、开放性 2、可裁剪性 3、系统安全性   4、中文界面
+</p><p>基于实时操作系统开发DNC
+用实时操作系统开发应用系统，与用普通操作系统开发有很大不同，一个功能模块对应于实时操作系统的一个或多个任务，
+任务并发运行，并且相互通信，根据实际任务对时间反应的要求，规定这些任务的优先级，保证关键控制优先进行。
+</p><p>星载软件复用技术探讨：
+分类：代码的复用、分析的复用、设计的复用、测试信息的复用
+论文中，作者展示了一部分研究成果，建立软件复用库，这能保证开发人员快速、容易地找到相关的组件！
+</p><p><br />
+Operating System Abstraction Layer
+It should provide standared Task API, Queue API ,Semaphroe API, Misc API and File(System)API.
+</p><p>嵌入式系统和小卫星星务管理系统
+设计要求：实时性好、可靠性高、集成度高、功耗低、环境适应能力强
+常用开发语言：C开发效率高，代码长度和执行时间仅比汇编语言编写的同样功能程序长5%-20%
+C++更好的数据抽象和面向对象形式的编程功能，但会降低可执行程序的性能
+Ada也是一种面向对象语言，与c++相比，可以简化嵌入式软件的开发，但渐渐没落了
+Java这就不用说了
+成熟的商用产品：
+VxWorks:
+pSOS
+QNX
+以上三个占据了绝对的市场优势，但价格不菲
+</p><p>Nucleus(提供源代码)
+PalmOS
+WindowsCE
+免费的：
+RTLinux,内核大约有500K左右，只能用于代码尺寸要求不高的领域。
+RT-Mach
+OS-KIT
+RTEMS
+eCos
+uC/OS
+HOPEN(国内的)
+</p><p><br />
+基于Vxworks的USB设备驱动的设计研究
+VxWorks的模块构成:BSP、Wind内核、网络系统、文件系统、IO系统、虚拟内存、目标代理等
+</p><p>RTL inux 实时嵌入式操作系统及其性能测量技术
+Linux的实时缺陷:（1）内核不可抢占，可能导致优先级反转 (2)关闭中断 (3)时间粒度粗 (4)调度策略
+RTLinux工作原理:中断采用软中断的方式 实时任务的调度由中断控制器控制  在RTLinux中实时任务分为实时进程和非实时进程
+，实时进程由RTLinux内核调度执行，非实时进程由Linux内核调度执行，这些进程间通信采用FIFO和Mbuff   RTLinux可以动态调整时钟粒度.
+</p><p>构建基于RTLinux的嵌入式系统研究和开发
+RTLinux的实时进程是由RTLinux内核进行处理的，因此不能够利用Linux的优秀的TCP/IP的网络功能，于是我们就要考虑如何将一个
+轻量级的TCP/IP协议栈IwIP移植到RTLinux上，实现其实时通信功能。
+</p><p>RTLinux对Linux关中断的解决方案
+RTLinux采用双内核的方法，将RTLinux内核置于Linux内核的底层，这样所有的硬件中断都要经过RTLinux内核的处理才能发送给Linux内核处理或者将实时中断交由自己处理。Linux所操作的中断处理只是RTLinux内核所控制的软中断，Linux内核不能够真正进行实际的中断的硬件操作。
+</p><p>RTLinux实时调度算法的改进和实现
+改进LLF调度算法的缺点，减少颠簸现象，在上下文切换和内务错失率方面，改进方案均有较大改进。
+</p><p><br />
+VxWorks下两种网络套接字传输性能的比较
+VxWorks下有两种网络套接字:BSD4.4兼容的和Zbuf套接字，ZBuf的效率较高但移植难度较大。
+如何用BSD兼容的源码实现Zbuf的效果，提高效率是我们应该考虑的！
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../r/e/u/Reuseable_System_1fc4.html">http://dns.cs.hit.edu.cn../../../r/e/u/Reuseable_System_1fc4.html</a>"</p>
+
+<p>本页面已经被浏览82次。 This page was last modified 03:28 2011年12月29日 by <a href="../../../i/b/m/User%7EIbmtc.html" class="new" title="User:Ibmtc">ibmtc</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../r/e/u/Reuseable_System_1fc4.html" title="Reuseable System">编辑本页</a></strong> |
+<a href="../../../r/e/u/Talk%7EReuseable_System_a98c.html" class="new" title="Talk:Reuseable System">讨论本页</a> |
+<a href="../../../r/e/u/Reuseable_System_1fc4.html" title="Reuseable System">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览82次。 This page was last modified 03:28 2011年12月29日 by <a href="../../../i/b/m/User%7EIbmtc.html" class="new" title="User:Ibmtc">ibmtc</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../r/e/u/Reuseable_System_1fc4.html" title="Reuseable System">编辑本页</a></strong>
+<br /><a href="../../../r/e/u/Talk%7EReuseable_System_a98c.html" class="new" title="Talk:Reuseable System">讨论本页</a>
+<br /><a href="../../../r/e/u/Reuseable_System_1fc4.html" title="Reuseable System">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393456.17 secs. -->
+</body></html>

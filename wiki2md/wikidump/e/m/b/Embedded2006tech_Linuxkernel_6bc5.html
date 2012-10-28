@@ -1,0 +1,439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Embedded2006tech/Linuxkernel - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../e/m/b/Embedded2006tech_Linuxkernel_6bc5.html" title="Embedded2006tech/Linuxkernel">编辑本页</a> |
+<a href="../../../e/m/b/Embedded2006tech_Linuxkernel_6bc5.html" title="Embedded2006tech/Linuxkernel">较早版本</a><p class='subtitle'><a href="../../../e/m/b/Embedded2006tech_Linuxkernel_6bc5.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Embedded2006tech/Linuxkernel</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>发信站: 武汉白云黄鹤站 (2003年01月14日15:36:07 星期二), 站内信件 
+</p><p>小弟近日对Linux进行了小小的裁减，偶有心得，愿大家共享 
+</p><p><br />
+说到裁减Linux，无非是为了减小磁盘占用或者是为了某些特定场合的应用（如嵌入式系统）。以RedHat 7.3为例，其最小安装仍然达到了300M，这不得不让人对一直号称小而全的Linux系统感到疑惑。 
+</p><p><br />
+作为自己手中课题的一个铺垫，不久前我尝试了对Linux进行裁减，虽然没有达到预期的一张软盘大小，但结果也相当有吸引力。下面我对此一一做说明。 
+</p><p><br />
+参考文档： 
+Linux bootdisk-HOWTO: 
+</p>
+<pre>   <a href="http://www.linux.org.tw/CLDP/gb/Bootdisk-HOWTO.html" class='external free' title="http://www.linux.org.tw/CLDP/gb/Bootdisk-HOWTO.html" rel="nofollow">http://www.linux.org.tw/CLDP/gb/Bootdisk-HOWTO.html</a> 
+</pre>
+<p>initrd introduce on Linux system: 
+</p>
+<pre>  /usr/src/linux-2.4/Documentation/initrd.txt 
+</pre>
+<p><br />
+裁减Linux一般有两种办法，其一是重新生成kernel和文件系统，其二是在原有的系统上删除不必要的文件缩小“体积” 
+</p><p>对从一个完整的RedHat 7.3版本而言，其最小安装也有300M，因此，第二个方法是不太现实的。于是重构文件系统和kernel成为了必然。 
+</p><p><br />
+裁减目标：构成一最小Linux系统担负实验室网关工作，系统载体为硬盘，运行使用RAMDISK，从而减小意外断电造成的文件系统修整消耗提高系统可靠性。 
+</p><p><br />
+目标平台：P2-400，8G/64M，8139LAN adapt x 2 
+</p><p><br />
+首先裁减kernel，既然是最小系统，则kernel里所有必须的部件都将直接编译进入内核。但是内核对module的支持需要保留。 
+</p><p><br />
+如何编译内核，不再累述，具体说说哪些选项先： 
+Code maturity level options ---> 不选 
+Loadable module support ---> 当中的Set version....的可以不要，其他两个留着 
+Processor type and features ---> 按照目标系统选择对应的Process Family ，其他的嘛，留下Machine Check Exception、Low Latency....、HIGHMEM Support，其余都可以不要 
+General setup --->当中，PCI的选上，其他的不要（注意对照你的系统），SYSTEM V IPC、BSD Process accounting、sysctl support留下，Kernel support ELF binary留着，其他的可以不要 
+Binary emulation of other systems ---> 
+Memory Technology Devices (MTD) ---> 
+Parallel port support ---> 
+以上三项都是可以不要的 
+Plug and Play configuration ---> 选上，不过如果没有ISA设备，可以不选对ISA P&amp;P的支持（比如我的目标系统） 
+Block devices --->各取所需了，一般来说，如果你要用软盘，就选上Normal floppy disk support，大多数嵌入式系统是不要的。中间几个也是没有的；Loopback device是一定要的，Network block device我也没把握，可能可以不要不过我选了，呵呵，RAM Disk一定要，Initrd RAM Disk support当然要选。至于Default Ramdisk size就无所谓了，反正可以在启动的时候修改，呵呵。 
+</p><p>Multi-device support (RAID and LVM) ---> 这个一般也用不上，不选了。 
+Networking options --->既然是打算做网关，呵呵，里面大部分东西都要选上而且是[*]，编译入内核（前面已经说过了，没有编译为模块的）。从上到下一直选到IP: Virtual Server Configuration --->（从这个开始（含），可以不要了）。 
+</p><p>需要说明的是，其中的IP: Netfilter Configuration --->子项即便选择全部编译到内核，似乎并没有什么变化，用iptables的时候一样要iptables的.so支持&nbsp;:( 不过对irc和ftp的跟踪倒是不需要insmod了 
+</p><p>Telephony Support ---> 
+SCSI support ---> 
+Fusion MPT device support ---> 
+I2O device support ---> 
+Amateur Radio support ---> 
+IrDA (infrared) support ---> 
+ISDN subsystem ---> 
+Old CD-ROM drivers (not SCSI, not IDE) ---> 
+上面几个都不用，为什么RedHat那么大，他们有不小的功劳哟<a href="../../../2/0/2/User%7E202.118.239.46.html" class="new" title="User:202.118.239.46">202.118.239.46</a> 
+</p><p>Network device support --->里面找出你目标系统的网卡（我这里是8139）选上，其他的统统去掉吧。 
+Input core support --->如果你不是用的USB接口鼠标键盘，可以不用选他们。 
+Character devices --->这里面我只选了Virtual Terminal以及Support for console on virtual terminal，其他好多东西都没有选。 
+Multimedia devices ---> 
+Crypto Hardware support ---> 
+</p><p>这两个对一般的最小系统来说都是不用的 
+</p><p>File systems --->这个是内核大小的大头，ext2(Second extended...)是必要的，ext3也用上吧，/proc有必要，DOS FAT/VFAT(win-95)估计你可能也需要，分区表只要支持PC BIOS就可以了，Native Language我把iso8859-1给内置了 
+console drivers->我只选了VGA text console 
+Sound ---> 
+USB support ---> 
+Additional device driver support ---> 
+Kernel hacking ---> 
+这几个都没有选，make dep;make clean;make bzImage 
+看看吧，内核大概是700～800k左右
+</p><p><br />
+以前我总以为裁减kernel就是裁减Linux了，后来才发现是大错特错。 
+以前总以为最难的是裁减kernel，后来才发现自己多么无知。学习裁减内核，大概只用了一两天，编译一次内核也就20分钟不到，可是后来居然重建文件系统花了一两个星期，呜呜<a href="../../../2/0/2/User%7E202.118.239.46.html" class="new" title="User:202.118.239.46">202.118.239.46</a> 
+</p><p>关于文件系统和kernel的关系，从参考文档里面可以知道，大家自己去看。如果连这个都不懂，建议暂时不要做裁减的事情，以为照着我的文章依葫芦画瓢多半是不能成功的。 
+</p><p>首先按照ramdisk的生成方法或者loopback device的生成方法生成一个8M的磁盘挂接到/mnt(或者其他目录）上，就可以以/mnt为根目录构造文件系统。注意将其按照ext2方式格式化 
+</p><p>lrwxrwxrwx    1 root     root            4 Dec 28 09:31 bin -> sbin 
+</p><p>drwxr-xr-x    5 root     root         1024 Dec 27 13:42 dev 
+</p><p>drwxr-xr-x    7 root     root         1024 Jan  6 15:14 etc 
+</p><p>drwxr-xr-x    2 root     root         1024 Dec 12 08:33 initrd 
+</p><p>drwxr-xr-x    4 root     root         1024 Dec 30 06:52 lib 
+</p><p>drwxr-xr-x    2 root     root         1024 Dec 11 07:52 mnt 
+</p><p>dr-xr-xr-x   24 root     root            0 Jan  6 15:14 proc 
+</p><p>drwxr-xr-x    2 root     root         1024 Dec 26 03:03 root 
+</p><p>drwxr-xr-x    2 root     root         1024 Dec 30 07:28 sbin 
+</p><p>drwxr-xr-x    2 root     root         1024 Dec 26 03:04 sysroot 
+</p><p>drwxr-xr-x    2 root     root         1024 Apr 19  2002 tmp 
+</p><p>drwxr-xr-x    3 root     root         1024 Dec 12 07:45 usr 
+</p><p>drwxr-xr-x    5 root     root         1024 Dec 12 02:43 var 
+</p><p><br />
+这几个目录是必须的 
+</p><p><br />
+先看看bin下面有什么 
+lrwxrwxrwx    1 root     root            6 Dec 30 07:28 ash -> ./bash 
+</p><p>-rwxr-xr-x    1 root     root       541096 Dec 30 07:27 bash 
+</p><p>-rwxr-xr-x    1 root     root        16020 Dec 13 08:56 cat 
+</p><p>-rwxr-xr-x    1 root     root        16680 Dec 27 15:40 chmod 
+</p><p>-rwxr-xr-x    1 root     root        36360 Dec 28 09:10 cp 
+</p><p>-rwxr-xr-x    1 root     root        62756 Dec 28 09:25 ftp 
+</p><p>-rwxr-xr-x    1 root     root       100624 Dec 28 09:14 grep 
+</p><p>-rwxr-xr-x    1 root     root         8672 Dec 26 03:27 halt 
+</p><p>-rwxr-xr-x    1 root     root         9624 Dec 28 09:14 hostname 
+</p><p>-rwxr-xr-x    1 root     root        54316 Dec 28 09:14 ifconfig 
+</p><p>-rwxr-xr-x    1 root     root        26920 Dec 12 02:42 init 
+</p><p>-rwxr-xr-x    1 root     root       105768 Dec 27 13:44 ip 
+</p><p>-rwxr-xr-x    1 root     root        60764 Dec 28 09:15 iptables 
+</p><p>-rwxr-xr-x    1 root     root         7764 Dec 26 17:26 kill 
+</p><p>-rwxr-xr-x    1 root     root        19080 Dec 12 02:25 login 
+</p><p>-rwxr-xr-x    1 root     root         9172 Dec 11 07:54 losetup 
+</p><p>-rwxr-xr-x    1 root     root        46888 Dec 13 08:55 ls 
+</p><p>-rwxr-xr-x    1 root     root        10316 Dec 13 08:37 mingetty 
+</p><p>-rwxr-xr-x    1 root     root        17992 Dec 27 14:15 mkdir 
+</p><p>-rwsr-xr-x    1 root     root        60104 Dec 11 07:54 mount 
+</p><p>-rwxr-xr-x    1 root     root        43496 Dec 28 10:02 mv 
+</p><p>-rwxr-xr-x    1 root     root        22196 Dec 26 02:09 nash 
+</p><p>-rwxr-xr-x    1 root     root        29464 Dec 28 09:49 ping 
+</p><p>-r-xr-xr-x    1 root     root        63304 Dec 26 16:57 ps 
+</p><p>lrwxrwxrwx    1 root     root            4 Dec 26 03:33 reboot -> halt 
+</p><p>-rwxr-xr-x    1 root     root        26216 Dec 26 17:35 rm 
+</p><p>lrwxrwxrwx    1 root     root            6 Dec 30 07:28 sh -> ./bash 
+</p><p>-rwxr-xr-x    1 root     root        14952 Dec 11 09:44 shutdown 
+</p><p>-rwxr-xr-x    1 root     root       219932 Dec 28 10:06 ssh 
+</p><p>-rwxr-xr-x    1 root     root       260616 Dec 27 14:04 sshd 
+</p><p>lrwxrwxrwx    1 root     root            6 Dec 26 16:48 swapoff -> swapon 
+</p><p>-rwxr-xr-x    1 root     root         7108 Apr  1  2002 swapon 
+</p><p>-rwxr-xr-x    1 root     root        27208 Dec 27 14:13 syslogd 
+</p><p>-rwxr-xr-x    1 root     root        78808 Dec 28 09:30 telnet 
+</p><p>-rwsr-xr-x    1 root     root        30664 Dec 27 14:23 umount 
+</p><p>-rwxr-xr-x    1 root     root         7832 Dec 12 01:54 update 
+</p><p>-rwxr-xr-x    1 root     root       386120 Dec 28 09:13 vi 
+</p><p>-rwxr-xr-x    1 root     root        13896 Dec 30 06:53 who 
+</p><p><br />
+</p><p>这里面包含了ftp、telnet、ssh客户端以及sshd服务器常用的命令和网络设置命令，iptables防火墙，vi编辑器，shell用的是bash，虽然ash很小但是总是不习惯没有auto complete功能，tcsh不大不小功能又全，可是对一些shell脚本的支持不太好。nash用来解析linuxrc，后面会讲到（如果你看了最前面提到的initrd.txt）也会明白。 
+</p><p><br />
+接着，用ldd命令看bin目录下面的各个可执行文件分别都和哪些动态库连接把他们cp到/mnt/lib目录下，如用ldd看mv命令，结果如下
+</p>
+<pre>  libc.so.6 => /lib/i686/libc.so.6 (0x42000000) 
+</pre>
+<pre>   /lib/ld-linux.so.2 => /lib/ld-linux.so.2 (0x40000000) 
+</pre>
+<p>把/lib/i686/libc.so.6和/lib/ld-linux.so.2复制到/mnt/lib下面即可。 
+libc.so.6是基本的libc库，好像不同的处理器还不一样，我就在一台P-MMX下面用P2的libc，结果死掉了。查了半天&nbsp;:( 
+iptables命令除了其显示的以外，还要把/lib/iptables目录复制到/mnt/lib下面 
+/lib/security下面是PAM需要的库，最小系统只需要复制/lib/security下面的pam_unix.so、pam_stack.so到/mnt/lib/security下面即可 
+</p><p><br />
+/etc下面的东西最是麻烦，要改的不是一点点 
+/etc/inittab init的配置文件，我改的是这样的： 
+</p><p>id:3:initdefault: 
+</p><p>si::sysinit:/etc/rc 
+</p><p>1:2345:respawn:/sbin/mingetty tty1 
+</p><p>2:23:respawn:/sbin/mingetty tty2 
+</p><p>l0:0:wait:/etc/rc0 
+</p><p>l6:6:wait:/etc/rc6 
+</p><p><br />
+呵呵，简单吧 
+</p><p>/etc/fstab记录系统启动应该mount的文件系统，因为系统在ramdisk上面跑，所以是这样的: 
+</p><p>/dev/ram0               /                       ext2    defaults        1 0
+</p><p>none                    /proc                   proc    defaults        0 0
+</p><p><br />
+从inittab里面知道，启动后执行脚本/etc/rc我是这样写的： 
+</p>
+<ol><li>!/bin/sh 
+</li></ol>
+<p>/bin/mount -n -t proc /proc /proc 
+</p><p>/bin/mount -n -o remount,rw / 
+</p><p>/bin/mount -av 
+</p><p>/bin/hostname MiniLinux 
+</p><p>/etc/rc.network 
+</p><p>/etc/rc.firewall 
+</p><p>/bin/sshd 
+</p><p><br />
+第一行mount /proc，第二行把根remount为rw模式（漏了这个害得我查了两三天），第三行检查fstab里面是否还有其他的需要mount的分区，第四行设置主机名，后面分别根据脚本设置网络和防火墙，最后开启sshd服务。 
+</p><p><br />
+设置网络在最小系统里面再也不是像/etc/init.d/network start那么简单， 
+呵呵，其实也不麻烦。通过命令ip、ifconfig可以很方便的设置。例如rc.network为： 
+</p>
+<ol><li>!/bin/sh 
+</li></ol>
+<p>/bin/ifconfig eth0 192.168.0.254 
+</p><p>/bin/ifconfig eth1 211.69.200.1
+</p><p>/bin/ip route add default via 211.69.200.2 dev eth1 
+</p><p>/bin/ip route replace 192.168.0.0/24 dev eth0 scope link 
+</p><p>/bin/ip route replace 211.69.200.0/24 dev eth1 scope link 
+</p><p><br />
+前两行设置ip地址，第三行设置缺省网关，后面两行更改本网路由。 
+</p><p>rc.firewall的写法大家可以自己参照iptables的HOWTO去完成 
+</p><p>/etc/passwd,/etc/shadow,/etc/group记录有系统帐号信息，在最小系统上，我只留了root组（用户）的信息。 
+</p><p>裁减Linux过程中，PAM是一个很关键的部分，由于资料不多，很多人束手无策。 
+</p><p>如果仅仅要使用最小系统，从console登陆需要修改/etc/pam.d/login，从ssh 上来修改/etc/pam.d/sshd，不妨复制系统原来的配置文件略作修改/etc/pam.d/login为 
+</p>
+<ol><li>%PAM-1.0
+</li></ol>
+<p>auth       required     /lib/security/pam_stack.so service=system-auth
+</p><p>account    required     /lib/security/pam_stack.so service=system-auth
+</p><p>password   required     /lib/security/pam_stack.so service=system-auth
+</p><p>session    required     /lib/security/pam_stack.so service=system-auth
+</p><p><br /> 
+/etc/pam.d/sshd和login的内容一样。从其可知它们调用了system-auth这个服务，则还需要/etc/pam.d/system-auth，内容为： 
+</p>
+<ol><li>%PAM-1.0
+</li><li> This file is auto-generated.
+</li><li> User changes will be destroyed the next time authconfig is run.
+</li></ol>
+<p>auth        sufficient    /lib/security/pam_unix.so likeauth nullok
+</p><p>account     required      /lib/security/pam_unix.so
+</p><p>password    sufficient    /lib/security/pam_unix.so nullok  md5 shadow
+</p><p>session     required      /lib/security/pam_unix.so
+</p><p><br />
+</p><p>关机和重启 
+</p><p>关机和重启在完整的Linux下面是有很长的脚本支持的，就像启动脚本/etc/rc.sysinit 等等。但是在最小系统上面，这些都需要自己来写，复制原有系统的肯定不行。 
+</p><p>不过从前面/etc/inittab里面可以知道，最小系统上面reboot执行的是/etc/rc6，关机是/etc/rc0，如果不需要“善后”，则很简单，rc6如下： 
+</p><p>[root@MiniLinux etc]# cat rc6 
+</p><p>/sbin/reboot -i -d 
+</p><p>rc0则为： 
+</p><p>[root@MiniLinux etc]# cat rc0 
+</p><p>/sbin/halt -i -d -p 
+</p><p>整个etc目录下的东西列表大致为： 
+</p><p>[root@MiniLinux etc]# ll 
+</p><p>total 891 
+-rw-r--r--    1 root     root         6639 Apr 19  2002 fonts.cgz 
+</p><p>-rw-r--r--    1 root     root          109 Dec 30 06:19 fstab 
+</p><p>-rw-r--r--    1 root     root           14 Dec 14 00:10 group 
+</p><p>-rw-r--r--    1 root     root          146 Dec 27 15:41 inittab 
+</p><p>-rw-------    1 root     root           60 Jan  6 15:14 ioctl.save 
+</p><p>-rw-r--r--    1 root     root           57 Dec 12 01:26 issue 
+</p><p>-rw-r--r--    1 root     root        28436 Apr 19  2002 keymaps.gz 
+</p><p>-rw-r--r--    1 root     root         3758 Apr 19  2002 kon.cfg 
+</p><p>-rw-r--r--    1 root     root         1281 Apr 19  2002 lang-table 
+</p><p>-rw-r--r--    1 root     root         1320 Dec 30 06:55 ld.so.cache 
+</p><p>-rw-r--r--    1 root     root           18 Dec 12 07:53 ld.so.conf 
+</p><p>-rw-r--r--    1 root     root        54692 Apr 19  2002 loader.tr 
+</p><p>-rw-r--r--    1 root     root         1180 Dec 23 09:07 login.defs 
+</p><p>-rw-r--r--    1 root     root        30303 Apr 19  2002 minikon.fnt 
+</p><p>-rw-r--r--    1 root     root            0 Dec 13 23:39 mtab 
+</p><p>-rw-r--r--    1 root     root          270 Dec 23 04:03 nsswitch.conf 
+</p><p>drwxr-xr-x    2 root     root         1024 Dec 30 04:48 pam.d 
+</p><p>-rw-r--r--    1 root     root           28 Dec 30 06:29 passwd 
+</p><p>-rwxr-xr-x    1 root     root          401 Dec 30 07:43 profile 
+</p><p>-rw-r--r--    1 root     root        12359 Apr 19  2002 ramfs.img 
+</p><p>lrwxrwxrwx    1 root     root            7 Dec 26 03:03 rc -> rc.d/rc 
+</p><p>drwxr-xr-x    2 root     root         1024 Dec 27 15:33 rc.d 
+</p><p>-rwxr-xr-x    1 root     root         2631 Jan  6 02:18 rc.firewall 
+</p><p>-rwxr-xr-x    1 root     root          246 Jan  6 02:17 rc.network 
+</p><p>-rwxr-xr-x    1 root     root           20 Dec 27 15:38 rc0 
+</p><p>-rwxr-xr-x    1 root     root           19 Dec 27 15:39 rc6 
+</p><p>-r--------    1 root     root           59 Dec 30 06:20 shadow 
+</p><p>drwxr-xr-x    2 root     root         1024 Dec 26 06:37 ssh 
+</p><p>-rw-r--r--    1 root     root       737535 Dec 23 10:18 termcap 
+</p><p><br />
+其中目录ssh为sshd的配置文件，复制原来机器上的即可。其他的大部分文件都是按照HOWTO上面提到的一些必备文件复制的。 
+</p><p>nsswitch.conf是系统寻找一些配置文件的配置文件，呵呵，很拗口，man nsswitch.conf看看吧，稍作修改为： 
+</p><p>[root@MiniLinux /]# cat etc/nsswitch.conf 
+</p><p>passwd:     files 
+</p><p>shadow:     files 
+</p><p>group:      files 
+</p><p>hosts:      files 
+</p><p>services:   files 
+</p><p>networks:   files 
+</p><p>protocols:  files 
+</p><p>rpc:        files 
+</p><p>ethers:     files 
+</p><p>netmasks:   files 
+</p><p>bootparams: files 
+</p><p>automount:  files 
+</p><p>aliases:    files 
+</p><p>netgroup:   files 
+</p><p>publickey:  files 
+</p><p><br /> 
+</p><p>profile文件是bash shell的登陆脚本，主要为了限制历史命令记录大小 
+</p><p>[root@MiniLinux etc]# cat profile 
+</p>
+<ol><li> /etc/profile 
+</li></ol>
+<ol><li> System wide environment and startup programs, for login setup 
+</li></ol>
+<ol><li> Functions and aliases go in /etc/bashrc 
+</li></ol>
+<p>HISTSIZE=1000 
+</p><p>HISTFILESIZE=20 
+</p><p>PATH=/bin 
+</p><p>PS1='[\u@\h \W]\$ ' 
+</p><p>HOSTNAME='/bin/hostname' 
+</p><p>export PATH HISTSIZE HISTFILESIZE HOSTNAME PS1 
+</p><p>alias l.='ls -d .[a-zA-Z]* --color=tty' 
+</p><p><br />
+alias ll='ls -l --color=tty' 
+</p><p>alias ls='ls --color=tty' 
+</p><p>alias rm='rm -i' 
+</p><p>alias cp='cp -i' 
+</p><p>alias mv='mv -i' 
+</p><p><br />
+</p><p>关于/dev目录 
+</p><p>完整linux的/dev目录下有很多设备文件，不过仔细辨别一下就会发现很多其实 
+用不上。我列出在我的最小Linux下面用到的设备文件： 
+[root@MiniLinux dev]# ls 
+</p><p>agpgart  hda   hda6     input  loop3     psaux  ptyp3  ram3  tty3   ttyp4
+</p><p>console  hda1  hda7     kbd    loop4     ptmx   ptyp4  ram4  tty4   urandom
+</p><p>fb       hda2  hda8     kmem   loop5     pts    ram    shm   ttyp0  zero
+</p><p>fb0      hda3  hda9     loop0  mem       ptyp0  ram0   tty0  ttyp1
+</p><p>fd0      hda4  initctl  loop1  null      ptyp1  ram1   tty1  ttyp2
+</p><p>fd1      hda5  initrd   loop2  openprom  ptyp2  ram2   tty2  ttyp3
+</p><p><br />
+其中input、shm、pts是目录，似乎是系统自己生成的，fb连接到fb0，ram连接到ram0 ，关于硬盘的保留了hda?，loop[0-5]用于支持回环设备（loopback devices)，tty[0-4]用于支持主机直接操作，ttyp[0-4] &amp; ptyp[0-4]用于共同支持ssh登陆，ram?用于支持虚拟盘，urandom是sshd服务必须的设备。
+</p><p>所有的设备文件均可以用cp -dpR从原系统的/dev目录下复制过来。 
+</p><p>关于linuxrc
+linuxrc是一个在initrd.img里面展开后直接自动执行的一个脚本。关于这个脚本的用途，建议大家读一下/usr/src/linux-2.4/Documentation/initrd.txt，我也是直接把系统提供的initrd-2.4.18-3.img里面带的linuxrc拿来用而已： 
+</p><p>[root@MiniLinux /]# cat linuxrc 
+</p>
+<ol><li>!/bin/nash 
+</li></ol>
+<p>echo Mounting /proc filesystem 
+</p><p>mount -t proc /proc /proc 
+</p><p>echo Creating root device 
+</p><p>mkrootdev /dev/root 
+</p><p>echo 0x0100 > /proc/sys/kernel/real-root-dev 
+</p><p>echo Mounting root filesystem 
+</p><p>mount --ro -t ext2 /dev/root /sysroot 
+</p><p>umount /proc 
+</p><p>pivot_root /sysroot /sysroot/initrd 
+</p><p>注意，它用的shell是/bin/nash，而不是通常用的/bin/sh，大家man nash可以看到很多有意思的东西。 
+</p><p>最后的一些工作 
+</p><p>当你把一个文件虚拟为一个磁盘并挂接在系统上，复制了需要的可执行文件、库文件、配置文件并做了必要的修改之后，一个文件系统基本上已经成形了。 
+前面列出的最小系统的目录，如果没有特别提到都是留空的。这里要说的，最后的工作就是如何把kernel和文件系统结合起来。 
+</p><p>我看到过很多讲一张或者两张软盘启动的linux，里面都提到用rdev定位文件系统，还要如何如何算。我是看明白了，不过觉得特别繁琐，就投机取巧了一番。 
+</p><p>首先假定刚才我们挂载的根文件系统是挂载到现在的/mnt目录下，文件名是/root/newfs则首先umount 
+</p>
+<ol><li>umount /root/newfs 
+</li></ol>
+<p>接着将newfs压缩 
+</p>
+<ol><li>gzip -v9 /root/newfs 
+</li></ol>
+<p>此时会生成newfs.gz，接着rename: 
+</p>
+<ol><li>mv newfs.gz newfs.img 
+</li></ol>
+<p>把它和前面编译的内核bzImage放到/boot目录下去。 
+</p><p>我用的Linux引导器是grub。为什么不用LILO？我基本上没有用过LILO，是出道很晚很晚的Linux使用者，从grub的介绍上我发现它比LILO功能强很多，使用新内核不需要像grub那样重新安装，而且内置支持一些常见的文件系统。 
+</p><p>看看/boot/grub/grub.conf吧，在其中增加一段： 
+</p><p>title Test Combine
+</p>
+<pre>       root (hd0,4)
+</pre>
+<pre>       kernel /bzImage ro ramdisk_size=8192 root=/dev/ram0
+</pre>
+<pre>       initrd /newfs.img
+
+</pre>
+<p>当然，你不可照抄我的配置，需要按照你的系统更改root (hd?,?)，如果你建立的文件系统（未压缩前）容量是其他数值的，请用合适的值替代8192，单位是KB（还记得我前面说过的编译内核的时候不需要刻意更改缺省ramdisk容量吗？就在这里指定即可） 
+</p><p><br />
+好了，可以试试裁减以后的系统了。大概有多大呢？我裁减出来的系统内核大约是&lt;800k，文件系统8M，压缩成.img的是约3M，很小吧。
+</p><p><br />
+感想 及 说明 
+</p><p>先说说这个最小Linux的启动过程。grub将内核载入以后，让内核将newfs.img载入内存并展开（自动展开到/dev/ram0）为临时根文件系统，此时执行/linuxrc，在linuxrc中又指定了新的文件系统。接着内核按照grub带入的参数root=/dev/ram0作为根文件系统正式init，此时/dev/ram0中的内容正是newfs.img的内容(如果你仔细观察的话，会发现完整linux启动过程中有Unmounting initrd....的字样，说明initrd.img是在进入init脚本的过程中才被卸载的），按照/etc/inittab脚本执行，缺省为runlevel 3，执行/etc/rc，最后由mingetty启动login完成引导。 
+</p><p>我个人感觉，/linuxrc里面的脚本似乎对内核正式init时的根分区指定没有多少影响，并不像/usr/src/linux-2.4/Documentation/initrd.txt里面linuxrc例子那样要求严格。好像决定正式init根分区的是由grub带入内核的参数root=... 来决定的更多。有经验的大侠请多指点。 
+</p><p>经过这次实验，感受颇多。首先对linux引导过程以及/etc下面的很多配置文件有了深入了解。Linux可改变的弹性很大，不过也需要大家沉得住气，慢慢去研究，man、HOWTO等等是少不了看的，第一手的资料还是man和英文HOWTO最权威，其次，缩减以后的大小让人非常振奋，裁减以后，系统加载重启登陆的速度都变得非常快，很多东西简直就是一眨眼就过去了。 
+</p><p>文末，感谢各位耐心看完，不对之处请斧正。本人也是linux的新手，万望海涵。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../e/m/b/Embedded2006tech_Linuxkernel_6bc5.html">http://dns.cs.hit.edu.cn../../../e/m/b/Embedded2006tech_Linuxkernel_6bc5.html</a>"</p>
+
+<p>本页面已经被浏览17次。 This page was last modified 10:10 2006年3月11日 by 匿名用户.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../e/m/b/Embedded2006tech_Linuxkernel_6bc5.html" title="Embedded2006tech/Linuxkernel">编辑本页</a></strong> |
+<a href="../../../e/m/b/Talk%7EEmbedded2006tech_Linuxkernel_067f.html" class="new" title="Talk:Embedded2006tech/Linuxkernel">讨论本页</a> |
+<a href="../../../e/m/b/Embedded2006tech_Linuxkernel_6bc5.html" title="Embedded2006tech/Linuxkernel">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览17次。 This page was last modified 10:10 2006年3月11日 by 匿名用户.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../e/m/b/Embedded2006tech_Linuxkernel_6bc5.html" title="Embedded2006tech/Linuxkernel">编辑本页</a></strong>
+<br /><a href="../../../e/m/b/Talk%7EEmbedded2006tech_Linuxkernel_067f.html" class="new" title="Talk:Embedded2006tech/Linuxkernel">讨论本页</a>
+<br /><a href="../../../e/m/b/Embedded2006tech_Linuxkernel_6bc5.html" title="Embedded2006tech/Linuxkernel">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392658.21 secs. -->
+</body></html>

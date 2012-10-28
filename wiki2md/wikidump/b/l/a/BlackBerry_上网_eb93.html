@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>BlackBerry 上网 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../b/l/a/BlackBerry_%E4%B8%8A%E7%BD%91_eb93.html" title="BlackBerry 上网">编辑本页</a> |
+<a href="../../../b/l/a/BlackBerry_%E4%B8%8A%E7%BD%91_eb93.html" title="BlackBerry 上网">较早版本</a><p class='subtitle'><a href="../../../b/l/a/BlackBerry_%E4%B8%8A%E7%BD%91_eb93.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">BlackBerry 上网</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p><b>什么是MDS</b>
+</p><p>MDS:BlackBerry Mobile Data Service. Note that MDS is part of the BlackBerry Enterprise Server. For more information on BlackBerry MDS please see "Understanding MDS: A Developer's Perspective", published in Volume 1, Issue 3 of the BlackBerry Developer Journal.
+</p><p>Deploying and enabling a web-based application on a BlackBerry wireless device allows for reduced development time by not creating a BlackBerry application. A Browser Push differs from a BlackBerry client push application as there is no requirement to develop a client to reside on the device. There are four types of Browser Push that can be sent to the BlackBerry wireless device.
+</p><p>Topics within this section include:
+</p>
+<pre>   * Browser Channel Push
+   * Browser Channel Delete Push
+   * Browser Content Cache Push
+   * Browser Message Push
+   * How to push
+   * Sample Java Push Application
+   * Sample PHP Push Application
+   * Download The Source
+</pre>
+<p>Browser Channel Push
+</p><p>A Browser Channel Push sends a web page and two icons to the BlackBerry wireless device. The web page is stored in the cache of the BlackBerry Browser, and an icon is shown on the home screen of the device. An unread icon can be specified so that when a new Browser Channel Push arrives to the device, it will display the unread icon. After the user has opened and visited the page, the read icon is shown. This provides the user with a visual indication as to when a page has been updated. It抯 useful for a news service so that users are aware of when new data has arrived. The icons can even change with every push allowing an application to continually push different icons. This would be useful for a weather application updating the current weather conditions.
+</p><p>Browser Channel Delete Push
+</p><p>A Browser Channel Delete works in a similar, but opposite fashion of the Browser Channel Push. It will remove an icon on the BlackBerry Home screen that has been sent via a Browser Channel Push. Icons initiating from a Browser Channel Push can also be removed from the device itself.
+</p><p>Browser Content Cache Push
+</p><p>Browser Content Cache Push is the most discreet type of Browser Push. A Browser Content Push will push a web page to the BlackBerry wireless device and store it in the BlackBerry Browser抯 cache. The user is not informed in any way when this push takes place, or when the page has been updated.
+</p><p>Browser Message Push
+</p><p>Instead of creating an icon on the home screen of the BlackBerry wireless device, a Browser Message Push will arrive in the Inbox on the device. When the user opens the message, the default browser on the device is launched then opens the page. Unlike the Browser Channel Push or Browser Content Push, the web page is stored as a browser message instead of in the BlackBerry Browser抯 cache. This means that the page will be available until the message is deleted. It will not be removed from the BlackBerry Browser cache when other events (browsing, cache clear) take place. The message created from a Browser Message Push is not sent to, and will not appear in, a user抯 Inbox on their desktop. It is sent directly to the device.
+</p><p>How to push
+</p><p>Push applications can be created using any development language that is able to initiate a network connection and perform an HTTP post. A post to the BlackBerry MDS Server handles the delivery of the push to a BlackBerry wireless device. The post is made up of the standard html request headers, a few unique Browser Push headers and the web page being pushed (it is not required to send the web page when performing a Browser Channel Delete Push). The following additional http request headers are required for a Browser Push to take place.
+</p><p>Required
+</p><p>X-RIM-Push-Title
+X-RIM-Push-Type
+</p><p>Optional
+</p><p>X-RIM-Push-Channel-ID
+X-RIM-Push-UnRead-Icon-URL
+X-RIM-Push-Read-Icon-URL
+</p><p>The "X-Rim-Push-Title" header holds the title that will appear on the home screen of the device for a Browser Channel Push, or in the subject of the message of a Browser Message Push. The "X-RIM-Push-Type" header holds the value that represents the type of push being sent. Possible values are:
+</p>
+<pre>   * Browser-Channel
+   * Browser-Message
+   * Browser-Content
+   * Browser-Channel-Delete
+</pre>
+<p>The "X- RIM-Push-Channel-ID" header contains the URL of the page to be pushed to the device. This is not required when performing a Browser Message or Browser Content push. The "X-RIM-Push-UnRead-Icon-URL" and "X-RIM-Push-Read-Icon-URL" are optional headers that specify the URL of the icons to be used for a Browser Channel Push. If these are not specified then the default Browser Channel Push icons are used. These two headers are not required for Browser Message, Browser Content or Browser Channel Delete Push and may be omitted.
+</p><p>The page that is to be pushed is submitted once the headers are sent. It is recommended that this page resides on a web server, although it is not required. If it is not located on a web server, a user would be unable to refresh the page. If the page has been removed from the BlackBerry Browser cache (if a Browser Channel or Browser Content Push was used) they would be unable to view it. It is not required to send the actual page when performing a Browser Channel Delete.
+</p><p>Sample Java Push Application
+</p><p>A sample Java based push application is included and documented with the BlackBerry JDE. The BlackBerry JDE can be downloaded using the following link:
+</p><p><a href="http://www.blackberry.com/developers/downloads/jde/" class='external free' title="http://www.blackberry.com/developers/downloads/jde/" rel="nofollow">http://www.blackberry.com/developers/downloads/jde/</a>
+</p><p>Sample PHP Push Application
+</p><p>PHP can be used to create a simple, transferable web page that can be used to initiate a Browser Push to the device. Accessible from any browser, it allows you to send any type of Browser Push discussed here to any user on your BlackBerry Enterprise Server. Any web server that is enabled for PHP should be able to serve up this page without additional configuration. Please see the listing at the end of this article of the sample PHP application. This application relies on an html page that contains a form to collect the required push information from the user. This is a basic html form and is not discussed below.
+</p><p>The first step in the PHP application is to create the URL the request will be posted to.
+</p><p>$path = "/push?DESTINATION="
+</p>
+<pre>     . $HTTP_POST_VARS['email']
+     . "&amp;PORT=7874&amp;REQUESTURI=/";
+</pre>
+<p>The destination points to the email address or BlackBerry PIN of the user to deliver the Browser Push to. The port number 7874 is the port the BlackBerry Browser is listening on for incoming push requests. Once this URL has been constructed we open a socket connection to the BlackBerry MDS Server.
+</p><p>$besfs = @fsockopen($HTTP_POST_VARS['besHostname'],
+</p>
+<pre>        $HTTP_POST_VARS['besPort'], $errno, $errstr,30);
+</pre>
+<p>The BlackBerry MDS Server hostname and MDS push port supplied in the html push form are used as parameters to open the socket connection. If the connection was successfully opened we can start to write out the header information.
+</p><p>fputs($besfs, "POST $path HTTP/1.0\r\n");
+</p><p>fputs($besfs, "Host: "
+</p>
+<pre>   . $HTTP_POST_VARS['besHostname'] . "\r\n");
+</pre>
+<p>fputs($besfs, "Content-Location: "
+</p>
+<pre>   . $HTTP_POST_VARS['pushURL'] . "\r\n");
+</pre>
+<p>fputs($besfs, "X-RIM-Push-Title: "
+</p>
+<pre>   . $HTTP_POST_VARS['pushTitle'] . "\r\n");
+</pre>
+<p>fputs($besfs, "X-RIM-Push-Type: "
+</p>
+<pre>   . $HTTP_POST_VARS['pushType'] . "\r\n");
+</pre>
+<p>The standard HTTP request headers are sent along with the two required BlackBerry Push headers. The URL of the page to be pushed, the push title and push type are retrieved from the html form the user submitted. If the Browser Push is a Browser Channel or Browser Channel Delete, "X-RIM- Push-Channel-ID" is required. If a Browser Channel Push is being sent, the URL of the read and unread icons are specified. Not specifying a URL for the read and unread icons will cause the device to use its default icons.
+</p><p>if ($HTTP_POST_VARS['pushType'] == "Browser-Channel"
+||  $HTTP_POST_VARS['pushType'] == "Browser-Channel-Delete")
+{
+</p>
+<pre> fputs($besfs, "X-RIM-Push-Channel-ID: "
+     . $HTTP_POST_VARS['pushURL'] . "\r\n");
+</pre>
+<pre> //Send the push icon URL's if we are using
+ //a browser channel push.
+ if($HTTP_POST_VARS['pushType'] == "Browser-Channel")
+ {
+   fputs($besfs, "X-RIM-Push-UnRead-Icon-URL: "
+       . $HTTP_POST_VARS['unreadIconURL'] . "\r\n");
+</pre>
+<pre>   fputs($besfs, "X-RIM-Push-Read-Icon-URL: "
+       . $HTTP_POST_VARS['readIconURL'] . "\r\n");
+ }
+</pre>
+<p>}
+</p><p>Now that the required header information has been sent to the BlackBerry MDS Server we are ready to push the web page. Sending the entire web page would not be required when sending a Browser Channel Delete.
+</p><p>$webURL = parse_url($HTTP_POST_VARS['pushURL']);
+</p><p>//Set the port to 80 if not otherwise specified
+//in the push URL.
+if (empty($webURL['port']))
+</p>
+<pre> $port = 80;
+</pre>
+<p>else
+</p>
+<pre> $port = $webURL['port'];
+</pre>
+<p>//Open a socket connection to the webserver
+//hosting the page to push.
+$webfs = @fsockopen($webURL['host'], $port, $errno, $errstr, 30);
+fputs($webfs, "GET " . $webURL['path'] . " HTTP/1.1\r\n");
+fputs($webfs, "Host: " . $webURL['host'] . "\r\n");
+fputs($webfs, "Connection: Close\r\n\r\n");
+</p><p>//Read and discard the first line from the
+//webserver (should be HTTP/1.1 200 OK).
+fgets($webfs);
+</p><p>//Read in the page to push from the web server
+//and write it out to the MDS server.
+while (!feof($webfs))
+{
+</p>
+<pre> fputs($besfs, fgets($webfs));
+</pre>
+<p>}
+//Close the connection to the web server.
+fclose($webfs);
+</p><p>If the push is a Browser Channel Delete then two additional headers must be specified. These are only required for a Browser Channel Delete as they would normally be supplied in the headers passed through from the web server when performing a Browser Channel, Browser Message or Browser Content Push.
+</p><p>if ($HTTP_POST_VARS['pushType'] == "Browser-Channel-Delete")
+{
+</p>
+<pre> //No content to send when performing a
+ //Browser Channel Delete Push.
+ fputs($besfs, "Content-length: 0\r\n");
+ fputs($besfs, "Connection: Close\r\n\r\n");
+</pre>
+<p>}
+</p><p>At this point the push should have been sent to the BlackBerry MDS Server. All that is left is to capture the output from the BlackBerry MDS Server and pass it back to the user performing the push. A response code of 200 from the BlackBerry MDS Server indicates that a successful push has taken place.
+</p><p>$buf = "";
+//Capture the MDS server抯 reply to the push.
+while (!feof($besfs))
+</p>
+<pre> $buf .= fgets($besfs,128);
+</pre>
+<p>fclose($besfs);
+//Display the MDS server's reply.
+echo "Response from MDS: <br />";
+echo $buf;
+</p><p>From the sample code above you can see how easy it is to create a Browser Push application for the BlackBerry wireless device. Doing so will give you a framework to deploy most types of web application to BlackBerry users. You can simply place the entire file shown below on a PHP enabled web server and begin pushing to BlackBerry users immediately.
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../b/l/a/BlackBerry_%E4%B8%8A%E7%BD%91_eb93.html">http://dns.cs.hit.edu.cn../../../b/l/a/BlackBerry_%E4%B8%8A%E7%BD%91_eb93.html</a>"</p>
+
+<p>本页面已经被浏览8次。 This page was last modified 04:59 2007年5月28日 by <a href="../../../d/y/i/User%7EDyingcow.html" title="User:Dyingcow">刘奭</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../b/l/a/BlackBerry_%E4%B8%8A%E7%BD%91_eb93.html" title="BlackBerry 上网">编辑本页</a></strong> |
+<a href="../../../b/l/a/Talk%7EBlackBerry_%E4%B8%8A%E7%BD%91_46ba.html" class="new" title="Talk:BlackBerry 上网">讨论本页</a> |
+<a href="../../../b/l/a/BlackBerry_%E4%B8%8A%E7%BD%91_eb93.html" title="BlackBerry 上网">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览8次。 This page was last modified 04:59 2007年5月28日 by <a href="../../../d/y/i/User%7EDyingcow.html" title="User:Dyingcow">刘奭</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../b/l/a/BlackBerry_%E4%B8%8A%E7%BD%91_eb93.html" title="BlackBerry 上网">编辑本页</a></strong>
+<br /><a href="../../../b/l/a/Talk%7EBlackBerry_%E4%B8%8A%E7%BD%91_46ba.html" class="new" title="Talk:BlackBerry 上网">讨论本页</a>
+<br /><a href="../../../b/l/a/BlackBerry_%E4%B8%8A%E7%BD%91_eb93.html" title="BlackBerry 上网">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393136.73 secs. -->
+</body></html>

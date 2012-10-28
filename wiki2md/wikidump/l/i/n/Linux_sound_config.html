@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Linux sound config - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../l/i/n/Linux_sound_config.html" title="Linux sound config">编辑本页</a> |
+<a href="../../../l/i/n/Linux_sound_config.html" title="Linux sound config">较早版本</a><p class='subtitle'><a href="../../../l/i/n/Linux_sound_config.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Linux sound config</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>用lsmod显示出的驱动模块如下：
+</p>
+<pre> Module                  Size  Used by
+ autofs4                22788  0 
+ microcode               5792  0 
+ ac                      3716  0 
+ i2c_i801                7436  0 
+ snd_intel8x0           27968  0 
+ snd_ac97_codec         68344  1 snd_intel8x0
+ snd_pcm_oss            42656  0 
+ snd_mixer_oss          14720  1 snd_pcm_oss
+  snd_pcm                81416  3 snd_intel8x0,snd_ac97_codec,snd_pcm_oss
+ snd_timer              25732  1 snd_pcm
+ snd                    42340  6 snd_intel8x0,snd_ac97_codec,snd_pcm_oss,snd_mixer_oss,snd_pcm,snd_timer  
+ soundcore               8032  1 snd
+ snd_page_alloc          7428  2 snd_intel8x0,snd_pcm
+ e100                   40320  0 
+</pre>
+<p>soundcore、snd、snd_page_alloc、snd_timer、snd_mixer_oss、snd_mixer_oss、snd_pcm   snd_pcm_oss、snd_ac97_codec、snd_intel8x0 
+在非hotplug和udev文件系统下，将/lib/modules/2.6.12/kernel/sound的目录拷贝到U盘上相应的目录，然后执行如下脚本，即可完成！
+</p>
+<pre>#!/bin/bash
+# auto insmod snd
+insmod /lib/modules/2.6.12/kernel/sound/soundcore.ko
+insmod /lib/modules/2.6.12/kernel/sound/core/snd.ko
+insmod /lib/modules/2.6.12/kernel/sound/core/snd-page-alloc.ko
+insmod /lib/modules/2.6.12/kernel/sound/core/snd-timer.ko
+insmod /lib/modules/2.6.12/kernel/sound/core/oss/snd-mixer-oss.ko
+insmod /lib/modules/2.6.12/kernel/sound/core/snd-pcm.ko
+insmod /lib/modules/2.6.12/kernel/sound/core/oss/snd-pcm-oss.ko
+insmod /lib/modules/2.6.12/kernel/sound/pci/ac97/snd-ac97-codec.ko
+
+if [&nbsp;! -d /dev/snd ];then
+	mkdir /dev/snd
+fi
+mknod /dev/snd/controlC0 c 116 0
+mknod /dev/snd/pcmC0D0p c 116 16
+mknod /dev/snd/pcmC0D0c c 116 24
+mknod /dev/snd/pcmC0D1c c 116 25
+mknod /dev/snd/pcmC0D4p c 116 20
+mknod /dev/snd/timer c 116 33
+#mknod /dev/rtc c 14 0 
+</pre>
+<pre># auto make mice 
+if [&nbsp;! -d /dev/input ];then
+	mkdir /dev/input
+fi
+mknod /dev/input/mice c 13 63 
+</pre>
+<p>设备信息
+但这时的声卡是没有声音的，因为dev目录下没有声卡设备。dev目录下的声卡设备在snd目录里，里面有以下内容：
+</p>
+<pre>crw------- 1 xf root 116, 10 May  4 10:15 controlC0
+crw------- 1 xf root 116,  9 May  4 10:15 pcmC0D0c
+crw------- 1 xf root 116,  8 May  4 10:15 pcmC0D0p
+crw------- 1 xf root 116,  7 May  4 10:15 pcmC0D1c
+crw------- 1 xf root 116,  6 May  4 10:15 pcmC0D2c
+crw------- 1 xf root 116,  5 May  4 10:15 pcmC0D3c
+crw------- 1 xf root 116,  4 May  4 10:15 pcmC0D4p
+crw------- 1 xf root 116,  3 May  4 10:15 seq
+crw------- 1 xf root 116,  2 May  4 10:15 timer
+</pre>
+<p>有了这些东西以后，声卡就可以正常工作了。
+设置声卡信息
+声卡获得了驱动，建立了声卡设备，并不意味着声卡被激活，所以还必须激活声卡。
+激活声卡是将声卡的开启配置信息写到/etc/alsa/alsa.conf文件中。使用amixer命令开启声卡：执行的脚本如下：
+</p><p>amixer命令需要下载包：  alsa-driver-0.9.6.tar、alsa-lib-0.9.6.tar和alsa-utils-0.9.6.tar
+</p>
+<pre>#!/ect/bash
+# 语法说明 amixer  设置  声卡号 音量 静音/非静音
+amixer set PCM 22 unmute
+amixer set PC\ Speaker 22 unmute
+amixer set Master 22 unmute
+amixer set Master\ Mono 22 unmute
+amixer set Headphone 22 unmute
+amixer set Phone 22 unmute
+amixer set Aux 22 unmute
+amixer set Video 22 unmute
+amixer set CD 22 unmute
+amixer set Input\ Gain 22 unmute
+amixer set Line 22 unmute
+amixer set MIC 22 unmute
+</pre>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../l/i/n/Linux_sound_config.html">http://dns.cs.hit.edu.cn../../../l/i/n/Linux_sound_config.html</a>"</p>
+
+<p>本页面已经被浏览9次。 This page was last modified 09:01 2006年5月9日 by <a href="../../../l/o/o/User%7ELookou.html" title="User:Lookou">林晓鑫</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../l/i/n/Linux_sound_config.html" title="Linux sound config">编辑本页</a></strong> |
+<a href="../../../l/i/n/Talk%7ELinux_sound_config.html" class="new" title="Talk:Linux sound config">讨论本页</a> |
+<a href="../../../l/i/n/Linux_sound_config.html" title="Linux sound config">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览9次。 This page was last modified 09:01 2006年5月9日 by <a href="../../../l/o/o/User%7ELookou.html" title="User:Lookou">林晓鑫</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../l/i/n/Linux_sound_config.html" title="Linux sound config">编辑本页</a></strong>
+<br /><a href="../../../l/i/n/Talk%7ELinux_sound_config.html" class="new" title="Talk:Linux sound config">讨论本页</a>
+<br /><a href="../../../l/i/n/Linux_sound_config.html" title="Linux sound config">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392688.83 secs. -->
+</body></html>

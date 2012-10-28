@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>SF超音速版·数据结构优化 3/3 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_3_3_1059.html" title="SF超音速版·数据结构优化 3/3">编辑本页</a> |
+<a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_3_3_1059.html" title="SF超音速版·数据结构优化 3/3">较早版本</a><p class='subtitle'><a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_3_3_1059.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">SF超音速版·数据结构优化 3/3</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>继续开始我们的文档。前两篇介绍了一些完成高速索引的原则，这篇就详细介绍一下SF实际源代码对其的处理吧。如果说前两篇是理论的话，那么这篇就算是理论指导下的实践了。因此，希望在开始阅读这篇文档的时候，先看看前两篇，这样，对于这篇所描述的一些做法就会有水道渠成，自当如此的感觉。
+</p><p><br />
+三、SF的实际数据结构实现
+　　
+</p><p>我们还记得上一篇最后那个被优化后的文件信息结构么？
+</p>
+<pre>struct struct_file_info
+{
+   char name[MAX];
+   short size;
+   short date;
+</pre>
+<pre>   char* path;
+
+   short site_info_index;
+};
+</pre>
+<p>　　
+现在，我们来想一下SF是怎么返回查询结果的。首先通过索引系统，得到所有匹配的文件的文件信息结构指针。然后，把这些文件信息结构都读到内存中来，再根据用户所选定的排序方式（这里假设是按大小，即“size”域排序）进行排序，最后，把排在最前面的结果返回给用户，整个检索过程就此完成。
+　　
+</p><p>注意这里有这样一个事实，系统在进行排序的时候，只需要知道每个文件信息结构中“size”域的大小即可，而无需知道文件名（name）、日期（date）、路径（path）……等信息。因此，根据我们在第一篇里描述的一种更好的访问struct内部成员的原则，为了尽量减少break cache的次数，我们可以将每个文件的“size”组织在一起，把一个大的struct结构，分成两个小的struct结构，如下所示：
+</p>
+<pre>struct size_of_struct_file_info
+{
+   short size;
+};
+</pre>
+<pre>struct others_of_struct_file_info
+{
+   char name[MAX];
+   short date;
+</pre>
+<pre>   char* path;
+
+   short site_info_index;
+};
+</pre>
+<p>　　
+但是如果这样的话，我们怎么防止这个文件的size_of_struct_file_info和其它文件的others_of_struct_file_info对应在一起而不是同自己的others_of_struct_file_info对应在一起呢？为了解决这个问题，我们可以给每个文件分配一个唯一个ID，然后把这个ID都附加到这两个小struct中，这样，就可以保证每个size_of_struct_file_info与others_of_struct_file_info都一一对应上了，于是乎，上面的结构可以改成如下：
+</p><p><br />
+</p>
+<pre>struct size_of_struct_file_info
+{
+   short size;
+
+   int file_id;
+};
+</pre>
+<pre>struct others_of_struct_file_info
+{
+   char name[MAX];
+   short date;
+</pre>
+<pre>   char* path;
+
+   short site_info_index;
+
+   int file_id;
+};
+</pre>
+<p>　　
+</p><p>根据这样的原则，我们可以把整个结构完全拆开，形成如下这种形式：
+</p>
+<pre>struct A
+{               
+   int file_id;
+</pre>
+<pre>   short size;
+};
+</pre>
+<pre>struct B
+{                    
+   int file_id;       
+
+   char name[MAX];    
+};
+</pre>
+<pre>struct  C       
+{               
+   int file_id;  
+
+   short date;   
+};
+
+struct  D       
+{               
+   int file_id;  
+
+   char* path;   
+};              
+</pre>
+<pre>struct E                   
+{                          
+   int file_id;             
+
+   short site_info_index;   
+};                         
+</pre>
+<p>　
+再来考虑这样一个事实，如果我们完全严格的按序存放，即均按file_id从大到小的顺序依次存放，中间没有多余的也没有遗漏的，那么如果一个ID为x的文件在struct A数组中的第k个位置，它的其余信息也必在struct B数组、struct C数组、struct D数组中的第k个位置上，因此我就完全不需要保留file_id了，这一点请大家务必想清楚，这是整个SF数据结构中最最trick的地方，因为在存储信息中你是看不见file_id的。这样一来，上述结构就成为了下面这样样子：
+</p>
+<pre>struct A
+{               
+   short size;
+};
+</pre>
+<pre>struct B
+{                    
+   char name[MAX];    
+};
+</pre>
+<pre>struct  C       
+{               
+   short date;   
+};
+
+struct  D       
+{               
+   char* path;   
+};              
+</pre>
+<pre>struct E                   
+{                          
+   short site_info_index;   
+};                         
+</pre>
+<p>　　
+我们考虑下有N个文件，于是，我们就组织得到了五个，每个有N个元素的数组：
+</p>
+<pre>struct A a[N];
+struct B b[N];
+struct C c[N];
+struct D d[N];
+struct E e[N];
+</pre>
+<p>　　
+而这些数组的下标就可以看做是我们前面所提到的file_id，因此，对于一个file_id为x的文件，我们可以这样获取它的全部信息：
+</p>
+<pre>这个文件的大小为：a[x]
+这个文件的名称为：b[x]
+这个文件的日期为：c[x]
+这个文件的路径指针为：d[x]
+这个文件的站点列表索引为：e[x]
+</pre>
+<p>　　
+下面，我们想想，如果我们在需要对“size”进行排序，是不是只需要从磁盘中载入struct A的数据就可以了？如果需要对“date”进行排序，是不是只需要从磁盘中载入struct B的数据就可以了？这样，每次我们只载入了真正需要的数据，大大减少了磁盘到内存的数据量，因而在速度上也就更快了，大家还记得第一篇里提到的那个必须尽可能减少磁盘读取数据量的原则吧？
+　　
+</p><p>现在，来想想我们的排序，一旦排序，就会把这个位置的数据换到另外一个位置，也就是说，原先在x1位置上的size大小a[x1]被换到了x2位置上，那么，到时候系统会不会把这个从x1位置上换来的数据做为file_id为x2的文件的size数据呢？如果是这样的话岂不是乱套了吗？为了解决这个问题，我们必须在排序前把file_id给重新附回到数据上，也就是需要定义如下一种专用于排序的结构：
+</p>
+<pre>struct order_item
+{
+  int content;
+  int file_id;
+};
+</pre>
+<p>　　
+现在对size进行排序，因此，我们把size读到content中，然后把这个size的原始位置，即file_id，写进排序结构：
+</p>
+<pre>order_item_array[x].content = a[x1].size;
+order_item_array[x].file_id = x1;
+</pre>
+<p>　　
+然后，我们再对整个order_item_array按每个order_item的content进行排序，这样，就不会丢失原来的file_id了，排完序后，我们再通过原来的file_id从原如的a[N]、b[N]、c[N]、d[N]、e[N]中取出相应数据返回给用户就可以了。
+　　
+</p><p>实际的SF代码就是这样处理的，由于SF还支持，按文件名长度及IP排序，因此，它还加了两个数组，这两个数组中存放的就是所有的文件名长度信息及IP信息，另外，由于文件的文件名及路径不参加排序，它们只是在排序完成后才被读取，因此，这两个信息被放在了一起，而且由于文件名是存在从FTP直接获取的文件列表信息中，故而在这里也仅保留一个指向文件名的指针，因此，SF实际的文件结构如下图所示：
+</p>
+<pre>struct A       
+{              
+   short size; 
+};       
+
+struct B       
+{                         
+   short date;  
+};     
+
+struct C           
+{                   
+   short ip_index;  
+};  
+
+struct D          
+{                              
+   short name_len;  
+}; 
+</pre>
+<pre>struct E
+{                                                
+   short site_info_index;   
+};   
+
+struct F                        
+{              
+   char* name;  
+   char* path;  
+};
+</pre>
+<p>　　
+这四个结构分别被放在file_size、file_date、file_ip_index、file_name_len、file_site_index、
+file_name_and_path_link中。其中，ip信息及site_info信息都采用了第二篇讲的压缩方法，只保存一个两字节的索引，而把四字节的原始数据保存在单独的一个文件中，这两个文件分别为file_ip及file_site，以上所有文件就是你在SF安装目录下的data子目录中所看到的文件。
+　　
+</p><p>现在，我们来完整的理一遍SF的数据返回过程，这一过程中，假设是按size排序：
+</p><p>通过索引系统得到一个所匹配的文件ID：x
+</p><p>以文件文件ID做为下标，从a[N]中取得size信息（a[x].size）放到专用的排序结构中去进行排序，然后取出排序结果，从这个排序结构的file_id域中重新获得file_id
+</p><p>从b[x].date取得这个文件的日期
+</p><p>从c[x].ip_index取得这个文件的ip偏移量，用这个ip偏移量在file_ip中取得真正的ip
+</p><p>从d[x].site_info_index中取得这个文件的站点偏移量，用这个站点偏移量在file_site中取得这个文件所在的站点信息，并取得站点原始数据所在的文件名，并打开这个原始数据文件
+</p><p>从e[x].name中得到文件名偏移量，在前面打开的原始数据文件中得到这个文件名
+</p><p>从e[x].path中得到文件的路径偏移量，在前面打开的原始数据文件中得到这个文件的路径名
+</p><p><br />    
+</p><p>上面就是SF的整个数据返回过程，这里面，排序之前是数据量巨大的时候，需要严格优化，参与排序的数据可能是百万量级的，而排序之后，返回给用户的数据总是排在最前面的那些，这时的数据量很小，通常只有几十条，因此，后面虽然多次间接访问，但实际运行速度是非常快的。
+　　
+</p><p>顺便说一下，大家看上面的那些并列的结构，是不是很想数据库中的表啊？
+</p>
+<pre>---------------------------------------------------------------
+| ID   |  A 字段 | B 字段 | C 字段 | D 字段  | E 字段 |  F 字段 |
+---------------------------------------------------------------
+| xxxx | xxxxxxx | xxxxxx | xxxxxx | xxxxxx | xxxxxx | xxxxxx |
+---------------------------------------------------------------
+| xxxx | xxxxxxx | xxxxxx | xxxxxx | xxxxxx | xxxxxx | xxxxxx |
+---------------------------------------------------------------
+| xxxx | xxxxxxx | xxxxxx | xxxxxx | xxxxxx | xxxxxx | xxxxxx |
+---------------------------------------------------------------
+| xxxx | xxxxxxx | xxxxxx | xxxxxx | xxxxxx | xxxxxx | xxxxxx |
+---------------------------------------------------------------
+| xxxx | xxxxxxx | xxxxxx | xxxxxx | xxxxxx | xxxxxx | xxxxxx |
+---------------------------------------------------------------
+| xxxx | xxxxxxx | xxxxxx | xxxxxx | xxxxxx | xxxxxx | xxxxxx |
+---------------------------------------------------------------
+</pre>
+<p><br />
+　　
+其实，如果把这块好好封装一下，外面再加一个Sql查询分析器，就是一个很简单、原始但高效的平面文件数据库了。
+</p><p>四、总结
+　　
+</p><p>SF的数据结构就此就介绍完了，这里面最主要的就是SF所维护的一个抽象数据库及为了节约空间而不保存ID的处理办法，对于SF在数据返回的流程上也比较复杂，希望这篇文档能有助于大家理解SF超音速源码的相关部份。
+　　
+</p><p>由于超音速版的索引系统与原亚音速版的索引系统完全一致，因此，就不再描述了，请大家参略亚音速版的文档。而下面的文档会对超音速的总体模块进行一下概述，下次再见。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_3_3_1059.html">http://dns.cs.hit.edu.cn../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_3_3_1059.html</a>"</p>
+
+<p>本页面已经被浏览8次。 This page was last modified 07:22 2006年5月9日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_3_3_1059.html" title="SF超音速版·数据结构优化 3/3">编辑本页</a></strong> |
+<a href="../../../s/f/%E8%B6%85/Talk%7ESF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_3_3_0af0.html" class="new" title="Talk:SF超音速版·数据结构优化 3/3">讨论本页</a> |
+<a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_3_3_1059.html" title="SF超音速版·数据结构优化 3/3">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览8次。 This page was last modified 07:22 2006年5月9日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_3_3_1059.html" title="SF超音速版·数据结构优化 3/3">编辑本页</a></strong>
+<br /><a href="../../../s/f/%E8%B6%85/Talk%7ESF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_3_3_0af0.html" class="new" title="Talk:SF超音速版·数据结构优化 3/3">讨论本页</a>
+<br /><a href="../../../s/f/%E8%B6%85/SF%E8%B6%85%E9%9F%B3%E9%80%9F%E7%89%88%C2%B7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96_3_3_1059.html" title="SF超音速版·数据结构优化 3/3">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392687.41 secs. -->
+</body></html>

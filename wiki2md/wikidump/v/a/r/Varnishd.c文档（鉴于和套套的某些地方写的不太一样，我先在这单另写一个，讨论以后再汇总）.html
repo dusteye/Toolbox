@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总） - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../v/a/r/Varnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html" title="Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总）">编辑本页</a> |
+<a href="../../../v/a/r/Varnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html" title="Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总）">较早版本</a><p class='subtitle'><a href="../../../v/a/r/Varnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总）</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../v/a/r/Varnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html" title="Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总）">编辑</a>]</div><a name=".E5.88.9D.E5.A7.8B.E5.8C.96"></a><h2>初始化</h2>
+<ul><li>下面这些代码主要是一些初始化的东西，为了保持结构清晰，跳转后的代码的注释没有贴出来，只是把大概意思写出来了
+</li></ul>
+<pre>        <b>AZ(setenv("TZ", "UTC", 1));</b> /*setenv修改成功返回0,若修改不成功则调用
+              include下libvarnish.h中的宏AZ终止程序*/ 
+              /*环境变量TZ=UTC*/
+	<b>tzset();</b>
+              /*tzset()函数使用环境变量TZ的当前设置把值赋给三个全局变量:daylight,timezone和 tzname。*/
+	<b>assert(TIM_parse("Sun, 06 Nov 1994 08:49:37 GMT") == 784111777);</b>
+	<b>assert(TIM_parse("Sunday, 06-Nov-94 08:49:37 GMT") == 784111777);</b>
+	<b>assert(TIM_parse("Sun Nov  6 08:49:37 1994") == 784111777);</b>
+	       /* Check that our SHA256 works*/
+	<b>SHA256_Test();</b>              
+              /*调用lib/libvarnish中的vshc256.c*/
+
+	<b>memset(cli, 0, sizeof cli);</b>
+	<b>cli[0].sb = vsb_newauto();</b>
+              /*申请一个vsb结构体(varnish storage buffer)*/
+	<b>XXXAN(cli[0].sb);</b>  
+              /*验错*/
+	<b>cli[0].result = CLIS_OK;</b> 
+              /*200*/
+
+	<b>VTAILQ_INIT(&amp;heritage.socks);</b>
+
+	<b>mgt_vcc_init();</b> 
+              /*调用/bin/varnishd/mgt_vcc.c,确保man/vcl.7和etc/ default.vcl中包含
+              “#include "default_vcl.h"”，以及为当前进程注册终止函数。原函数定义如下：
+              void mgt_vcc_init(void)
+              {
+	          VCC_InitCompile(default_vcl);/*检验是否是完整字符串*/
+	          AZ(atexit(mgt_vcc_atexit));
+                 /*为进程注册一个退出是要执行的程序，
+                 即：当前程序退出是执行mgt_vcc_atexit进程。如果注册失败，则终止当前进程
+                 mgt_vcc_atexit()主要负责删除当前进程产生的一些文件*/
+              }*/
+
+	<b>MCF_ParamInit(cli);</b> 
+              /*cli结构体在include/cli_commo.h中定义,函数原型在  
+              libvarnish.h中定义：
+                 void
+                 MCF_ParamInit(struct cli *cli)
+                 {
+                       MCF_AddParams(input_parspec); /*把input_parspec中的参数添加
+                      到参数列表中*/ 
+                      MCF_AddParams(WRK_parspec);   /*把WRK_parspec中定义的参数添
+                      加到参数列表中*/
+                      /* XXX: We do this twice, to get past any 
+                      interdependencies */MCF_SetDefaults(NULL);
+                      MCF_SetDefaults(cli);  /*为所有的参数设置缺省值，具体的实现过程 
+                      没看明白  如果谁看明白了，请添加上，谢了...*/
+                      params = &amp;master;
+                 }*/
+       <b>cli_check(cli); </b>
+             /*调用本地的函数，清除cli*/
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../v/a/r/Varnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html" title="Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总）">编辑</a>]</div><a name="varnishd.E5.8A.9F.E8.83.BD.E5.AE.9E.E7.8E.B0"></a><h2>varnishd功能实现</h2>
+<pre><b>while ((o = getopt(argc, argv,"a:b:Cdf:Fg:h:i:l:n:P:p:s:T:t:u:Vw:"))&nbsp;!= -1)</b>
+             /*获取选项和参数*/
+    <b>switch (o) {</b>
+    <b>case 'a':</b>
+        <b>MCF_ParamSet(cli, "listen_address", optarg);</b>
+             /*MCF_ParamSet()在/varnishd/mgt_param.c中定义：
+               void MCF_ParamSet(struct cli *cli, const char *param, const char *val)
+               {
+                   const struct parspec *pp;
+ 
+                   pp = mcf_findpar(param);
+                        /*pp指向参数liten_address.liten_address的定义如下：
+                        {"listen_address", tweak_listen_address, NULL, 0, 0,
+                         "Whitespace separated list of network endpoints where “
+                         "Varnish will accept requests.\n"
+                         "Possible formats: host, host:port,&nbsp;:port",
+                         MUST_RESTART,
+                         ":80" },*/
+                   if (pp&nbsp;!= NULL) {
+                      pp->func(cli, pp, val);
+                      if (cli->result&nbsp;!= CLIS_OK) {
+                      } else if (child_pid >= 0 &amp;&amp; pp->flags &amp; MUST_RESTART)
+                          cli_out(cli, "Change will take effect"
+                              " when child is restarted");
+                      } else if (pp->flags &amp; MUST_RELOAD) {
+                      cli_out(cli, "Change will take effect"
+                          " when VCL script is reloaded");
+                      }
+                      MCF_ParamSync();
+                      return;
+                   }
+                   cli_result(cli, CLIS_PARAM);
+                   cli_out(cli, "Unknown parameter \"%s\".", param);
+               }             
+             */
+        <b>cli_check(cli);</b>
+        <b>break;</b>
+    <b>case 'b':</b>
+        <b>b_arg = optarg;</b>
+        <b>break;</b>
+</pre>
+<p>		 case 'C':
+			 C_flag = 1 - C_flag;
+			 break;
+		 case 'd':
+			 d_flag++;
+			 break;
+		 case 'f':
+			f_arg = optarg;
+			break;
+		 case 'F':
+			F_flag = 1 - F_flag;
+			break;
+		 case 'g':
+			MCF_ParamSet(cli, "group", optarg);
+			break;
+		 case 'h':
+			h_arg = optarg;
+			break;
+		 case 'i':
+			i_arg = optarg;
+			break;
+		 case 'l':
+			l_arg = optarg;
+			break;
+		 case 'n':
+			n_arg = optarg;
+			break;
+		 case 'P':
+			P_arg = optarg;
+			break;
+		 case 'p':
+			p = strchr(optarg, '=');
+			if (p == NULL)
+				usage();
+			AN(p);
+			*p++ = '\0';
+			MCF_ParamSet(cli, optarg, p);
+			cli_check(cli);
+			break;
+		 case 's':
+			s_arg_given = 1;
+			setup_storage(optarg);
+			break;
+		 case 't':
+			MCF_ParamSet(cli, "default_ttl", optarg);
+			break;
+		 case 'T':
+			T_arg = optarg;
+			break;
+		 case 'u':
+			MCF_ParamSet(cli, "user", optarg);
+			break;
+		 case 'V':
+			varnish_version("varnishd");
+			exit(0);
+		 case 'w':
+			tackle_warg(optarg);
+			break;
+		 default:
+			usage();
+		 }
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../v/a/r/Varnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html" title="Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总）">编辑</a>]</div><a name=".E6.9C.AA.E5.AE.8C.E5.BE.85.E7.BB.AD"></a><h2>未完待续</h2>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../v/a/r/Varnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html">http://dns.cs.hit.edu.cn../../../v/a/r/Varnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html</a>"</p>
+
+<p>本页面已经被浏览65次。 This page was last modified 09:59 2009年12月30日 by <a href="../../../%E7%99%BD/%E4%BA%9A/%E9%BE%99/User%7E%E7%99%BD%E4%BA%9A%E9%BE%99.html" class="new" title="User:白亚龙">白亚龙</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../v/a/r/Varnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html" title="Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总）">编辑本页</a></strong> |
+<a href="../../../v/a/r/Talk%7EVarnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html" class="new" title="Talk:Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总）">讨论本页</a> |
+<a href="../../../v/a/r/Varnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html" title="Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总）">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览65次。 This page was last modified 09:59 2009年12月30日 by <a href="../../../%E7%99%BD/%E4%BA%9A/%E9%BE%99/User%7E%E7%99%BD%E4%BA%9A%E9%BE%99.html" class="new" title="User:白亚龙">白亚龙</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../v/a/r/Varnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html" title="Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总）">编辑本页</a></strong>
+<br /><a href="../../../v/a/r/Talk%7EVarnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html" class="new" title="Talk:Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总）">讨论本页</a>
+<br /><a href="../../../v/a/r/Varnishd.c%E6%96%87%E6%A1%A3%EF%BC%88%E9%89%B4%E4%BA%8E%E5%92%8C%E5%A5%97%E5%A5%97%E7%9A%84%E6%9F%90%E4%BA%9B%E5%9C%B0%E6%96%B9%E5%86%99%E7%9A%84%E4%B8%8D%E5%A4%AA%E4%B8%80%E6%A0%B7%EF%BC%8C%E6%88%91%E5%85%88%E5%9C%A8%E8%BF%99%E5%8D%95%E5%8F%A6%E5%86%99%E4%B8%80%E4%B8%AA%EF%BC%8C%E8%AE%A8%E8%AE%BA%E4%BB%A5%E5%90%8E%E5%86%8D%E6%B1%87%E6%80%BB%EF%BC%89.html" title="Varnishd.c文档（鉴于和套套的某些地方写的不太一样，我先在这单另写一个，讨论以后再汇总）">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393382.21 secs. -->
+</body></html>

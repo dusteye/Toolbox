@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Zerocopy - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../z/e/r/Zerocopy.html" title="Zerocopy">编辑本页</a> |
+<a href="../../../z/e/r/Zerocopy.html" title="Zerocopy">较早版本</a><p class='subtitle'><a href="../../../z/e/r/Zerocopy.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Zerocopy</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../z/e/r/Zerocopy.html" title="Zerocopy">编辑</a>]</div><a name=".E4.BB.8B.E7.BB.8D"></a><h3>介绍</h3>
+<ul><li>零拷贝（zero-copy）基本思想是：数据报从网络设备到用户程序空间传递的过程中，减少数据拷贝次数，减少系统调用，实现CPU的零参与，彻底消除CPU在这方面的负载。实现零拷贝用到的最主要技术是DMA数据传输技术和内存区域映射技术。 
+</li></ul>
+<ul><li>主要技术:
+<ul><li>DMA数据传输技术
+</li><li>内存区域映射技术
+</li></ul>
+</li></ul>
+<p>传统的网络数据报处理，需要经过网络设备到操作系统内存空间，系统内存空间到用户应用程序空间这两次拷贝，同时还需要经历用户向系统发出的系统调用。而零拷贝技术则首先利用DMA技术将网络数据报直接传递到系统内核预先分配的地址空间中，避免CPU的参与；同时，将系统内核中存储数据报的内存区域映射到检测程序的应用程序空间（还有一种方式是在用户空间建立一缓存，并将其映射到内核空间），检测程序直接对这块内存进行访问，从而减少了系统内核向用户空间的内存拷贝，同时减少了系统调用的开销，实现了真正的“零拷贝”。
+</p>
+<ul><li>数据包接收过程:
+</li></ul>
+<ol><li>网络接口收到一个以太数据帧，通过DMA传到网卡环指向的BUFF 中，之后向内核发出一次硬件中断，在中断处理过程中把接收到的数据帧存入sk_buff 结构，然后检查硬件帧头，识别帧类型，放入接收队列，激活接收软中断作进一步处理，最后返回继续接收数据报文。
+</li><li>内核接收软中断（net_rx_action）提取接收包，根据它所在的设备和协议类型传递给各自的包处理器。包处理器用Dev_add_pack（）注册，如果注册的设备号是零则表明它接收所有设备的包，如果注册的包类型是（ETH_P_ALL），则表示它接收所有类型的包。
+</li><li>各个处理器对进入自己入口的数据报文进行处理，最后传送到各自的MSG BUFF 中，并将阻塞到此的任务唤醒。这样，阻塞在MSG BUFF 用户态应用程序就可以得到数据报文进行处理了。
+</li></ol>
+<div class="center"><a href="../../../p/a/c/Image%7EPacket.jpg.html" class="image" title="Image:Packet.jpg"><img src="../../../../upload/e/e2/Packet.jpg" alt="Image:Packet.jpg" width="515" height="257" longdesc="../../../p/a/c/Image%7EPacket.jpg.html" /></a></center><center>操作系统接收数据包的过程</div>
+<ul><li>Linux的数据包处理过程:
+</li></ul>
+<ol><li>网卡接收数据包，通过DMA传送到主机
+</li><li>网卡向主机发送硬件中断
+</li><li>硬件中断程序将数据包转入接收队列
+</li><li>软中断处理程序对数据包按协议分发
+</li><li>用户程序通过系统调用将数据包拷贝到用户空间
+</li><li>用户程序进行分析处理 
+</li></ol>
+<p><br />
+</p>
+<ul><li>问题:
+</li></ul>
+<p>零拷贝中存在的最关键问题是同步问题，一边是处于内核空间的网卡驱动向缓存中写入网络数据包，一边是用户进程直接对缓存中的数据包进行分析（注意，不是拷贝后再分析），由于两者处于不同的空间，这使得同步问题变得更加复杂。
+</p>
+<ul><li>参考方法:
+</li></ul>
+<p>缓存被分成多个小块，每一块存储一个网络数据包并用一数据结构表示，在包数据结构中使用标志位来标识什么时候可以进行读或写，当网卡驱动向包数据结构中填入真实的包数据后便标识该包为可读，当用户进程对包数据结构中的数据分析完后便标识该包为可写，这基本解决了同步问题。然而，由于分析进程需要直接对缓存中的数据进行分析，而不是将数据拷贝到用户空间后再进行分析，这使得读操作要慢于写操作，有可能造成网卡驱动无缓存空间可以写，从而造成一定的丢包现象，解决这一问题的关键在于申请多大的缓存，太小的缓存容易造成丢包，太大的缓存则管理麻烦并且对系统性能会有比较大的影响。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../z/e/r/Zerocopy.html">http://dns.cs.hit.edu.cn../../../z/e/r/Zerocopy.html</a>"</p>
+
+<p>本页面已经被浏览6次。 This page was last modified 08:46 2007年7月2日 by <a href="../../../w/a/n/User%7EWangyao.html" title="User:Wangyao">王耀</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../z/e/r/Zerocopy.html" title="Zerocopy">编辑本页</a></strong> |
+<a href="../../../z/e/r/Talk%7EZerocopy.html" class="new" title="Talk:Zerocopy">讨论本页</a> |
+<a href="../../../z/e/r/Zerocopy.html" title="Zerocopy">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览6次。 This page was last modified 08:46 2007年7月2日 by <a href="../../../w/a/n/User%7EWangyao.html" title="User:Wangyao">王耀</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../z/e/r/Zerocopy.html" title="Zerocopy">编辑本页</a></strong>
+<br /><a href="../../../z/e/r/Talk%7EZerocopy.html" class="new" title="Talk:Zerocopy">讨论本页</a>
+<br /><a href="../../../z/e/r/Zerocopy.html" title="Zerocopy">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393150.73 secs. -->
+</body></html>

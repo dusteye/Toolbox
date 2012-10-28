@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>内核的makefile:内核的makefile - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../%E5%86%85/%E6%A0%B8/%E7%9A%84/%E5%86%85%E6%A0%B8%E7%9A%84makefile%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile.html" title="内核的makefile:内核的makefile">编辑本页</a> |
+<a href="../../../%E5%86%85/%E6%A0%B8/%E7%9A%84/%E5%86%85%E6%A0%B8%E7%9A%84makefile%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile.html" title="内核的makefile:内核的makefile">较早版本</a><p class='subtitle'><a href="../../../%E5%86%85/%E6%A0%B8/%E7%9A%84/%E5%86%85%E6%A0%B8%E7%9A%84makefile%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">内核的makefile:内核的makefile</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<ul><li>1.内核makefile有五部分
+</li></ul>
+<pre>Makefile		the top Makefile.
+.config			the kernel configuration file.
+arch/$(ARCH)/Makefile	the arch Makefile.
+scripts/Makefile.*	common rules etc. for all kbuild Makefiles.
+kbuild Makefiles	there are about 500 of these.
+</pre>
+<p>the_top_Makefile从.config得到主要设置,从arch中的得到体系结构相关信息.每个子目录中都有kbuild makefile,相关命令从下至上依次传递上来.scripts/Makefile.*包含所有kbuild makefiles使用的definitions/rules等.
+</p>
+<ul><li>2.kbuild makefile简单语法
+</li></ul>
+<pre>obj-y += hello.o
+</pre>
+<p>This tell kbuild that there is one object in that directory named foo.o. foo.o will be built from foo.c or foo.S.
+</p>
+<pre>obj-m 表示编译为模块
+</pre>
+<p>2.1 obj-y
+kbuild makefile编译所有$(obj-y)文件，然后merge them   into one built－in.o file。
+$(obj-y)的顺序是有意义的，目标文件被依次linked into built－in.o，系统启动时，每个functions是按顺序被调用的。
+2.2 多个文件编译模块
+可以指定变量$(&lt;module_name&gt;-objs)告诉kbuild makefile要编译的文件名,如
+</p>
+<pre>#drivers/isdn/i4l/Makefile
+obj-$(CONFIG_ISDN) += isdn.o
+isdn-objs&nbsp;:= isdn_net_lib.o isdn_v110.o isdn_common.o
+</pre>
+<p>Kbuild recognises objects used for composite objects by the suffix -objs, and the suffix -y. This allows the Makefiles to use
+the value of a CONFIG_ symbol to determine if an object is part	of a composite object.
+</p>
+<pre>#fs/ext2/Makefile
+obj-$(CONFIG_EXT2_FS)        += ext2.o
+ext2-y                      &nbsp;:= balloc.o bitmap.o
+ext2-$(CONFIG_EXT2_FS_XATTR) += xattr.o
+</pre>
+<p>In this example xattr.o is only part of the composite object ext2.o, if $(CONFIG_EXT2_FS_XATTR) evaluates to 'y'.
+</p><p>Note: Of course, when you are building objects into the kernel,
+the syntax above will also work. So, if you have CONFIG_EXT2_FS=y,
+kbuild will build an ext2.o file for you out of the individual
+parts and then link this into built-in.o, as you would expect.
+2.3 lib-y
+</p>
+<pre>#arch/i386/lib/Makefile
+lib-y   &nbsp;:= checksum.o delay.o
+</pre>
+<p>This will create a library lib.a based on checksum.o and delay.o.For kbuild to actually recognize that there is a lib.a being build the directory shall be listed in libs-y.
+</p>
+<ol><li><ol><li>2.4编译子目录中文件
+</li></ol>
+</li></ol>
+<pre>#fs/Makefile
+obj-$(CONFIG_EXT2_FS) += ext2/
+</pre>
+<p>Kbuild only uses this information to decide that it needs to visit the directory, it is the Makefile in the subdirectory that
+specifies what is modules and what is built-in.
+</p><p>It is good practice to use a CONFIG_ variable when assigning directory
+2.4编译选项
+</p>
+<pre>EXTRA_CFLAGS, EXTRA_AFLAGS, EXTRA_LDFLAGS, EXTRA_ARFLAGS
+</pre>
+<p>$(EXTRA_CFLAGS) specifies options for compiling C files with $(CC).
+</p>
+<pre>Example:
+# drivers/sound/emu10k1/Makefile
+EXTRA_CFLAGS += -I$(obj)
+ifdef DEBUG
+    EXTRA_CFLAGS += -DEMU10K1_DEBUG
+endif
+
+</pre>
+<p>This variable is necessary because the top Makefile owns the variable $(CFLAGS) and uses it for compilation flags for the entire tree.
+</p><p>$(EXTRA_AFLAGS) is a similar string for per-directory options when compiling assembly language source.
+</p>
+<pre>Example:
+#arch/x86_64/kernel/Makefile
+EXTRA_AFLAGS&nbsp;:= -traditional
+</pre>
+<p>$(EXTRA_LDFLAGS) and $(EXTRA_ARFLAGS) are similar strings for per-directory options to $(LD) and $(AR).
+</p>
+<pre>Example:
+#arch/m68k/fpsp040/Makefile
+EXTRA_LDFLAGS&nbsp;:= -x
+  CFLAGS_$@, AFLAGS_$@
+</pre>
+<p>CFLAGS_$@ and AFLAGS_$@ only apply to commands in current kbuild makefile.
+</p><p>$(CFLAGS_$@) specifies per-file options for $(CC).  The $@ part has a literal value which specifies the file that it is for.
+</p>
+<pre>Example:
+# drivers/scsi/Makefile
+CFLAGS_aha152x.o =   -DAHA152X_STAT -DAUTOCONF
+CFLAGS_gdth.o    = # -DDEBUG_GDTH=2 -D__SERIAL__ -D__COM2__ \
+		     -DGDTH_STATISTICS
+CFLAGS_seagate.o =   -DARBITRATE -DPARITY -DSEAGATE_USE_ASM
+</pre>
+<p>These three lines specify compilation flags for aha152x.o,gdth.o, and seagate.o
+$(AFLAGS_$@) is a similar feature for source files in assemble languages.
+</p>
+<pre>Example:
+# arch/arm/kernel/Makefile
+AFLAGS_head-armv.o&nbsp;:= -DTEXTADDR=$(TEXTADDR) -traditional
+</pre>
+<p>2.5 special rules
+</p>
+<pre>$(src)
+$(src) is a relative path which points to the directory
+where the Makefile is located. Always use $(src) when
+referring to files located in the src tree.
+</pre>
+<pre>$(obj)
+$(obj) is a relative path which points to the directory
+where the target is saved. Always use $(obj) when
+referring to generated files.
+#drivers/scsi/Makefile
+	$(obj)/53c8xx_d.h: $(src)/53c7,8xx.scr $(src)/script_asm.pl
+	$(CPP) -DCHIP=810 - &lt; $&lt; | ... $(src)/script_asm.pl
+</pre>
+<p>2.6$(CC) support functions
+</p>
+<ul><li>3 host program support
+</li></ul>
+<p>..........
+</p>
+<ul><li>4 Kbuild clean infrastructure
+</li></ul>
+<p>Files matching the patterns "*.[oas]", "*.ko", plus some additional files
+generated by kbuild are deleted all over the kernel src tree when
+"make clean" is executed.
+</p>
+<pre>#drivers/pci/Makefile
+clean-files&nbsp;:= devlist.h classlist.h
+</pre>
+<p>To delete a directory hirachy use:
+</p>
+<pre>Example:
+#scripts/package/Makefile
+clean-dirs&nbsp;:= $(objtree)/debian/
+</pre>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../%E5%86%85/%E6%A0%B8/%E7%9A%84/%E5%86%85%E6%A0%B8%E7%9A%84makefile%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile.html">http://dns.cs.hit.edu.cn../../../%E5%86%85/%E6%A0%B8/%E7%9A%84/%E5%86%85%E6%A0%B8%E7%9A%84makefile%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile.html</a>"</p>
+
+<p>本页面已经被浏览15次。 This page was last modified 15:32 2007年1月25日 by <a href="../../../%E4%BD%95/%E6%98%A5/%E6%99%93/User%7E%E4%BD%95%E6%98%A5%E6%99%93.html" title="User:何春晓">何春晓</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../%E5%86%85/%E6%A0%B8/%E7%9A%84/%E5%86%85%E6%A0%B8%E7%9A%84makefile%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile.html" title="内核的makefile:内核的makefile">编辑本页</a></strong> |
+<a href="../../../%E5%86%85/%E6%A0%B8/%E7%9A%84/Talk%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile.html" class="new" title="Talk:内核的makefile:内核的makefile">讨论本页</a> |
+<a href="../../../%E5%86%85/%E6%A0%B8/%E7%9A%84/%E5%86%85%E6%A0%B8%E7%9A%84makefile%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile.html" title="内核的makefile:内核的makefile">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览15次。 This page was last modified 15:32 2007年1月25日 by <a href="../../../%E4%BD%95/%E6%98%A5/%E6%99%93/User%7E%E4%BD%95%E6%98%A5%E6%99%93.html" title="User:何春晓">何春晓</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../%E5%86%85/%E6%A0%B8/%E7%9A%84/%E5%86%85%E6%A0%B8%E7%9A%84makefile%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile.html" title="内核的makefile:内核的makefile">编辑本页</a></strong>
+<br /><a href="../../../%E5%86%85/%E6%A0%B8/%E7%9A%84/Talk%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile.html" class="new" title="Talk:内核的makefile:内核的makefile">讨论本页</a>
+<br /><a href="../../../%E5%86%85/%E6%A0%B8/%E7%9A%84/%E5%86%85%E6%A0%B8%E7%9A%84makefile%7E%E5%86%85%E6%A0%B8%E7%9A%84makefile.html" title="内核的makefile:内核的makefile">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393056.50 secs. -->
+</body></html>

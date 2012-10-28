@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Junit学习tips - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../j/u/n/Junit%E5%AD%A6%E4%B9%A0tips.html" title="Junit学习tips">编辑本页</a> |
+<a href="../../../j/u/n/Junit%E5%AD%A6%E4%B9%A0tips.html" title="Junit学习tips">较早版本</a><p class='subtitle'><a href="../../../j/u/n/Junit%E5%AD%A6%E4%B9%A0tips.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Junit学习tips</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>Junit是Java的经典测试框架，也是开发过程中必须的测试手段，从今天起我将陆续将自己学习和实践Junit过程中遇到的问题写下来。也许很多只是细节的小问题，但是累积起来还是很有参考价值的。也希望大家共同学习并分享自己的收获。
+</p>
+<ul><li>配置Junit时会把junit.jar添加到环境变量中。在使用MyEclipseIDE创建一个Junit的工程后，会自动导入位于MyEclipse\plugins\org.junit_3.8.1\junit.jar,造成版本的差别，在我的例子中这种情况没有导致错误，从理论上说也不应该出错，不过有时候版本的问题会带来一些说不清道不明的小问题，所以建议大家还是别怕麻烦，重新导入Junit安装目录下的最新版本的junit.jar。：）
+</li><li>To create our own simple test case, we need to follow these steps:
+</li></ul>
+<pre>  1. Create an instance of junit.framework.TestCase.
+  2. Define tests that return void and whose name begins with the string "test" such as testWasTransactionSuccessful(), testShow(), etc.).
+  
+  今天我写的例子中把testHelloWorld方法中的test写成了Test，结果出现了junit.framework.AssertionFailedError: No tests found in TestThatWeGetHelloWorldPrompt的错误提示。
+</pre>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../j/u/n/Junit%E5%AD%A6%E4%B9%A0tips.html">http://dns.cs.hit.edu.cn../../../j/u/n/Junit%E5%AD%A6%E4%B9%A0tips.html</a>"</p>
+
+<p>本页面已经被浏览19次。 This page was last modified 13:46 2006年6月6日 by <a href="../../../z/h/o/User%7EZhoulin.html" title="User:Zhoulin">周林</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../j/u/n/Junit%E5%AD%A6%E4%B9%A0tips.html" title="Junit学习tips">编辑本页</a></strong> |
+<a href="../../../j/u/n/Talk%7EJunit%E5%AD%A6%E4%B9%A0tips.html" class="new" title="Talk:Junit学习tips">讨论本页</a> |
+<a href="../../../j/u/n/Junit%E5%AD%A6%E4%B9%A0tips.html" title="Junit学习tips">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览19次。 This page was last modified 13:46 2006年6月6日 by <a href="../../../z/h/o/User%7EZhoulin.html" title="User:Zhoulin">周林</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../j/u/n/Junit%E5%AD%A6%E4%B9%A0tips.html" title="Junit学习tips">编辑本页</a></strong>
+<br /><a href="../../../j/u/n/Talk%7EJunit%E5%AD%A6%E4%B9%A0tips.html" class="new" title="Talk:Junit学习tips">讨论本页</a>
+<br /><a href="../../../j/u/n/Junit%E5%AD%A6%E4%B9%A0tips.html" title="Junit学习tips">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392744.02 secs. -->
+</body></html>

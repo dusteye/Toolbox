@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>F-Blog/rulers/coding - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑本页</a> |
+<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">较早版本</a><p class='subtitle'><a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">F-Blog/rulers/coding</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#.E8.AF.B4.E6.98.8E"><span class="tocnumber">1</span> <span class="toctext">说明</span></a></li>
+<li class='toclevel-1'><a href="#JAVA.E8.A7.84.E8.8C.83"><span class="tocnumber">2</span> <span class="toctext">JAVA规范</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E5.91.BD.E5.90.8D.E8.A7.84.E8.8C.83"><span class="tocnumber">2.1</span> <span class="toctext">命名规范</span></a>
+<ul>
+<li class='toclevel-3'><a href="#Package_.E7.9A.84.E5.91.BD.E5.90.8D"><span class="tocnumber">2.1.1</span> <span class="toctext">Package 的命名</span></a></li>
+<li class='toclevel-3'><a href="#Class_.E7.9A.84.E5.91.BD.E5.90.8D"><span class="tocnumber">2.1.2</span> <span class="toctext">Class 的命名</span></a></li>
+<li class='toclevel-3'><a href="#Class_.E5.8F.98.E9.87.8F.E7.9A.84.E5.91.BD.E5.90.8D"><span class="tocnumber">2.1.3</span> <span class="toctext">Class 变量的命名</span></a></li>
+<li class='toclevel-3'><a href="#Static_Final_.E5.8F.98.E9.87.8F.E7.9A.84.E5.91.BD.E5.90.8D"><span class="tocnumber">2.1.4</span> <span class="toctext">Static Final 变量的命名</span></a></li>
+<li class='toclevel-3'><a href="#.E5.8F.82.E6.95.B0.E7.9A.84.E5.91.BD.E5.90.8D"><span class="tocnumber">2.1.5</span> <span class="toctext">参数的命名</span></a></li>
+<li class='toclevel-3'><a href="#.E6.95.B0.E7.BB.84.E7.9A.84.E5.91.BD.E5.90.8D"><span class="tocnumber">2.1.6</span> <span class="toctext">数组的命名</span></a></li>
+<li class='toclevel-3'><a href="#.E6.96.B9.E6.B3.95.E7.9A.84.E5.8F.82.E6.95.B0"><span class="tocnumber">2.1.7</span> <span class="toctext">方法的参数</span></a></li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#Java_.E6.96.87.E4.BB.B6.E6.A0.B7.E5.BC.8F"><span class="tocnumber">2.2</span> <span class="toctext">Java 文件样式</span></a>
+<ul>
+<li class='toclevel-3'><a href="#.E7.89.88.E6.9D.83.E4.BF.A1.E6.81.AF"><span class="tocnumber">2.2.1</span> <span class="toctext">版权信息</span></a></li>
+<li class='toclevel-3'><a href="#Package.2FImport"><span class="tocnumber">2.2.2</span> <span class="toctext">Package/Import</span></a></li>
+<li class='toclevel-3'><a href="#Class"><span class="tocnumber">2.2.3</span> <span class="toctext">Class</span></a>
+<ul>
+<li class='toclevel-4'><a href="#.E7.B1.BB.E7.9A.84.E6.B3.A8.E9.87.8A"><span class="tocnumber">2.2.3.1</span> <span class="toctext">类的注释</span></a></li>
+<li class='toclevel-4'><a href="#.E7.B1.BB.E5.AE.9A.E4.B9.89"><span class="tocnumber">2.2.3.2</span> <span class="toctext">类定义</span></a></li>
+<li class='toclevel-4'><a href="#.E7.B1.BB.E7.9A.84.E6.88.90.E5.91.98.E5.8F.98.E9.87.8F.EF.BC.9A"><span class="tocnumber">2.2.3.3</span> <span class="toctext">类的成员变量：</span></a></li>
+<li class='toclevel-4'><a href="#.E5.AD.98.E5.8F.96.E6.96.B9.E6.B3.95"><span class="tocnumber">2.2.3.4</span> <span class="toctext">存取方法</span></a></li>
+</ul>
+</li>
+<li class='toclevel-3'><a href="#.E6.9E.84.E9.80.A0.E5.87.BD.E6.95.B0"><span class="tocnumber">2.2.4</span> <span class="toctext">构造函数</span></a></li>
+<li class='toclevel-3'><a href="#.E5.85.8B.E9.9A.86.E6.96.B9.E6.B3.95"><span class="tocnumber">2.2.5</span> <span class="toctext">克隆方法</span></a></li>
+<li class='toclevel-3'><a href="#.E7.B1.BB.E6.96.B9.E6.B3.95"><span class="tocnumber">2.2.6</span> <span class="toctext">类方法</span></a></li>
+<li class='toclevel-3'><a href="#toString_.E6.96.B9.E6.B3.95"><span class="tocnumber">2.2.7</span> <span class="toctext">toString 方法</span></a></li>
+<li class='toclevel-3'><a href="#main_.E6.96.B9.E6.B3.95"><span class="tocnumber">2.2.8</span> <span class="toctext">main 方法</span></a></li>
+</ul>
+</li>
+<li class='toclevel-2'><a href="#.E4.BB.A3.E7.A0.81.E7.BC.96.E5.86.99.E6.A0.BC.E5.BC.8F"><span class="tocnumber">2.3</span> <span class="toctext">代码编写格式</span></a>
+<ul>
+<li class='toclevel-3'><a href="#.E6.96.87.E6.A1.A3.E5.8C.96"><span class="tocnumber">2.3.1</span> <span class="toctext">文档化</span></a></li>
+<li class='toclevel-3'><a href="#.E7.BC.A9.E8.BF.9B"><span class="tocnumber">2.3.2</span> <span class="toctext">缩进</span></a></li>
+<li class='toclevel-3'><a href="#.E9.A1.B5.E5.AE.BD"><span class="tocnumber">2.3.3</span> <span class="toctext">页宽</span></a></li>
+<li class='toclevel-3'><a href="#.E6.8B.AC.E5.8F.B7"><span class="tocnumber">2.3.4</span> <span class="toctext">括号</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#JSP.E8.A7.84.E8.8C.83"><span class="tocnumber">3</span> <span class="toctext">JSP规范</span></a></li>
+<li class='toclevel-1'><a href="#HTML.E8.A7.84.E8.8C.83"><span class="tocnumber">4</span> <span class="toctext">HTML规范</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E6.89.80.E6.9C.89.E7.9A.84.E6.A0.87.E7.AD.BE.E9.83.BD.E6.98.AF.E5.A4.A7.E5.86.99"><span class="tocnumber">4.1</span> <span class="toctext">所有的标签都是大写</span></a></li>
+<li class='toclevel-2'><a href="#URL.E6.9C.80.E5.90.8E.E4.B8.80.E5.AE.9A.E8.A6.81.E6.9C.89.E2.80.9C.2F.E2.80.9D"><span class="tocnumber">4.2</span> <span class="toctext">URL最后一定要有“/”</span></a></li>
+<li class='toclevel-2'><a href="#.E6.A0.87.E7.AD.BE.E6.88.90.E5.AF.B9.E5.87.BA.E7.8E.B0"><span class="tocnumber">4.3</span> <span class="toctext">标签成对出现</span></a></li>
+<li class='toclevel-2'><a href="#.E5.9C.A8head.E5.8C.BA.E5.BF.85.E9.A1.BB.E8.AF.B4.E6.98.8E.E5.AD.97.E7.AC.A6.E9.9B.86.EF.BC.8C.E6.88.91.E4.BB.AC.E7.BB.9F.E4.B8.80.E4.BD.BF.E7.94.A8utf-8"><span class="tocnumber">4.4</span> <span class="toctext">在head区必须说明字符集，我们统一使用utf-8</span></a></li>
+<li class='toclevel-2'><a href="#.E5.9C.A8head.E5.8C.BA.E8.AF.B4.E6.98.8Ecss.E8.AE.BE.E5.AE.9A"><span class="tocnumber">4.5</span> <span class="toctext">在head区说明css设定</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#.E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE"><span class="tocnumber">5</span> <span class="toctext">参考文献</span></a></li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E8.AF.B4.E6.98.8E"></a><h1>说明</h1>
+<pre>这是初稿，尚待讨论修改。
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="JAVA.E8.A7.84.E8.8C.83"></a><h1>JAVA规范</h1>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E5.91.BD.E5.90.8D.E8.A7.84.E8.8C.83"></a><h2>命名规范</h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="Package_.E7.9A.84.E5.91.BD.E5.90.8D"></a><h3>Package 的命名</h3>
+<pre>Package 的名字应该都是由一个小写单词组成。
+例：org.fblog.domain
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="Class_.E7.9A.84.E5.91.BD.E5.90.8D"></a><h3>Class 的命名</h3>
+<pre>Class 的名字必须由每个单词的首字母大写组成
+例：RelGroupTag.java
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="Class_.E5.8F.98.E9.87.8F.E7.9A.84.E5.91.BD.E5.90.8D"></a><h3>Class 变量的命名</h3>
+<pre>变量的名字必须用首字母大写的动词开头。后面的单词用大写字母开头。
+例：public String getUsername();
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="Static_Final_.E5.8F.98.E9.87.8F.E7.9A.84.E5.91.BD.E5.90.8D"></a><h3>Static Final 变量的命名</h3>
+<pre>Static Final 变量的名字应该都大写，但此之间用下划线连接，并且指出完整含义。
+例：CURRENT_USERNAME
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E5.8F.82.E6.95.B0.E7.9A.84.E5.91.BD.E5.90.8D"></a><h3>参数的命名</h3>
+<pre>参数的名字必须和变量的命名规范一致。
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E6.95.B0.E7.BB.84.E7.9A.84.E5.91.BD.E5.90.8D"></a><h3>数组的命名</h3>
+<pre>  数组应该总是用下面的方式来命名:
+byte[] buffer;
+而不是:
+byte buffer[];
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E6.96.B9.E6.B3.95.E7.9A.84.E5.8F.82.E6.95.B0"></a><h3>方法的参数</h3>
+<pre>  使用有意义的参数命名，如果可能的话，使用和要赋值的字段一样的名字:
+SetCounter(int size){
+this.size = size;
+}
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="Java_.E6.96.87.E4.BB.B6.E6.A0.B7.E5.BC.8F"></a><h2>Java 文件样式</h2>
+<p>所有的 Java(*.java) 文件都必须遵守如下的样式规则
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E7.89.88.E6.9D.83.E4.BF.A1.E6.81.AF"></a><h3>版权信息</h3>
+<pre>  版权信息必须在 java 文件的开头，比如:
+/**
+* Copyright ® 2000 Shanghai XXX Co. Ltd.
+* All right reserved.
+*/
+其他不需要出现在 javadoc 的信息也可以包含在这里。
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="Package.2FImport"></a><h3>Package/Import</h3>
+<pre>  package 行要在 import 行之前，import 中标准的包名要在本地的包名之前，而且按照字母顺序排列。如果import 
+行中包含了同一个包中的不同子目录，则应该用 * 来处理。
+package hotlava.net.stats;
+import java.io.*;
+import java.util.Observable;
+import hotlava.util.Application;
+这里 java.io.* 使用来代替InputStream and OutputStream 的。
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="Class"></a><h3>Class</h3>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E7.B1.BB.E7.9A.84.E6.B3.A8.E9.87.8A"></a><h4>类的注释</h4>
+<pre> 一般是用来解释类的。
+  /**
+  * A class representing a set of packet and byte counters
+  * It is observable to allow it to be watched, but only
+  * reports changes when the current set is complete
+  */
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E7.B1.BB.E5.AE.9A.E4.B9.89"></a><h4>类定义</h4>
+<pre>   包含了在不同的行的 extends 和 implements
+ public class CounterSet
+ extends Observable
+ implements Cloneable
+ Class Fields
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E7.B1.BB.E7.9A.84.E6.88.90.E5.91.98.E5.8F.98.E9.87.8F.EF.BC.9A"></a><h4>类的成员变量：</h4>
+<pre>/**
+* Packet counters
+*/
+protected int[] packets;
+  public 的成员变量必须生成文档(JavaDoc)。proceted、private和 package 定义的成员变量如果名字含义明确
+的话，可以没有注释。
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E5.AD.98.E5.8F.96.E6.96.B9.E6.B3.95"></a><h4>存取方法</h4>
+<pre>  接下来是类变量的存取的方法。它只是简单的用来将类的变量赋值获取值的话，可以简单的写在一行上。
+/**
+* Get the counters
+* @return an array containing the statistical data. This array has been
+* freshly allocated and can be modified by the caller.
+*/
+public int[] getPackets() { return copyArray(packets, offset); }
+public int[] getBytes() { return copyArray(bytes, offset); }
+public int[] getPackets() { return packets; }
+public void setPackets(int[] packets) { this.packets = packets; }
+其它的方法不要写在一行上
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E6.9E.84.E9.80.A0.E5.87.BD.E6.95.B0"></a><h3>构造函数</h3>
+<pre>  接下来是构造函数，它应该用递增的方式写(比如:参数多的写在后面)。
+  访问类型 ("public", "private" 等.) 和 任何 "static", "final" 或 "synchronized" 应该在一行中，并
+且方法和参数另写一行，这样可以使方法和参数更易读。
+public
+ CounterSet(int size){
+ this.size = size;
+ }
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E5.85.8B.E9.9A.86.E6.96.B9.E6.B3.95"></a><h3>克隆方法</h3>
+<pre>如果这个类是可以被克隆的，那么下一步就是 clone 方法:
+public
+Object clone() {
+try {
+CounterSet obj = (CounterSet)super.clone();
+obj.packets = (int[])packets.clone();
+obj.size = size;
+return obj;
+}catch(CloneNotSupportedException e) {
+throw new InternalError("Unexpected CloneNotSUpportedException: " + e.getMessage());
+}
+}
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E7.B1.BB.E6.96.B9.E6.B3.95"></a><h3>类方法</h3>
+<pre>下面开始写类的方法:
+/**
+* Set the packet counters
+* (such as when restoring from a database)
+*/
+protected final
+void setArray(int[] r1, int[] r2, int[] r3, int[] r4)
+throws IllegalArgumentException
+{
+//
+// Ensure the arrays are of equal size
+//
+if (r1.length&nbsp;!= r2.length || r1.length&nbsp;!= r3.length || r1.length&nbsp;!= r4.length)
+throw new IllegalArgumentException("Arrays must be of the same size");
+System.arraycopy(r1, 0, r3, 0, r1.length);
+System.arraycopy(r2, 0, r4, 0, r1.length);
+}
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="toString_.E6.96.B9.E6.B3.95"></a><h3>toString 方法</h3>
+<pre>  无论如何，每一个类都应该定义 toString 方法:
+public
+String toString() {
+String retval = "CounterSet: ";
+for (int i = 0; i &lt; data.length(); i++) {
+retval += data.bytes.toString();
+retval += data.packets.toString();
+}
+return retval;
+}
+}
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="main_.E6.96.B9.E6.B3.95"></a><h3>main 方法</h3>
+<pre>如果main(String[]) 方法已经定义了, 那么它应该写在类的底部.
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E4.BB.A3.E7.A0.81.E7.BC.96.E5.86.99.E6.A0.BC.E5.BC.8F"></a><h2>代码编写格式</h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E6.96.87.E6.A1.A3.E5.8C.96"></a><h3>文档化</h3>
+<pre>必须用 javadoc 来为类生成文档。不仅因为它是标准，这也是被各种 java 编译器都认可的方法。使用 @author 标记是不被推荐的，因为代码不应该是被个人拥有的。
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E7.BC.A9.E8.BF.9B"></a><h3>缩进</h3>
+<pre>  缩进应该是每行2个空格. 不要在源文件中保存Tab字符. 在使用不同的源代码管理工具时Tab字符将因为用户设置的不同而扩展为不同的宽度.
+如果你使用 UltrEdit 作为你的 Java 源代码编辑器的话，你可以通过如下操作来禁止保存Tab字符, 方法是通过 UltrEdit中先设定 Tab 使用的长度室2个空格，然后用 Format|Tabs to Spaces 菜单将 Tab 转换为空格。
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E9.A1.B5.E5.AE.BD"></a><h3>页宽</h3>
+<pre>  页宽应该设置为80字符. 源代码一般不会超过这个宽度, 并导致无法完整显示, 但这一设置也可以灵活调整. 在任何情
+况下, 超长的语句应该在一个逗号或者一个操作符后折行. 一条语句折行后, 应该比原来的语句再缩进2个字符.
+{} 对
+{} 中的语句应该单独作为一行. 例如, 下面的第1行是错误的, 第2行是正确的:
+if (i&gt;0) { i ++ }; // 错误, { 和 } 在同一行
+if (i&gt;0) {
+i ++
+}; // 正确, { 单独作为一行
+} 语句永远单独作为一行.
+如果 } 语句应该缩进到与其相对应的 { 那一行相对齐的位置。
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E6.8B.AC.E5.8F.B7"></a><h3>括号</h3>
+<pre>  左括号和后一个字符之间不应该出现空格, 同样, 右括号和前一个字符之间也不应该出现空格. 下面的例子说明括号和空格的错误及正确使用:
+CallProc( AParameter ); // 错误
+CallProc(AParameter); // 正确
+不要在语句中使用无意义的括号. 括号只应该为达到某种目的而出现在源代码中。下面的例子说明错误和正确的用法:
+if ((I) = 42) { // 错误 - 括号毫无意义
+if (I == 42) or (J == 42) then // 正确 - 的确需要括号
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="JSP.E8.A7.84.E8.8C.83"></a><h1>JSP规范</h1>
+<pre>1.整个jsp/jsp bean表示层尽可能的瘦和简化 
+</pre>
+<pre>2.牢记大多数的jsp都应当是只读的视图，而由页面bean来提供模型 
+</pre>
+<pre>3.应当一起设计jsp和jsp bean 
+</pre>
+<pre>4.在尽可能的合理的情况下，把业务逻辑从jsp中移走。具体于http的逻辑(如对cookie的处理)属于bean或支持  类中，而不是jsp中 
+</pre>
+<pre>5.尽量把条件逻辑放在控制器中而不是放在视图中 
+</pre>
+<pre>6.为jsp、包含的文件、jsp bean和实现扩展标记的类使用遵循标准的命名惯例如： 
+jsp控制器 xxxxController.jsp 
+jsp页面模型bean: &lt;pagename&gt;Bean 如 loginBean.java 
+jsp会话标记 bean: xxxxSessionBean   
+标记类: xxxxTag,xxxxTagExtraInfo 
+</pre>
+<pre>7.应在jsp中避免使用页面引入指令。import指令会促使类的实例化而不是jsp bean的实例化 
+不用：&lt;%@ page import="com.java.util"%&gt; 
+而用：&lt;%java.until.List a = new java.util.LinkedList();%&gt; 
+</pre>
+<pre>8.jsp不要直接访问请求参数，bean应该执行这样的处理过程并且输出所处理的模型数据 
+</pre>
+<pre>9.jsp不应该访问属性文件，或者使JNDI 。bean可以访问属性 
+</pre>
+<pre>10.如果jsp bean具有的所有属性不能能页面请求中被映射到，就要尽力在&lt;jsp:useBean&gt;标记中设置属性 
+</pre>
+<pre>11.应该避免设计既显示表单又处理结果的页面 
+</pre>
+<pre>12.在jsp中避免代码重复。把要重复的功能放在一个包含jsp、bean或标记扩展中，使得它能够被重用 
+</pre>
+<pre>13.jsp bean永远不要去生成HTML 
+</pre>
+<pre>14.在jsp中应该避免使用out.println()产生页面内容 
+</pre>
+<pre>15.jsp不应该直接访问数据，这包括JDBC数据库访问和EJB访问 
+</pre>
+<pre>16.在长度上，scriptlests的代码最好不超过5行 
+</pre>
+<pre>17.除了jsp bean，jsp不应该去实例化复杂的可读写的对象。如果这样的话，就有可能在jsp中去执行不适当的  业务逻辑 
+</pre>
+<pre>18.jsp bean中不应该包含大量的数据 
+</pre>
+<pre>19.如果使用了&lt;jsp:forward&gt;和&lt;jsp:include 标记&gt;，并且必须使用简单类型的值来与外部页面进行通讯的话  ，就应该使用一个或多个&lt;jsp:param&gt;元素 
+</pre>
+<pre>20.定制标记应该在适当把逻辑从jsp中移走的地方 
+</pre>
+<pre>21.应该谨慎地使用&lt;jsp:forward&gt;标记，在jsp中，它是一个等价的goto 
+</pre>
+<pre>22.应该使用隐藏的注释来阻止输出过大的html 
+</pre>
+<pre>23.在jsp中避免进行异常处理 
+</pre>
+<pre>24.每个jsp文件中都应该使用一个错误页面来处理不能够从中恢复的异常 
+</pre>
+<pre>25.在jsp错误页面中，使用HTML注释来显示传递到该页面中的异常跟踪信息 
+</pre>
+<pre>26.只有在能获得性能上的好处时，才使用jspInin()方法和jspDestroy()方法。获取和放弃资源是jsp bean和标  记处理器的事，而不是由jsp来负责 
+</pre>
+<pre>27.如果没有充分的理由，就不要在jsp中定义方法和内部类
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="HTML.E8.A7.84.E8.8C.83"></a><h1>HTML规范</h1>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E6.89.80.E6.9C.89.E7.9A.84.E6.A0.87.E7.AD.BE.E9.83.BD.E6.98.AF.E5.A4.A7.E5.86.99"></a><h4>所有的标签都是大写</h4>
+<p>ex: &lt;HEAD&gt; not:&lt;head&gt;\&lt;Head&gt;
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name="URL.E6.9C.80.E5.90.8E.E4.B8.80.E5.AE.9A.E8.A6.81.E6.9C.89.E2.80.9C.2F.E2.80.9D"></a><h4>URL最后一定要有“/”</h4>
+<p>ex: "hippo/include/" not:"hippo/include"
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E6.A0.87.E7.AD.BE.E6.88.90.E5.AF.B9.E5.87.BA.E7.8E.B0"></a><h4>标签成对出现</h4>
+<p>ex: &lt;HTML&gt;/&lt;/HTML&gt; 
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E5.9C.A8head.E5.8C.BA.E5.BF.85.E9.A1.BB.E8.AF.B4.E6.98.8E.E5.AD.97.E7.AC.A6.E9.9B.86.EF.BC.8C.E6.88.91.E4.BB.AC.E7.BB.9F.E4.B8.80.E4.BD.BF.E7.94.A8utf-8"></a><h4>在head区必须说明字符集，我们统一使用utf-8</h4>
+<p>ex： &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E5.9C.A8head.E5.8C.BA.E8.AF.B4.E6.98.8Ecss.E8.AE.BE.E5.AE.9A"></a><h4>在head区说明css设定</h4>
+<p>ex： &lt;link href="include/style.css" type="text/css" rel="stylesheet"&gt;
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑</a>]</div><a name=".E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE"></a><h1>参考文献</h1>
+<p><a href="http://www.greenpage.com.cn/article_print.asp?id=9" class='external text' title="http://www.greenpage.com.cn/article print.asp?id=9" rel="nofollow">jsp编码规范</a>
+<a href="http://edu.yesky.com/edupxpt/393/2157893.shtml" class='external text' title="http://edu.yesky.com/edupxpt/393/2157893.shtml" rel="nofollow">java编程规范</a>
+<a href="http://wiki.cs.hit.edu.cn/index.php/Scholar%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83#.E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE" class='external text' title="http://wiki.cs.hit.edu.cn/index.php/Scholar编码规范#.E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE" rel="nofollow">Scholar编码规范</a>
+<a href="http://wiki.cs.hit.edu.cn/index.php/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83" class='external text' title="http://wiki.cs.hit.edu.cn/index.php/代码规范" rel="nofollow">HIPPO代码规范</a>
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../f/-/b/F-Blog_rulers_coding_96d9.html">http://dns.cs.hit.edu.cn../../../f/-/b/F-Blog_rulers_coding_96d9.html</a>"</p>
+
+<p>本页面已经被浏览298次。 This page was last modified 06:03 2006年8月16日 by <a href="../../../%E9%BB%84/%E4%BC%9F/%E6%98%8E/User%7E%E9%BB%84%E4%BC%9F%E6%98%8E.html" class="new" title="User:黄伟明">黄伟明</a>. Based on work by <a href="../../../%E9%87%91/%E6%B0%B8/%E6%9D%B0/User%7E%E9%87%91%E6%B0%B8%E6%9D%B0.html" class="new" title="User:金永杰">金永杰</a>. </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑本页</a></strong> |
+<a href="../../../f/-/b/Talk%7EF-Blog_rulers_coding_e590.html" class="new" title="Talk:F-Blog/rulers/coding">讨论本页</a> |
+<a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览298次。 This page was last modified 06:03 2006年8月16日 by <a href="../../../%E9%BB%84/%E4%BC%9F/%E6%98%8E/User%7E%E9%BB%84%E4%BC%9F%E6%98%8E.html" class="new" title="User:黄伟明">黄伟明</a>. Based on work by <a href="../../../%E9%87%91/%E6%B0%B8/%E6%9D%B0/User%7E%E9%87%91%E6%B0%B8%E6%9D%B0.html" class="new" title="User:金永杰">金永杰</a>. </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">编辑本页</a></strong>
+<br /><a href="../../../f/-/b/Talk%7EF-Blog_rulers_coding_e590.html" class="new" title="Talk:F-Blog/rulers/coding">讨论本页</a>
+<br /><a href="../../../f/-/b/F-Blog_rulers_coding_96d9.html" title="F-Blog/rulers/coding">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392840.61 secs. -->
+</body></html>

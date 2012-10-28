@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>SF - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../s/f/_/SF_94a9.html" title="SF">编辑本页</a> |
+<a href="../../../s/f/_/SF_94a9.html" title="SF">较早版本</a><p class='subtitle'><a href="../../../s/f/_/SF_94a9.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">SF</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#.E6.BA.90.E7.A0.81.E9.98.85.E8.AF.BB"><span class="tocnumber">1</span> <span class="toctext">源码阅读</span></a>
+<ul>
+<li class='toclevel-2'><a href="#collect"><span class="tocnumber">1.1</span> <span class="toctext">collect</span></a></li>
+<li class='toclevel-2'><a href="#format"><span class="tocnumber">1.2</span> <span class="toctext">format</span></a>
+<ul>
+<li class='toclevel-3'><a href="#nice.E5.87.BD.E6.95.B0"><span class="tocnumber">1.2.1</span> <span class="toctext">nice函数</span></a></li>
+<li class='toclevel-3'><a href="#.E5.AF.B9.E8.B6.85.E8.BF.872G.E6.96.87.E4.BB.B6.E7.9A.84.E6.93.8D.E4.BD.9C"><span class="tocnumber">1.2.2</span> <span class="toctext">对超过2G文件的操作</span></a></li>
+<li class='toclevel-3'><a href="#strdup.E5.87.BD.E6.95.B0"><span class="tocnumber">1.2.3</span> <span class="toctext">strdup函数</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/f/_/SF_94a9.html" title="SF">编辑</a>]</div><a name=".E6.BA.90.E7.A0.81.E9.98.85.E8.AF.BB"></a><h1>源码阅读</h1>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/f/_/SF_94a9.html" title="SF">编辑</a>]</div><a name="collect"></a><h2>collect</h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/f/_/SF_94a9.html" title="SF">编辑</a>]</div><a name="format"></a><h2>format</h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/f/_/SF_94a9.html" title="SF">编辑</a>]</div><a name="nice.E5.87.BD.E6.95.B0"></a><h3>nice函数</h3>
+<p>【函 数 名】nice — 调整进程运行的优先级
+</p><p>【函数原型】int nice(int inc);
+</p><p>【相关头文件】unistd.h
+</p><p>【函数说明】
+</p><p>在Linux中，进程运行的优先级分为-20~19等40个级别，其中，数值越小运行优先级越高，数值越大运行优先级越低。显而易见，优先级 -20的运行优先级最高，优先级19的运行优先级最低。函数nice是将当前进程运行的优先级增加指定值，既用当前进程运行的优先级加上指定值得到新的优先级，然后用新的优先级运行该进程。当计算出来的值小于-20，则进程将以优先级-20运行；当计算出来的值大于19，则进程将以优先级19运行。若增加正值，则表示降低进程运行优先级；若增加负值，则表示升高进程运行优先级。但只有具有超级用户权限的用户才可以以负数作为函数的参数，否则该函数将返回错误。
+</p><p>【参数说明】
+</p><p>inc [IN] 指定优先级增加的值
+</p><p>【函数返回值】
+</p><p>若操作成功，函数将返回调整后的进程运行的优先级；
+</p><p>若操作失败，函数将返回-1。
+</p><p>注意：当函数返回-1时，不一定就是函数操作失败。因为若函数成功调整进程运行优先级后的优先级为-1，函数也返回-1，所以在判断函数是否操作失败时，除了判断函数返回的值是否为-1外，还需要查看 errno的值是否为相关错误码，详见“程序示例”。
+</p><p>【相关错误码】
+</p><p>EACCES 无操作权限，既非超级用户权限的用户用负值作为参数调用该函数。
+</p><p>【程序示例】
+</p>
+<pre> 1. #include &lt;stdio.h&gt;    /* printf */
+ 2. #include &lt;stdlib.h&gt;   /* atoi, system, exit */
+ 3. #include &lt;errno.h&gt;    /* errno */
+ 4. #include &lt;string.h&gt;   /* strerror */
+ 5. #include &lt;unistd.h&gt;   /* nice */
+ 6.
+ 7. int main(int argc, char *argv[])
+ 8. {
+ 9.     int adjustment = 0;
+10.     int ret;
+11.     if ( argc &gt; 1 ) {
+12.         adjustment = atoi( argv[1] );
+13.     }
+14.     ret = nice( adjustment );
+15.     printf( "nice(%d):%d\n", adjustment, ret );
+16.     if ( -1 == ret ) {
+17.         if ( errno == EACCES ) {
+18.             printf( "Cannot set priority:%s.\n", strerror( errno ) );
+19.             exit(-1);
+20.         }
+21.     }
+22.     system("nice");
+23.     exit(0);
+24. }
+
+</pre>
+<p>参考文献：
+</p><p>[1] Linux man pages
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/f/_/SF_94a9.html" title="SF">编辑</a>]</div><a name=".E5.AF.B9.E8.B6.85.E8.BF.872G.E6.96.87.E4.BB.B6.E7.9A.84.E6.93.8D.E4.BD.9C"></a><h3>对超过2G文件的操作</h3>
+<ul><li>fseeko
+</li></ul>
+<ol><li>define _FILE_OFFSET_BITS 64
+</li></ol>
+<p>具体含义见：
+NAME
+fseeko, ftello - seek to or report file position
+</p><p>SYNOPSIS
+</p>
+<ol><li>include &lt;stdio.h&gt;
+</li></ol>
+<p>int fseeko(FILE *stream, off_t offset, int whence);
+</p><p>off_t ftello(FILE *stream);
+</p><p>DEscrīptION
+The fseeko() and ftello() functions are identical to fseek() and ftell() (see fseek(3)), respectively, except
+that the offset argument of fseeko() and the return value of ftello() is of type off_t instead of long.
+</p><p>On many architectures both off_t and long are 32-bit types, but compilation with
+</p>
+<ol><li>define _FILE_OFFSET_BITS 64
+</li></ol>
+<p>will turn off_t into a 64-bit type.
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/f/_/SF_94a9.html" title="SF">编辑</a>]</div><a name="strdup.E5.87.BD.E6.95.B0"></a><h3>strdup函数</h3>
+<p>原型：extern char *strdup(char *s);        
+</p><p>用法：#include &lt;string.h&gt;  
+</p><p>功能：复制字符串s  
+</p><p>说明：返回指向被复制的字符串的指针，所需空间由malloc()分配且可以由free()释放。
+</p><p>注意：需要<b>手工的释放</b>，否则会有<b>内存泄露</b>
+</p><p>举例：
+</p>
+<pre>     // strdup.c      
+     #include &lt;syslib.h&gt;
+     #include &lt;string.h&gt;
+     main()
+     {
+       char *s="Golden Global View";
+       char *d;        
+       clrscr();        
+       d=strdup(s);
+       printf("%s",d);
+       getchar();
+       return 0;
+     }
+</pre>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../s/f/_/SF_94a9.html">http://dns.cs.hit.edu.cn../../../s/f/_/SF_94a9.html</a>"</p>
+
+<p>本页面已经被浏览18次。 This page was last modified 13:39 2007年5月16日 by <a href="../../../w/a/n/User%7EWangyao.html" title="User:Wangyao">王耀</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../s/f/_/SF_94a9.html" title="SF">编辑本页</a></strong> |
+<a href="../../../s/f/_/Talk%7ESF_7b58.html" class="new" title="Talk:SF">讨论本页</a> |
+<a href="../../../s/f/_/SF_94a9.html" title="SF">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览18次。 This page was last modified 13:39 2007年5月16日 by <a href="../../../w/a/n/User%7EWangyao.html" title="User:Wangyao">王耀</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../s/f/_/SF_94a9.html" title="SF">编辑本页</a></strong>
+<br /><a href="../../../s/f/_/Talk%7ESF_7b58.html" class="new" title="Talk:SF">讨论本页</a>
+<br /><a href="../../../s/f/_/SF_94a9.html" title="SF">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393129.73 secs. -->
+</body></html>

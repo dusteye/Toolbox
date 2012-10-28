@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Update or saveOrupdate - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../u/p/d/Update_or_saveOrupdate_05ec.html" title="Update or saveOrupdate">编辑本页</a> |
+<a href="../../../u/p/d/Update_or_saveOrupdate_05ec.html" title="Update or saveOrupdate">较早版本</a><p class='subtitle'><a href="../../../u/p/d/Update_or_saveOrupdate_05ec.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Update or saveOrupdate</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>update和saveOrUpdate详解
+</p><p>作者：robbin (MSN:robbin_fan AT hotmail DOT com)
+在Hibernate中，最核心的概念就是对PO的状态管理。一个PO有三种状态：
+</p><p>1、未被持久化的VO
+</p><p>此时就是一个内存对象VO，由JVM管理生命周期
+</p><p>2、已被持久化的PO，并且在Session生命周期内
+</p><p>此时映射数据库数据，由数据库管理生命周期
+</p><p>3、曾被持久化过，但现在和Session已经detached了，以VO的身份在运行
+</p><p>这种和Session已经detached的PO还能够进入另一个Session，继续进行PO状态管理，此时它就成为PO的第二种状态了。这种PO实际上是跨了Session进行了状态维护的。
+</p><p>在传统的JDO1.x中，PO只有前面两种状态，一个PO一旦脱离PM，就丧失了状态了，不再和数据库数据关联，成为一个纯粹的内存VO，它即使进入一个新的PM，也不能恢复它的状态了。
+</p><p>Hibernate 强的地方就在于，一个PO脱离Session之后，还能保持状态，再进入一个新的Session之后，就恢复状态管理的能力，但此时状态管理需要使用 session.update或者session.saveOrUpdate，这就是Hibernate Reference中提到的“requires a slightly different programming model ”
+</p><p>现在正式进入本话题：
+</p><p>简单的来说，update和saveOrUpdate是用来对跨Session的PO进行状态管理的。
+</p><p>假设你的PO不需要跨Session的话，那么就不需要用到，例如你打开一个Session，对PO进行操作，然后关闭，之后这个PO你也不会再用到了，那么就不需要用update。
+</p><p>因此，我们来看看：
+</p><p>Foo foo=sess.load(Foo.class,id); 
+foo.setXXX(xxx); 
+sess.flush();
+sess.commit(); 
+</p><p>PO对象foo的操作都在一个Session生命周期内完成，因此不需要显式的进行sess.update(foo)这样的操作。 Hibernate会自动监测到foo对象已经被修改过，因此就向数据库发送一个update的sql。当然如果你非要加上sess.update (foo)也不会错，只不过这样做没有任何必要。
+</p><p>而跨Session的意思就是说这个PO对象在Session关闭之后，你还把它当做一个VO来用，后来你在Session外面又修改了它的属性，然后你又想打开一个Session，把VO的属性修改保存到数据库里面，那么你就需要用update了。
+</p><p>// in the first session 
+Cat cat = (Cat) firstSession.load(Cat.class, catId); 
+Cat potentialMate = new Cat(); 
+firstSession.save(potentialMate); 
+</p><p>// in a higher tier of the application 
+cat.setMate(potentialMate); 
+</p><p>// later, in a new session 
+secondSession.update(cat);  // update cat 
+secondSession.update(mate); // update mate
+</p><p>cat和mate对象是在第一个session中取得的，在第一个session关闭之后，他们就成了PO的第三种状态，和 Session已经detached的PO，此时他们的状态信息仍然被保留下来了。当他们进入第二个session之后，立刻就可以进行状态的更新。但是由于对cat的修改操作：cat.setMate(potentialMate); 是在Session外面进行的，Hibernate不可能知道cat对象已经被改过了，第二个Session并不知道这种修改，因此一定要显式的调用 secondSession.update(cat); 通知Hibernate，cat对象已经修改了，你必须发送update的sql了。
+</p><p>所以update的作用就在于此，它只会被用于当一个PO对象跨Session进行状态同步的时候才需要写。而一个PO对象当它不需要跨Session进行状态管理的时候，是不需要写update的。
+</p><p>再谈谈saveOrUpdate的用场：
+</p><p>saveOrUpdate和update的区别就在于在跨Session的PO状态管理中，Hibernate对PO采取何种策略。
+</p><p>例如当你写一个DAOImpl的时候，让cat对象增加一个mate，如下定义：
+</p><p>public void addMate(Cat cat, Mate mate) {
+</p>
+<pre>   Session session = ...;
+   Transacton tx = ...;
+   session.update(cat);
+   cat.addMate(mate);
+   tx.commit();
+   session.close();
+</pre>
+<p>};
+</p><p>显然你是需要把Hibernate的操作封装在DAO里面的，让业务层的程序员和Web层的程序员不需要了解Hibernate，直接对DAO进行调用。
+</p><p>此时问题就来了：上面的代码运行正确有一个必要的前提，那就是方法调用参数cat对象必须是一个已经被持久化过的PO，也就是来说，它应该首先从数据库查询出来，然后才能这样用。但是业务层的程序员显然不知道这种内部的玄妙，如果他的业务是现在增加一个cat，然后再增加它的mate，他显然会这样调用， new一个cat对象出来，然后就addMate：
+</p><p>Cat cat = new Cat();
+cat.setXXX();
+daoimpl.addMate(cat,mate);
+</p><p>但是请注意看，这个cat对象只是一个VO，它没有被持久化过，它还不是PO，它没有资格调用addMate方法，因此调用 addMate方法不会真正往数据库里面发送update的sql，这个cat对象必须先被save到数据库，在真正成为一个PO之后，才具备 addMate的资格。
+</p><p>你必须这样来操作：
+</p><p>Cat cat = new Cat();
+cat.setXXX();
+daoimpl.addCat(cat);
+daoimpl.addMate(cat, mate);
+</p><p>先持久化cat，然后才能对cat进行其他的持久化操作。因此要求业务层的程序员必须清楚cat对象处于何种状态，到底是第一种，还是第三种。如果是第一种，就要先save，再addMate；如果是第三种，就直接addMate。
+</p><p>但是最致命的是，如果整个软件分层很多，业务层的程序员他拿到这个cat对象也可能是上层Web应用层传递过来的cat，他自己也不知道这个cat究竟是VO，没有被持久化过，还是已经被持久化过，那么他根本就没有办法写程序了。
+</p><p>所以这样的DAOImpl显然是有问题的，它会对业务层的程序员造成很多编程上的陷阱，业务层的程序员必须深刻的了解他调用的每个DAO对PO对象进行了何种状态管理，必须深刻的了解他的PO对象在任何时候处于什么确切的状态，才能保证编程的正确性，显然这是做不到的，但是有了saveOrUpdate，这些问题就迎刃而解了。
+</p><p>现在你需要修改addMate方法：
+</p><p>public void addMate(Cat cat, Mate mate) {
+</p>
+<pre>   Session session = ...;
+   Transacton tx = ...;
+   session.saveOrUpdate(cat);
+   cat.addMate(mate);
+   tx.commit();
+   session.close();
+</pre>
+<p>};
+</p><p>如上，如果业务层的程序员传进来的是一个已经持久化过的PO对象，那么Hibernate会更新cat对象(假设业务层的程序员在Session外面修改过cat的属性)，如果传进来的是一个新new出来的对象，那么向数据库save这个PO对象。
+</p><p>BTW: Hibernate此时究竟采取更新cat对象，还是save cat对象，取决于unsave-value的设定。
+</p><p>这样，业务层的程序员就不必再操心PO的状态问题了，对于他们来说，不管cat是new出来的对象，只是一个VO也好；还是从数据库查询出来的的PO对象也好，全部都是直接addMate就OK了：
+</p><p>daoimple.addMate(cat, mate);
+</p><p>这便是saveOrUpdate的作用。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../u/p/d/Update_or_saveOrupdate_05ec.html">http://dns.cs.hit.edu.cn../../../u/p/d/Update_or_saveOrupdate_05ec.html</a>"</p>
+
+<p>本页面已经被浏览7次。 This page was last modified 11:35 2006年7月20日 by <a href="../../../m/y/q/User%7EMyqhit.html" class="new" title="User:Myqhit">马玉清</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../u/p/d/Update_or_saveOrupdate_05ec.html" title="Update or saveOrupdate">编辑本页</a></strong> |
+<a href="../../../u/p/d/Talk%7EUpdate_or_saveOrupdate_a5f4.html" title="Talk:Update or saveOrupdate">讨论本页</a> |
+<a href="../../../u/p/d/Update_or_saveOrupdate_05ec.html" title="Update or saveOrupdate">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览7次。 This page was last modified 11:35 2006年7月20日 by <a href="../../../m/y/q/User%7EMyqhit.html" class="new" title="User:Myqhit">马玉清</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../u/p/d/Update_or_saveOrupdate_05ec.html" title="Update or saveOrupdate">编辑本页</a></strong>
+<br /><a href="../../../u/p/d/Talk%7EUpdate_or_saveOrupdate_a5f4.html" title="Talk:Update or saveOrupdate">讨论本页</a>
+<br /><a href="../../../u/p/d/Update_or_saveOrupdate_05ec.html" title="Update or saveOrupdate">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392858.93 secs. -->
+</body></html>

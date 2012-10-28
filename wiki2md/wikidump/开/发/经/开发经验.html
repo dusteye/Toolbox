@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>开发经验 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../%E5%BC%80/%E5%8F%91/%E7%BB%8F/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C.html" title="开发经验">编辑本页</a> |
+<a href="../../../%E5%BC%80/%E5%8F%91/%E7%BB%8F/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C.html" title="开发经验">较早版本</a><p class='subtitle'><a href="../../../%E5%BC%80/%E5%8F%91/%E7%BB%8F/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">开发经验</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>我好久没有在论坛上这么多文字了，真有点累，呵呵。不过和这里的朋友讨论还不觉得很累。 
+</p><p><br />
+在我的任何项目中，不但要让开发服务器24小时开着，而且远远不只这些。我非常简单的描述一下 
+基本条件： 
+</p><p>1 CVS服务器运行，加上集成控制软件。例如cc,anthill或者是damagecontrol 
+</p><p>2 首先，每个人的开发平台上都需要一个自己的轻量级数据库，譬如hsql，一般来说，我尽量做到程序与数据库无关，但有时候做不到，那么在一台专门的数据库服务器上为每一个用户开设一个数据库（譬如Oracle）. 
+</p><p>3．有一台专门的集成服务器，安装将和最终运行环境完全一样的系统，包括操作系统、数据库、JDK版本、应用服务器 
+</p><p>3 每个人的代码必须100%通过单元测试 
+</p><p>4 任何时候数据库必须可以用一个DDL语言生成，不管是手工的，还是用Hibernate或其他什么东西生成的。 
+</p><p>5 不管你用何种开发工具，Ultraedit,eclipse,idea或者jbuilder，你必须有一个ant或者maven脚本文件，包括HBM.xml文件的生成、源代码的编译,XDoclet于编译，数据库init，准备数据插入，单元测试，集成测试等等。 
+</p><p><br />
+需要每个人一个数据库的原因是我在测试代码的时候不希望任何人打扰我。如果我做了某一个属性的改变，而别人的测试代码恰巧也更改了我的数据库，那我的测试就不能100%green了，我不想这样。 
+</p><p>一个脚本的原因是我们可以用CVS来控制这个DDL脚本（有可能有一些预定的DML)，同时这个DDL脚本将最后用作实用环境安装 
+</p><p><br />
+在自己编写代码的时候，你可以不运行整个测试，你可以单独运行每一个TestCase，在你准备commit之前，你必须运行全部测试（包括初始化数据库），只有通过，才能和CVS服务器进行同步。一旦同步、排除冲突以后，你必须重新做一次全部测试，只有当所有的测试再次通过时，你才可以Commit。不管谁commit新的代码，CC将自动针对集成服务器做一次集成测试。如果测试不成功，那么在所有上次测试成功和本次测试之间的提交者将不断受到邮件或其他通知，直至完全通过。Damagecontrol甚至可能把你的提交的代码全部恢复过来。每一次集成测试的结果将在一个大家都可以看到的页面上展示。（这种方式是绝大多数XP团队的持续集成，不要告诉我大公司和大系统不是这样做的，Microsoft公司和Mozilla的开发基本上就是这样的，
+</p>
+<pre><a href="http://tinderbox.mozilla.org/showbuilds.cgi?tree=SeaMonkey" class='external free' title="http://tinderbox.mozilla.org/showbuilds.cgi?tree=SeaMonkey" rel="nofollow">http://tinderbox.mozilla.org/showbuilds.cgi?tree=SeaMonkey</a> 
+<a href="http://www.mozilla.org/quality/precheckin-tests.html" class='external free' title="http://www.mozilla.org/quality/precheckin-tests.html" rel="nofollow">http://www.mozilla.org/quality/precheckin-tests.html</a> 
+<a href="http://www.mozilla.org/quality/smoketests/index.html" class='external free' title="http://www.mozilla.org/quality/smoketests/index.html" rel="nofollow">http://www.mozilla.org/quality/smoketests/index.html</a> 
+</pre>
+<p>比我还严格, ) 
+</p><p>持续集成的好处我这里就不展开了，不然成了长篇大论了，呵呵。 
+</p><p><br />
+在系统没有进入正时运行阶段，数据库里面的任何数据都是没有意义的，整个数据库(或里面的所有数据表)在不断的drop,create之中。 
+</p><p><br />
+一旦系统进入真正的运行状态，事情就稍微有点麻烦。这就是所谓的数据库重构。要点是载每一个开发员自己的机器上始终保持一份用户正在使用的当前DLL，然后每次数据库的变化不再是完全的一次性重建，而是在每次需要改变数据库结构或者数据转移的时候维持一份我称为update ddl的脚本。每次运行测试（全测试或集成测试）的时候，首先用用户当前的DLL建立数据库，插入代表性的数据，然后依次应用你的update dll(随着开发过程在不断的积累和变化)，首先运行数据库重构的测试，譬如说你的某一个字段原先是在那个表，现在到这个表，或者做了某些数据变换，你必须测试数据库重构保持外部行为不变（重构的基本原理）。然后用最新的业务代码做一个全测试。处理的方式基本上和原先一样。 
+</p><p><br />
+这份update ddl将最后称为升级用户数据库的唯一标准，它在用户正在使用的数据库上执行一系列的新表创建，旧表结构变化，数据转移，最后变成最新的版本。 
+</p><p><br />
+当然开发中间还涉及到很多细节问题，我没办法在这里描述得很清楚。这样做的目的是任何时候你的系统都是可用的，任何开发人员可以在任何时候改变数据库的结构，做一些试验，最后把结构合并到CVS和集成环境中去。同时，一旦用户已经运行系统，你也可以保证日后你在用户数据上执行的操作都是经过测试的。 
+</p><p><br />
+当然，如何促进程序员之间的快速交流，给用户最快的可运行的程序等等都是优点，好累哦。。。打不下去了
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../%E5%BC%80/%E5%8F%91/%E7%BB%8F/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C.html">http://dns.cs.hit.edu.cn../../../%E5%BC%80/%E5%8F%91/%E7%BB%8F/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C.html</a>"</p>
+
+<p>本页面已经被浏览11次。 This page was last modified 08:42 2006年7月13日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../%E5%BC%80/%E5%8F%91/%E7%BB%8F/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C.html" title="开发经验">编辑本页</a></strong> |
+<a href="../../../%E5%BC%80/%E5%8F%91/%E7%BB%8F/Talk%7E%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C.html" class="new" title="Talk:开发经验">讨论本页</a> |
+<a href="../../../%E5%BC%80/%E5%8F%91/%E7%BB%8F/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C.html" title="开发经验">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览11次。 This page was last modified 08:42 2006年7月13日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../%E5%BC%80/%E5%8F%91/%E7%BB%8F/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C.html" title="开发经验">编辑本页</a></strong>
+<br /><a href="../../../%E5%BC%80/%E5%8F%91/%E7%BB%8F/Talk%7E%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C.html" class="new" title="Talk:开发经验">讨论本页</a>
+<br /><a href="../../../%E5%BC%80/%E5%8F%91/%E7%BB%8F/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C.html" title="开发经验">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392828.85 secs. -->
+</body></html>

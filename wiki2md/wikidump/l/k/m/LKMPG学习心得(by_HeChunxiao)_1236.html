@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>LKMPG学习心得(by HeChunxiao) - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../l/k/m/LKMPG%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97%28by_HeChunxiao%29_1236.html" title="LKMPG学习心得(by HeChunxiao)">编辑本页</a> |
+<a href="../../../l/k/m/LKMPG%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97%28by_HeChunxiao%29_1236.html" title="LKMPG学习心得(by HeChunxiao)">较早版本</a><p class='subtitle'><a href="../../../l/k/m/LKMPG%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97%28by_HeChunxiao%29_1236.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">LKMPG学习心得(by HeChunxiao)</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>寒假看了lkmpg(The Linux Kernel Module Programing Guide),短小精悍的一本书,很有意思,对内核模块以及相关的一些系统知识都有介绍.
+</p>
+<ul><li>第一章提纲挈领,介绍了什么是module,module的加载以及编译自己的module之前需要注意的一些问题.
+</li></ul>
+<ul><li>第二章以实例开始讲模块的编写语法,编译方法等.这本书里面实例很多,基本以实例为主线,其中有一些很有趣.为了避免使用makefile带来的代码重复,难以维护等问题,内核采用一种叫kbuild的方法,具体内容可以看linux/Documentation/kbuild/modules.txt,我在wiki里摘抄了主要内容.详细的内核makefile编写可以参考linux/Documentation/kbuild/makefiles.txt,wiki上也有摘要.第五节讲了内核模块文档的发布,可以利用linux/module.h中定义的宏来提供module的相关信息.最后介绍了在内核版本不兼容的情况下如何强行加载模块。内核模块的输出在内核缓冲区，在stdout中看不到，可以用demesg查看，/var/log/messages中也有相关信息。
+</li></ul>
+<ul><li>第三章对比了普通程序和模块,对理解内核工作机制有很大帮助.还有内核空间,用户空间介绍等,大家应该已经很了解了.
+</li></ul>
+<ul><li>之后两章讲了模块相关的字符设备和/proc的内容,如何在/dev下注册一个设备,注销设备,有一个注册字符设备的例子,模块能显示设备被读取的次数.上一章的最后讲了设备文件的一些知识./proc在模块编程中比较重要,它是内核向外输出信息的方便途径.第五章介绍使用/proc的方法,/proc中文件建立在内存中,和设备文件不同，它有自己专用的一些函数。
+</li></ul>
+<dl><dd><a href="http://bbs.chinaunix.net/viewthread.php?tid=746017" class='external free' title="http://bbs.chinaunix.net/viewthread.php?tid=746017" rel="nofollow">http://bbs.chinaunix.net/viewthread.php?tid=746017</a> 这篇文章里有/proc专用函数的详细介绍
+</dd><dd><a href="http://www.pcdog.com/edu/ren/2005/08/d017014.html" class='external free' title="http://www.pcdog.com/edu/ren/2005/08/d017014.html" rel="nofollow">http://www.pcdog.com/edu/ren/2005/08/d017014.html</a> 这篇文章有/proc具体内容的介绍
+</dd></dl>
+<ul><li>前面说的是从内核获得输出的两种方法,第六章是关于用/proc作为输入的方法.用linux中标准的注册文件方法,用包含结构体 struct inode_operations指针的结构体struct file_operations.
+</li></ul>
+<ul><li>第七章是模块和与设备文件的对话,就一个例子，没怎么看明白:(，有谁读完了写一下吧。
+</li></ul>
+<ul><li>第八章比较有意思,关于系统调用的,加一点自己的代码,然后由内核调用原函数,来改变系统调用（也可以直接写一个自己的函数，然后改变sys_call_table，使其指针指向我们自己的函数，不过有很大风险，欲知详情请看本章九.十段...）.
+</li></ul>
+<dl><dd>它给了一个例子,改了open()
+</dd></dl>
+<pre>      original_call = sys_call_table[__NR_open];
+      sys_call_table[__NR_open] = our_sys_open;
+</pre>
+<dl><dd>trick: 要查看某个程序用了哪些系统调用，strace ./yourprogram
+</dd></dl>
+<ul><li>后面基本都是一些有趣的例子。第九章进程阻塞，实例创建/proc/sleep 只能同时被一个程序打开。第十章替换printk，来实现向终端输出信息,用了一个结构current->tty->drive,先获得当前任务使用的tty,然后输出;让键盘灯闪起来,使用的一些函数在
+</li></ul>
+<dl><dd>/usr/src/linux/drivers/char/keyboard.c
+</dd></dl>
+<ul><li>十一章任务调度,有关模块与进程通信的,十二章是模块与硬件的通信,一个与键盘通信的例子.
+</li><li>十三章smp,随便提了一下.
+</li></ul>
+<ul><li>附录中简介2.0到2.2的变化和一些进阶资源.
+</li></ul>
+<p>关于模块编程,网上似乎文章不多,有一篇台湾人写的流传甚广, <a href="http://bbs.chinaunix.net/viewthread.php?tid=612535" class='external text' title="http://bbs.chinaunix.net/viewthread.php?tid=612535" rel="nofollow">什么是module以及如何写module</a> 很经典.
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../l/k/m/LKMPG%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97%28by_HeChunxiao%29_1236.html">http://dns.cs.hit.edu.cn../../../l/k/m/LKMPG%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97%28by_HeChunxiao%29_1236.html</a>"</p>
+
+<p>本页面已经被浏览41次。 This page was last modified 14:10 2007年3月7日 by <a href="../../../%E4%BD%95/%E6%98%A5/%E6%99%93/User%7E%E4%BD%95%E6%98%A5%E6%99%93.html" title="User:何春晓">何春晓</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../l/k/m/LKMPG%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97%28by_HeChunxiao%29_1236.html" title="LKMPG学习心得(by HeChunxiao)">编辑本页</a></strong> |
+<a href="../../../l/k/m/Talk%7ELKMPG%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97%28by_HeChunxiao%29_73a3.html" class="new" title="Talk:LKMPG学习心得(by HeChunxiao)">讨论本页</a> |
+<a href="../../../l/k/m/LKMPG%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97%28by_HeChunxiao%29_1236.html" title="LKMPG学习心得(by HeChunxiao)">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览41次。 This page was last modified 14:10 2007年3月7日 by <a href="../../../%E4%BD%95/%E6%98%A5/%E6%99%93/User%7E%E4%BD%95%E6%98%A5%E6%99%93.html" title="User:何春晓">何春晓</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../l/k/m/LKMPG%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97%28by_HeChunxiao%29_1236.html" title="LKMPG学习心得(by HeChunxiao)">编辑本页</a></strong>
+<br /><a href="../../../l/k/m/Talk%7ELKMPG%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97%28by_HeChunxiao%29_73a3.html" class="new" title="Talk:LKMPG学习心得(by HeChunxiao)">讨论本页</a>
+<br /><a href="../../../l/k/m/LKMPG%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97%28by_HeChunxiao%29_1236.html" title="LKMPG学习心得(by HeChunxiao)">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393065.66 secs. -->
+</body></html>

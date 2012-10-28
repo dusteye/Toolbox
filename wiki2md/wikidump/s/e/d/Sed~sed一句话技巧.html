@@ -1,0 +1,585 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Sed:sed一句话技巧 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑本页</a> |
+<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">较早版本</a><p class='subtitle'><a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Sed:sed一句话技巧</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p><a href="http://dzy.byethost11.com/index.php/p/31/" class='external text' title="http://dzy.byethost11.com/index.php/p/31/" rel="nofollow">SED一句话技巧</a>  Mar.23.2001
+</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#.E5.85.B3.E4.BA.8E.E6.9C.AC.E6.96.87.E6.A1.A3"><span class="tocnumber">1</span> <span class="toctext">关于本文档</span></a></li>
+<li class='toclevel-1'><a href="#.E6.96.87.E6.9C.AC.E9.97.B4.E8.B7.9D"><span class="tocnumber">2</span> <span class="toctext">文本间距</span></a></li>
+<li class='toclevel-1'><a href="#.E7.BC.96.E5.8F.B7.E6.96.B9.E5.BC.8F"><span class="tocnumber">3</span> <span class="toctext">编号方式</span></a></li>
+<li class='toclevel-1'><a href="#.E6.96.87.E6.9C.AC.E8.BD.AC.E6.8D.A2.E4.B8.8E.E6.9B.BF.E6.8D.A2"><span class="tocnumber">4</span> <span class="toctext">文本转换与替换</span></a></li>
+<li class='toclevel-1'><a href="#.E9.80.89.E6.8B.A9.E8.BE.93.E5.87.BA.E7.89.B9.E5.AE.9A.E7.9A.84.E8.A1.8C"><span class="tocnumber">5</span> <span class="toctext">选择输出特定的行</span></a></li>
+<li class='toclevel-1'><a href="#.E9.80.89.E6.8B.A9.E6.80.A7.E5.88.A0.E9.99.A4.E7.89.B9.E5.AE.9A.E8.A1.8C"><span class="tocnumber">6</span> <span class="toctext">选择性删除特定行</span></a></li>
+<li class='toclevel-1'><a href="#.E7.89.B9.E6.AE.8A.E7.94.A8.E6.B3.95"><span class="tocnumber">7</span> <span class="toctext">特殊用法</span></a></li>
+<li class='toclevel-1'><a href="#.E5.85.B8.E5.9E.8B.E7.94.A8.E6.B3.95"><span class="tocnumber">8</span> <span class="toctext">典型用法</span></a></li>
+<li class='toclevel-1'><a href="#.E5.BC.95.E5.8F.B7.E7.9A.84.E8.AF.AD.E6.B3.95"><span class="tocnumber">9</span> <span class="toctext">引号的语法</span></a></li>
+<li class='toclevel-1'><a href="#.E5.9C.A8sed.E8.84.9A.E6.9C.AC.E4.B8.AD.E4.BD.BF.E7.94.A8.E2.80.99t.E2.80.98"><span class="tocnumber">10</span> <span class="toctext">在sed脚本中使用’t‘</span></a></li>
+<li class='toclevel-1'><a href="#sed.E7.9A.84.E7.89.88.E6.9C.AC"><span class="tocnumber">11</span> <span class="toctext">sed的版本</span></a></li>
+<li class='toclevel-1'><a href="#.E4.BC.98.E5.8C.96.E9.80.9F.E5.BA.A6"><span class="tocnumber">12</span> <span class="toctext">优化速度</span></a></li>
+<li class='toclevel-1'><a href="#.E8.A1.A5.E5.85.85"><span class="tocnumber">13</span> <span class="toctext">补充</span></a></li>
+<li class='toclevel-1'><a href="#.E8.AF.91.E8.80.85.E6.B3.A8"><span class="tocnumber">14</span> <span class="toctext">译者注</span></a></li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E5.85.B3.E4.BA.8E.E6.9C.AC.E6.96.87.E6.A1.A3"></a><h3>关于本文档</h3>
+<pre>编：Eric Pement
+ version 5.1
+译：<a href="http://taohua.byethost4.com" class='external text' title="http://taohua.byethost4.com" rel="nofollow">段志岩@IBMTC</a>
+(本文的最新版本通常在：
+<a href="http://www.student.northpark.edu/pemente/sed/sed1line.txt" class='external free' title="http://www.student.northpark.edu/pemente/sed/sed1line.txt" rel="nofollow">http://www.student.northpark.edu/pemente/sed/sed1line.txt</a>
+<a href="http://www.cornerstonemag.com/sed/sed1line.txt" class='external free' title="http://www.cornerstonemag.com/sed/sed1line.txt" rel="nofollow">http://www.cornerstonemag.com/sed/sed1line.txt</a>
+本文的葡萄牙文版本可以在这里找到：
+<a href="http://www.lrv.ufsc.br/wmaker/sed_ptBR.html" class='external free' title="http://www.lrv.ufsc.br/wmaker/sed ptBR.html" rel="nofollow">http://www.lrv.ufsc.br/wmaker/sed_ptBR.html</a>
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E6.96.87.E6.9C.AC.E9.97.B4.E8.B7.9D"></a><h3>文本间距</h3>
+<ol><li>二倍行距
+</li></ol>
+<pre>sed G
+ 
+</pre>
+<ol><li>在含空行的文件的行与行之间添加空行。输出文件的行与行之间的空行数不会多于一行。
+</li></ol>
+<pre>sed '/^$/d; G'
+ 
+</pre>
+<ol><li>三倍行距
+</li></ol>
+<pre>sed 'G; G'
+ 
+</pre>
+<ol><li>取消二倍行距（假定偶数行为空行）
+</li></ol>
+<pre>sed 'n; d'
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E7.BC.96.E5.8F.B7.E6.96.B9.E5.BC.8F"></a><h3>编号方式</h3>
+<ol><li>标记行号（纯左对齐）。使用tab替代space可以保持页边距。
+</li></ol>
+<pre>sed = filename | sed 'N; s/n/t/'
+ 
+</pre>
+<ol><li>标记行号（号码在左，文本右对齐）。
+</li></ol>
+<pre>sed = filename | sed 'N; s/^/    /; s/*(.{6,})n/1 /'
+ 
+</pre>
+<ol><li>标记行号，但只输出非空的行。
+</li></ol>
+<pre>sed '/./=' filename | sed '/./N; s/n/ /'
+ 
+</pre>
+<ol><li>计算行数（类似于"wc -l"）
+</li></ol>
+<pre>sed -N '$='
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E6.96.87.E6.9C.AC.E8.BD.AC.E6.8D.A2.E4.B8.8E.E6.9B.BF.E6.8D.A2"></a><h3>文本转换与替换</h3>
+<ol><li>UNIX环境下：将DOS换行符转(CR/LF)换成Unix格式
+</li></ol>
+<pre>sed 's/.$//'	#假定所有行均以CR/LF结尾
+sed 's/^M$//'	#在bash/tcsh下，按Ctrl-V然后按Ctrl-M
+sed 's/x0D$//'	#gsed 3.02.80中可用，但第一个脚本更简单一些
+ 
+</pre>
+<ol><li>UNIX环境下：将UNIX换行符转换成DOS格式
+</li></ol>
+<pre>sed "s/$/'echo -e \r'/"	#ksh命令行模式下
+sed 's/$'"/'echo \r'/"	#bash命令行模式下
+sed "s/$/'echo \r'/"	#zsh命令行模式下
+sed 's/$/r/'	#gsed 3.02.80
+ 
+</pre>
+<ol><li>DOS环境下：将Unix换行符(LF)转换成DOS格式
+</li></ol>
+<pre>sed "s/$//"	#方法一
+sed -n p 	#方法二
+ 
+</pre>
+<ol><li>DOS环境下：将DOS换行符（CR/LF）转换成Unix格式
+</li><li>此操作不能在DOS版的sed中实现。转用tr来代替
+</li></ol>
+<pre>tr -d r &lt;infile &gt;outfile	#GNU tr version 1.22或以上
+ 
+</pre>
+<ol><li>删除行首空白（space, tab），使文本全部左移。
+</li></ol>
+<p>sed 's/^[ t]*//'	#请参照文末关于‘t’的注解
+</p>
+<ol><li>删除行末空白（space, tab）
+</li></ol>
+<pre>sed 's/[ t]*$//'	#请参照文末关于‘t’的注解
+ 
+</pre>
+<ol><li>同时删除行首行尾空白（space， tab）
+</li></ol>
+<pre>sed 's/^[ t]*//; s/[ t]*$//'
+ 
+</pre>
+<ol><li>在每行行首插入5个空格（使页面右移）
+</li></ol>
+<p>sed 's/^/     /'
+</p>
+<ol><li>使文本全部靠右对齐（宽度为79列）
+</li></ol>
+<p>sed -e; a -e 's/^.{1, 78]$/ &amp;/;ta'
+</p>
+<ol><li>使文本居中（宽度为79列）。
+</li><li>方法一中，行首空格仍然有效，行尾被加上了空白以填补不足。
+</li><li>方法二中，行首空白在居中过程中被抛弃，行尾也没有补白的空白。
+</li></ol>
+<pre>sed -e&nbsp;:a -e 's/^.{1, 77}$/ &amp;/;ta' #方法一
+sed -e&nbsp;:a -e 's/^.{1, 77}$/ &amp;/;ta' -e 's/( *)1/1/' #方法二
+ 
+</pre>
+<ol><li>查找与替换：将每行中的"foo"替换成"bar"
+</li></ol>
+<pre>sed 's/foo/bar/'	#只替换每行中的第一个实例
+sed 's/foo/bar/4'	#只替换每行中的第四个实例
+sed 's/foo/bar/g'	#替换一行中出现的所有实例
+sed 's/(.*)foo(.*foo)/1bar2/'	#替换每行倒数第二个实例
+sed 's/(.*)foo/1bar/'	#只替换替换每行倒数第一个实例
+ 
+</pre>
+<ol><li>查找与替换：将不含"baz"的行中的"foo"替换成"bar"
+</li></ol>
+<pre>sed '/baz/!s/foo/bar/g'
+ 
+</pre>
+<ol><li>将"scarlet""ruby""puce"换为"red"
+</li></ol>
+<pre>sed 's/scarlet/red/g; s/ruby/red/g; s/puce/red/g'	#适用于大部分sed
+gsed 's/scarlet|ruby|puce/red/g'	#只适用于GNU的sed
+ 
+</pre>
+<ol><li>颠倒行序（使末行变首行，首行变末行） （类似tac）
+</li><li>HHsed的特性（或者是Bug）会导致空行被删除
+</li></ol>
+<pre>sed '1!G;h;$!d'	#方法一
+sed -n '1!G; h; $p'	#方法二
+ 
+</pre>
+<ol><li>反序输出每一行（类似rev）
+</li></ol>
+<pre>sed '/n/!G;s/(.)(.*n)/&amp;21/;//D;s/.//'	/*这里似乎有点问题*/
+ 
+</pre>
+<ol><li>如果某行以反斜线结尾，则将下一行接在它的后面
+</li></ol>
+<pre>sed -e&nbsp;:a -e '/\$/N; s/\n//; ta'
+ 
+</pre>
+<ol><li>如果某行以等号开头， 则将它接在上一行的行尾，并将等号用一个空格来替换
+</li></ol>
+<pre>sed -e&nbsp;:a -e '$!N; s/n=/ /; ta' -e 'P;D'
+ 
+</pre>
+<ol><li>给数值字符串加逗点，如将“1234567”变为“1,234,567”
+</li></ol>
+<pre>gsed ':a; s/B[0-9]{3}&gt;/,&amp;/;ta'	#GNU sed
+sed -e&nbsp;:a -e 's/(.*[0-9]([0-9]{3})/1,2/;ta'	#其它sed
+ 
+</pre>
+<ol><li>给带小数点和负号的数字加逗点（GNU sed）
+</li></ol>
+<pre>gsed ':a;s/(^|[^0-9])([0-9]+)([0-9]{3}/12,3/g;ta'
+ 
+</pre>
+<ol><li>每隔五行加入一个空行
+</li></ol>
+<pre>gsed '0~5G'	#只适用于GNU sed 
+sed 'n;n;n;n;G'	#其它sed
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E9.80.89.E6.8B.A9.E8.BE.93.E5.87.BA.E7.89.B9.E5.AE.9A.E7.9A.84.E8.A1.8C"></a><h3>选择输出特定的行</h3>
+<ol><li>输出文件的前十行（与head类似）
+</li></ol>
+<pre>sed 10q
+ 
+</pre>
+<ol><li>输出文件和第一行
+</li></ol>
+<pre>sed q
+ 
+</pre>
+<ol><li>输出文件和末尾10行（与tail类似）
+</li></ol>
+<pre>sed -e&nbsp;:a -e '$q; N;11, $D;ba'
+ 
+</pre>
+<ol><li>输出文件的最后两行
+</li></ol>
+<pre>sed '$!N; $!D'
+ 
+</pre>
+<ol><li>输出文件的末行
+</li></ol>
+<pre>sed '$!d'	#方法一
+sed -n '$p'	#方法二
+ 
+</pre>
+<ol><li>输出符合正则表达式的行（类似grep）
+</li></ol>
+<pre>sed -n '/regexp/p'	#方法一
+sed '/regexp/!d/	#方法二
+ 
+</pre>
+<ol><li>输出不符合正则表达式的行（类似grep -v）
+</li></ol>
+<pre>sed -n '/regexp/!p'	#方法一，其实现与上面的描述是一致的
+sed ‘/regexp/d'	#方法二，这样的语法更简单
+ 
+</pre>
+<ol><li>输出某一正则表达式之前的一行，但不输出含有该正则表达式的行
+</li></ol>
+<pre>sed -n '/regexp/{g;1!p;};h'
+ 
+</pre>
+<ol><li>输出某一正则表达式之后的一行，但不输出含有该正则表达式的行
+</li></ol>
+<pre>sed -n'/regexp/{n;p;}'
+ 
+</pre>
+<ol><li>输出某一正则表达式之前和之后的一行，以及该正则表达式出现的行的行号（与“grep -A1 -B1”）
+</li></ol>
+<pre>sed -n -e '/regexp/{=;x;l!p;g;$!N;p;D;}' -e h
+ 
+</pre>
+<ol><li>提取含AAA和BBB和CCC（任意顺序）的行
+</li></ol>
+<pre>sed '/AAA/!d; /BBB/!d; /CCC/!d'
+ 
+</pre>
+<ol><li>提取含AAA和BBB和CCC（按该顺序）的行
+</li></ol>
+<pre>sed '/AAA.*BBB.*CCC/!d'
+ 
+</pre>
+<ol><li>提取含AAA或BBB或CCC的行（类似于egrep）
+</li></ol>
+<pre>sed -e '/AAA/b' -e '/BBB/b' -e'/CCC/b' -e d	#适用于大部分sed
+gsed '/AAA|BBB|CCC/!d'	#只适用于GNU sed
+ 
+</pre>
+<ol><li>输出含有AAA的段落（空行分隔段落）
+</li><li>以下脚本在HHsed v1.5 中要在'x;'后加上'G;'
+</li></ol>
+<pre>sed -e '/./{H;$!d;}' -e 'x; /AAA/!d;'
+ 
+</pre>
+<ol><li>输出含AAA和BBB和CCC（任意顺序）的段落
+</li></ol>
+<pre>sed -e '/./{H; $!d;}' -e 'x;/AAA/!d; /BBB/!d; /CCC/!d'
+ 
+</pre>
+<ol><li>输出含AAA或BBB或CCC的段落
+</li></ol>
+<pre>sed -e '/./{H;$!d;}' -e 'x;/AAA/b' -e '/BBB/b' -e '/CCC/b' -e d
+gsed '/./{H;$!d;};x;/AAA|BBB|CCC/b;d'	#只适用于GNU sed
+ 
+</pre>
+<ol><li>输出长度不小于65个字符的行
+</li></ol>
+<pre>sed -n '/^.{65}/p'
+ 
+</pre>
+<ol><li>输出长度小于65个字符的行
+</li></ol>
+<pre>sed -n '/^.{65}/!p'	#方法一，其实现与上面的描述是一致的
+sed '/^.{65}/d'	#方法二，这样的语法更简单
+ 
+</pre>
+<ol><li>输出从给定正则表达式到文件末尾的部分
+</li></ol>
+<pre>sed -n '/regexp/,$p'
+ 
+</pre>
+<ol><li>输出指定行号的部分（如输出8-12行，包括本身）
+</li></ol>
+<pre>sed -n '8, 12p'
+ 
+</pre>
+<ol><li>输出第52行
+</li></ol>
+<pre>sed -n '52p'	#方法一
+sed '52!d'	#方法二
+sed '52q;d'	#方法三（在文件较大时效率更高）
+ 
+</pre>
+<ol><li>从第三行开始，每七行输出一次
+</li></ol>
+<pre>gsed -n '3~7p'	#只适用于GNU sed
+sed -n '3,${p;n;n;n;n;n;n;}	#适用于其它sed
+ 
+</pre>
+<ol><li>输出两个正则表达式之间的部分（包含本身）
+</li></ol>
+<pre>sed -n "/regexp1/,/regexp2/p'	#大小写敏感
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E9.80.89.E6.8B.A9.E6.80.A7.E5.88.A0.E9.99.A4.E7.89.B9.E5.AE.9A.E8.A1.8C"></a><h3>选择性删除特定行</h3>
+<ol><li>输出除两正则表达式之间部分之外的全部
+</li></ol>
+<pre>sed '/regexp1/,/regexp2/d'
+ 
+</pre>
+<ol><li>删除重复、连续的行（类似uniq）
+</li><li>一系列重复的行中的第一行将被保留，其余的被删除
+</li></ol>
+<pre>sed '$!N; /^(.*)n1$/!P; D'
+ 
+</pre>
+<ol><li>删除重复、不连续的行
+</li><li>注意不要造成缓冲区溢出，否则使用GNU sed
+</li></ol>
+<pre>sed -n 'G; s/n/&amp;&amp;/; /^([ -~]*n).*n1/d; s/n//; h; P'
+ 
+</pre>
+<ol><li>删除文件的前十行
+</li></ol>
+<pre>sed '1, 10d'
+ 
+</pre>
+<ol><li>删除文件的末行
+</li></ol>
+<pre>sed '$d'
+ 
+</pre>
+<ol><li>删除文件的最后两行
+</li></ol>
+<pre>sed 'N; $!P;$!D;$d'
+ 
+</pre>
+<ol><li>删除文件的最后10行
+</li></ol>
+<pre>sed -e&nbsp;:a -e '$d;N;2,10ba' -e 'P;D'	#方法一
+sed -n -e&nbsp;:a -e '1, 10!{P;N;D;};N;ba'	#方法二
+ 
+</pre>
+<ol><li>每8行删除一次
+</li></ol>
+<pre>gsed '0~8d'	#只适用于GNU sed
+sed 'n;n;n;n;n;n;n;d;'	#适用于其它sed
+ 
+</pre>
+<ol><li>删除文件中连续的空行（只保留一个空行），包括开头和结尾 （类似cat -s）
+</li></ol>
+<pre>sed '/./,/^$/!d'	#方法一，文件开头无空行，结尾保留一个空行
+sed '/^$/N;/n$/D'	#方法二，文件开头允许一个空行，结尾无空行
+ 
+</pre>
+<ol><li>删除所有连续的空行，除了前两个之外
+</li></ol>
+<pre>sed '/^$/N;/n$/N;//D'
+ 
+</pre>
+<ol><li>删除文首所有的空行
+</li></ol>
+<pre>sed '/./,$!d'
+ 
+</pre>
+<ol><li>删除文末所有空行
+</li></ol>
+<pre>sed -e&nbsp;:a -e '/^n*$/{$d;N;ba' -e '}'	#适用于所有sed
+sed -e&nbsp;:a -e '/^n*$/N;/n$/ba'	#同上，但不包括gsed 3.02*
+ 
+</pre>
+<ol><li>删除每一段落的最后一行
+</li></ol>
+<pre>sed -n '/^$/{p;h;};/./{x;/./p;}'
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E7.89.B9.E6.AE.8A.E7.94.A8.E6.B3.95"></a><h3>特殊用法</h3>
+<ol><li>去除man文档中的特殊字符（char，backspace）
+</li><li>如果你使用Unix System V 或者 bash shell，'echo'命令需要一个'-e'参数
+</li></ol>
+<pre>sed "s/.`echo \b`//g"	#Unix 环境下双引号是必需的
+sed 's/.^H//g'	#在bash/tcsh, 按Ctrl+V 然后按Ctrl+H
+sed 's/.x08//g'	#sed v1.5的十六进制表达式
+ 
+</pre>
+<ol><li>获取Usenet/e-mail的头信息
+</li></ol>
+<p>sed '/^$/q'	#删除第一个空行后的所有行
+</p>
+<ol><li>获取Subject头信息，但是要删除原始的“Subject:”部分
+</li></ol>
+<pre>sed '/^Subject: */!d; s///;q'
+ 
+</pre>
+<ol><li>获取返回地址头信息
+</li></ol>
+<pre>sed '/^Reply-To:/q; /^From:/h; /./d;g;q'
+ 
+</pre>
+<ol><li>为每一行行首添加一个尖括号和一个空格（引用）
+</li></ol>
+<pre>sed 's/^ /&gt; /'
+</pre>
+<ol><li>删除行首的尖括号和空格（去除引用）
+</li></ol>
+<pre>sed 's/^&gt; //'
+ 
+</pre>
+<ol><li>去除大部分HTML标签（适用于多行标签）
+</li></ol>
+<pre>sed -e&nbsp;:a -e 's/&lt;[^&gt;]*&gt;//g;/&lt;/N;//ba'
+ 
+</pre>
+<ol><li>提取多部分的UU编码的二进制文件，删除不必要的头信息，只留下UU编码的部分
+</li><li>传送给sed的文件必须按适当的顺序
+</li><li>版本一可以在命令行下输入
+</li><li>版本二可以写成可执行的Unix脚本
+</li></ol>
+<pre>sed '/^end/,/^begin/d' file1 file2 ... fileX | uudecode	#版本一
+sed '/^end/,/^begin/d' "$@" | uudecode	#版本二
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E5.85.B8.E5.9E.8B.E7.94.A8.E6.B3.95"></a><h3>典型用法</h3>
+<pre>   sed接受一个或多个命令并按顺序对每一行输入执行全部这些命令。当所有的命令都对第一行执行以后，这一行被输出，然后开始对第二行进行处理，如此循环。前面的例子假定输入来自标准输入设备（如控制台，一般是通过管道的输入）。如果输入不来自stdin，可以在命令行中添加一个或多个文件名。输出将被送到标准输出设备。
+</pre>
+<p>如：
+</p>
+<pre>cat filename | sed '10q'	#使用管道输入
+sed '10q' filename 	#同样的效果，不过免去了使用cat
+sed '10q' filename &gt; newfile	#重定向输出到磁盘
+ 
+</pre>
+<p>更多语法讲解，包括用包含编辑命令的文件来代替命令行输入，请参阅
+</p><p>《sed&amp;awk，2nd Edition》 
+by Dale Dougherty &amp; Arnold Robbins(O'Reilly, 1997; <a href="http://www.ora.com" class='external free' title="http://www.ora.com" rel="nofollow">http://www.ora.com</a>)
+</p><p>《UNIX Text Processing》by Dale Dougherty &amp; Tim O'reilly(Hayden Books, 1987) 
+</p><p>或者参考Mike Arst写的教程。
+要想发掘出sed的全部力量，你必须懂得“正则表达式”。关于正则表达式，请参阅：
+</p><p>《Mastering Regular Expressions》 by Jeffrey Freidl (O'Reilly, 1997)
+</p><p>Unix系统中的man手册也会有所帮助（试试“man sed”，“man regexp”， 或者看看“man ed“中关于正则表达式的部分），不过man手册是出了名的难懂。它并不是用来教那些sed和正则表达式的初学者的，它是一个写给那些已经掌握了这些工具的人的手册。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E5.BC.95.E5.8F.B7.E7.9A.84.E8.AF.AD.E6.B3.95"></a><h3>引号的语法</h3>
+<pre>   以上的例子使用单引号而不是双引号来容纳编辑命令，因为sed通常用于Unix平台。单引号可以防止Unix shell对<br />'$<i>`'这样的字符进行解释和展开，如果它们被包含在双引号中，那么这些就会发生。使用csh或其衍生而来的shell的人，<br />即使是在单引号中，还需要把'!'前加上反斜线才能正确的运行上面的例子。DOS版本的sed总是要求用双引号而不是单引号<br />来包含编辑命令。</i>
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E5.9C.A8sed.E8.84.9A.E6.9C.AC.E4.B8.AD.E4.BD.BF.E7.94.A8.E2.80.99t.E2.80.98"></a><h3>在sed脚本中使用’t‘</h3>
+<pre>   为了文档的清晰，我们使用了表达式’t‘来代表一个脚本中的制表符。但是多数sed版本不识别’t’这个缩写，因此，在编写这些脚本时你要按TAB键。<br />'t'这个缩写是为awk,perl,HHsed,sedmod,GNU sed v3.02.80的正则表达式所支持的元字符。
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name="sed.E7.9A.84.E7.89.88.E6.9C.AC"></a><h3>sed的版本</h3>
+<pre>   sed的版本之间确不太一样，可能在语法上有些许的不同。具体说来，很多版本不支持编辑命令中的标签（:name）或分支符（b，t）<br />，除了尾部的这些元素。我们使用了可以为大多数sed用户移植的语法，尽管GNU版本的sed允许更简洁的语法。
+   当读者看到一个相当长的命令像：
+     sed -e '/AAA/b' -e '/BBB/b' -e '/CCC/b' -e d
+</pre>
+<pre>   知道GNU可以让你把它减缩为：
+     sed '/AAA/b;/BBB/b;/CCC/b;d'	#或者更简单
+     sed '/AAA|BBB|CCC/b;d'
+</pre>
+<pre>   是很令人高兴的。
+ 
+   另外，记住：很多sed的版本接受这样的命令像"/one/ s/RE1/RE2/", 有一些不允许"/one/! s/RE1/RE2/"这样在's'前包含空格的<br />命令。这时，在输入命令的时候要去除空格。
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E4.BC.98.E5.8C.96.E9.80.9F.E5.BA.A6"></a><h3>优化速度</h3>
+<pre>   当执行速度需要优化（由于输入文件很大或者处理器、CPU较慢）时，如果的替换命令前给出查找命令，替换操作会变得更快。如：
+    sed 's/foo/bar/g' filename	#标准的替换操作
+    sed '/foo/ s/foo/bar/g' filename	#这样执行起来更快
+    sed '/foo/ s//bar/g' filename	#sed速记语法
+ 
+   在进行行的选择和删除操作时，如果你操作的行只是包含在文件前面的一部分时，在脚本中加入一个退出命令‘q‘会大幅缩减处理大文件的时间。如：
+    sed -n '45,50p' filename	#输出45-50行
+    sed -n '51q; 45,50p' filename	#同样的功能，但执行得更快
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E8.A1.A5.E5.85.85"></a><h3>补充</h3>
+<pre>   如果你有做为补充的脚本或者你在本文档中找出了错误之处，请发信给编者。信中请标明你所使用的sed的版本、它所运行在的操作系统和错误的性质。
+</pre>
+<pre>本文档中很多脚本是由以下人员编写的：
+</pre>
+<pre>Al Aab &lt;af137@freenet.toronto.on.ca&gt;	"seders" 列表的负责人
+Edgar Allen &lt;era@sky.net&gt;	很多
+Yiorgos Adamopoulos &lt;adamo@softlab.ece.ntua.gr&gt;
+Dale Dougherty &lt;dale@songline.com&gt;	《sed &amp; awk》的作者
+Carlos Duarte &lt;cdua@algos.inesc.pt&gt;	《do it with sed》的作者
+Eric Pement &lt;pemente@northpark.edu&gt;	本文档的作者
+Ken Pizzini &lt;ken@halcyon.com&gt;	GNU sed v3.02 的作者
+S.G. Ravenhall &lt;stew.ravenhall@totalise.co.uk&gt;	great de-html script
+Greg Ubben &lt;gsu@romulus.ncsc.mil&gt;	贡献很多
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑</a>]</div><a name=".E8.AF.91.E8.80.85.E6.B3.A8"></a><h3>译者注</h3>
+<ol><li>注：由于译者水平有限，文中有几处不太明了之处没有译出。请读者参阅<a href="http://www.xxlinux.com/linux/article/development/shell/2006-06-28/2244.html" class='external text' title="http://www.xxlinux.com/linux/article/development/shell/2006-06-28/2244.html" rel="nofollow">原文</a>。
+</li></ol>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html">http://dns.cs.hit.edu.cn../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html</a>"</p>
+
+<p>本页面已经被浏览211次。 This page was last modified 09:40 2006年9月26日 by <a href="../../../%E6%AE%B5/%E5%BF%97/%E5%B2%A9/User%7E%E6%AE%B5%E5%BF%97%E5%B2%A9.html" class="new" title="User:段志岩">段志岩</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑本页</a></strong> |
+<a href="../../../s/e/d/Talk%7ESed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" class="new" title="Talk:Sed:sed一句话技巧">讨论本页</a> |
+<a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览211次。 This page was last modified 09:40 2006年9月26日 by <a href="../../../%E6%AE%B5/%E5%BF%97/%E5%B2%A9/User%7E%E6%AE%B5%E5%BF%97%E5%B2%A9.html" class="new" title="User:段志岩">段志岩</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">编辑本页</a></strong>
+<br /><a href="../../../s/e/d/Talk%7ESed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" class="new" title="Talk:Sed:sed一句话技巧">讨论本页</a>
+<br /><a href="../../../s/e/d/Sed%7Esed%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%8A%80%E5%B7%A7.html" title="Sed:sed一句话技巧">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392907.02 secs. -->
+</body></html>

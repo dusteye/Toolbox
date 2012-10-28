@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>F-Blog/requirements/pre - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../f/-/b/F-Blog_requirements_pre_e63b.html" title="F-Blog/requirements/pre">编辑本页</a> |
+<a href="../../../f/-/b/F-Blog_requirements_pre_e63b.html" title="F-Blog/requirements/pre">较早版本</a><p class='subtitle'><a href="../../../f/-/b/F-Blog_requirements_pre_e63b.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">F-Blog/requirements/pre</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>可以查看本链接：<a href="http://173.26.100.75:8080/blog/files/" class='external free' title="http://173.26.100.75:8080/blog/files/" rel="nofollow">http://173.26.100.75:8080/blog/files/</a>
+</p><p><br />
+<b>BLOG系统模块分析</b>
+</p><p>	模块定义:数据说明、可执行语句等程序对象的集合。可以被单独命名，并且用名字来访问。
+</p><p>	为了做好这个blog系统，需要完成需求分析，比如说首先确定要开发的是什么样一个性质的blog，是单用户模式还是多用户模式的。这是我的第一个blog，为了能够更快的上手，我将它定位为单用户模式，至于系统用户管理模块是为了以后系统升级考虑的，所以单用户Blog要尽量地用模块的思想，这样便于以后重复利用。为了做到这一点，我需要为各个模块设定良好的接口。可取得实现方法是：Blog的管理模块采用以用户的用户名和密码作为入口通行证。
+</p><p>	这样定位了以后需要考虑的是开发的Blog需要实现的功能有哪些：这可以从各个blog系统中参考，为这些功能列一个表。然后选择必须的功能，这是基本；最后考虑可以丰富使用的功能。也应该将自己想到点子考虑进去，要不然就是在复制了。
+</p><p>注：黑色的部分是我考虑实现的。灰色的是作为拓展功能。
+</p><p><b>一、用户管理模块集合</b>
+</p><p>可以按照使用流程来，按照以用户为主的原则，这是系统最重要的模块集合。
+</p><p>前提：用户已经登录了。
+</p><p>1.1 登录
+</p><p>1.2 文章管理
+</p><p>文章管理这一个块首先需要一个文本编辑器,这是基本的,然后才考虑其他的.
+</p><p>查看文章
+</p><p>修改文章
+</p><p>删除文章
+</p><p>添加文章
+</p><p>删除评论
+</p><p>1.3 图片管理
+</p><p>主要完成图片的上传、归类和删除。
+</p><p>上传图片
+</p><p>删除图片
+</p><p>比较重要的是：
+</p><p>实现图片文件上传
+</p><p>实现图片文件保存
+</p><p>实现对上传文件格式的控制
+</p><p>注：这里图片可以作为相册
+</p><p>1.4 链接管理
+</p><p>	实现用户链接的编辑和分类管理。
+添加链接
+编辑链接
+删除链接
+</p><p>1.5 编辑模板
+选择模板
+添加自定义模板
+</p><p>1.6 用户信息的修改
+</p><p>1.7登出
+</p><p><br />
+<b>二、系统用户管理模块集合</b>
+</p><p>可以按照使用流程编写各个功能页面和模块
+</p><p>进行以下操作的前提是：管理员已经登录了。
+</p><p>2.1 登录
+系统管理员的登录。可以从整个Blog系统的首页登录。这个入口可以设的很小，一个图标就可以了。
+</p><p>2.2 查看、删除用户
+可以查看、删除用户、对于那些发表非法信息的用户、管理员有权力删除他。
+</p><p>2.3 查看、删除文章
+查看、删除发布了非法信息的文章。
+</p><p>2.4 查看、删除评论
+可以查看所有的评论，并且删除、
+</p><p>2.登出
+</p><p><b>三、浏览者使用模块集合</b>
+</p><p>可以按照使用流程来，这里将所有的可以从主页登录的人设定为浏览者，因此主页上应该显示公开的信息。
+</p><p>3.1 进入
+</p><p>3.2 查看文章
+</p><p>3.3 添加评论
+</p><p>用户可以借此对此BLOG进行评论，这是读者同BLOGGER相互交流的最直接渠道。
+</p><p>3.4 查看相册
+</p><p>3.5 察看所有公开信息
+</p><p>3.退出
+</p><p><br />
+</p><p><br />
+</p><p><b>四、扩展功能模块集合</b>
+</p><p>扩展功能模块，这里我考虑到很多可以实现的，使Blog变得更加漂亮的功能。之所以把这些都归类到这里来，是因为：
+这些都是可选的，其中有几项功能是非常需要的，因为这是现在的Blog常具备的功能。比如说RSS、trackback、archive等。
+</p><p>我对这些功能的实现只是停留在一个了解的层次上、对于它们具体是怎么实现的还需要更彻底地学习。
+</p><p>最重要的，这些小功能都可以作为一个个独立的小模快来进行开发，可以这么认为：给这个功能模块传递参数;用户名、返回数量等，这个模块就返回相应的信息。这点对开发是很重要的。这大大拓展了Blog开发的可拓展性。
+</p><p>4.1 RSS
+</p><p>可以作为一个单独的模块。只要两个参数就可以了：显示条数。需要详细设计。
+注：RSS是一种技术规范的简称，不同的技术团体将其分别描述为：“Rich Site Summary”（丰富站点摘要）、“RDF Site Summary”（RDF站点摘要）或“Really Simple Syndication”（真正简易聚合）。在形式上，也分别有RSS技术的主导者、哈佛大学研究员Dave Winer的RSS 0.93、RSS2.0（Apple、News.com的出版商CNET Networks等支持），IBM软件工程师SamRuby 2003年发起的Atom（Google和Six Apart――Movable Type的拥有着支持）。不过本质上它们都是一种遵循W3C RDF规范的XML格式，是一种多用途、可扩展的元数据描述及联合推广格式。它允许互联网站点制作人员，为内容整合客户端提供选择性的、汇总过的Web内容。
+</p><p>4.2 trackback
+</p><p>TrackBack最早是Movable上的功能，后来成为BLOG的标准配置，它是一种将全世界无数个Blog连接起来的功能。通过TrackBack，你可以在自己的Blog上就别人发表的某篇文章做评论和延伸，并通知对方你引用了它文章中的内容。只要对方的Blog也支持TrackBack，你在发布自己的文章时，将同时向对方Blog发出一个TrackBack Ping，向刊载被评论文章的服务器发送你写的Blog的地址、标题和部分征文。这样当其他人浏览那篇文章时，就能够看到你的部分评论和正文，感兴趣的话他们还可以通过链接阅读你评论的详细内容。同样，别人也可以使用TrackBack功能对你Blog中的某篇文章加以评论，在你的文章中留下相应的引申链接
+</p><p>4.3 Calendar
+</p><p>每个BLOG都可以看到的最基本的元素，这也是BLOG最基本的特征，根据日期可以检索到当日发表的BLOG。
+</p><p>4.4 Album相册
+</p><p>用于分类上传各类图片，是BLOG的附属功能。
+</p><p>4.5 Archive归档
+</p><p>按月份进行BLOG文件的归档（也有按分类归档的），便于大家在一个页面就查找到归档日期内的所有BLOG文章，通常都生成静态页面，这也是利于搜索引擎搜录的一个重要手段。
+p.s:也称作索引功能，通常都是按月份进行BLOG文件的归档（也有按分类归档的），便于大家在一个页面就查找到归档日期内的所有BLOG文章，通常都生成静态页面，这也是利于搜索引擎搜录的一个重要手段。
+</p><p>4.6 Catalog分类
+</p><p>这个并非必须，但基本上BLOGGER都设置有不同的分类，用于区分自己BLOG文章的类别。
+</p><p>4.7 Favorite
+</p><p>收藏一些有用的文章或链接。
+</p><p>4.8 Style
+</p><p>BLOG鲜明的个人化特征要求发布者可以自定义自己的BLOG风格，因此BLOG具有自定义CSS或者SKIN的功能也是必不可少的。
+</p><p>4.9 Visual Editor
+</p><p>早期都是使用文本，对于HTML标签制作起来就比较麻烦，最近BLOG程序已经普遍采用可视化的文章编辑器，方便BLOGGER更加有效的组织文章结构和显示效果。
+</p><p>4.10 Keywords
+</p><p>通常用于新闻系统的相关文章，但是博客基本上都没有这项功能，对于分类过大，没有TAG功能的博客来讲，利用关键字自动获取相关文章还是很有必要的，实现起来也不难。
+</p><p>4.11 Tag
+</p><p>通常BLOG文章的分类只有一层，很少有多级分类，有时这也是许多信息量大的用户比较头疼的地方，实现多级分类功能还不如使用Tag功能，方便实用，也比较社会化。
+</p><p>4.12 Search
+</p><p>基本功能，通常提供的都是简单模糊搜索，基本上已经够用了，所以这项功能也一直没有进行过特别的加强。
+</p><p>4.13 Permailink
+</p><p>给BLOG上每篇BLOG文章一个永久链接，这样便于他人长期引用，这样不管你的后台是动态程序，首页如何改变，但每篇BLOG的链接都是永久固定的，而且最好是htm等静态链接，这样还有利于搜索引擎的搜录。如果你实在做不到htm静态链接，可以考虑采取URL REWRITING、PATH_INFO、服务器设置等方式将动态链接变为静态链接，将前台链接表现形式和后台程序分离开来，以后即使更换后台程序也不用担心了。
+</p><p>4.14 Statistic
+</p><p>BLOG的基本统计数据，例如访问次数，在线人数，BLOG发表篇数，引用篇数，评论篇数，注册用户数。
+</p><p>4.15 Roll
+</p><p>用于显示其他博客的链接，自己的博客也会同时显示在其他blog roll列表里，动态循环显示，有点象国内的文本链广告交换，国外的例子可以参看这里Blogrolling.com。
+</p><p>4.16 AutoLink
+</p><p>大家可以看到许多BLOG中许多网站、人名、名词、事件通常都加有超链接，也许很多人就奇怪，作者怎么又这么多精力呢，实际上是关键字自动转换超链接功能在起作用。作者在后台可以设置关键字及其指向的链接，添加文章时就会自动将普通文本关键字变为带超链接的显示方式，有的还可以将关键字进行指定字符转换。这其实也是BLOG一项重要的功能，可惜国内很多BLOG程序很少实现这一点。
+</p><p>4.17 Antispam
+</p><p>目前的评论系统，容易产生垃圾广告和垃圾信息，需要在系统上对垃圾信息的发布进行限制，例如加入验证码等。
+</p><p>p.s:很牛！比评论审批更加强大。
+</p><p>4.18 Export
+</p><p>用户数据的导出，例如文章、评论、引用等。
+</p><p>4.19 Inport
+</p><p>用户数据的导入，例如文章、评论、引用等。
+</p><p>4.20 SN
+</p><p>目前除了rss的应用突飞猛进外，BLOG自身的发展似乎停滞不前了，而增强BLOG的SN功能，是BLOG功能拓展的重要途径。例如“团体博客”，BLOG浏览同好等，具体就不多说了，网上SN服务一大把，参考一下就知道哪些SN功能可以结合进来了。
+</p><p>4.21 文件管理
+</p><p>有限制地管理用户文件。
+</p><p>4.22 评论审批
+这是从Wordpress里面参考来的。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../f/-/b/F-Blog_requirements_pre_e63b.html">http://dns.cs.hit.edu.cn../../../f/-/b/F-Blog_requirements_pre_e63b.html</a>"</p>
+
+<p>本页面已经被浏览21次。 This page was last modified 13:00 2006年7月14日 by <a href="../../../%E9%BB%84/%E4%BC%9F/%E6%98%8E/User%7E%E9%BB%84%E4%BC%9F%E6%98%8E.html" class="new" title="User:黄伟明">黄伟明</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../f/-/b/F-Blog_requirements_pre_e63b.html" title="F-Blog/requirements/pre">编辑本页</a></strong> |
+<a href="../../../f/-/b/Talk%7EF-Blog_requirements_pre_c5d0.html" class="new" title="Talk:F-Blog/requirements/pre">讨论本页</a> |
+<a href="../../../f/-/b/F-Blog_requirements_pre_e63b.html" title="F-Blog/requirements/pre">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览21次。 This page was last modified 13:00 2006年7月14日 by <a href="../../../%E9%BB%84/%E4%BC%9F/%E6%98%8E/User%7E%E9%BB%84%E4%BC%9F%E6%98%8E.html" class="new" title="User:黄伟明">黄伟明</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../f/-/b/F-Blog_requirements_pre_e63b.html" title="F-Blog/requirements/pre">编辑本页</a></strong>
+<br /><a href="../../../f/-/b/Talk%7EF-Blog_requirements_pre_c5d0.html" class="new" title="Talk:F-Blog/requirements/pre">讨论本页</a>
+<br /><a href="../../../f/-/b/F-Blog_requirements_pre_e63b.html" title="F-Blog/requirements/pre">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392834.01 secs. -->
+</body></html>

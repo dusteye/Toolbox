@@ -1,0 +1,1923 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>F-Blog/database - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../f/-/b/F-Blog_database_d108.html" title="F-Blog/database">编辑本页</a> |
+<a href="../../../f/-/b/F-Blog_database_d108.html" title="F-Blog/database">较早版本</a><p class='subtitle'><a href="../../../f/-/b/F-Blog_database_d108.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">F-Blog/database</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p><a href="http://wiki.cs.hit.edu.cn/index.php?title=Talk:F-Blog/database&amp;action=edit" class='external text' title="http://wiki.cs.hit.edu.cn/index.php?title=Talk:F-Blog/database&amp;action=edit" rel="nofollow">关于数据库的讨论意见</a>
+</p><p><br />
+</p>
+<table cellspacing="0" cellpadding="0">
+    <tr>
+    <td height="19" width="215">1.users</td>
+    <td colspan="6" width="648">用户表--用户的基本信息</td>
+    <td width="143">　</td>
+    <td width="72">　</td>
+    <td width="72">　</td>
+    <td width="72">　</td>
+    <td width="72">　</td>
+    <td width="72">　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td>id</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">name</td>
+    <td>VARCHAR</td>
+    <td>50</td>
+    <td>YES</td>
+    <td>登陆名</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">password</td>
+    <td>VARCHAR</td>
+    <td>64</td>
+    <td>YES</td>
+    <td>password</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">email</td>
+    <td>VARCHAR</td>
+    <td>100</td>
+    <td>YES</td>
+    <td>email</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">reg_datetime</td>
+    <td>DATATIME</td>
+    <td>0</td>
+    <td></td>
+    <td>注册时间</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">nickname</td>
+    <td>VARCHAR</td>
+    <td>50</td>
+    <td></td>
+    <td>笔名</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">url</td>
+    <td>VARCHAR</td>
+    <td>150</td>
+    <td></td>
+    <td>固定链接</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td></td>
+    <td></td>
+    <td>&nbsp;</td>
+    <td></td>
+    <td></td>
+    <td colspan="5">&nbsp;</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">2.blogs</td>
+    <td colspan="6">记录blog信息，对应与user</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">user_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">name</td>
+    <td>VARCHAR</td>
+    <td>50</td>
+    <td></td>
+    <td>name</td>
+    <td></td>
+    <td></td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">description</td>
+    <td>VARCHAR</td>
+    <td>255</td>
+    <td></td>
+    <td>Blog的描述，说明</td>
+    <td></td>
+    <td></td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">visited_num</td>
+    <td>INTEGER</td>
+    <td>11</td>
+    <td></td>
+    <td>被访问次数</td>
+    <td></td>
+    <td></td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">comment_num</td>
+    <td>INTEGER</td>
+    <td>11</td>
+    <td></td>
+    <td>评论数</td>
+    <td></td>
+    <td></td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">article_num</td>
+    <td>INTEGER</td>
+    <td>11</td>
+    <td></td>
+    <td>发表文章数</td>
+    <td></td>
+    <td></td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">css</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td colspan="9">所选用的皮肤模版▲是地址还是选项　　　</td>
+  </tr>
+  <tr>
+    <td height="19">announce</td>
+    <td>TEXT</td>
+    <td>-</td>
+    <td></td>
+    <td>公告</td>
+    <td></td>
+    <td></td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">3.articles</td>
+    <td colspan="6">文章表</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td>id</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">title</td>
+    <td>TEXT</td>
+    <td>65535</td>
+    <td></td>
+    <td>标题</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">content</td>
+    <td>LONGTEXT</td>
+    <td>-1</td>
+    <td></td>
+    <td>内容</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">cat_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td></td>
+    <td>分类</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">datetime</td>
+    <td>DATETIME</td>
+    <td>-</td>
+    <td></td>
+    <td>最后发布时间</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">comment_num</td>
+    <td>INTEGER</td>
+    <td>11</td>
+    <td></td>
+    <td>评论数</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">visit_num</td>
+    <td>INTEGER</td>
+    <td>11</td>
+    <td></td>
+    <td>访问次数</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">brief</td>
+    <td>TEXT</td>
+    <td>11</td>
+    <td></td>
+    <td>简介▲</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">user_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td></td>
+    <td>author ID</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td></td>
+    <td>&nbsp;</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">4.tags</td>
+    <td colspan="6">tag的基本信息表-----important</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td>一定很大</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">name</td>
+    <td>VARCHAR</td>
+    <td>50</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">num</td>
+    <td>INTEGER</td>
+    <td>11</td>
+    <td></td>
+    <td>使用次数</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="13"></td>
+  </tr>
+  
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">5.groups</td>
+    <td colspan="7">group表</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">name</td>
+    <td>VARCHAR</td>
+    <td>50</td>
+    <td>YES</td>
+    <td>群名称</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">description</td>
+    <td>VARCHAR</td>
+    <td>255</td>
+    <td></td>
+    <td>群描述</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">user_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td>创立者user_id</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">datetime</td>
+    <td>DATETIME</td>
+    <td>-</td>
+    <td></td>
+    <td>成立时间</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">url</td>
+    <td>VARCHAR</td>
+    <td>150</td>
+    <td></td>
+    <td colspan="2">群的访问链接，静态地址</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">commend_user_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td></td>
+    <td>推荐blog的user_id</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">commend_article_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td></td>
+    <td>推荐文章id</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">visited_num</td>
+    <td>INTEGER</td>
+    <td>11</td>
+    <td></td>
+    <td>群被访问次数</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">article_num</td>
+    <td>INTEGER</td>
+    <td>11</td>
+    <td></td>
+    <td>群文章数</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">member_num</td>
+    <td>INTEGER</td>
+    <td>11</td>
+    <td></td>
+    <td>群成员数</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">css</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>群模版</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">announce</td>
+    <td>TEXT</td>
+    <td>65535</td>
+    <td></td>
+    <td>群公告</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">6.users_groups</td>
+    <td colspan="7">用户与Group的关系表</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">user_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">gro_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">status</td>
+    <td>ENUM</td>
+    <td>-</td>
+    <td></td>
+    <td colspan="9" rowspan="2">用来记录状态信息√0表示用户已是群组成员;1表示用户正在申请加入群组;2表示用户被群组拒绝　3表示是群主</td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">7.groups_tags</td>
+    <td colspan="7">Group设定的Tags关系表</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">gro_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">tag_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">8.articles_tags</td>
+    <td colspan="7">ARTICLE设定的Tags关系表</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">art_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">tag_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="18"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">9.groups_articles</td>
+    <td colspan="7">G和A的关系表</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">gro_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">art_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">tag_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td></td>
+    <td>因为某个tag而加入</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">10.comments</td>
+    <td colspan="7">fblog的管理者admin</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">com_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">art_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+
+    <td height="19">com_name</td>
+    <td>VARCHAR</td>
+    <td>50</td>
+    <td></td>
+    <td>评论人名称(Guest)</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">com_title</td>
+    <td>TEXT</td>
+    <td>65535</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">com_content</td>
+    <td>TEXT</td>
+    <td>65535</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">com_email</td>
+    <td>VARCHAR</td>
+    <td>100</td>
+    <td></td>
+    <td>评论人Email</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">com_url</td>
+    <td>VARCHAR</td>
+    <td>150</td>
+    <td></td>
+    <td>评论人网址，blog地址</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">com_datetime</td>
+    <td>DATETIME</td>
+    <td>-</td>
+    <td></td>
+    <td>评论时间</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">user_id▲</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td></td>
+    <td colspan="9">如果是注册用户，则有此项▲可以略去</td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">11.catalogs</td>
+    <td colspan="7">user的文章分类catalogs</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td>id</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">user_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td>对应的用户名</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">name</td>
+    <td>VARCHAR</td>
+    <td></td>
+    <td>YES</td>
+    <td>name</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19" width="215">description</td>
+    <td>LONGTEXT</td>
+    <td>-1</td>
+    <td></td>
+    <td>描述</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">12.user_links</td>
+    <td colspan="7">用户的link的记录表</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">link_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">name</td>
+    <td>VARCHAR</td>
+    <td>50</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">url</td>
+    <td>VARCHAR</td>
+    <td>150</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">description</td>
+    <td>VARCHAR</td>
+    <td>255</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">user_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="20"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">13.gro_links</td>
+    <td colspan="7">Group的link的记录表</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+    <td>　</td>
+  </tr>
+  <tr>
+    <td height="19" width="215">field</td>
+    <td width="648">type</td>
+    <td width="648">size</td>
+    <td width="648">not-null</td>
+    <td width="648">remark</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">name</td>
+    <td>VARCHAR</td>
+    <td>50</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">url</td>
+    <td>VARCHAR</td>
+    <td>150</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">description</td>
+    <td>VARCHAR</td>
+    <td>255</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19">gro_id</td>
+    <td>BIGINT</td>
+    <td>20</td>
+    <td>YES</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="19"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../f/-/b/F-Blog_database_d108.html">http://dns.cs.hit.edu.cn../../../f/-/b/F-Blog_database_d108.html</a>"</p>
+
+<p>本页面已经被浏览191次。 This page was last modified 08:26 2006年11月7日 by <a href="../../../x/i/n/User%7EXingzhian.html" class="new" title="User:Xingzhian">邢志安</a>. Based on work by <a href="../../../%E9%BB%84/%E4%BC%9F/%E6%98%8E/User%7E%E9%BB%84%E4%BC%9F%E6%98%8E.html" class="new" title="User:黄伟明">黄伟明</a> 和 <a href="../../../%E5%BA%B7/%E6%B0%B8/%E4%B9%90/User%7E%E5%BA%B7%E6%B0%B8%E4%B9%90.html" class="new" title="User:康永乐">康永乐</a>. </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../f/-/b/F-Blog_database_d108.html" title="F-Blog/database">编辑本页</a></strong> |
+<a href="../../../f/-/b/Talk%7EF-Blog_database_4e0f.html" title="Talk:F-Blog/database">讨论本页</a> |
+<a href="../../../f/-/b/F-Blog_database_d108.html" title="F-Blog/database">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览191次。 This page was last modified 08:26 2006年11月7日 by <a href="../../../x/i/n/User%7EXingzhian.html" class="new" title="User:Xingzhian">邢志安</a>. Based on work by <a href="../../../%E9%BB%84/%E4%BC%9F/%E6%98%8E/User%7E%E9%BB%84%E4%BC%9F%E6%98%8E.html" class="new" title="User:黄伟明">黄伟明</a> 和 <a href="../../../%E5%BA%B7/%E6%B0%B8/%E4%B9%90/User%7E%E5%BA%B7%E6%B0%B8%E4%B9%90.html" class="new" title="User:康永乐">康永乐</a>. </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../f/-/b/F-Blog_database_d108.html" title="F-Blog/database">编辑本页</a></strong>
+<br /><a href="../../../f/-/b/Talk%7EF-Blog_database_4e0f.html" title="Talk:F-Blog/database">讨论本页</a>
+<br /><a href="../../../f/-/b/F-Blog_database_d108.html" title="F-Blog/database">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392850.99 secs. -->
+</body></html>

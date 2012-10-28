@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Java.FCKEditor - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../j/a/v/Java.FCKEditor_8403.html" title="Java.FCKEditor">编辑本页</a> |
+<a href="../../../j/a/v/Java.FCKEditor_8403.html" title="Java.FCKEditor">较早版本</a><p class='subtitle'><a href="../../../j/a/v/Java.FCKEditor_8403.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Java.FCKEditor</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p><br />
+1.下载 
+FCKeditor.java 2.3 (FCKeditot for java) 
+FCKeditor 2.2 (FCKeditor基本文件) 
+</p><p>2.建立项目:tomcat/webapps/FCKeditor 
+</p><p>3.FCKeditor.java 2.3解压后，把其中的web目录下的WEB-INF目录copy到FCKeditor下(里面有commons-fileupload.jar, FCKeditor-2.3.jar,web.xml等几个文件), 把其中的src目录下的FCKeditor.tld文件copy到FCKeitor/WEB-INF/下 
+</p><p><br />
+</p><p><br /> 
+</p><p>4.修改web.xml: 
+</p><p>把SimpleUploader中的配置属性enabled定义为true(开启文件上传功能） 
+添加标签定义: 
+</p>
+<pre>&lt;taglib&gt; 
+&lt;taglib-uri&gt;/FCKeditor&lt;/taglib-uri&gt; 
+&lt;taglib-location&gt;/WEB-INF/FCKeditor.tld&lt;/taglib-location&gt; 
+&lt;/taglib&gt; 
+</pre>
+<p>5.解压FCKeditor2.2后，把目录/editor和fckconfig.js, fckeditor.js, fckstyles.xml, fcktemplates.xml四个文件copy到/FCKeditor下 
+</p>
+<pre>删除目录/editor/_source, 
+删除/editor/filemanager/browser/default/connectors/下的所有文件 
+删除/editor/filemanager/upload/下的所有文件 
+删除/editor/lang/下的除了fcklanguagemanager.js, en.js, zh.js, zh-cn.js四个文件的所有文件 
+</pre>
+<p>6.打开/FCKeditor/fckconfig.js 
+</p>
+<pre>修改 FCKConfig.DefaultLanguage = 'zh-cn'&nbsp;; 
+</pre>
+<p>把FCKConfig.LinkBrowserURL等的值替换成以下内容： 
+</p>
+<pre>FCKConfig.LinkBrowserURL =
+   FCKConfig.BasePath + "filemanager/browser/default/browser.html? Connector=connectors/jsp/connector"&nbsp;; 
+</pre>
+<pre>FCKConfig.ImageBrowserURL =
+   FCKConfig.BasePath + "filemanager/browser/default/browser.html?Type=Image&amp;Connector=connectors/jsp/connector"&nbsp;;
+</pre>
+<pre>FCKConfig.FlashBrowserURL =
+   FCKConfig.BasePath + "filemanager/browser/default/browser.html?Type=Flash&amp;Connector=connectors/jsp/connector"&nbsp;;
+</pre>
+<pre>FCKConfig.LinkUploadURL = FCKConfig.BasePath + 'filemanager/upload/simpleuploader?Type=File'&nbsp;; 
+FCKConfig.FlashUploadURL = FCKConfig.BasePath + 'filemanager/upload/simpleuploader?Type=Flash'&nbsp;; 
+FCKConfig.ImageUploadURL = FCKConfig.BasePath + 'filemanager/upload/simpleuploader?Type=Image'&nbsp;; 
+</pre>
+<p>7.添加文件 /FCKeditor/test.jsp: 
+</p>
+<pre>&lt;%@ page language="java" import="com.fredck.FCKeditor.*" %&gt; 
+&lt;%@ taglib uri="/FCKeditor" prefix="FCK" %&gt; 
+&lt;script type="text/javascript" src="/FCKeditor/fckeditor.js"&gt;&lt;/script&gt; 
+</pre>
+<pre>&lt;%-- 
+</pre>
+<p>三种方法调用FCKeditor 
+</p><p>1.FCKeditor自定义标签 (必须加头文件 &lt;%@ taglib uri="/FCKeditor" prefix="FCK" %&gt; ) 
+</p><p>2.script脚本语言调用 (必须引用 脚本文件 &lt;script type="text/javascript" src="/FCKeditor/fckeditor.js"&gt;&lt;/script&gt; ) 
+</p><p>3.FCKeditor API 调用 (必须加头文件 &lt;%@ page language="java" import="com.fredck.FCKeditor.*" %&gt; ) 
+--%&gt; 
+</p>
+<pre>&lt;%-- 
+&lt;form action="show.jsp" method="post" target="_blank"&gt; 
+&lt;FCK:editor id="content" basePath="/FCKeditor/" width="700" height="500" skinPath="/FCKeditor/editor/skins/silver/" 
+  toolbarSet = "Default" &gt; 
+input 
+&lt;/FCK:editor&gt; 
+&lt;input type="submit" value="Submit"&gt; 
+&lt;/form&gt; 
+--%&gt; 
+</pre>
+<pre>&lt;form action="show.jsp" method="post" target="_blank"&gt; 
+</pre>
+ <table border="0" width="700"><tr><td> 
+<pre>&lt;textarea id="content" name="content" style="WIDTH: 100%; HEIGHT: 400px"&gt;input&lt;/textarea&gt; 
+&lt;script type="text/javascript"&gt; 
+var oFCKeditor = new FCKeditor('content')&nbsp;; 
+oFCKeditor.BasePath = "/FCKeditor/"&nbsp;; 
+oFCKeditor.Height = 400; 
+oFCKeditor.ToolbarSet = "Default"&nbsp;; 
+oFCKeditor.ReplaceTextarea(); 
+&lt;/script&gt; 
+&lt;input type="submit" value="Submit"&gt; 
+</pre>
+ </td></tr></table> 
+<pre>&lt;/form&gt; 
+</pre>
+<pre>&lt;%-- 
+&lt;form action="show.jsp" method="post" target="_blank"&gt; 
+&lt;% 
+FCKeditor oFCKeditor&nbsp;; 
+oFCKeditor = new FCKeditor( request, "content" )&nbsp;; 
+oFCKeditor.setBasePath( "/FCKeditor/" )&nbsp;; 
+oFCKeditor.setValue( "input" ); 
+out.println( oFCKeditor.create() )&nbsp;; 
+%&gt; 
+<br /> 
+&lt;input type="submit" value="Submit"&gt; 
+&lt;/form&gt; 
+--%&gt; 
+</pre>
+<p><br />
+添加文件/FCKeditor/show.jsp: 
+</p>
+<pre>&lt;% 
+String content = request.getParameter("content"); 
+out.print(content); 
+%&gt; 
+</pre>
+<p>8.浏览 <a href="http://localhost:8080/FCKeditor/test.jsp" class='external free' title="http://localhost:8080/FCKeditor/test.jsp" rel="nofollow">http://localhost:8080/FCKeditor/test.jsp</a> 
+</p><p>ok! 
+</p><p>9.上传遇到错误: internal server error 500, 
+</p>
+<pre>直接引用servlet(com.fredck.FCKeditor.connector.ConnectorServlet)也遇到错误: "Provider org.apache.xalan.processor.TransformerFactoryImpl not found", 
+拷贝xalan.jar到lib目录就可以了
+</pre>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../j/a/v/Java.FCKEditor_8403.html">http://dns.cs.hit.edu.cn../../../j/a/v/Java.FCKEditor_8403.html</a>"</p>
+
+<p>本页面已经被浏览9次。 This page was last modified 09:39 2006年6月10日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../j/a/v/Java.FCKEditor_8403.html" title="Java.FCKEditor">编辑本页</a></strong> |
+<a href="../../../j/a/v/Talk%7EJava.FCKEditor_7725.html" class="new" title="Talk:Java.FCKEditor">讨论本页</a> |
+<a href="../../../j/a/v/Java.FCKEditor_8403.html" title="Java.FCKEditor">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览9次。 This page was last modified 09:39 2006年6月10日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../j/a/v/Java.FCKEditor_8403.html" title="Java.FCKEditor">编辑本页</a></strong>
+<br /><a href="../../../j/a/v/Talk%7EJava.FCKEditor_7725.html" class="new" title="Talk:Java.FCKEditor">讨论本页</a>
+<br /><a href="../../../j/a/v/Java.FCKEditor_8403.html" title="Java.FCKEditor">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392758.55 secs. -->
+</body></html>

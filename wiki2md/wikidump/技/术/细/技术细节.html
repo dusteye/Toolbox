@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>技术细节 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../%E6%8A%80/%E6%9C%AF/%E7%BB%86/%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html" title="技术细节">编辑本页</a> |
+<a href="../../../%E6%8A%80/%E6%9C%AF/%E7%BB%86/%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html" title="技术细节">较早版本</a><p class='subtitle'><a href="../../../%E6%8A%80/%E6%9C%AF/%E7%BB%86/%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">技术细节</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>本页面用来记录开发中发现的细节问题，建议内容为问题描述、解决方法、时间。
+</p>
+<table border="1" cellspacing="0">
+<tr>
+<th>时间
+</th><th>问题描述
+</th><th>解决方法
+</th></tr>
+<tr>
+<td> 7-17</td><td>页面显示Cannot modify header information，出错</td><td>问题是在header前已经输出内容，我遇到的是include的输出，可以采用ob_start();include(**.inc);ob_end_clean();配对解决
+</td></tr>
+<tr>
+<td> 7-17</td><td>我的电脑上login.php无法按流程进行，原因是submit等表单提交的元素提交后没有合适的引用</td><td>在hippo上login.php能够正常工作，原因是hippo上开了全局变量选项，而我没有；和leagle讨论后，决定不使用全局变量的方法，而是$_POST["submit"]这样的方法
+</td></tr>
+<tr>
+<td>7-20</td><td>function add_friends中无法得到SELECT结果的行数</td><td>mysql_num_rows仅对 SELECT 语句有效。要取得被 INSERT，UPDATE 或者 DELETE 查询所影响到的行的数目，用 mysql_affected_rows()。开始没有想到用函数，因为我只需要知道SELECT的result到底有没有，我以为如果没有，$result就是NULL。实际上不是这样的，看来还是用函数吧
+</td></tr>
+<tr>
+<td>7-21</td><td>几个常见的问题</td><td><a href="http://www.phpv.net/article.php/1406" class='external free' title="http://www.phpv.net/article.php/1406" rel="nofollow">http://www.phpv.net/article.php/1406</a>
+</td></tr>
+<tr>
+<td>7-24</td><td>关于include  and require</td><td> 用include (dirname(__FILE__)."/SomeFile")包含当前目录下的文件)
+</td></tr></table>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../%E6%8A%80/%E6%9C%AF/%E7%BB%86/%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html">http://dns.cs.hit.edu.cn../../../%E6%8A%80/%E6%9C%AF/%E7%BB%86/%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html</a>"</p>
+
+<p>本页面已经被浏览39次。 This page was last modified 07:06 2006年7月22日 by <a href="../../../l/e/a/User%7ELeagle.html" title="User:Leagle">梁英</a>. Based on work by <a href="../../../%E6%9D%8E/%E5%BF%97/_/User%7E%E6%9D%8E%E5%BF%97.html" class="new" title="User:李志">李志</a>. </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../%E6%8A%80/%E6%9C%AF/%E7%BB%86/%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html" title="技术细节">编辑本页</a></strong> |
+<a href="../../../%E6%8A%80/%E6%9C%AF/%E7%BB%86/Talk%7E%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html" class="new" title="Talk:技术细节">讨论本页</a> |
+<a href="../../../%E6%8A%80/%E6%9C%AF/%E7%BB%86/%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html" title="技术细节">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览39次。 This page was last modified 07:06 2006年7月22日 by <a href="../../../l/e/a/User%7ELeagle.html" title="User:Leagle">梁英</a>. Based on work by <a href="../../../%E6%9D%8E/%E5%BF%97/_/User%7E%E6%9D%8E%E5%BF%97.html" class="new" title="User:李志">李志</a>. </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../%E6%8A%80/%E6%9C%AF/%E7%BB%86/%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html" title="技术细节">编辑本页</a></strong>
+<br /><a href="../../../%E6%8A%80/%E6%9C%AF/%E7%BB%86/Talk%7E%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html" class="new" title="Talk:技术细节">讨论本页</a>
+<br /><a href="../../../%E6%8A%80/%E6%9C%AF/%E7%BB%86/%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html" title="技术细节">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392836.49 secs. -->
+</body></html>

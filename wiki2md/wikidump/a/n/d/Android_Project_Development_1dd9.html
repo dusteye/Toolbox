@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Android Project Development - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">编辑本页</a> |
+<a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">较早版本</a><p class='subtitle'><a href="../../../a/n/d/Android_Project_Development_1dd9.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Android Project Development</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#Android.E7.BC.96.E7.A0.81.E5.8F.82.E8.80.83.E8.A7.84.E8.8C.83"><span class="tocnumber">1</span> <span class="toctext">Android编码参考规范</span></a></li>
+<li class='toclevel-1'><a href="#.E9.A2.84.E7.A0.94.E9.A1.B9.E7.9B.AE"><span class="tocnumber">2</span> <span class="toctext">预研项目</span></a></li>
+<li class='toclevel-1'><a href="#.E6.AD.A3.E5.9C.A8.E5.BC.80.E5.8F.91.E7.9A.84.E9.A1.B9.E7.9B.AE"><span class="tocnumber">3</span> <span class="toctext">正在开发的项目</span></a></li>
+<li class='toclevel-1'><a href="#.E5.B7.B2.E5.AE.8C.E6.88.90.E9.A1.B9.E7.9B.AE"><span class="tocnumber">4</span> <span class="toctext">已完成项目</span></a></li>
+<li class='toclevel-1'><a href="#.E6.9A.82.E5.81.9C.E9.A1.B9.E7.9B.AE"><span class="tocnumber">5</span> <span class="toctext">暂停项目</span></a></li>
+<li class='toclevel-1'><a href="#.E5.8F.82.E8.80.83.E9.A1.B9.E7.9B.AE"><span class="tocnumber">6</span> <span class="toctext">参考项目</span></a></li>
+<li class='toclevel-1'><a href="#.E5.BA.94.E7.94.A8.E7.A8.8B.E5.BA.8F.E5.8F.91.E5.B8.83"><span class="tocnumber">7</span> <span class="toctext">应用程序发布</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E5.8F.91.E5.B8.83.E6.B8.A0.E9.81.93"><span class="tocnumber">7.1</span> <span class="toctext">发布渠道</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">编辑</a>]</div><a name="Android.E7.BC.96.E7.A0.81.E5.8F.82.E8.80.83.E8.A7.84.E8.8C.83"></a><h2> Android编码参考规范 </h2>
+<ul><li><a href="http://source.android.com/source/code-style.html" class='external text' title="http://source.android.com/source/code-style.html" rel="nofollow">Code Style Guidelines for Contributors</a>
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">编辑</a>]</div><a name=".E9.A2.84.E7.A0.94.E9.A1.B9.E7.9B.AE"></a><h2> 预研项目 </h2>
+<p><a href="../../../%E5%9F%BA/%E4%BA%8E/a/%E5%9F%BA%E4%BA%8EAsterisk%E5%8F%8ASipDroid%E7%9A%84VoIP%E7%B3%BB%E7%BB%9F_6815.html" title="基于Asterisk及SipDroid的VoIP系统">基于Asterisk及SipDroid的VoIP系统</a>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">编辑</a>]</div><a name=".E6.AD.A3.E5.9C.A8.E5.BC.80.E5.8F.91.E7.9A.84.E9.A1.B9.E7.9B.AE"></a><h2>正在开发的项目 </h2>
+<ul><li><a href="../../../b/o/o/BookAssistant_500e.html" title="BookAssistant"> 个人图书助理 </a>
+</li><li><a href="../../../i/n/s/Insurance110.html" title="Insurance110"> 保险 110</a>： 请访问项目的新主页: <a href="http://redmine.footoo.org:3000/projects/insurance110" class='external free' title="http://redmine.footoo.org:3000/projects/insurance110" rel="nofollow">http://redmine.footoo.org:3000/projects/insurance110</a>
+</li><li><a href="../../../a/p/i/APIReport_0b16.html" title="APIReport"> 空气质量报告</a>
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">编辑</a>]</div><a name=".E5.B7.B2.E5.AE.8C.E6.88.90.E9.A1.B9.E7.9B.AE"></a><h2> 已完成项目 </h2>
+<ul><li><a href="../../../m/o/b/Mobile_Museum_Guide_Tour_6503.html" title="Mobile Museum Guide Tour"> 基于Android的博物馆导游系统</a>
+</li><li><a href="../../../%E5%9F%BA/%E4%BA%8E/a/%E5%9F%BA%E4%BA%8EAndroid%E7%9A%84LEGO%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F_c1ca.html" title="基于Android的LEGO机器人远程控制系统">基于Android的LEGO机器人远程控制系统</a>
+</li><li><a href="../../../%E5%9F%BA/%E4%BA%8E/o/%E5%9F%BA%E4%BA%8EOpenDMTP%E7%9A%84GPS%E8%B7%9F%E8%B8%AA%E7%B3%BB%E7%BB%9F_c3b4.html" title="基于OpenDMTP的GPS跟踪系统">基于OpenDMTP的GPS跟踪系统</a>
+</li><li><a href="../../../r/u/b/Rubik%27s_Cube_Helper_c9d4.html" title="Rubik's Cube Helper"> 魔方助手</a>
+</li><li><a href="../../../d/a/i/Daily_Magic_Newspaper_5542.html" title="Daily Magic Newspaper"> 魔法日报</a>
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">编辑</a>]</div><a name=".E6.9A.82.E5.81.9C.E9.A1.B9.E7.9B.AE"></a><h2> 暂停项目 </h2>
+<ul><li><a href="../../../a/n/d/Android_Live_Video_58a9.html" title="Android Live Video"> 手机在线直播</a>：Pending
+</li><li><a href="../../../s/k/y/SkyNet_c0b9.html" title="SkyNet"> 基于移动终端的病虫害防治系统</a>
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">编辑</a>]</div><a name=".E5.8F.82.E8.80.83.E9.A1.B9.E7.9B.AE"></a><h2> 参考项目</h2>
+<ul><li><a href="http://code.google.com/android/adc/adc_gallery/" class='external text' title="http://code.google.com/android/adc/adc gallery/" rel="nofollow">第一届Android开发挑战赛的获奖作品</a>
+</li><li><a href="http://code.google.com/android/adc/gallery_winners.html" class='external text' title="http://code.google.com/android/adc/gallery winners.html" rel="nofollow">第二届Android开发挑战赛的获奖作品</a>
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">编辑</a>]</div><a name=".E5.BA.94.E7.94.A8.E7.A8.8B.E5.BA.8F.E5.8F.91.E5.B8.83"></a><h2> 应用程序发布 </h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">编辑</a>]</div><a name=".E5.8F.91.E5.B8.83.E6.B8.A0.E9.81.93"></a><h3> 发布渠道 </h3>
+<ul><li>安智市场
+</li><li>安卓市场
+</li><li>智件园
+</li><li>应用会
+</li><li>Android Market
+</li></ul>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../a/n/d/Android_Project_Development_1dd9.html">http://dns.cs.hit.edu.cn../../../a/n/d/Android_Project_Development_1dd9.html</a>"</p>
+
+<p>本页面已经被浏览336次。 This page was last modified 09:48 2011年12月5日 by <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a>. Based on work by <a href="../../../%E5%AD%99/%E9%B9%8F/_/User%7E%E5%AD%99%E9%B9%8F.html" class="new" title="User:孙鹏">孙鹏</a>. </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">编辑本页</a></strong> |
+<a href="../../../a/n/d/Talk%7EAndroid_Project_Development_a642.html" class="new" title="Talk:Android Project Development">讨论本页</a> |
+<a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览336次。 This page was last modified 09:48 2011年12月5日 by <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a>. Based on work by <a href="../../../%E5%AD%99/%E9%B9%8F/_/User%7E%E5%AD%99%E9%B9%8F.html" class="new" title="User:孙鹏">孙鹏</a>. </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">编辑本页</a></strong>
+<br /><a href="../../../a/n/d/Talk%7EAndroid_Project_Development_a642.html" class="new" title="Talk:Android Project Development">讨论本页</a>
+<br /><a href="../../../a/n/d/Android_Project_Development_1dd9.html" title="Android Project Development">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393409.25 secs. -->
+</body></html>

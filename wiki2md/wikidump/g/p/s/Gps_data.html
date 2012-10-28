@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Gps data - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../g/p/s/Gps_data.html" title="Gps data">编辑本页</a> |
+<a href="../../../g/p/s/Gps_data.html" title="Gps data">较早版本</a><p class='subtitle'><a href="../../../g/p/s/Gps_data.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Gps data</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>GPRMC（建议使用最小GPS数据格式）
+</p><p><br />
+</p><p>$GPRMC,&lt;1&gt;,&lt;2&gt;,&lt;3&gt;,&lt;4&gt;,&lt;5&gt;,&lt;6&gt;,&lt;7&gt;,&lt;8&gt;,&lt;9&gt;,&lt;10&gt;,&lt;11&gt;&lt;CR&gt;&lt;LF&gt;
+</p><p><br />
+</p>
+<ol><li>标准定位时间（UTC time）格式：时时分分秒秒.秒秒秒（hhmmss.sss）。
+</li><li>定位状态，A = 数据可用，V = 数据不可用。
+</li><li>纬度，格式：度度分分.分分分分（ddmm.mmmm）。
+</li><li>纬度区分，北半球（N）或南半球（S）。
+</li><li>经度，格式：度度分分.分分分分。
+</li><li>经度区分，东（E）半球或西（W）半球。
+</li><li>相对位移速度， 0.0 至 1851.8 knots
+</li><li>相对位移方向，000.0 至 359.9度。实际值。
+</li><li>日期，格式：日日月月年年（ddmmyy）。
+</li><li>磁极变量，000.0 至180.0。
+</li><li>度数。
+</li><li>Checksum.(检查位)
+</li></ol>
+<p><br />
+</p><p>GPGSV（所示卫星格式）
+</p><p><br />
+</p><p>$GPGSV, &lt;1&gt;,&lt;2&gt;,&lt;3&gt;,&lt;4&gt;,&lt;5&gt;,&lt;6&gt;,&lt;7&gt;,?&lt;4&gt;,&lt;5&gt;,&lt;6&gt;,&lt;7&gt;,&lt;8&gt;&lt;CR&gt;&lt;LF&gt;
+</p><p><br />
+</p>
+<ol><li>天空中收到讯号的卫星总数。
+</li><li>定位的卫星总数。
+</li><li>天空中的卫星总数，00 至 12。
+</li><li>卫星编号， 01 至 32。
+</li><li>卫星仰角， OO 至 90 度。
+</li><li>卫星方位角， OOO 至 359 度。实际值。
+</li><li>讯号噪声比（C/No）， 00 至 99 dB；无表未接收到讯号。
+</li><li>Checksum.(检查位).
+</li></ol>
+<p><br />
+</p><p>第&lt;4&gt;,&lt;5&gt;,&lt;6&gt;,&lt;7&gt;项个别卫星会重复出现，每行最多有四颗卫星。其余卫星信息会于次一行出现，若未使用，这些字段会空白。
+</p><p><br />
+</p><p>GPGSA（GPS精度指针及使用卫星格式）
+</p><p><br />
+</p><p>$GPGSA,&lt;1&gt;,&lt;2&gt;,&lt;3&gt;,&lt;3&gt;,,,,,&lt;3&gt;,&lt;3&gt;,&lt;3&gt;,&lt;4&gt;,&lt;5&gt;,&lt;6&gt;,&lt;7&gt;&lt;CR&gt;&lt;LF&gt;
+</p><p><br />
+</p>
+<ol><li>模式 2：M = 手动， A = 自动。
+</li><li>模式 1：定位型式 1 = 未定位， 2 = 二维定位， 3 = 三维定位。
+</li><li>PRN 数字：01 至 32 表天空使用中的卫星编号，最多可接收12颗卫星信息。
+</li><li>PDOP-位置精度稀释 0.5 至 99.9.
+</li><li>HDOP-水平精度稀释 0.5 to 99.9.
+</li><li>VDOP-垂直精度稀释 0.5 to 99.9.
+</li><li>Checksum.(检查位).
+</li></ol>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../g/p/s/Gps_data.html">http://dns.cs.hit.edu.cn../../../g/p/s/Gps_data.html</a>"</p>
+
+<p>本页面已经被浏览8次。 This page was last modified 12:15 2006年8月17日 by <a href="../../../w/a/n/User%7EWangyao.html" title="User:Wangyao">王耀</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../g/p/s/Gps_data.html" title="Gps data">编辑本页</a></strong> |
+<a href="../../../g/p/s/Talk%7EGps_data.html" class="new" title="Talk:Gps data">讨论本页</a> |
+<a href="../../../g/p/s/Gps_data.html" title="Gps data">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览8次。 This page was last modified 12:15 2006年8月17日 by <a href="../../../w/a/n/User%7EWangyao.html" title="User:Wangyao">王耀</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../g/p/s/Gps_data.html" title="Gps data">编辑本页</a></strong>
+<br /><a href="../../../g/p/s/Talk%7EGps_data.html" class="new" title="Talk:Gps data">讨论本页</a>
+<br /><a href="../../../g/p/s/Gps_data.html" title="Gps data">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392894.80 secs. -->
+</body></html>

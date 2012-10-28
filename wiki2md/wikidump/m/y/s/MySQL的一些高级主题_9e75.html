@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>MySQL的一些高级主题 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html" title="MySQL的一些高级主题">编辑本页</a> |
+<a href="../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html" title="MySQL的一些高级主题">较早版本</a><p class='subtitle'><a href="../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">MySQL的一些高级主题</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>MySQL高级主题探讨
+</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#.E5.AD.98.E5.82.A8.E8.BF.87.E7.A8.8B"><span class="tocnumber">1</span> <span class="toctext">存储过程</span></a>
+<ul>
+<li class='toclevel-2'><a href="#The_Sample_.22Database.22_.E7.A4.BA.E4.BE.8B.E6.95.B0.E6.8D.AE.E5.BA.93"><span class="tocnumber">1.1</span> <span class="toctext">The Sample "Database" 示例数据库</span></a></li>
+<li class='toclevel-2'><a href="#Digression:_Legal_Identifiers_.E9.A2.98.E5.A4.96.E8.AF.9D.EF.BC.9A.E5.90.88.E6.B3.95.E6.A0.87.E8.AF.86.E7.AC.A6.E7.9A.84.E9.97.AE.E9.A2.98"><span class="tocnumber">1.2</span> <span class="toctext">Digression: Legal Identifiers 题外话：合法标识符的问题</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#.E7.B4.A2.E5.BC.95"><span class="tocnumber">2</span> <span class="toctext">索引</span></a></li>
+<li class='toclevel-1'><a href="#.E6.9F.A5.E8.AF.A2.E4.BC.98.E5.8C.96"><span class="tocnumber">3</span> <span class="toctext">查询优化</span></a></li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html" title="MySQL的一些高级主题">编辑</a>]</div><a name=".E5.AD.98.E5.82.A8.E8.BF.87.E7.A8.8B"></a><h2>存储过程</h2>
+<p>MySQL 5.0对存储过程支持的很好了，有一本书叫"MySQL Stored Procedure Programming"，O'Reilly出的，应该是很有帮助。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html" title="MySQL的一些高级主题">编辑</a>]</div><a name="The_Sample_.22Database.22_.E7.A4.BA.E4.BE.8B.E6.95.B0.E6.8D.AE.E5.BA.93"></a><h3>The Sample "Database" 示例数据库</h3> 
+<p>现在要做的第一件事是创建一个新的数据库然后设定为默认数据库实现这个步骤的SQL
+语句如下：
+</p><p><br />
+</p>
+<pre>CREATE DATABASE db5;
+USE db5;
+</pre>
+<p>例如：
+</p><p><br />
+</p>
+<pre>mysql> CREATE DATABASE db5;
+Query OK, 1 row affected (0.00 sec)
+mysql> USE db5;
+Database changed
+</pre>
+<p>在这里要避免使用有重要数据的实际的数据库然后我们创建一个简单的工作表。
+实现这个步骤的SQL
+语句如下：
+</p><p><br />
+</p>
+<pre>mysql> CREATE DATABASE db5;
+Query OK, 1 row affected (0.01 sec)
+mysql> USE db5;
+Database changed
+mysql> CREATE TABLE t (s1 INT);
+Query OK, 0 rows affected (0.01 sec)
+mysql> INSERT INTO t VALUES (5);
+Query OK, 1 row affected (0.00 sec)
+</pre>
+<p><br />
+你会发现我只在表中插入了一列。这样做的原因是我要保持表的简单，因为在这里并不需要展示查询数据的技巧，而是教授存储过程，不需要使用大的数据表，因为它本身已经够复杂了。
+</p><p><br />
+这就是示例数据库，我们将从这个名字为t的只包含一列的表开始Pick a Delimiter 选择分隔符
+现在我们需要一个分隔符，实现这个步骤的SQL语句如下：
+</p><p><br />
+　　DELIMITER //
+</p><p>例如：
+</p><p><br />
+　　mysql> DELIMITER //
+</p><p><br />
+分隔符是你通知mysql客户端你已经完成输入一个SQL语句的字符或字符串符号。一直以来我们都使用分号“；”，但在存储过程中，这会产生不少问题，因为存储过程中有许多语句，所以每一个都需要一个分号因此你需要选择一个不太可能出现在你的语句或程序中的字符串作为分隔符。我曾用过双斜杠“//”，也有人用竖线“|”。我曾见过在DB2程序中使用“@”符号的，但我不喜欢这样。你可以根据自己的喜好来选择，但是在这个课程中为了更容易理解，你最好选择跟我一样。如果以后要恢复使用“;”（分号）作为分隔符，输入下面语句就可以了：
+</p><p><br />
+</p>
+<pre> "DELIMITER&nbsp;;//".
+ CREATE PROCEDURE Example 创建程序实例
+CREATE PROCEDURE p1 () SELECT * FROM t; //
+</pre>
+<p><br />
+也许这是你使用Mysql创建的第一个存储过程。假如是这样的话，最好在你的日记中记下这个重要的里程碑。
+</p><p><br />
+</p>
+<pre>CREATE PROCEDURE p1 () SELECT * FROM t; // &lt;--
+</pre>
+<p><br />
+SQL语句存储过程的第一部分是“CREATE PROCEDURE”：
+</p><p><br />
+</p>
+<pre>CREATE PROCEDURE p1 () SELECT * FROM t; // &lt;--
+</pre>
+<p><br />
+第二部分是过程名，上面新存储过程的名字是p1。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html" title="MySQL的一些高级主题">编辑</a>]</div><a name="Digression:_Legal_Identifiers_.E9.A2.98.E5.A4.96.E8.AF.9D.EF.BC.9A.E5.90.88.E6.B3.95.E6.A0.87.E8.AF.86.E7.AC.A6.E7.9A.84.E9.97.AE.E9.A2.98"></a><h3>Digression: Legal Identifiers 题外话：合法标识符的问题</h3>
+<p><br />
+存储过程名对大小写不敏感，因此‘P1’和‘p1’是同一个名字，在同一个数据库中你将不能给两个存储过程取相同的名字，因为这样将会导致重载。某些DBMS允许重载（Oracle支持），但是MySQL不支持（译者话：希望以后会支持吧。）。
+</p><p><br />
+你可以采取“数据库名.存储过程名”这样的折中方法，如“db5.p1”。存储过程名可以分开，它可以包括空格符，其长度限制为64个字符，但注意不要使用MySQL内建函数的名字，如果这样做了，在调用时将会出现下面的情况：
+</p><p><br />
+</p>
+<pre>mysql&gt; CALL pi();
+Error 1064 (42000): You have a syntax error.
+mysql&gt; CALL pi ();
+Error 1305 (42000): PROCEDURE does not exist.
+</pre>
+<p><br />
+在上面的第一个例子里，我调用的是一个名字叫pi的函数，但你必须在调用的函数名后加上空格，就像第二个例子那样。
+</p><p><br />
+</p>
+<pre>CREATE PROCEDURE p1 () SELECT * FROM t; // &lt;--
+</pre>
+<p><br />
+其中“（）”是“参数列表”。
+</p><p><br />
+</p>
+<pre>CREATE PROCEDURE
+</pre>
+<p><br />
+语句的第三部分是参数列表。通常需要在括号内添加参数。例子中的存储过程没有参数，因此参数列表是空的—所以我只需要键入空括号，然而这是必须的。
+</p><p><br />
+</p>
+<pre>CREATE PROCEDURE p1 () SELECT * FROM t; // &lt;--
+</pre>
+<p>"SELECT * FROM t;"是存储过程的主体。
+</p><p>然后到了语句的最后一个部分了，它是存储过程的主体，是一般的SQL语句。过程体中语句
+</p><p><br />
+　　"SELECT * FROM t;"
+</p><p>包含一个分号，如果后面有语句结束符号（//）时可以不写这个分号。
+</p><p><br />
+如果你还记得我把这部分叫做程序的主体将会是件好事，因为（body）这个词是大家使用的技术上的术语。通常我们不会将SELECT语句用在存储过程中，这里只是为了演示。所以使用这样的语句，能在调用时更好的看出程序是否正常工作。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html" title="MySQL的一些高级主题">编辑</a>]</div><a name=".E7.B4.A2.E5.BC.95"></a><h2>索引</h2>
+<p><a href="http://news.newhua.com/html/Skill_NetSoft/2005-9/9/162340520.shtml" class='external text' title="http://news.newhua.com/html/Skill NetSoft/2005-9/9/162340520.shtml" rel="nofollow">这里还有一篇介绍索引的文章</a>
+</p><p>索引被用来快速找出在一个列上用一特定值的行。没有索引，MySQL不得不首先以第一条记录开始并然后读完整个表直到它找出相关的行。表越大，花费时间越多。如果表对于查询的列有一个索引，MySQL能快速到达一个位置去搜寻到数据文件的中间，没有必要考虑所有数据。如果一个表有1000行，这比顺序读取至少快100倍。注意你需要存取几乎所有1000行，它较快的顺序读取，因为此时我们避免磁盘寻道。 
+</p><p>所有的MySQL索引(PRIMARY、UNIQUE和INDEX)在B树中存储。字符串是自动地压缩前缀和结尾空间。见7.27 CREATE INDEX句法。 
+</p><p>索引用于： 
+</p><p>快速找出匹配一个WHERE子句的行。 
+当执行联结时，从其他表检索行。 
+对特定的索引列找出MAX()或MIN()值。 
+如果排序或分组在一个可用键的最左面前缀上进行(例如，ORDER BY key_part_1,key_part_2)，排序或分组一个表。如果所有键值部分跟随DESC，键以倒序被读取。 
+在一些情况中，一个查询能被优化来检索值，不用咨询数据文件。如果对某些表的所有使用的列是数字型的并且构成某些键的最左面前缀，为了更快，值可以从索引树被检索出来。 
+假定你发出下列SELECT语句： 
+</p>
+<pre>mysql&gt; SELECT * FROM tbl_name WHERE col1=val1 AND col2=val2;
+</pre>
+<p>如果一个多列索引存在于col1和col2上，适当的行可以直接被取出。如果分开的单行列索引存在于col1和col2上，优化器试图通过决定哪个索引将找到更少的行并来找出更具限制性的索引并且使用该索引取行。 
+</p><p>如果表有一个多列索引，任何最左面的索引前缀能被优化器使用以找出行。例如，如果你有一个3行列索引(col1,col2,col3)，你已经索引了在(col1)、(col1,col2)和(col1,col2,col3)上的搜索能力。 
+</p><p>如果列不构成索引的最左面前缀，MySQL不能使用一个部分的索引。假定你下面显示的SELECT语句： 
+</p>
+<pre>mysql&gt; SELECT * FROM tbl_name WHERE col1=val1;
+mysql&gt; SELECT * FROM tbl_name WHERE col2=val2;
+mysql&gt; SELECT * FROM tbl_name WHERE col2=val2 AND col3=val3;
+</pre>
+<p>如果一个索引存在于(col1、col2、col3)上，只有上面显示的第一个查询使用索引。第二个和第三个查询确实包含索引的列，但是(col2)和(col2、col3)不是(col1、col2、col3)的最左面前缀。 
+</p><p>如果LIKE参数是一个不以一个通配符字符起始的一个常数字符串，MySQL也为LIKE比较使用索引。例如，下列SELECT语句使用索引： 
+</p>
+<pre>mysql&gt; select * from tbl_name where key_col LIKE "Patrick%";
+mysql&gt; select * from tbl_name where key_col LIKE "Pat%_ck%";
+</pre>
+<p>在第一条语句中，只考虑有"Patrick" &lt;= key_col &lt; "Patricl"的行。在第二条语句中，只考虑有"Pat" &lt;= key_col &lt; "Pau"的行。 
+</p><p>下列SELECT语句将不使用索引： 
+</p>
+<pre>mysql&gt; select * from tbl_name where key_col LIKE "%Patrick%";
+mysql&gt; select * from tbl_name where key_col LIKE other_col;
+</pre>
+<p>在第一条语句中，LIKE值以一个通配符字符开始。在第二条语句中，LIKE值不是一个常数。 
+</p><p>如果 column_name 是一个索引，使用column_name IS NULL的搜索将使用索引。 
+</p><p>MySQL通常使用找出最少数量的行的索引。一个索引被用于你与下列操作符作比较的列：=、&gt;、&gt;=、&lt;、&lt;=、BETWEEN和一个有一个非通配符前缀象'something%'的LIKE的列。 
+</p><p>任何不跨越的在WHERE子句的所有AND层次的索引不用来优化询问。 
+</p><p>下列WHERE子句使用索引：
+</p>
+<pre>... WHERE index_part1=1 AND index_part2=2
+... WHERE index=1 OR A=10 AND index=2 /* index = 1 OR index = 2 */
+... WHERE index_part1='hello' AND index_part_3=5
+/* optimized like "index_part1='hello'" */
+</pre>
+<p>这些WHERE子句不使用索引： 
+</p>
+<pre>... WHERE index_part2=1 AND index_part3=2 /* index_part_1 is not used */
+... WHERE index=1 OR A=10 /* No index */
+... WHERE index_part1=1 OR index_part2=10 /* No index spans all rows */
+</pre>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html" title="MySQL的一些高级主题">编辑</a>]</div><a name=".E6.9F.A5.E8.AF.A2.E4.BC.98.E5.8C.96"></a><h2>查询优化</h2>
+<p>首先，一件事情影响所有的询问。你有的许可系统设置越复杂，你得到更多的开销。
+</p><p>如果你不让任何GRANT语句执行，MySQL将稍微优化许可检查。因此如果你有很大量，值得花时间来避免授权，否则更多的许可检查有更大的开销。 
+</p><p>如果你的问题是与一些明显的MySQL函数有关，你总能在MySQL客户中计算其时间：
+</p><p>mysql&gt; select benchmark(1000000,1+1);
++------------------------+
+| benchmark(1000000,1+1) |
++------------------------+
+| 0 |
++------------------------+
+1 row in set (0.32 sec)
+</p><p>上面显示MySQL能在PentiumII 400MHz上以0.32秒执行1,000,000个+表达式。 
+</p><p>所有MySQL函数应该被高度优化，但是以可能有一些例外并且benchmark(loop_count,expression)是找出是否你的查询有问题的一个极好工具。
+</p><p>10.5.1 估计查询性能
+</p><p>在大多数情况下，你能通过计算磁盘寻道估计性能。对小的表，你通常能在1次磁盘寻道中找到行(因为这个索引可能被缓冲)。对更大的表，你能估计它(使用 B++ 树索引)，你将需要：log(row_count)/log(index_block_length/3*2/(index_length + data_pointer_length))+1次寻道找到行。 
+</p><p>在MySQL中，索引块通常是1024个字节且数据指针通常是4个字节，这对一个有一个索引长度为3(中等整数)的 500,000 行的表给你：log(500,000)/log(1024/3*2/(3+4)) + 1= 4 次寻道。 
+</p><p>象上面的索引将要求大约 500,000 * 7 * 3/2 = 5.2M，(假设索引缓冲区被充满到2/3(它是典型的))，你将可能在内存中有索引的大部分并且你将可能仅需要1-2调用从OS读数据来找出行。 
+</p><p>然而对于写，你将需要 4 次寻道请求(如上)来找到在哪儿存放新索引并且通常需2次寻道更新这个索引并且写入行。 
+</p><p>注意，上述不意味着你的应用程序将缓慢地以 N log N 退化！当表格变得更大时，只要一切被OS或SQL服务器缓冲，事情将仅仅或多或少地更慢。在数据变得太大不能被缓冲后，事情将开始变得更慢直到你的应用程序仅仅受磁盘寻道限制(它以N log N增加)。为了避免这个增加，索引缓冲随数据增加而增加。见10.2.3 调节服务器参数。
+</p><p>10.5.2 SELECT查询的速度
+</p><p>总的来说，当你想要使一个较慢的SELECT ... WHERE更快，检查的第一件事情是你是否能增加一个索引。见10.4 MySQL 索引的使用。在不同表之间的所有引用通常应该用索引完成。你可以使用EXPLAIN来确定哪个索引用于一条SELECT语句。见7.22 EXPLAIN句法(得到关于一条SELECT的信息)。 
+</p><p>一些一般的建议： 
+</p><p>为了帮助MySQL更好地优化查询，在它已经装载了相关数据后，在一个表上运行myisamchk --analyze。这为每一个更新一个值，指出有相同值地平均行数（当然，对唯一索引，这总是1。） 
+为了根据一个索引排序一个索引和数据，使用myisamchk --sort-index --sort-records=1（如果你想要在索引1上排序)。如果你有一个唯一索引，你想要根据该索引地次序读取所有的记录，这是使它更快的一个好方法。然而注意，这个排序没有被最佳地编写，并且对一个大表将花很长时间！ 
+</p><p>10.5.3 MySQL怎样优化WHERE子句
+</p><p>where优化被放在SELECT中，因为他们最主要在那里使用里，但是同样的优化被用于DELETE和UPDATE语句。
+</p><p>也要注意，本节是不完全的。MySQL确实作了许多优化而我们没有时间全部记录他们。 
+</p><p>由MySQL实施的一些优化列在下面： 
+</p><p>删除不必要的括号： 
+((a AND b) AND c OR (((a AND b) AND (c AND d))))
+-&gt; (a AND b AND c) OR (a AND b AND c AND d)
+</p><p>常数调入： 
+(a<b> b&gt;5 AND b=c AND a=5
+</p><p>删除常数条件(因常数调入所需)：
+(B&gt;=5 AND B=5) OR (B=6 AND 5=5) OR (B=7 AND 5=6)
+-&gt; B=5 OR B=6
+</p><p>索引使用的常数表达式仅计算一次。 
+在一个单个表上的没有一个WHERE的COUNT(*)直接从表中检索信息。当仅使用一个表时，对任何NOT NULL表达式也这样做。 
+无效常数表达式的早期检测。MySQL快速检测某些SELECT语句是不可能的并且不返回行。 
+如果你不使用GROUP BY或分组函数(COUNT()、MIN()……)，HAVING与WHERE合并。 
+为每个子联结(sub join)，构造一个更简单的WHERE以得到一个更快的WHERE计算并且也尽快跳过记录。 
+所有常数的表在查询中的任何其他表前被首先读出。一个常数的表是： 
+一个空表或一个有1行的表。 
+与在一个UNIQUE索引、或一个PRIMARY KEY的WHERE子句一起使用的表，这里所有的索引部分使用一个常数表达式并且索引部分被定义为NOT NULL。 
+所有下列的表用作常数表： 
+</p><p>mysql&gt; SELECT * FROM t WHERE primary_key=1;
+mysql&gt; SELECT * FROM t1,t2
+WHERE t1.primary_key=1 AND t2.primary_key=t1.id;
+</p><p>对联结表的最好联结组合是通过尝试所有可能性来找到:(。如果所有在ORDER BY和GROUP BY的列来自同一个表，那么当廉洁时，该表首先被选中。 
+如果有一个ORDER BY子句和一个不同的GROUP BY子句，或如果ORDER BY或GROUP BY包含不是来自联结队列中的第一个表的其他表的列，创建一个临时表。 
+如果你使用SQL_SMALL_RESULT，MySQL将使用一个在内存中的表。 
+因为DISTINCT被变换到在所有的列上的一个GROUP BY，DISTINCT与ORDER BY结合也将在许多情况下需要一张临时表。 
+每个表的索引被查询并且使用跨越少于30% 的行的索引。如果这样的索引没能找到，使用一个快速的表扫描。 
+在一些情况下，MySQL能从索引中读出行，甚至不咨询数据文件。如果索引使用的所有列是数字的，那么只有索引树被用来解答查询。 
+在每个记录被输出前，那些不匹配HAVING子句的行被跳过。 
+下面是一些很快的查询例子： 
+</p><p>mysql&gt; SELECT COUNT(*) FROM tbl_name;
+mysql&gt; SELECT MIN(key_part1),MAX(key_part1) FROM tbl_name;
+mysql&gt; SELECT MAX(key_part2) FROM tbl_name
+WHERE key_part_1=constant;
+mysql&gt; SELECT ... FROM tbl_name
+ORDER BY key_part1,key_part2,... LIMIT 10;
+mysql&gt; SELECT ... FROM tbl_name
+ORDER BY key_part1 DESC,key_part2 DESC,... LIMIT 10;
+</p><p>下列查询仅使用索引树就可解决(假设索引列是数字的)： 
+</p><p>mysql&gt; SELECT key_part1,key_part2 FROM tbl_name WHERE key_part1=val;
+mysql&gt; SELECT COUNT(*) FROM tbl_name
+WHERE key_part1=val1 AND key_part2=val2;
+mysql&gt; SELECT key_part2 FROM tbl_name GROUP BY key_part1;
+</p><p>下列查询使用索引以排序顺序检索，不用一次另外的排序： 
+</p><p>mysql&gt; SELECT ... FROM tbl_name ORDER BY key_part1,key_part2,...
+mysql&gt; SELECT ... FROM tbl_name ORDER BY key_part1 DESC,key_part2 DESC,...
+</p><p>10.5.4 MySQL怎样优化LEFT JOIN
+</p><p>在MySQL中，A LEFT JOIN B实现如下： 
+</p><p>表B被设置为依赖于表A。 
+表A被设置为依赖于所有用在LEFT JOIN条件的表(除B外)。 
+所有LEFT JOIN条件被移到WHERE子句中。 
+进行所有标准的联结优化，除了一个表总是在所有它依赖的表之后被读取。如果有一个循环依赖，MySQL将发出一个错误。 
+进行所有标准的WHERE优化。 
+如果在A中有一行匹配WHERE子句，但是在B中没有任何行匹配LEFT JOIN条件，那么在B中生成所有列设置为NULL的一行。 
+如果你使用LEFT JOIN来找出在某些表中不存在的行并且在WHERE部分你有下列测试：column_name IS NULL，这里column_name 被声明为NOT NULL的列，那么MySQL在它已经找到了匹配LEFT JOIN条件的一行后，将停止在更多的行后寻找(对一特定的键组合)。 
+</p><p>10.5.5 MySQL怎样优化LIMIT
+</p><p>在一些情况中，当你使用LIMIT #而不使用HAVING时，MySQL将以不同方式处理查询。 
+</p><p>如果你用LIMIT只选择一些行，当MySQL一般比较喜欢做完整的表扫描时，它将在一些情况下使用索引。 
+如果你使用LIMIT #与ORDER BY，MySQL一旦找到了第一个 # 行，将结束排序而不是排序整个表。 
+当结合LIMIT #和DISTINCT时，MySQL一旦找到#个唯一的行，它将停止。 
+在一些情况下，一个GROUP BY能通过顺序读取键(或在键上做排序)来解决，并然后计算摘要直到键值改变。在这种情况下，LIMIT #将不计算任何不必要的GROUP。 
+只要MySQL已经发送了第一个#行到客户，它将放弃查询。 
+LIMIT 0将总是快速返回一个空集合。这对检查查询并且得到结果列的列类型是有用的。 
+临时表的大小使用LIMIT #计算需要多少空间来解决查询。 
+</p><p>10.5.6 INSERT查询的速度
+</p><p>插入一个记录的时间由下列组成： 
+</p><p>连接：(3) 
+发送查询给服务器：(2) 
+分析查询：(2) 
+插入记录：（1 x 记录大小） 
+插入索引：（1 x 索引） 
+关闭：(1) 
+这里的数字有点与总体时间成正比。这不考虑打开表的初始开销(它为每个并发运行的查询做一次)。 
+</p><p>表的大小以N log N (B 树)的速度减慢索引的插入。 
+</p><p>加快插入的一些方法： 
+</p><p>如果你同时从同一客户插入很多行，使用多个值表的INSERT语句。这比使用分开INSERT语句快(在一些情况中几倍)。 
+如果你从不同客户插入很多行，你能通过使用INSERT DELAYED语句得到更高的速度。见7.14 INSERT句法。 
+注意，用MyISAM，如果在表中没有删除的行，能在SELECT:s正在运行的同时插入行。 
+当从一个文本文件装载一个表时，使用LOAD DATA INFILE。这通常比使用很多INSERT语句快20倍。见7.16 LOAD DATA INFILE句法。 
+当表有很多索引时，有可能多做些工作使得LOAD DATA INFILE更快些。使用下列过程： 
+有选择地用CREATE TABLE创建表。例如使用mysql或Perl-DBI。 
+执行FLUSH TABLES，或外壳命令mysqladmin flush-tables。 
+使用myisamchk --keys-used=0 -rq /path/to/db/tbl_name。这将从表中删除所有索引的使用。 
+用LOAD DATA INFILE把数据插入到表中，这将不更新任何索引，因此很快。 
+如果你有myisampack并且想要压缩表，在它上面运行myisampack。见10.6.3 压缩表的特征。 
+用myisamchk -r -q /path/to/db/tbl_name再创建索引。这将在将它写入磁盘前在内存中创建索引树，并且它更快，因为避免大量磁盘寻道。结果索引树也被完美地平衡。 
+执行FLUSH TABLES，或外壳命令mysqladmin flush-tables。 
+这个过程将被构造进在MySQL的某个未来版本的LOAD DATA INFILE。
+</p><p>你可以锁定你的表以加速插入。
+mysql&gt; LOCK TABLES a WRITE;
+mysql&gt; INSERT INTO a VALUES (1,23),(2,34),(4,33);
+mysql&gt; INSERT INTO a VALUES (8,26),(6,29);
+mysql&gt; UNLOCK TABLES;
+</p><p>主要的速度差别是索引缓冲区仅被清洗到磁盘上一次，在所有INSERT语句完成后。一般有与有不同的INSERT语句那样夺的索引缓冲区清洗。如果你能用一个单个语句插入所有的行，锁定就不需要。锁定也将降低多连接测试的整体时间，但是对某些线程最大等待时间将上升(因为他们等待锁)。例如：
+</p><p>thread 1 does 1000 inserts
+thread 2, 3, and 4 does 1 insert
+thread 5 does 1000 inserts
+</p><p>如果你不使用锁定，2、3和4将在1和5前完成。如果你使用锁定，2、3和4将可能不在1或5前完成，但是整体时间应该快大约40%。因为INSERT, UPDATE和DELETE操作在MySQL中是很快的，通过为多于大约5次连续不断地插入或更新一行的东西加锁，你将获得更好的整体性能。如果你做很多一行的插入，你可以做一个LOCK TABLES，偶尔随后做一个UNLOCK TABLES(大约每1000行)以允许另外的线程存取表。这仍然将导致获得好的性能。当然，LOAD DATA INFILE对装载数据仍然是更快的。 
+</p><p>为了对LOAD DATA INFILE和INSERT得到一些更快的速度，扩大关键字缓冲区。见10.2.3 调节服务器参数。
+</p><p>10.5.7 UPDATE查询的速度
+</p><p>更改查询被优化为有一个写开销的一个SELECT查询。写速度依赖于被更新数据大小和被更新索引的数量。 
+</p><p>使更改更快的另一个方法是推迟更改并且然后一行一行地做很多更改。如果你锁定表，做一行一行地很多更改比一次做一个快。 
+</p><p>注意，动态记录格式的更改一个较长总长的记录，可能切开记录。因此如果你经常这样做，时不时地OPTIMIZE TABLE是非常重要的。见7.9 OPTIMIZE TABLE句法。 
+</p><p>10.5.8 DELETE查询的速度
+</p><p>删除一个记录的时间精确地与索引数量成正比。为了更快速地删除记录，你可以增加索引缓存的大小。见10.2.3 调节服务器参数。 
+</p><p>从一个表删除所有行比删除行的一大部分也要得多。
+</p><p>====</b>
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html">http://dns.cs.hit.edu.cn../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html</a>"</p>
+
+<p>本页面已经被浏览33次。 This page was last modified 03:02 2006年5月29日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html" title="MySQL的一些高级主题">编辑本页</a></strong> |
+<a href="../../../m/y/s/Talk%7EMySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_2dbc.html" class="new" title="Talk:MySQL的一些高级主题">讨论本页</a> |
+<a href="../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html" title="MySQL的一些高级主题">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览33次。 This page was last modified 03:02 2006年5月29日 by <a href="../../../c/o/w/User%7ECowoo.html" title="User:Cowoo">陈伟</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html" title="MySQL的一些高级主题">编辑本页</a></strong>
+<br /><a href="../../../m/y/s/Talk%7EMySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_2dbc.html" class="new" title="Talk:MySQL的一些高级主题">讨论本页</a>
+<br /><a href="../../../m/y/s/MySQL%E7%9A%84%E4%B8%80%E4%BA%9B%E9%AB%98%E7%BA%A7%E4%B8%BB%E9%A2%98_9e75.html" title="MySQL的一些高级主题">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392727.73 secs. -->
+</body></html>

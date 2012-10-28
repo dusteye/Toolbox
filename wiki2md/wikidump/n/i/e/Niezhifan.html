@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Niezhifan - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../n/i/e/Niezhifan.html" title="Niezhifan">编辑本页</a> |
+<a href="../../../n/i/e/Niezhifan.html" title="Niezhifan">较早版本</a><p class='subtitle'><a href="../../../n/i/e/Niezhifan.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Niezhifan</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>在本周（12.30-1.7）初步开发sweet reminder中。我对web开发的中mvc模型有了一个基本的了解。
+大体来说，model负责维持应用程序的状态，它携带着数据，同时还执行施加于这些数据上的规则。view负责生成用户界面，显示程序生成的数据。controller负责协调整个应用程序的运转。控制器接收来自外界的事件，与模型进行交互，并将合适的视图展示给用户。这个三位一体的组合——模型，视图和控制器——构成了一个架构模型，即著名的mvc。
+ruby on rails也是一个mvc框架。rails将应用程序按照模型，视图，控制器进行划分，并遵循这一架构分别开发个部分的功能。程序运行时，Rails会把各个部分组装在一起，组装的过程默认地按照人们的命名习惯来进行。这也就是rails与java的一大区别“惯例重于配置”的体现。
+下面，我们来看看rails到底是怎么实现mvc架构的。
+大家可能还记得，安装rails时的那些安装文件的文件名,activerecord,activesupport,
+actionpack,actionwebservice,actionmailer.
+不错，其中的activerecord,就是Rails所采用的orm（Object/Relational Mapping）
+层。它把数据库表映射到类，比如说数据库中有一张名为tristia的表，那么应用程序中就会有一个名为tristia的类。表中的每条记录对应于该类的一个对象。rails类还对数据库表进行了包装，提供了一组类级别的方法，用于执行基本的数据添加，修改，删除等功能。同时active record又根据人们的命名习惯提供了很有意义的缺省配置。总之，在rails的mvc架构中，Active record是“模型”之一部分坚实的基础。
+我们知道，在mvc架构中，视图与控制器是密不可分的。控制器为视图体提供数据，然后又接收来自页面的事件——这页面正是由视图生成的。正因为有如此密切的交互，在rails中队视图和控制器的支持被捆绑在同一个组件actionpack中。
+其中值得一提的是在rails中，视图动态内容是由模板生成的，其一是Erb(Embedded ruby,嵌入式ruby),另一个是构建器风格（bulider-styler)。
+至于控制器，它负责协调用户，视图和模型之间的交互。同时提供将外界请求指引到内部Action的功能。它还负责管理缓存，管理辅助模块，管理session等一系列事务。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../n/i/e/Niezhifan.html">http://dns.cs.hit.edu.cn../../../n/i/e/Niezhifan.html</a>"</p>
+
+<p>本页面已经被浏览29次。 This page was last modified 03:12 2008年1月9日 by <a href="../../../t/r/i/User%7ETristia.html" class="new" title="User:Tristia">聂志凡</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../n/i/e/Niezhifan.html" title="Niezhifan">编辑本页</a></strong> |
+<a href="../../../n/i/e/Talk%7ENiezhifan.html" class="new" title="Talk:Niezhifan">讨论本页</a> |
+<a href="../../../n/i/e/Niezhifan.html" title="Niezhifan">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览29次。 This page was last modified 03:12 2008年1月9日 by <a href="../../../t/r/i/User%7ETristia.html" class="new" title="User:Tristia">聂志凡</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../n/i/e/Niezhifan.html" title="Niezhifan">编辑本页</a></strong>
+<br /><a href="../../../n/i/e/Talk%7ENiezhifan.html" class="new" title="Talk:Niezhifan">讨论本页</a>
+<br /><a href="../../../n/i/e/Niezhifan.html" title="Niezhifan">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393236.96 secs. -->
+</body></html>

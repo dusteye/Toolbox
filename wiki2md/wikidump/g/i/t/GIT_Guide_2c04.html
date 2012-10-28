@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>GIT Guide - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../g/i/t/GIT_Guide_2c04.html" title="GIT Guide">编辑本页</a> |
+<a href="../../../g/i/t/GIT_Guide_2c04.html" title="GIT Guide">较早版本</a><p class='subtitle'><a href="../../../g/i/t/GIT_Guide_2c04.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">GIT Guide</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#FoOTOo_Git_.E6.B3.A8.E6.84.8F.E4.BA.8B.E9.A1.B9"><span class="tocnumber">1</span> <span class="toctext">FoOTOo Git 注意事项</span></a></li>
+<li class='toclevel-1'><a href="#FoOTOo_Git_.E4.BD.BF.E7.94.A8.E6.8C.87.E5.8D.97"><span class="tocnumber">2</span> <span class="toctext">FoOTOo Git 使用指南</span></a></li>
+<li class='toclevel-1'><a href="#FoOTOo_Git.E8.B5.84.E6.BA.90"><span class="tocnumber">3</span> <span class="toctext">FoOTOo Git资源</span></a></li>
+<li class='toclevel-1'><a href="#.E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE"><span class="tocnumber">4</span> <span class="toctext">参考文献</span></a>
+<ul>
+<li class='toclevel-2'><a href="#GIT.E4.BD.BF.E7.94.A8.E6.8C.87.E5.8D.97"><span class="tocnumber">4.1</span> <span class="toctext">GIT使用指南</span></a></li>
+<li class='toclevel-2'><a href="#EGIT.E4.BD.BF.E7.94.A8.E6.8C.87.E5.8D.97"><span class="tocnumber">4.2</span> <span class="toctext">EGIT使用指南</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../g/i/t/GIT_Guide_2c04.html" title="GIT Guide">编辑</a>]</div><a name="FoOTOo_Git_.E6.B3.A8.E6.84.8F.E4.BA.8B.E9.A1.B9"></a><h2> FoOTOo Git 注意事项 </h2>
+<ul><li> 由于使用了hook方式发送邮件，因此在大家使用git push向主版本库提交时需要等待hook脚本运行完毕，整个过程需要与服务器保持连接，会有短暂的停顿，请大家误以为系统无响应。
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../g/i/t/GIT_Guide_2c04.html" title="GIT Guide">编辑</a>]</div><a name="FoOTOo_Git_.E4.BD.BF.E7.94.A8.E6.8C.87.E5.8D.97"></a><h2> FoOTOo Git 使用指南 </h2>
+<ul><li> Git环境设置参考<a href="http://progit.org/book/zh/ch1-5.html" class='external text' title="http://progit.org/book/zh/ch1-5.html" rel="nofollow">Pro Git</a>的用户信息部分，其中user.name 设置为姓名全拼 ，user.email设置为Gmail账户
+</li></ul>
+<pre>$ git config --global user.name "sunpeng"
+$ git config --global user.email voidmain1313113@gmail.com
+</pre>
+<ul><li> 参考<a href="http://progit.org/book/zh/ch4-3.html" class='external text' title="http://progit.org/book/zh/ch4-3.html" rel="nofollow">Git公钥生成指南</a> 生成公钥
+<ol><li> 生成公钥的注释信息请采用username@host的方式username 为用户名，与Git用户信息设置中的user.name 相同，使用姓名全拼，host为使用主机标识符，可以用IP也可以用主机名 
+</li><li> 如果大家有多台开发机，请生成多个公钥，并按照如下方式命名
+</li><li> 公钥缺省命名为id_rsa.pub ，生成后以 username.pub的方式命名:username 为用户名，与Git用户信息设置中的user.name 相同，使用姓名全拼
+</li></ol>
+</li><li> 将公钥保存至 \\172.16.0.46\Development\Developer_Pub_Key ，并给 cliffwoo@gmail.com发送邮件
+</li><li> cliffwoo@gmail.com将公钥导入后会以邮件或者口头通知的方式确认
+</li></ul>
+<ul><li> 完成上述工作后，可以使用如下方式获取项目,其中project_name为项目的名称
+</li></ul>
+<pre>git clone ssh://git@git.footoo.org:project_name.git
+</pre>
+<ul><li> 项目的创建
+</li></ul>
+<p>要想创建一个新的项目，需要登录到服务器创建（目前暂时没有web端，不过很快会进行开发）。
+具体的项目创建过程包括：
+</p>
+<ul><li><ol><li> 向cliff老师申请gitosis-admin项目的提交权限；
+</li><li> 修改本地gitosis-admin项目文件夹下的gitosis.conf文件，按照之前的项目添加一个group段落，修改之后提交
+</li><li> 在本地新建一个项目目录，使用git init; git remote add origin git@git.footoo.org:YOUR_PROJECT_NAME.git; git push -u origin master来创建这个项目的仓库
+</li><li> 之后，登陆到219.217.227.120这台服务器上，配置位于/home/git/repositories/YOUR_PROJECT_NAME/下的文件，包括description（修改为一个只有一行的文件，内容为项目名称），config以及hooks文件夹下的文件（复制config、hooks/post-receive、hooks/functions）。
+</li></ol>
+</li></ul>
+<p>至此项目创建完成
+</p><p><br />
+但是这样做非常复杂，所以我开发了一个脚本，直接通过脚本就可以生成项目，过程是：以git用户的身份登录到服务器上，进入~/EasyGit/script文件夹，使用'python init_repo.py PROJECT_NAME MEMBER_LIST'来创建项目，其中PROJECT_NAME是项目名称，MEMBER_LIST是一个以空格分割的成员列表，成员名称根据keydir中定义的名称设置
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../g/i/t/GIT_Guide_2c04.html" title="GIT Guide">编辑</a>]</div><a name="FoOTOo_Git.E8.B5.84.E6.BA.90"></a><h2> FoOTOo Git资源 </h2>
+<ol><li> FoOTOo Git服务器:git.footoo.org 
+</li><li> FoOTOo 代码审查服务器 ：gerrit.footoo.org ,具体的使用方法请参考视频教程 \\172.16.0.46\IBM_Center\Talk\2012\2012-03-31_FCL及CodeReview
+</li></ol>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../g/i/t/GIT_Guide_2c04.html" title="GIT Guide">编辑</a>]</div><a name=".E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE"></a><h2> 参考文献 </h2>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../g/i/t/GIT_Guide_2c04.html" title="GIT Guide">编辑</a>]</div><a name="GIT.E4.BD.BF.E7.94.A8.E6.8C.87.E5.8D.97"></a><h3>GIT使用指南</h3>
+<ol><li><a href="http://progit.org/book/zh/" class='external text' title="http://progit.org/book/zh/" rel="nofollow">Pro GIT</a>：推荐阅读！！！
+</li><li><a href="http://blog.leezhong.com/translate/2010/10/30/a-successful-git-branch.html" class='external text' title="http://blog.leezhong.com/translate/2010/10/30/a-successful-git-branch.html" rel="nofollow">Git开发管理之道</a>
+</li><li><a href="https://github.com/cliffwoo/Training/blob/master/TODO" class='external text' title="https://github.com/cliffwoo/Training/blob/master/TODO" rel="nofollow">GIT习题</a>
+</li><li><a href="http://www.lifebackup.cn/config_github_via_egit.html" class='external text' title="http://www.lifebackup.cn/config github via egit.html" rel="nofollow">EGit下配置Github</a>
+</li><li><a href="http://www.appinn.com/markdown-tools/" class='external text' title="http://www.appinn.com/markdown-tools/" rel="nofollow">Markdown的编辑器</a>
+</li></ol>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../g/i/t/GIT_Guide_2c04.html" title="GIT Guide">编辑</a>]</div><a name="EGIT.E4.BD.BF.E7.94.A8.E6.8C.87.E5.8D.97"></a><h3>EGIT使用指南</h3>
+<p><a href="http://wiki.eclipse.org/EGit/User_Guide" class='external text' title="http://wiki.eclipse.org/EGit/User Guide" rel="nofollow">EGIT 用户手册</a>
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../g/i/t/GIT_Guide_2c04.html">http://dns.cs.hit.edu.cn../../../g/i/t/GIT_Guide_2c04.html</a>"</p>
+
+<p>本页面已经被浏览210次。 This page was last modified 05:13 2012年7月24日 by <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a>. Based on work by <a href="../../../%E5%AD%99/%E9%B9%8F/_/User%7E%E5%AD%99%E9%B9%8F.html" class="new" title="User:孙鹏">孙鹏</a> 和 <a href="../../../t/a/k/User%7ETakanoter.html" title="User:Takanoter">张启达</a>. </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../g/i/t/GIT_Guide_2c04.html" title="GIT Guide">编辑本页</a></strong> |
+<a href="../../../g/i/t/Talk%7EGIT_Guide_bbe8.html" class="new" title="Talk:GIT Guide">讨论本页</a> |
+<a href="../../../g/i/t/GIT_Guide_2c04.html" title="GIT Guide">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览210次。 This page was last modified 05:13 2012年7月24日 by <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a>. Based on work by <a href="../../../%E5%AD%99/%E9%B9%8F/_/User%7E%E5%AD%99%E9%B9%8F.html" class="new" title="User:孙鹏">孙鹏</a> 和 <a href="../../../t/a/k/User%7ETakanoter.html" title="User:Takanoter">张启达</a>. </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../g/i/t/GIT_Guide_2c04.html" title="GIT Guide">编辑本页</a></strong>
+<br /><a href="../../../g/i/t/Talk%7EGIT_Guide_bbe8.html" class="new" title="Talk:GIT Guide">讨论本页</a>
+<br /><a href="../../../g/i/t/GIT_Guide_2c04.html" title="GIT Guide">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393434.12 secs. -->
+</body></html>

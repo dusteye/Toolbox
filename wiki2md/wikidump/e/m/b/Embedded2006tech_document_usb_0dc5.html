@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>Embedded2006tech/document usb - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../e/m/b/Embedded2006tech_document_usb_0dc5.html" title="Embedded2006tech/document usb">编辑本页</a> |
+<a href="../../../e/m/b/Embedded2006tech_document_usb_0dc5.html" title="Embedded2006tech/document usb">较早版本</a><p class='subtitle'><a href="../../../e/m/b/Embedded2006tech_document_usb_0dc5.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">Embedded2006tech/document usb</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>嵌入式Linux和普通Linux并无本质区别。PC上用到的硬件，嵌入式Linux几乎都支持。Linux上各种硬件的驱动
+</p><p>程序源代码都可以得到，为用户编写自己专有硬件的驱动程序带来很大方便。这里我们就对在嵌入式Linux平台上
+</p><p>进行USB主机控制器的软、硬件设计做一个简单介绍。
+</p><p><br /> 
+</p><p>主动识别USB
+</p><p><br /> 
+</p><p>目前，大部分的嵌入式产品都具有USB 接口功能，但实际指的是下位机的功能，不具备主动识别USB设备，更不能
+</p><p>对其进行控制和读写等操作，这也是美中不足的地方。比如在一个工业数据采集的领域中，由于便携式嵌入设备的
+</p><p>存储容量一般非常有限，经常需要使用USB优盘作为数据存储的载体。
+</p><p><br /> 
+</p><p>这就要在项目中实现一个嵌入式的USB主机来采集数据，并且把数据存储到优盘中。这里，这个USB主机只需具有控
+</p><p>制读写功能就行了，不必实现外设的功能，因为它根本不用连接到PC。用户的需求呼唤USB主机实现嵌入式化，也
+</p><p>就是开发和设计嵌入式的USB主机。
+</p><p><br /> 
+</p><p>移动数据交换和存储，是近年来信息技术行业的热点。如今，各式各样的移动存储设备有如雨后春笋般出现。它们
+</p><p>从最早的存储量为几KB、能存储用户个人信息的USB小钥匙，到容量可与PC硬盘媲美的USB活动硬盘，再到以
+</p><p>Flash作为存储介质的USB闪盘和优盘，直到今天大量的PC外设和多媒体家电中大量使用的数据存储器。
+</p><p><br /> 
+</p><p>同时，我们也应注意到：移动数据交换业，是伴随着通用串行总线（Universal Serial Bus，简称为USB）的
+</p><p>成熟而兴起的。USB既是数据交换的媒介，又是其核心。可以说，没有USB，就不会有移动数据业务如此迅猛地发
+</p><p>展。
+</p><p><br /> 
+</p><p>从USB问世，从1.1到协议规范2.0版本再到目前的USB OTG(On-The-Go)，USB在不断自我完善，并走向成熟。厂
+</p><p>商对于USB的硬件和软件支持的也越来越完备。现在开发一个USB外设产品，所需要投入的成本和时间大大降低了。
+</p><p><br /> 
+</p><p>随着USB应用领域的逐渐扩大，对于USB的期望也越来越高。希望USB能应用在各种计算机领域中，尤其是在移动数
+</p><p>据领域中；希望能通过PDA等移动设备直接和USB外设通信，使得USB能应用在没有PC的领域中。
+</p><p><br /> 
+</p><p>USB的拓扑结构中居于核心地位的是Host（也称为主机）。任何一次USB的数据传输都必须由主机来发起和控制，
+</p><p>所有的USB外设都只能和主机建立连接，任何两个外设之间或是两个主机之间无法直接通信。而目前，大量的扮演
+</p><p>主机角色的是个人电脑PC。
+</p><p><br /> 
+</p><p>因此，我们目前所买到和使用的USB移动设备，都是USB的外设，比如USB的移动硬盘、USB接口的数码相机等。所
+</p><p>有这些设备都只能在PC上使用，只能通过PC来进行相互的文件和数据交换。这正是USB的弱点。
+</p><p><br /> 
+</p><p>数码相机和MP3播放器等类似的产品都是作为USB的外设。现在的技术条件下，我们只能通过PC作为数码文件的中
+</p><p>介。我们首先是把数码相机连接到PC上，并且安装相应的驱动程序和用户界面，把数码相机存储盘上的内容复制到
+</p><p>PC硬盘上。然后，把USB打印机连接到PC。最后，再把照片打印出来。整个过程，很复杂，更是不方便。
+</p><p><br /> 
+</p><p>有了嵌入式的USB主机，就不需要PC的介入。这里，需要做的就是在MP3播放器、数码相机里嵌入USB主模块，使
+</p><p>其由传统的USB外设成为USB主机。这样，这些嵌入式的主机就可以直接和移动硬盘、打印机等USB的外设连接，实
+</p><p>现所需的功能。
+</p><p><br /> 
+</p><p>USB 主机设计
+</p><p><br /> 
+</p><p>传统意义的USB开发，仅仅是对USB外设的开发。USB底层驱动程序和USB主控制器驱动程序都由Windows等操作
+</p><p>系统提供。有关这些驱动程序的细节过程都蒙着一层神秘的面纱。所以，要设计USB主机，就须设计这两部分驱动
+</p><p>程序，Windows源码不公开，这些细节资料就无从得到。但是，嵌入式Linux操作系统具有得天独厚的条件。
+</p><p><br /> 
+</p><p>当然，目前并不是所有版本的嵌入式Linux（如uCLinux）都支持USB设备。是否支持USB设备是由Linux核心决
+</p><p>定的。因此，嵌入式Linux操作系统采用什么版本的核心就成为是否支持USB设备的关键。一般而言，Release版
+</p><p>的2.2.XX及以前的版本都不支持USB设备，2.4.XX及以后的版本都加入了对USB设备的支持。因此，在做开发之
+</p><p>前应该将内核升级为2.4.10或以上版本。
+</p><p><br /> 
+</p><p>USB设备是通过USB总线连接到USB主机上。主机通过与设备相连的逻辑通道与设备进行通信。在通信过程中，USB
+</p><p>主机充当数据流的源端或者目的端。在USB系统设计中，USB主机接口的设计一直是其难点所在。
+</p><p><br /> 
+</p><p>USB主机控制器完成了主机与设备之间的电气和协议层的匹配，主要包括以下功能：串并转换、帧起始、数据处
+</p><p>理、协议使用、传输错误处理、远程唤醒、根Hub、主机系统接口等。
+</p><p><br /> 
+</p><p>在嵌入式Linux平台上进行USB主机开发所需开发环境：
+</p><p><br /> 
+</p><p>1.开发主机：Linux系统，开发主机上还装有目标系统上运行的uCLinux操作系统和应用软件的所有源代码，以及
+</p><p>编译、调试这些源代码所需的工具软件。
+</p><p><br /> 
+</p><p>2.目标系统：嵌入式Linux系统及其电路板。
+</p><p><br /> 
+</p><p><br />
+下面简要介绍一下USB 主接口的软硬件设计：
+</p><p><br /> 
+</p><p>USB Host接口的硬件设计 
+</p><p><br /> 
+</p><p>USB总线与计算机系统的接口部分就是主机控制器。它可以被看作一个硬件、固件和软件的综合体。USB主机与设备
+</p><p>之间的通信最终都将通过USB主机控制器和USB设备的总线接口之间相连的电缆进行，任何一个输出请求都是由主机
+</p><p>控制器组织成包的形式发往总线的。
+</p><p><br /> 
+</p><p>USB总线中只有一个主机，它是USB树形结构的根，通过一个根Hub来提供一个或多个连接点，从它分发连接着各个
+</p><p>USB设备。USB主机控制器硬件接口设计的目的是在嵌入式Linux系统开发板上增加一个USB Host接口，使其能够
+</p><p>作为USB主机与各种USB Slave设备进行通讯。
+</p><p><br /> 
+</p><p>硬件上首先要选择支持USB主机的接口芯片。现在比较成熟的有Cypress公司的SL811HS和Philips公司的
+</p><p>ISP1161。并且选用一款合适的MCU和MPU来控制。这款MCU的选用比较讲究。因为，整个USB协议框架是非常复
+</p><p>杂的。那么这就需要MCU具有足够的RAM，用以处理大量的数据缓冲区、大量的变量、数据存储等。8KB的RAM是最
+</p><p>基本的要求，而且越大越好。
+</p><p><br /> 
+</p><p>其次系统要有大量的程序存储区，一般Flash的需求大概在10KB～60KB左右。之所以有如此大的范围，是因为
+</p><p>USB定义很多的类，用以支持不同类型的USB外设。每一类就有其不同的驱动程序，因此，设计的嵌入式USB主机支
+</p><p>持的类越多，那么需要的程序空间就越大。
+</p><p><br /> 
+</p><p>例如，要实现Mass Storage类就需要10K所有的Flash空间。本人推荐USB Host接口芯片选用Scanlogic公
+</p><p>司的SL811HS/T。这是市场上为数不多的，既能用作Host模式又能用作Slave模式的，具有标准微处理器总线接
+</p><p>口USB控制芯片，它适合于非PC设备。在Host模式下，它支持嵌入式主机与USB外围设备的通信；在Slave模式
+</p><p>下，可以作为主机的一个外设固件方面，就是要实现完整的USB主机协议类，包括设备的上电检测、设备重起、分
+</p><p>配地址、读取设备的各种描述符等基本的操作，更重要的是要实现每一类USB设备的协议栈。简单来说，每一类设
+</p><p>备的协议栈就是一个特定的驱动程序。传统的做法，我们是在PC上使用WDM来编制驱动程序。这里，在嵌入式系统
+</p><p>的开发环境里就要像开发嵌入式的软件一样，可以用C语言、汇编语言等来实现。
+</p><p><br /> 
+</p><p><br />
+</p><p>USB Host接口的软件设计 
+</p><p><br /> 
+</p><p>在Linux操作系统中，驱动程序的加载方式为：
+</p><p><br /> 
+</p><p>1．将驱动程序作为可加载的模块，在系统超级用户(Root)权限下使用insmod命令动态加载，使之成为系统核心
+</p><p>的一部分。对于USB设备而言，由于可热插拔，一般采用模块化的设备驱动程序。USB主机控制器驱动程序一般也采
+</p><p>用这种方法。
+</p><p><br /> 
+</p><p>2．将设备驱动程序的源代码加进系统核心，系统启动后自动加载驱动。USB协议栈程序一般采用这种方法加入内
+</p><p>核，进而产生一个叫做USB核心的子系统。这个子系统提供了许多数据结构、宏定义、功能函数和应用程序接口
+</p><p>(API)来对硬件或设备进行支持。
+</p><p><br /> 
+</p><p>完成驱动程序后，要进行系统配置 ，通常步骤如下：
+</p><p><br /> 
+</p><p>1．编写Makefile文件。
+</p><p><br /> 
+</p><p>2．增加设备文件。因为USB设备主要都是通过快速串行通讯来读写数据，故一般作为字符设备。
+</p><p><br /> 
+</p><p>3．在目标系统上插入驱动程序模块到内核。编译完成后，驱动程序作为一个模块动态加入到uCLinux内核中。至
+</p><p>此，USB主机控制器的软件设计完成。这个嵌入式的USB主机能够具有同装有Windows操作系统的PC一样的功能；
+</p><p>能够直接对USB的移动存储设备进行读取；能够自动识别设备并把设备配置为标准的磁盘驱动器；能够直接进行文
+</p><p>件的读取、格式化等一系列操作。
+</p><p><br /> 
+</p><p>为了通用，可以选用朗科公司的USB优盘作为外设。目前整个系统可以直接对优盘进行操作，读取优盘中的文件、
+</p><p>写文件到优盘中等。可以在嵌入式Linux平台上运行USB主机，作为嵌入式设备与USB Slave设备进行通信。
+</p><p><br /> 
+</p><p>小结
+</p><p><br /> 
+</p><p>我们对在嵌入式Linux平台上进行USB主机控制器的软、硬件设计做了简单的介绍。设计的重点和难点主要在于主
+</p><p>机控制器芯片的驱动程序开发，但作为开放系统，在Linux上开发设备驱动程序有着其它嵌入式系统不可比拟的优
+</p><p>势，大量的开放源码无疑可以加速开发的进程并使得其应用更加的广泛。因此，USB作为一种新型的高速外设总
+</p><p>线，在嵌入式Linux领域必定有着广阔的应用前景。
+</p>
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../e/m/b/Embedded2006tech_document_usb_0dc5.html">http://dns.cs.hit.edu.cn../../../e/m/b/Embedded2006tech_document_usb_0dc5.html</a>"</p>
+
+<p>本页面已经被浏览11次。 This page was last modified 09:09 2006年3月8日 by 匿名用户.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../e/m/b/Embedded2006tech_document_usb_0dc5.html" title="Embedded2006tech/document usb">编辑本页</a></strong> |
+<a href="../../../e/m/b/Talk%7EEmbedded2006tech_document_usb_7b2b.html" class="new" title="Talk:Embedded2006tech/document usb">讨论本页</a> |
+<a href="../../../e/m/b/Embedded2006tech_document_usb_0dc5.html" title="Embedded2006tech/document usb">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览11次。 This page was last modified 09:09 2006年3月8日 by 匿名用户.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../e/m/b/Embedded2006tech_document_usb_0dc5.html" title="Embedded2006tech/document usb">编辑本页</a></strong>
+<br /><a href="../../../e/m/b/Talk%7EEmbedded2006tech_document_usb_7b2b.html" class="new" title="Talk:Embedded2006tech/document usb">讨论本页</a>
+<br /><a href="../../../e/m/b/Embedded2006tech_document_usb_0dc5.html" title="Embedded2006tech/document usb">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351392654.32 secs. -->
+</body></html>

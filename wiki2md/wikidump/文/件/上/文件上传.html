@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>文件上传 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑本页</a> |
+<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">较早版本</a><p class='subtitle'><a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">文件上传</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<p>本页面用于整理网上查找到的关于java web环境下文件上传的方法及模块使用。
+</p><p><a href="http://www.5dmail.net/html/2004-1-30/200413084348.htm" class='external text' title="http://www.5dmail.net/html/2004-1-30/200413084348.htm" rel="nofollow">BASE64编码知识(注意'/')</a>
+</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#Fileupload"><span class="tocnumber">1</span> <span class="toctext">Fileupload</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E6.89.80.E9.9C.80.E7.9A.84jar"><span class="tocnumber">1.1</span> <span class="toctext">所需的jar</span></a></li>
+<li class='toclevel-2'><a href="#.E6.95.99.E7.A8.8B.E9.93.BE.E6.8E.A5"><span class="tocnumber">1.2</span> <span class="toctext">教程链接</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#jspSmartUpload"><span class="tocnumber">2</span> <span class="toctext">jspSmartUpload</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E6.89.80.E9.9C.80jar"><span class="tocnumber">2.1</span> <span class="toctext">所需jar</span></a></li>
+<li class='toclevel-2'><a href="#.E6.95.99.E7.A8.8B.E9.93.BE.E6.8E.A5_2"><span class="tocnumber">2.2</span> <span class="toctext">教程链接</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#Spring_MultipartFile"><span class="tocnumber">3</span> <span class="toctext">Spring MultipartFile</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E6.89.80.E9.9C.80jar_2"><span class="tocnumber">3.1</span> <span class="toctext">所需jar</span></a></li>
+<li class='toclevel-2'><a href="#.E6.95.99.E7.A8.8B.E9.93.BE.E6.8E.A5_3"><span class="tocnumber">3.2</span> <span class="toctext">教程链接</span></a></li>
+</ul>
+</li>
+<li class='toclevel-1'><a href="#Cos"><span class="tocnumber">4</span> <span class="toctext">Cos</span></a>
+<ul>
+<li class='toclevel-2'><a href="#.E6.89.80.E9.9C.80.E7.9A.84jar_2"><span class="tocnumber">4.1</span> <span class="toctext">所需的jar</span></a></li>
+<li class='toclevel-2'><a href="#.E6.95.99.E7.A8.8B.E9.93.BE.E6.8E.A5_4"><span class="tocnumber">4.2</span> <span class="toctext">教程链接</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑</a>]</div><a name="Fileupload"></a><h2>Fileupload</h2>
+<p>Commons是Apache开放源代码组织中的一个Java子项目，该项目主要涉及一些开发中常用的模块，例如文件上传、命令行处理、数据库连接池、 XML配置文件处理等。这些项目集合了来自世界各地软件工程师的心血，其性能、稳定性等方面都经受得住实际应用的考验。有效地利用这些项目将会给开发带来显而易见的效果。Fileupload就是其中用来处理HTTP文件上传的子项目。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑</a>]</div><a name=".E6.89.80.E9.9C.80.E7.9A.84jar"></a><h3>所需的jar</h3>
+<ul><li>commons-fileupload.jar
+</li><li>commons-beanutils.jar
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑</a>]</div><a name=".E6.95.99.E7.A8.8B.E9.93.BE.E6.8E.A5"></a><h3>教程链接</h3>
+<p><a href="http://www.7880.com/Info/Article-42b729a0.html" class='external text' title="http://www.7880.com/Info/Article-42b729a0.html" rel="nofollow">用fileupload处理文件上传</a>
+</p><p><a href="http://www.javaeye.com/topic/26427" class='external text' title="http://www.javaeye.com/topic/26427" rel="nofollow">Spring中实现文件上传</a>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑</a>]</div><a name="jspSmartUpload"></a><h2>jspSmartUpload</h2>
+<p>jspSmartUpload是由www.jspsmart.com网站开发的一个可免费使用的全功能的文件上传下载组件，适于嵌入执行上传下载操作的JSP文件中。
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑</a>]</div><a name=".E6.89.80.E9.9C.80jar"></a><h3>所需jar</h3>
+<ul><li>jspSmartUpload.jar
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑</a>]</div><a name=".E6.95.99.E7.A8.8B.E9.93.BE.E6.8E.A5_2"></a><h3>教程链接</h3>
+<p><a href="http://zhupan.javaeye.com/blog/26462" class='external text' title="http://zhupan.javaeye.com/blog/26462" rel="nofollow">使用smartupload进行文件的上传下载</a>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑</a>]</div><a name="Spring_MultipartFile"></a><h2>Spring MultipartFile</h2>
+<p>使用spring的MultipartFile实现文件上传
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑</a>]</div><a name=".E6.89.80.E9.9C.80jar_2"></a><h3>所需jar</h3>
+<ul><li>无（Spring支持）
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑</a>]</div><a name=".E6.95.99.E7.A8.8B.E9.93.BE.E6.8E.A5_3"></a><h3>教程链接</h3>
+<p><a href="http://www.javaeye.com/topic/51272" class='external text' title="http://www.javaeye.com/topic/51272" rel="nofollow">使用spring的MultipartFile实现文件上传</a>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑</a>]</div><a name="Cos"></a><h2>Cos</h2>
+<p>cos是O'Reilly公司的上传组件（open source）
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑</a>]</div><a name=".E6.89.80.E9.9C.80.E7.9A.84jar_2"></a><h3>所需的jar</h3>
+<p>cos的包（名称不详）
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑</a>]</div><a name=".E6.95.99.E7.A8.8B.E9.93.BE.E6.8E.A5_4"></a><h3>教程链接</h3>
+<ol><li><a href="http://www.macspeed.net/coursejsp/ch07/ch0702.html" class='external text' title="http://www.macspeed.net/coursejsp/ch07/ch0702.html" rel="nofollow">官方教程</a>
+</li><li><a href="http://www.javaeye.com/topic/39051" class='external text' title="http://www.javaeye.com/topic/39051" rel="nofollow">用cos进行文件上传 陈万飞</a>
+</li></ol>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html">http://dns.cs.hit.edu.cn../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html</a>"</p>
+
+<p>本页面已经被浏览16次。 This page was last modified 07:18 2007年3月1日 by <a href="../../../d/y/i/User%7EDyingcow.html" title="User:Dyingcow">刘奭</a>.  </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑本页</a></strong> |
+<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/Talk%7E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" class="new" title="Talk:文件上传">讨论本页</a> |
+<a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览16次。 This page was last modified 07:18 2007年3月1日 by <a href="../../../d/y/i/User%7EDyingcow.html" title="User:Dyingcow">刘奭</a>.  </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">编辑本页</a></strong>
+<br /><a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/Talk%7E%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" class="new" title="Talk:文件上传">讨论本页</a>
+<br /><a href="../../../%E6%96%87/%E4%BB%B6/%E4%B8%8A/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.html" title="文件上传">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393058.61 secs. -->
+</body></html>

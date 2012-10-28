@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" >
+<head>
+<title>基于Key-Value的单机存储系统 - WIKI-HIT IBM CLUB</title>
+<meta name="KEYWORDS" content="首页,ALP,Address,Android,Android Newbie Guide,Android Project Development,Android Research Field,Android Third Party Lib And Tool,BoardGame,CSAPP" />
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel='stylesheet' type='text/css' media='print' href='../../../../skins/common/wikiprintable.css' />
+<script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+<style type='text/css'>
+/*/*/ /*<![CDATA[*/
+@import "../../../../skins/common/wikistandard.css";
+@import "../../../s/t/a/MediaWiki%7EStandard.css.html";
+a.new, #quickbar a.new { color: #CC2200; }
+.editsection { display: none; }
+#quickbar { position: absolute; top: 4px; left: 4px; border-right: 1px solid gray; }
+#article { margin-left: 152px; margin-right: 4px; }
+
+/*]]>*/ /* */
+</style>
+</head>
+
+<body bgcolor='#FFFFFF' onload=''>
+
+<div id='content'>
+<div id='topbar'>
+<table border='0' cellspacing='0' width='98%'>
+<tr>
+<td width='152' rowspan='1'>&nbsp;</td><td class="top" align='left' valign='top'>
+<a href="../../../index.html" title="首页">首页</a> |
+<a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> |
+<a href="../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html" title="基于Key-Value的单机存储系统">编辑本页</a> |
+<a href="../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html" title="基于Key-Value的单机存储系统">较早版本</a><p class='subtitle'><a href="../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html">可打印版</a> | <a href="../../../g/e/n/WIKI-HIT_IBM_CLUB%7EGeneral_disclaimer.html" title="WIKI-HIT IBM CLUB:General disclaimer">Disclaimers</a></p>
+</td>
+<td class="top" valign='top' align='right' nowrap='nowrap'>Not logged in
+<br /><a href="../../../u/s/e/Special%7EUserlogin.html" title="Special:Userlogin">登录</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html" title="Wikipedia:帮助">帮助</a>
+<br /><form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form></td></tr>
+</table>
+</div>
+
+<div id='article'>
+<h1 class="pagetitle">基于Key-Value的单机存储系统</h1><p class='subtitle'>Wikipedia，自由的百科全书</p>
+<table id='toc' class='toc'><tr><td><div id='toctitle'><h2>目录</h2></div>
+<ul>
+<li class='toclevel-1'><a href="#.E9.A1.B9.E7.9B.AE.E8.A6.81.E6.B1.82"><span class="tocnumber">1</span> <span class="toctext">项目要求</span></a></li>
+<li class='toclevel-1'><a href="#.E9.A1.B9.E7.9B.AE.E7.AE.A1.E7.90.86"><span class="tocnumber">2</span> <span class="toctext">项目管理</span></a></li>
+<li class='toclevel-1'><a href="#.E7.9F.A5.E8.AF.86.E7.82.B9"><span class="tocnumber">3</span> <span class="toctext">知识点</span></a></li>
+<li class='toclevel-1'><a href="#.E7.BB.8F.E9.AA.8C.E6.95.99.E8.AE.AD"><span class="tocnumber">4</span> <span class="toctext">经验教训</span></a></li>
+<li class='toclevel-1'><a href="#.E6.94.B9.E8.BF.9B"><span class="tocnumber">5</span> <span class="toctext">改进</span></a></li>
+</ul>
+</td></tr></table>
+<p><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "显示"; var tocHideText = "隐藏"; showTocToggle(); } </script>
+</p>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html" title="基于Key-Value的单机存储系统">编辑</a>]</div><a name=".E9.A1.B9.E7.9B.AE.E8.A6.81.E6.B1.82"></a><h2>项目要求</h2>
+<ul><li>项目： 单机key-value存储系统 
+</li><li>应用场景： 互联网企业中经常要存储各种较大的相对静态的数据，例如图片、视频、音乐等类型的文件，分布式key-value系统就是用来解决这类存储需求的，单机key-value系统是整个系统的基础。
+</li><li>思考问题： 
+<ol><li>直接用数据库MySQL存储会有什么问题 ？
+</li><li>直接在文件系统上存储各个文件会有什么问题 ？
+</li><li>给出为什么需要单机key-value存储的原因
+</li></ol>
+</li><li>数据规模:单机存储 1000w条记录， 平均大小100K, 单机存储1T数据, 单条最大长度5Mb
+</li><li>响应时间:平均单次请求在50ms内完成 (SATA硬盘)
+</li><li>接口:  put(key, value)  , get(key),  delete(key)
+</li><li>代码行估计:  5000行
+</li><li>时间要求：1个月内完成
+</li><li>备注: 10月份回学校的时候和大家交流沟通进展和相关技术情况，希望对硬盘/SSD的存储特性有较多了解，并能根据这些特性在单机系统设计的时候有所考虑。
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html" title="基于Key-Value的单机存储系统">编辑</a>]</div><a name=".E9.A1.B9.E7.9B.AE.E7.AE.A1.E7.90.86"></a><h2>项目管理</h2>
+<ul><li>C code style: 
+<ul><li><a href="http://www.kroah.com/linux/talks/ols_2002_kernel_codingstyle_talk/html/mgp00005.html" class='external free' title="http://www.kroah.com/linux/talks/ols 2002 kernel codingstyle talk/html/mgp00005.html" rel="nofollow">http://www.kroah.com/linux/talks/ols_2002_kernel_codingstyle_talk/html/mgp00005.html</a>
+</li><li><a href="http://www.kernel.org/doc/Documentation/CodingStyle" class='external free' title="http://www.kernel.org/doc/Documentation/CodingStyle" rel="nofollow">http://www.kernel.org/doc/Documentation/CodingStyle</a>
+</li></ul>
+</li></ul>
+<ul><li>svn checkout <a href="https://smcached.googlecode.com/svn/trunk/" class='external free' title="https://smcached.googlecode.com/svn/trunk/" rel="nofollow">https://smcached.googlecode.com/svn/trunk/</a> kvs --username 用户名。 在源代码中可以找到：
+<ul><li>总体设计文档
+</li><li>Library&amp;ClientServer源代码 相关单元测试的代码
+</li><li>如何使用KVS 相关的代码和文档。
+</li></ul>
+</li></ul>
+<ul><li>SVN使用，cliff总结了2条：
+<ol><li>“每天开始开发工作前，请及时update代码”
+</li><li>“未调试通过的代码，请在测试项目中进行调试，不要提交到svn”,通过的代码目前指同时满足：
+</li></ol>
+<ul><li><ul><li>Coding Style
+</li><li>编写或完善相关的　测试代码
+</li><li>通过单元测试的代码，cgov
+</li><li>和相关文档的描述一致
+</li></ul>
+</li></ul>
+</li></ul>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html" title="基于Key-Value的单机存储系统">编辑</a>]</div><a name=".E7.9F.A5.E8.AF.86.E7.82.B9"></a><h2>知识点</h2>
+<ol><li><a href="../../../%E7%AE%97/%E6%B3%95/%E3%80%81/%E7%AE%97%E6%B3%95%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95.html" title="算法、数据库索引">算法、数据库索引</a>
+</li><li><a href="../../../%E7%A1%AC/%E7%9B%98/%E7%89%B9/%E7%A1%AC%E7%9B%98%E7%89%B9%E6%80%A7.html" title="硬盘特性">硬盘特性</a>
+</li><li><a href="../../../t/o/k/Tokyo_Cabinet%E3%80%80%E8%B5%84%E6%96%99_3693.html" title="Tokyo Cabinet　资料">Tokyo Cabinet　资料</a>
+</li><li><a href="../../../m/e/m/Memcached_%E8%B5%84%E6%96%99.html" title="Memcached 资料">memcached 资料</a>
+</li><li><a href="../../../%E5%AE%9E/%E7%8E%B0/%EF%BC%9A/%E5%AE%9E%E7%8E%B0%EF%BC%9A%E8%AF%AD%E8%A8%80%E3%80%81linux.html" title="实现：语言、linux">实现：语言、linux</a>
+</li><li><a href="http://hi.baidu.com/serial_story/blog/item/d4b0a722dced14fdd6cae2b0.html" class='external autonumber' title="http://hi.baidu.com/serial story/blog/item/d4b0a722dced14fdd6cae2b0.html" rel="nofollow">[1]</a>
+</li><li>性能测试工具
+<ol><li><a href="../../../d/s/t/Dstat.html" class="new" title="Dstat">dstat</a>
+</li><li><a href="../../../t/o/p/Top.html" class="new" title="Top">top</a>
+</li><li>参考测试结果：<a href="http://blog.yufeng.info/archives/1327" class='external free' title="http://blog.yufeng.info/archives/1327" rel="nofollow">http://blog.yufeng.info/archives/1327</a>
+</li></ol>
+</li><li>开发工具
+<ol><li><a href="../../../g/c/o/Gcov.html" class="new" title="Gcov">gcov</a>
+</li></ol>
+</li><li>KVS Library
+<ol><li><a href="../../../k/v/s/KVS%E5%90%AF%E5%8A%A8_%EF%BC%86_KVS%E5%AE%9E%E4%BD%93%E7%9A%84%E7%BB%B4%E6%8A%A4%E5%86%85%E5%AE%B9_53b2.html" class="new" title="KVS启动 ＆ KVS实体的维护内容">KVS启动 ＆ KVS实体的维护内容</a>
+</li></ol>
+</li><li>Questions
+<ol><li>[[内核什么时候会发生n=write(size), n&lt;size的情况呢?]]
+</li><li><a href="../../../%E4%B8%BA/%E4%BB%80/%E4%B9%88/%E4%B8%BA%E4%BB%80%E4%B9%88fs%E9%9A%8F%E6%9C%BA%E8%AF%BB%E6%85%A2__dentry%E7%9A%84%E6%8F%90%E9%AB%98%E4%BD%93%E7%8E%B0%E5%9C%A8%E5%93%AA%E9%87%8C__daee.html" class="new" title="为什么fs随机读慢? dentry的提高体现在哪里?">为什么fs随机读慢? dentry的提高体现在哪里?</a>
+</li></ol>
+</li></ol>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html" title="基于Key-Value的单机存储系统">编辑</a>]</div><a name=".E7.BB.8F.E9.AA.8C.E6.95.99.E8.AE.AD"></a><h2>经验教训</h2>
+<ol><li>曾经写过一个“内存池”，在老版本中可以看到。最后放弃。
+</li></ol>
+<div class="editsection" style="float:right;margin-left:5px;">[<a href="../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html" title="基于Key-Value的单机存储系统">编辑</a>]</div><a name=".E6.94.B9.E8.BF.9B"></a><h2>改进</h2>
+<ol><li>client端有必要传递全部的char* key吗？(传递hash_1,hash_2,hash_3？)
+</li><li>同名函数\Lib 符号污染
+</li></ol>
+
+<div class="printfooter">
+<p>取自"<a href="http://dns.cs.hit.edu.cn../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html">http://dns.cs.hit.edu.cn../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html</a>"</p>
+
+<p>本页面已经被浏览1,433次。 This page was last modified 03:38 2011年6月25日 by <a href="../../../t/a/k/User%7ETakanoter.html" title="User:Takanoter">张启达</a>. Based on work by <a href="../../../%E7%8E%8B/%E7%8F%91/%E7%8F%91/User%7E%E7%8E%8B%E7%8F%91%E7%8F%91.html" class="new" title="User:王珑珑">王珑珑</a>, <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a> 和 <a href="../../../%E5%86%B7/%E5%BE%97/%E7%BB%B4/User%7E%E5%86%B7%E5%BE%97%E7%BB%B4.html" class="new" title="User:冷得维">pRealName</a>. </p>
+</div>
+
+</div><br style="clear:both" />
+
+<div id='footer'><table border="0" cellspacing="0"><tr><td width='152' rowspan='1'>&nbsp;</td><td class='bottom' align='left' valign='top'><strong><a href="../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html" title="基于Key-Value的单机存储系统">编辑本页</a></strong> |
+<a href="../../../%E5%9F%BA/%E4%BA%8E/k/Talk%7E%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_b19b.html" title="Talk:基于Key-Value的单机存储系统">讨论本页</a> |
+<a href="../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html" title="基于Key-Value的单机存储系统">较早版本</a> |
+<a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a> |
+<a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><br />
+
+<br /><a href="../../../index.html" title="首页">首页</a> | <a href="../../../w/i/k/Wikipedia%7E%E5%85%B3%E4%BA%8E.html" title="Wikipedia:关于">关于Wikipedia</a> | <a href="../../../r/e/c/Special%7ERecentchanges.html" title="Special:Recentchanges">最近更改</a> | <form name="search" class="inline" method="post" action="../../../s/e/a/Special%7ESearch.html">
+<input type="text" name="search" size="19" value="" />
+<input type="submit" name="go" value="进入" />&nbsp;<input type="submit" name="fulltext" value="搜索" />
+</form><br /><span id="pagestats">本页面已经被浏览1,433次。 This page was last modified 03:38 2011年6月25日 by <a href="../../../t/a/k/User%7ETakanoter.html" title="User:Takanoter">张启达</a>. Based on work by <a href="../../../%E7%8E%8B/%E7%8F%91/%E7%8F%91/User%7E%E7%8E%8B%E7%8F%91%E7%8F%91.html" class="new" title="User:王珑珑">王珑珑</a>, <a href="../../../%E5%90%B4/%E6%99%8B/_/User%7E%E5%90%B4%E6%99%8B.html" title="User:吴晋">吴晋</a> 和 <a href="../../../%E5%86%B7/%E5%BE%97/%E7%BB%B4/User%7E%E5%86%B7%E5%BE%97%E7%BB%B4.html" class="new" title="User:冷得维">pRealName</a>. </span></td></tr></table>
+</div>
+</div>
+
+<div id='quickbar'>
+<a href='../../../index.html'><img src='../../../../skins/common/images/wiki.jpg' alt='[首页]' /></a>
+<hr class='sep' /><a href="../../../index.html">首页</a>
+<br /><a href="../../../c/o/m/WIKI-HIT_IBM_CLUB%7ECommunity_Portal_9150.html">社区</a>
+<br /><a href="../../../c/u/r/Current_events.html">新闻动态</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchanges.html">最近更改</a>
+<br /><a href="../../../r/a/n/Special%7ERandom.html">随机页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E5%B8%AE%E5%8A%A9.html">帮助</a>
+<br /><a href="../../../s/i/t/WIKI-HIT_IBM_CLUB%7ESite_support.html">Donations</a>
+<br />
+<hr class='sep' /><strong><a href="../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html" title="基于Key-Value的单机存储系统">编辑本页</a></strong>
+<br /><a href="../../../%E5%9F%BA/%E4%BA%8E/k/Talk%7E%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_b19b.html" title="Talk:基于Key-Value的单机存储系统">讨论本页</a>
+<br /><a href="../../../%E5%9F%BA/%E4%BA%8E/k/%E5%9F%BA%E4%BA%8EKey-Value%E7%9A%84%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F_eecf.html" title="基于Key-Value的单机存储系统">较早版本</a>
+<br /><a href="../../../w/h/a/Special%7EWhatlinkshere.html" title="Special:Whatlinkshere">链入页面</a>
+<br /><a href="../../../r/e/c/Special%7ERecentchangeslinked.html" title="Special:Recentchangeslinked">链出更改</a>
+<br /><hr class='sep' /><a href="../../../s/p/e/Special%7ESpecialpages.html" title="Special:Specialpages">特殊页面</a>
+<br /><a href="../../../w/i/k/Wikipedia%7E%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A.html" title="Wikipedia:错误报告">错误报告</a>
+<br /></div>
+<!-- Served by dns.cs.hit.edu.cn in 1351393402.42 secs. -->
+</body></html>
