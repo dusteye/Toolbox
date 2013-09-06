@@ -1,6 +1,10 @@
 # newbie - FoOTOo Management
 
-# newbie should guest the info
+## Usage
+
+See Usage in `spec/dxf.lazy.rb` and please noticed that DXF is lazy at all!
+
+## Newbie should guest the info
 
 
 ## Items for database
