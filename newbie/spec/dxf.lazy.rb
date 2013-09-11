@@ -1,18 +1,15 @@
-source = File.open('book.txr').read
-cliffs = JSON.parse('cliffs')
+dist	".cliffs"
+origin	stdin
 
-source.each_line do |line|
-	information line do
-		:qq.shoule_be Regexp::QQ
-		:names.should_be Proc::Names
-		:company.should_be Proc::Company
-		:sid.should_be Regexp::Sid
+item "newbie" do
+	only_one	:qq
+	not_null	:name
 
-		confirm_all_right
-		write_little_cliffs cliffs, [:qq, :names, :company, :sid]
+	:qq.should_be	/\d{9,11}/
+	:name.should_be		Baijiaxing.is_a_chinese_name?
+	:company.should_be	//
 
-	end
+	check_all_right
+	write_database :qq, :company
 end
-
-
 

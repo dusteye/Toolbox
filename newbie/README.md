@@ -6,6 +6,9 @@ See Usage in `spec/dxf.lazy.rb` and please noticed that DXF is lazy at all!
 
 ## Newbie should guest the info
 
+Transform things to json-formatted database.
+
+
 
 ## Items for database
 
