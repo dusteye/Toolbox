@@ -1,15 +1,15 @@
 #encoding: utf-8
 
-
-# There should be some dirty monkey-patch.
+# Warning! 
+# There should be some dirty monkey-patch. Don't use this in your
+# very import project.
 
 class String
 	
-	# Check whether a string is a non-ascii_strings. Implement it by simply
-	# check it's length and bytesize.
-	#
+	# Check whether a string is a non-ascii_strings.
+	# This is a enumerate version, and would be faster than ever
 	def ascii_strings?
-		length == bytesize
+		each_byte.any? {|c| c > 128}
 	end
 end
 
@@ -21,21 +21,4 @@ class Symbol
 		@condition = condition
 	end
 
-	def get_result text
-		if condition.is_a? Regexp
-			res = text.scan(condition)
-
-
 end
-
-infomation text  do
-	:qq.should_be        Regexp[:qq]
-	:name.should_be      Proc[:name]
-	:emails.should_be    Proc[:emails]
-	:company.should_be   Proc[:company]
-
-	confirm_all_right
-	write_database :qq, :name, :emails, :company 
-end
-
-
