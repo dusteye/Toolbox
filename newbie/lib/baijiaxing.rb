@@ -41,8 +41,13 @@ module Baijiaxing
 		NAMES.join(" ")
 	end
 
-	def self.is_family_name name
-		NAMES.include?(name)
+	def self.is_a_chinese_name? name
+		# FoOTOo Newbie shouldn't be foriegners.
+		return false if name.ascii_only?
+		# A Chinese name cannot longer than 4.
+		return false if name.length > 4
+		# A Chinese name should begin with Baijiaxin. Normally.
+		NAMES.include?(name[0]) || NAMES.include?(name[0..1])
 	end
 
 end
