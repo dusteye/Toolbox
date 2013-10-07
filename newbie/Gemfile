@@ -1,0 +1,17 @@
+source 'http://ruby.taobao.org'
+
+require './lib/os.rb'
+
+if OS.mac?
+	gem 'terminal-notifier'
+elsif OS.windows?
+	# gem that windows need
+elsif OS.linux?
+	# gem that linux need
+elsif OS.unix?
+	# gem that unix need
+else
+	raise 'Operate System not support yet.'
+end
+
+
