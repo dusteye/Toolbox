@@ -2,20 +2,12 @@
 
 ## Usage
 
-See Usage in `spec/dxf.lazy.rb` and please noticed that DXF is lazy at all!
+This tool support several commands(actions).
 
-## Newbie should guest the info
+```shell
+newbie [query|notify|send|mail]
+```
 
-Transform things to json-formatted database.
+## Configuration
 
-
-
-## Items for database
-
-+ 姓名(name) string:
-+ 常用邮件(emails) array of string:
-+ 学号(sid) integer:
-+ 身份证(id) integer: should be
-+ QQ（QQ） integer:
-+ 工作单位(company) string:
 

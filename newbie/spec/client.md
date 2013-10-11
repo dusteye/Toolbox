@@ -23,7 +23,7 @@ $ newbie dir deathking code
 $ newbie mail yuri
 ```
 
-## Query somebody\'s infomation
+## Query somebody/'s infomation
 
 ```shell
 $ newbie query uncle.biao

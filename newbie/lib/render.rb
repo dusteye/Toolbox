@@ -1,9 +1,11 @@
-class DbRender
-end
+module Newbie
+	class DbRender
+	end
 
 
-class DbMarkdownRender < DbRender
-end
+	class DbMarkdownRender < DbRender
+	end
 
-class DbXlsRender < Render
+	class DbXlsRender < Render
+	end
 end
