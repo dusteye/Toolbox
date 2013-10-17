@@ -10,11 +10,22 @@ When client log in, a message as following will be sent to server.
 {
   "ip":"w.x.y.z",
   "github-id":github-id-here,
-  "os-type":os-type
+  "os-type":os-type,
+  "action":"hello"
 }
 ```
 
-## On client log off
+## On client log out
+
+When clien log out, a message as following will be sent to server.
+
+```javascript
+{
+  "ip":"w.x.y.z",
+  "github-id":github-id-here,
+  "action":"goodbye"
+}
+```
 
 ## Send query info
 
@@ -80,4 +91,18 @@ You could send a notification to a man. If user online then server will send the
 }
 ```
 
-## 
+### Recive notification from server
+
+The client will recive a json string if a message try to send to it.
+
+```javascript
+{
+  "action":"message",
+  "from":"Cliff Woo",
+  "message":"Give me the **Programming Ruby**."
+}
+```
+
+## Send a file or director
+
+Not implement yet.

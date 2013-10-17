@@ -14,4 +14,10 @@ module OS
   def OS.linux?
     OS.unix? and not OS.mac?
   end
+
+	def OS.type
+		return "windows" if windows?
+		return "mac"     if mac?
+		return "linux"   if linux?
+	end
 end
