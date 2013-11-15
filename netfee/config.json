@@ -27,4 +27,4 @@ A sample configure 'config.json':
         "password"  :   "thepassword"
     },  
     "mailto" : "receive address"
-}                                               
+}             
